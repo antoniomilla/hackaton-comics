@@ -34,7 +34,7 @@ public class SampleTest extends AbstractTest {
 	// The following are fictitious test cases that are intended to check that 
 	// JUnit works well in this project.  Just righ-click this class and run 
 	// it using JUnit.
-
+	//
 	@Test
 	public void samplePositiveTest() {
 		Assert.isTrue(true);
