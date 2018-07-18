@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="autor/list" extends="master.page">	
+		<put-attribute name="title" value="Author list" />
+		<put-attribute name="body" value="/views/autor/list.jsp" />
+	</definition>
+	
+	<definition name="autor/edit" extends="master.page">
+		<put-attribute name="title" value="Edit author" />
+		<put-attribute name="body" value="/views/autor/edit.jsp" />
+	</definition>
+	
+	<definition name="autor/display" extends="master.page">
+		<put-attribute name="title" value="Author display" />
+		<put-attribute name="body" value="/views/autor/display.jsp" />
+	</definition>
+
+</tiles-definitions>
