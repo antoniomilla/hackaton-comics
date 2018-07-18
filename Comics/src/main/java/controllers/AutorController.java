@@ -22,6 +22,7 @@ import domain.Comic;
 @RequestMapping("/autor")
 public class AutorController {
 
+	//comentario antopnio
 	@Autowired
 	private AutorService	autorService;
 
