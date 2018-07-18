@@ -46,8 +46,8 @@
 	<!-- Usuarios -->	
 	
 	
-	<bean id="administrador1" class="domain.Admin">
-		<property name="name" value="Administrador 1"/>
+	<bean id="administrator1" class="domain.Admin">
+		<property name="name" value="Administrator 1"/>
 		<property name="birthDate" value="03/04/1980"/>
 		<property name="dni" value="123456778K"/>
 		<property name="email" value="admin@hotmail.es"/>
@@ -55,7 +55,7 @@
 		<property name="salary" value="1100"/>
 	</bean>
 	
-	<bean id="cliente1" class="domain.Customer">
+	<bean id="customer1" class="domain.Customer">
 		<property name="name" value="Jesus Coello"/>
 		<property name="birthDate" value="21/03/1997"/>
 		<property name="dni" value="87654321H"/>
