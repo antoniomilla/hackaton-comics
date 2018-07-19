@@ -18,8 +18,8 @@ import services.AuthorService;
 import services.ComicService;
 import services.PublisherService;
 import domain.Author;
-import domain.ComicCharacter;
 import domain.Comic;
+import domain.ComicCharacter;
 import domain.Publisher;
 
 @Controller
@@ -29,9 +29,9 @@ public class ComicController {
 	@Autowired
 	private ComicService		comicService;
 	@Autowired
-	private AuthorService		autorService;
+	private AuthorService		authorService;
 	@Autowired
-	private PublisherService	editorialService;
+	private PublisherService	publisherService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -55,10 +55,10 @@ public class ComicController {
 	public ModelAndView display(@RequestParam final int comicId) {
 		ModelAndView result;
 		final Comic comic = this.comicService.findOne(comicId);
-		final Collection<ComicCharacter> personajes = comic.getCharacters();
+		final Collection<ComicCharacter> characters = comic.getCharacters();
 		result = new ModelAndView("comic/display");
 		result.addObject("comic", comic);
-		result.addObject("personajes", personajes);
+		result.addObject("characters", characters);
 
 		return result;
 	}
@@ -128,22 +128,22 @@ public class ComicController {
 
 	protected ModelAndView createEditModelAndView(final Comic comic, final String message) {
 		ModelAndView result;
-		Author autor = null;
-		Publisher editorial = null;
-		final Collection<Author> autores = this.autorService.findAll();
-		final Collection<Publisher> editoriales = this.editorialService.findAll();
+		Author author = null;
+		Publisher publisher = null;
+		final Collection<Author> authors = this.authorService.findAll();
+		final Collection<Publisher> publishers = this.publisherService.findAll();
 
 		if (comic.getAutor() != null)
-			autor = comic.getAutor();
-		if (comic.getPublishingCompany() != null)
-			editorial = comic.getPublishingCompany();
+			author = comic.getAutor();
+		if (comic.getPublisher() != null)
+			publisher = comic.getPublisher();
 
 		result = new ModelAndView("comic/edit");
 		result.addObject("comic", comic);
-		result.addObject("autor", autor);
-		result.addObject("editorial", editorial);
-		result.addObject("autores", autores);
-		result.addObject("editoriales", editoriales);
+		result.addObject("autbor", author);
+		result.addObject("publisher", publisher);
+		result.addObject("authors", authors);
+		result.addObject("publishers", publishers);
 		result.addObject("message", message);
 
 		return result;

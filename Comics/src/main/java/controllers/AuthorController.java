@@ -19,40 +19,40 @@ import domain.Author;
 import domain.Comic;
 
 @Controller
-@RequestMapping("/autor")
-public class AutorController {
+@RequestMapping("/author")
+public class AuthorController {
 
 	//comentario antopnio
 	@Autowired
-	private AuthorService	autorService;
+	private AuthorService	authorService;
 
 
 	//COMENTARIO JESUS
 
-	public AutorController() {
+	public AuthorController() {
 		super();
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<Author> autores;
+		Collection<Author> authors;
 
-		autores = this.autorService.findAll();
-		result = new ModelAndView("autor/list");
-		result.addObject("requestURI", "autor/list.do");
-		result.addObject("autores", autores);
+		authors = this.authorService.findAll();
+		result = new ModelAndView("author/list");
+		result.addObject("requestURI", "author/list.do");
+		result.addObject("authors", authors);
 
 		return result;
 	}
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int autorId) {
+	public ModelAndView display(@RequestParam final int authorId) {
 		ModelAndView result;
-		final Author autor = this.autorService.findOne(autorId);
-		final Collection<Comic> comics = autor.getComics();
-		result = new ModelAndView("autor/display");
-		result.addObject("autor", autor);
+		final Author author = this.authorService.findOne(authorId);
+		final Collection<Comic> comics = author.getComics();
+		result = new ModelAndView("author/display");
+		result.addObject("author", author);
 		result.addObject("comics", comics);
 
 		return result;
@@ -61,71 +61,71 @@ public class AutorController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView result;
-		Author autor;
+		Author author;
 
-		autor = this.autorService.create();
-		result = this.createEditModelAndView(autor);
+		author = this.authorService.create();
+		result = this.createEditModelAndView(author);
 
 		return result;
 
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam final int autorId) {
+	public ModelAndView edit(@RequestParam final int authorId) {
 		ModelAndView result;
-		Author autor;
+		Author author;
 
-		autor = this.autorService.findOne(autorId);
-		Assert.notNull(autor);
-		result = this.createEditModelAndView(autor);
+		author = this.authorService.findOne(authorId);
+		Assert.notNull(author);
+		result = this.createEditModelAndView(author);
 
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Author autor, final BindingResult binding) {
+	public ModelAndView save(@Valid final Author author, final BindingResult binding) {
 		ModelAndView result;
 
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(autor);
+			result = this.createEditModelAndView(author);
 		else
 			try {
-				this.autorService.save(autor);
+				this.authorService.save(author);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(autor, "autor.commit.error");
+				result = this.createEditModelAndView(author, "author.commit.error");
 			}
 
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final Author autor, final BindingResult binding) {
+	public ModelAndView delete(final Author author, final BindingResult binding) {
 		ModelAndView result;
 
 		try {
-			this.autorService.delete(autor);
+			this.authorService.delete(author);
 			result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(autor, "autor.commit.error");
+			result = this.createEditModelAndView(author, "author.commit.error");
 		}
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final Author autor) {
+	protected ModelAndView createEditModelAndView(final Author author) {
 		ModelAndView result;
 
-		result = this.createEditModelAndView(autor, null);
+		result = this.createEditModelAndView(author, null);
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final Author autor, final String message) {
+	protected ModelAndView createEditModelAndView(final Author author, final String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("autor/edit");
-		result.addObject("autor", autor);
+		result = new ModelAndView("author/edit");
+		result.addObject("author", author);
 		result.addObject("message", message);
 
 		return result;

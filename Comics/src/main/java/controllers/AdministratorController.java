@@ -13,26 +13,26 @@ import services.AdministratorService;
 import domain.Admin;
 
 @Controller
-@RequestMapping("/administrador")
-public class AdministradorController {
+@RequestMapping("/administrator")
+public class AdministratorController {
 
 	@Autowired
-	private AdministratorService	administradorService;
+	private AdministratorService	administratorService;
 
 
-	public AdministradorController() {
+	public AdministratorController() {
 		super();
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<Admin> administradores;
+		Collection<Admin> administrators;
 
-		administradores = this.administradorService.findAll();
-		result = new ModelAndView("administrador/list");
-		result.addObject("requestURI", "administrador/list.do");
-		result.addObject("administradores", administradores);
+		administrators = this.administratorService.findAll();
+		result = new ModelAndView("administrator/list");
+		result.addObject("requestURI", "administrator/list.do");
+		result.addObject("administrators", administrators);
 
 		return result;
 	}

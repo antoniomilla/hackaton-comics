@@ -14,33 +14,33 @@ import services.ComicService;
 import domain.Comic;
 
 @Controller
-@RequestMapping("/editorial/comic")
-public class EditorialComicController {
+@RequestMapping("/publisher/comic")
+public class PublisherComicController {
 
 	@Autowired
 	private ComicService	comicService;
 
 
-	public EditorialComicController() {
+	public PublisherComicController() {
 		super();
 	}
 
 	@RequestMapping(value = "/listDC", method = RequestMethod.GET)
 	public ModelAndView listDC() {
 		ModelAndView result;
-		final Collection<Comic> todos = this.comicService.findAll();
-		final Collection<Comic> comics = this.dc(todos);
+		final Collection<Comic> all = this.comicService.findAll();
+		final Collection<Comic> comics = this.dc(all);
 		result = new ModelAndView("comic/list");
-		result.addObject("requestURI", "editorial/comic/listDC.do");
+		result.addObject("requestURI", "publisher/comic/listDC.do");
 		result.addObject("comics", comics);
 
 		return result;
 	}
 
-	private Collection<Comic> dc(final Collection<Comic> lista) {
+	private Collection<Comic> dc(final Collection<Comic> list) {
 		final Collection<Comic> res = new HashSet<Comic>();
-		for (final Comic c : lista)
-			if (c.getPublishingCompany().getName().equals("DC"))
+		for (final Comic c : list)
+			if (c.getPublisher().getName().equals("DC"))
 				res.add(c);
 		return res;
 	}
@@ -48,19 +48,19 @@ public class EditorialComicController {
 	@RequestMapping(value = "/listMarvel", method = RequestMethod.GET)
 	public ModelAndView listMarvel() {
 		ModelAndView result;
-		final Collection<Comic> todos = this.comicService.findAll();
-		final Collection<Comic> comics = this.marvel(todos);
+		final Collection<Comic> all = this.comicService.findAll();
+		final Collection<Comic> comics = this.marvel(all);
 		result = new ModelAndView("comic/list");
-		result.addObject("requestURI", "editorial/comic/listMarvel.do");
+		result.addObject("requestURI", "publisher/comic/listMarvel.do");
 		result.addObject("comics", comics);
 
 		return result;
 	}
 
-	private Collection<Comic> marvel(final Collection<Comic> lista) {
+	private Collection<Comic> marvel(final Collection<Comic> list) {
 		final Collection<Comic> res = new HashSet<Comic>();
-		for (final Comic c : lista)
-			if (c.getPublishingCompany().getName().equals("Marvel"))
+		for (final Comic c : list)
+			if (c.getPublisher().getName().equals("Marvel"))
 				res.add(c);
 		return res;
 	}

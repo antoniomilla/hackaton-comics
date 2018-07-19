@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.URL;
 public class Comic extends DomainEntity {
 
 	private String						name;
-	private Publisher					publishingCompany;
+	private Publisher					publisher;
 	private Author						autor;
 	private Collection<ComicCharacter>	characters;
 	private String						image;
@@ -39,12 +39,12 @@ public class Comic extends DomainEntity {
 	}
 
 	@ManyToOne(optional = false)
-	public Publisher getPublishingCompany() {
-		return this.publishingCompany;
+	public Publisher getPublisher() {
+		return this.publisher;
 	}
 
-	public void setPublishingCompany(final Publisher editorial) {
-		this.publishingCompany = editorial;
+	public void setPublisher(final Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	@ManyToMany

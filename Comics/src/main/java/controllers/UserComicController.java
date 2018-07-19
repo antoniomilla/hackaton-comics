@@ -17,16 +17,16 @@ import domain.Comic;
 import domain.User;
 
 @Controller
-@RequestMapping("/cliente/comic")
-public class ClienteComicController {
+@RequestMapping("/user/comic")
+public class UserComicController {
 
 	@Autowired
-	private UserService	clienteService;
+	private UserService		userService;
 	@Autowired
 	private ComicService	comicService;
 
 
-	public ClienteComicController() {
+	public UserComicController() {
 		super();
 	}
 
@@ -34,57 +34,57 @@ public class ClienteComicController {
 	public ModelAndView list() {
 		ModelAndView result;
 		final Collection<Comic> comics = this.comicService.findAll();
-		final User cliente = this.clienteService.findByPrincipal();
-		final Collection<Comic> leidos = cliente.getComicsRead();
+		final User user = this.userService.findByPrincipal();
+		final Collection<Comic> read = user.getComicsRead();
 		result = new ModelAndView("comic/list");
 		result.addObject("requestURI", "comic/list.do");
 		result.addObject("comics", comics);
-		result.addObject("leidos", leidos);
+		result.addObject("read", read);
 
 		return result;
 	}
 
-	@RequestMapping(value = "/listLeidos", method = RequestMethod.GET)
-	public ModelAndView listLeidos() {
+	@RequestMapping(value = "/listRead", method = RequestMethod.GET)
+	public ModelAndView listRead() {
 		ModelAndView result;
-		final User c = this.clienteService.findByPrincipal();
-		final Collection<Comic> comics = c.getComicsRead();
+		final User user = this.userService.findByPrincipal();
+		final Collection<Comic> comics = user.getComicsRead();
 		result = new ModelAndView("comic/list");
-		result.addObject("requestURI", "cliente/comicLeidos/list.do");
+		result.addObject("requestURI", "user/readComics/list.do");
 		result.addObject("comics", comics);
 
 		return result;
 	}
 
-	@RequestMapping(value = "/listNoLeidos", method = RequestMethod.GET)
-	public ModelAndView listNoLeidos() {
+	@RequestMapping(value = "/listUnread", method = RequestMethod.GET)
+	public ModelAndView listUnread() {
 		ModelAndView result;
-		final User c = this.clienteService.findByPrincipal();
-		final Collection<Comic> todos = this.comicService.findAll();
-		final Collection<Comic> comics = this.noLeidos(todos, c);
+		final User user = this.userService.findByPrincipal();
+		final Collection<Comic> all = this.comicService.findAll();
+		final Collection<Comic> comics = this.unread(all, user);
 		result = new ModelAndView("comic/list");
-		result.addObject("requestURI", "cliente/comicNoLeidos/list.do");
+		result.addObject("requestURI", "user/unreadComics/list.do");
 		result.addObject("comics", comics);
 
 		return result;
 	}
 
-	private Collection<Comic> noLeidos(final Collection<Comic> lista, final User cliente) {
+	private Collection<Comic> unread(final Collection<Comic> list, final User user) {
 		final Collection<Comic> res = new HashSet<Comic>();
-		final Collection<Comic> leidos = cliente.getComicsRead();
+		final Collection<Comic> read = user.getComicsRead();
 
-		for (final Comic c : lista)
-			if (!leidos.contains(c))
+		for (final Comic c : list)
+			if (!read.contains(c))
 				res.add(c);
 		return res;
 	}
 
-	@RequestMapping(value = "/leido", method = RequestMethod.GET)
-	public ModelAndView leido(@RequestParam final int comicId) {
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public ModelAndView read(@RequestParam final int comicId) {
 		ModelAndView result;
 
 		try {
-			this.clienteService.marcarLeido(comicId);
+			this.userService.setRead(comicId);
 			result = this.list();
 			result.addObject("message", "comic.commit.ok");
 		} catch (final Throwable oops) {
@@ -95,12 +95,12 @@ public class ClienteComicController {
 		return result;
 	}
 
-	@RequestMapping(value = "/noLeido", method = RequestMethod.GET)
-	public ModelAndView noLeido(@RequestParam final int comicId) {
+	@RequestMapping(value = "/unread", method = RequestMethod.GET)
+	public ModelAndView unread(@RequestParam final int comicId) {
 		ModelAndView result;
 
 		try {
-			this.clienteService.marcarNoLeido(comicId);
+			this.userService.setUnread(comicId);
 			;
 			result = this.list();
 			result.addObject("message", "comic.commit.ok");

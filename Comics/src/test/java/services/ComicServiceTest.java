@@ -22,15 +22,15 @@ import domain.Publisher;
 public class ComicServiceTest {
 
 	@Autowired
-	private ComicService				comicService;
+	private ComicService		comicService;
 	/*
 	 * @Autowired
 	 * private PersonajeService personajeService;
 	 */
 	@Autowired
-	private AuthorService				autorService;
+	private AuthorService		autorService;
 	@Autowired
-	private PublisherService	editorialService;
+	private PublisherService	publisherService;
 
 
 	@Test
@@ -43,17 +43,17 @@ public class ComicServiceTest {
 	public void testFindAll() {
 		final Comic c = this.comicService.create();
 		final Author a = this.autorService.create();
-		final Publisher e = this.editorialService.create();
+		final Publisher e = this.publisherService.create();
 		//final Personaje p = this.personajeService.create();
 		a.setName("nombreAutor");
 		e.setName("nombreEditorial");
 		e.setDescription("descripcionEditorial");
 		final Author a2 = this.autorService.save(a);
-		final Publisher e2 = this.editorialService.save(e);
+		final Publisher e2 = this.publisherService.save(e);
 		//final Personaje p2 = this.personajeService.save(p);
 
 		c.setName("nombreComic");
-		c.setPublishingCompany(e2);
+		c.setPublisher(e2);
 		c.setAutor(a2);
 		//this.comicService.getPersonajes().add(p2);
 
@@ -67,17 +67,17 @@ public class ComicServiceTest {
 	public void testFindOne() {
 		final Comic c = this.comicService.create();
 		final Author a = this.autorService.create();
-		final Publisher e = this.editorialService.create();
+		final Publisher e = this.publisherService.create();
 		//final Personaje p = this.personajeService.create();
 		a.setName("nombreAutor");
 		e.setName("nombreEditorial");
 		e.setDescription("descripcionEditorial");
 		final Author a2 = this.autorService.save(a);
-		final Publisher e2 = this.editorialService.save(e);
+		final Publisher e2 = this.publisherService.save(e);
 		//final Personaje p2 = this.personajeService.save(p);
 
 		c.setName("nombreComic");
-		c.setPublishingCompany(e2);
+		c.setPublisher(e2);
 		c.setAutor(a2);
 		//this.comicService.getPersonajes().add(p2);
 
@@ -89,17 +89,17 @@ public class ComicServiceTest {
 	public void testDelete() {
 		final Comic c = this.comicService.create();
 		final Author a = this.autorService.create();
-		final Publisher e = this.editorialService.create();
+		final Publisher e = this.publisherService.create();
 		//final Personaje p = this.personajeService.create();
 		a.setName("nombreAutor");
 		e.setName("nombreEditorial");
 		e.setDescription("descripcionEditorial");
 		final Author a2 = this.autorService.save(a);
-		final Publisher e2 = this.editorialService.save(e);
+		final Publisher e2 = this.publisherService.save(e);
 		//final Personaje p2 = this.personajeService.save(p);
 
 		c.setName("nombreComic");
-		c.setPublishingCompany(e2);
+		c.setPublisher(e2);
 		c.setAutor(a2);
 		//this.comicService.getPersonajes().add(p2);
 
