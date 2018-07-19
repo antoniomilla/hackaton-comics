@@ -21,45 +21,45 @@
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		
-		<security:authorize access="hasRole('CLIENTE')">
-			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
+		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="cliente/comic/listLeidos.do"><spring:message code="master.page.customer.leidos" /></a></li>
-					<li><a href="cliente/comic/listNoLeidos.do"><spring:message code="master.page.customer.no.leidos" /></a></li>					
+					<li><a href="user/comic/listRead.do"><spring:message code="master.page.user.read" /></a></li>
+					<li><a href="user/comic/listUnread.do"><spring:message code="master.page.user.unread" /></a></li>					
 				</ul>
 			</li>
-			<li><a class="fNiv" href="cliente/comic/list.do"><spring:message code="master.page.comics" /></a>
+			<li><a class="fNiv" href="user/comic/list.do"><spring:message code="master.page.comics" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="editorial/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
-					<li><a href="editorial/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
+					<li><a href="publisher/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
+					<li><a href="publisher/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('ADMIN')">
-		<li><a class="fNiv"><spring:message code="master.page.actores" /></a>
+		<li><a class="fNiv"><spring:message code="master.page.actors" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="cliente/list.do"><spring:message code="master.page.customers" /></a></li>					
-					<li><a href="administrador/list.do"><spring:message code="master.page.administrators" /></a></li>
+					<li><a href="user/list.do"><spring:message code="master.page.users" /></a></li>					
+					<li><a href="administrator/list.do"><spring:message code="master.page.administrators" /></a></li>
 				</ul>
 			</li>
 			<li><a class="fNiv"><spring:message code="master.page.admin" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="comic/create.do"><spring:message code="master.page.registrar.comic" /></a></li>					
-					<li><a href="editorial/create.do"><spring:message code="master.page.registrar.editorial" /></a></li>
-					<li><a href="autor/create.do"><spring:message code="master.page.registrar.autor" /></a></li>
-					<li><a href="personaje/create.do"><spring:message code="master.page.registrar.personaje" /></a></li>
+					<li><a href="comic/create.do"><spring:message code="master.page.register.comic" /></a></li>					
+					<li><a href="publisher/create.do"><spring:message code="master.page.register.publisher" /></a></li>
+					<li><a href="author/create.do"><spring:message code="master.page.register.author" /></a></li>
+					<li><a href="comicCharacter/create.do"><spring:message code="master.page.register.comicCharacter" /></a></li>
 				</ul>
 			</li>
 			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="editorial/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
-					<li><a href="editorial/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
+					<li><a href="publisher/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
+					<li><a href="publisher/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>
@@ -68,21 +68,21 @@
 			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="editorial/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
-					<li><a href="editorial/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
+					<li><a href="publisher/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
+					<li><a href="publisher/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
 				</ul>
 			</li>
-			<li><a class="fNiv" href="editorial/list.do"><spring:message code="master.page.editoriales" /></a></li>
-			<li><a class="fNiv" href="autor/list.do"><spring:message code="master.page.autores" /></a></li>
-			<li><a class="fNiv" href="personaje/list.do"><spring:message code="master.page.personajes" /></a></li>
-			<li><a class="fNiv" href="cliente/create.do"><spring:message code="master.page.registrar" /></a></li>
+			<li><a class="fNiv" href="publisher/list.do"><spring:message code="master.page.publishers" /></a></li>
+			<li><a class="fNiv" href="author/list.do"><spring:message code="master.page.authors" /></a></li>
+			<li><a class="fNiv" href="comicCharacter/list.do"><spring:message code="master.page.comicCharacters" /></a></li>
+			<li><a class="fNiv" href="user/create.do"><spring:message code="master.page.sign.up" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
-			<li><a class="fNiv" href="editorial/list.do"><spring:message code="master.page.editoriales" /></a></li>
-			<li><a class="fNiv" href="autor/list.do"><spring:message code="master.page.autores" /></a></li>
-			<li><a class="fNiv" href="personaje/list.do"><spring:message code="master.page.personajes" /></a></li>
+			<li><a class="fNiv" href="publisher/list.do"><spring:message code="master.page.publishers" /></a></li>
+			<li><a class="fNiv" href="author/list.do"><spring:message code="master.page.authors" /></a></li>
+			<li><a class="fNiv" href="comicCharacter/list.do"><spring:message code="master.page.comicCharacters" /></a></li>
 			<li>
 				<a class="fNiv"> 
 					<spring:message code="master.page.profile" /> 
