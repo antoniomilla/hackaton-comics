@@ -22,7 +22,7 @@ public class ComicCharacter extends DomainEntity {
 	private String				firstAppareance;
 	private Collection<String>	otherAliases;
 	private String				description;
-	private Publisher			publishingCompany;
+	private Publisher			publisher;
 	private Collection<Comic>	appearsIn;
 	private String				image;
 
@@ -36,8 +36,8 @@ public class ComicCharacter extends DomainEntity {
 		return this.name;
 	}
 
-	public void setName(final String nombre) {
-		this.name = nombre;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	@NotBlank
@@ -59,12 +59,12 @@ public class ComicCharacter extends DomainEntity {
 	}
 
 	@ManyToOne(optional = false)
-	public Publisher getPublishingCompany() {
-		return this.publishingCompany;
+	public Publisher getPublisher() {
+		return this.publisher;
 	}
 
-	public void setPublishingCompany(final Publisher editorial) {
-		this.publishingCompany = editorial;
+	public void setPublisher(final Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	@ManyToMany
@@ -72,8 +72,8 @@ public class ComicCharacter extends DomainEntity {
 		return this.appearsIn;
 	}
 
-	public void setAppearsIn(final Collection<Comic> apareceEn) {
-		this.appearsIn = apareceEn;
+	public void setAppearsIn(final Collection<Comic> appearsIn) {
+		this.appearsIn = appearsIn;
 	}
 
 	@URL
@@ -81,8 +81,8 @@ public class ComicCharacter extends DomainEntity {
 		return this.image;
 	}
 
-	public void setImage(final String imagen) {
-		this.image = imagen;
+	public void setImage(final String image) {
+		this.image = image;
 	}
 
 	@NotBlank

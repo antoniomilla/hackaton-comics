@@ -30,8 +30,8 @@ public class Publisher extends DomainEntity {
 		return this.name;
 	}
 
-	public void setName(final String nombre) {
-		this.name = nombre;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	@NotBlank
@@ -39,11 +39,11 @@ public class Publisher extends DomainEntity {
 		return this.description;
 	}
 
-	public void setDescription(final String descripcion) {
-		this.description = descripcion;
+	public void setDescription(final String description) {
+		this.description = description;
 	}
 
-	@OneToMany(mappedBy = "publishingCompany")
+	@OneToMany(mappedBy = "publisher")
 	public Collection<Comic> getComics() {
 		return this.comics;
 	}
@@ -52,13 +52,13 @@ public class Publisher extends DomainEntity {
 		this.comics = comics;
 	}
 
-	@OneToMany(mappedBy = "publishingCompany")
+	@OneToMany(mappedBy = "publisher")
 	public Collection<ComicCharacter> getCharacters() {
 		return this.characters;
 	}
 
-	public void setCharacters(final Collection<ComicCharacter> personajes) {
-		this.characters = personajes;
+	public void setCharacters(final Collection<ComicCharacter> comicCharacters) {
+		this.characters = comicCharacters;
 	}
 
 	@NotBlank

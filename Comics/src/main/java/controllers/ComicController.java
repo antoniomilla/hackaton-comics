@@ -133,8 +133,8 @@ public class ComicController {
 		final Collection<Author> authors = this.authorService.findAll();
 		final Collection<Publisher> publishers = this.publisherService.findAll();
 
-		if (comic.getAutor() != null)
-			author = comic.getAutor();
+		if (comic.getAuthor() != null)
+			author = comic.getAuthor();
 		if (comic.getPublisher() != null)
 			publisher = comic.getPublisher();
 

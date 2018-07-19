@@ -18,7 +18,7 @@ public class Comic extends DomainEntity {
 
 	private String						name;
 	private Publisher					publisher;
-	private Author						autor;
+	private Author						author;
 	private Collection<ComicCharacter>	characters;
 	private String						image;
 	private String						description;
@@ -34,8 +34,8 @@ public class Comic extends DomainEntity {
 		return this.name;
 	}
 
-	public void setName(final String nombre) {
-		this.name = nombre;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	@ManyToOne(optional = false)
@@ -53,17 +53,17 @@ public class Comic extends DomainEntity {
 		return this.characters;
 	}
 
-	public void setCharacters(final Collection<ComicCharacter> personajes) {
-		this.characters = personajes;
+	public void setCharacters(final Collection<ComicCharacter> comicCharacters) {
+		this.characters = comicCharacters;
 	}
 
 	@ManyToOne(optional = false)
-	public Author getAutor() {
-		return this.autor;
+	public Author getAuthor() {
+		return this.author;
 	}
 
-	public void setAutor(final Author autor) {
-		this.autor = autor;
+	public void setAutor(final Author author) {
+		this.author = author;
 	}
 
 	@URL
@@ -71,8 +71,8 @@ public class Comic extends DomainEntity {
 		return this.image;
 	}
 
-	public void setImage(final String imagen) {
-		this.image = imagen;
+	public void setImage(final String image) {
+		this.image = image;
 	}
 
 	@NotBlank

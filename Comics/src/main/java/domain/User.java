@@ -39,8 +39,8 @@ public class User extends Actor {
 		return this.level;
 	}
 
-	public void setLevel(final char nivel) {
-		this.level = nivel;
+	public void setLevel(final char level) {
+		this.level = level;
 	}
 
 	@ManyToMany
@@ -48,8 +48,8 @@ public class User extends Actor {
 		return this.comicsRead;
 	}
 
-	public void setComicsRead(final Collection<Comic> comicsLeidos) {
-		this.comicsRead = comicsLeidos;
+	public void setComicsRead(final Collection<Comic> readComics) {
+		this.comicsRead = readComics;
 	}
 
 	public boolean getBlocked() {
