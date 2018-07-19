@@ -19,49 +19,49 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="autor/edit.do" modelAttribute="autor">
+<form:form action="author/edit.do" modelAttribute="autor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
-	<form:label path="nombre">
-		<spring:message code="autor.nombre" />:
+	<form:label path="name">
+		<spring:message code="author.name" />:
 	</form:label>
 	<form:input path="nombre" />
-	<form:errors cssClass="error" path="nombre" />
+	<form:errors cssClass="error" path="name" />
 	<br />
 
-	<form:label path="fechaNacimiento">
-		<spring:message code="autor.fechaNacimiento" />:
+	<form:label path="birthDate">
+		<spring:message code="author.birthDate" />:
 	</form:label>
-	<form:input path="fechaNacimiento" />
-	<form:errors cssClass="error" path="fechaNacimiento" />
+	<form:input path="birthDate" />
+	<form:errors cssClass="error" path="birthDate" />
 	<br />
 	
-	<form:label path="lugarNacimiento">
-		<spring:message code="autor.lugarNacimiento" />:
+	<form:label path="birthPlace">
+		<spring:message code="author.birthPlace" />:
 	</form:label>
-	<form:input path="lugarNacimiento" />
-	<form:errors cssClass="error" path="lugarNacimiento" />
+	<form:input path="birthPlace" />
+	<form:errors cssClass="error" path="birthPlace" />
 	<br />
 
-	<form:label path="imagen">
-		<spring:message code="autor.imagen" />:
+	<form:label path="image">
+		<spring:message code="author.image" />:
 	</form:label>
-	<form:input path="imagen" />
-	<form:errors cssClass="error" path="imagen" />
+	<form:input path="image" />
+	<form:errors cssClass="error" path="image" />
 	<br />
 
 	<input type="submit" name="save"
-		value="<spring:message code="autor.save" />" />&nbsp; 
-	<jstl:if test="${autor.id != 0}">
+		value="<spring:message code="author.save" />" />&nbsp; 
+	<jstl:if test="${author.id != 0}">
 		<input type="submit" name="delete"
-			value="<spring:message code="autor.delete" />"
-			onclick="return confirm('<spring:message code="autor.confirm.delete" />')" />&nbsp;
+			value="<spring:message code="author.delete" />"
+			onclick="return confirm('<spring:message code="author.confirm.delete" />')" />&nbsp;
 	</jstl:if>
 	<input type="button" name="cancel"
-		value="<spring:message code="autor.cancel" />"
-		onclick="javascript: relativeRedir('autor/list.do');" />
+		value="<spring:message code="author.cancel" />"
+		onclick="javascript: relativeRedir('author/list.do');" />
 	<br />
 
 

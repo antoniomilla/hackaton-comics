@@ -11,29 +11,29 @@
 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="autores" requestURI="${requestURI}" id="row">
+	name="authors" requestURI="${requestURI}" id="row">
 	
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column>
-			<a href="autor/edit.do?autorId=${row.id}">
-				<spring:message	code="autor.edit" />
+			<a href="author/edit.do?authorId=${row.id}">
+				<spring:message	code="author.edit" />
 			</a>
 		</display:column>		
 	</security:authorize>
 	
-	<spring:message code="autor.nombre" var="nombreHeader" />
-	<display:column property="nombre" title="${nombreHeader}" sortable="true" />
+	<spring:message code="author.name" var="nameHeader" />
+	<display:column property="name" title="${nameHeader}" sortable="true" />
 
-	<spring:message code="autor.fechaNacimiento" var="fechaNacimientoHeader" />
-	<display:column property="fechaNacimiento" title="${fechaNacimientoHeader}" sortable="true" />
+	<spring:message code="author.birthDate" var="birthDateHeader" />
+	<display:column property="birthDate" title="${birthDateHeader}" sortable="true" />
 
-	<spring:message code="autor.lugarNacimiento" var="lugarNacimientoHeader" />
-	<display:column property="lugarNacimiento" title="${lugarNacimientoHeader}" sortable="false" />
+	<spring:message code="author.birthPlace" var="birthPlaceHeader" />
+	<display:column property="birthPlace" title="${birthPlaceHeader}" sortable="false" />
 	
 	<display:column>
-		<a href="autor/display.do?autorId=${row.id }">
-		<spring:message code="autor.ver"/>
+		<a href="author/display.do?authorId=${row.id }">
+		<spring:message code="author.display"/>
 		</a>
 	</display:column>
 
@@ -42,8 +42,8 @@
 
 <security:authorize access="hasRole('ADMIN')">
 	<div>
-		<a href="autor/create.do"> <spring:message
-				code="autor.create" />
+		<a href="author/create.do"> <spring:message
+				code="author.create" />
 		</a>
 	</div>
 </security:authorize>
