@@ -13,7 +13,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import security.UserAccount;
 
@@ -31,9 +30,7 @@ public abstract class Actor extends DomainEntity {
 	// Attributes -------------------------------------------------------------
 
 	private String		name;
-	private Date		birthDate;
-	private String		dni;
-	private String		email;
+	private Date		creationDate;
 	private UserAccount	userAccount;
 
 
@@ -44,25 +41,6 @@ public abstract class Actor extends DomainEntity {
 
 	public void setName(final String name) {
 		this.name = name;
-	}
-
-	@Past
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	public Date getBirthDate() {
-		return this.birthDate;
-	}
-
-	public void setBirthDate(final Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	@NotBlank
-	public String getDni() {
-		return this.dni;
-	}
-
-	public void setDni(final String dni) {
-		this.dni = dni;
 	}
 
 	@NotNull
@@ -76,12 +54,13 @@ public abstract class Actor extends DomainEntity {
 		this.userAccount = userAccount;
 	}
 
-	public String getEmail() {
-		return this.email;
+	@Past
+	public Date getCreationDate() {
+		return this.creationDate;
 	}
 
-	public void setEmail(final String email) {
-		this.email = email;
+	public void setCreationDate(final Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 }

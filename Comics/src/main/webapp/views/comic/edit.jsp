@@ -24,46 +24,38 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
-	<form:label path="nombre">
-		<spring:message code="comic.nombre" />:
+	<form:label path="name">
+		<spring:message code="comic.name" />:
 	</form:label>
-	<form:input path="nombre" />
-	<form:errors cssClass="error" path="nombre" />
+	<form:input path="name" />
+	<form:errors cssClass="error" path="name" />
 	<br />
 
-	<form:label path="numPaginas">
-		<spring:message code="comic.numPaginas" />:
+	<form:label path="author">
+		<spring:message code="comic.author" />:
 	</form:label>
-	<form:input path="numPaginas" />
-	<form:errors cssClass="error" path="numPaginas" />
-	<br />
-
-
-	<form:label path="autor">
-		<spring:message code="comic.autor" />:
-	</form:label>
-	<form:select id="autores" path="autor" >
+	<form:select id="authors" path="author" >
 		<form:option value="0" label="----" />		
-		<form:options items="${autores}" itemValue="id"
-			itemLabel="nombre" />
+		<form:options items="${authors}" itemValue="id"
+			itemLabel="name" />
 	</form:select>
-	<form:errors cssClass="error" path="autor" />
+	<form:errors cssClass="error" path="author" />
 
-	<form:label path="editorial">
-		<spring:message code="comic.editorial" />:
+	<form:label path="publisher">
+		<spring:message code="comic.publisher" />:
 	</form:label>
-	<form:select id="editoriales" path="editorial">
+	<form:select id="publishers" path="publisher">
 		<form:option value="0" label="----" />		
-		<form:options items="${editoriales}" itemValue="id" itemLabel="nombre" />
+		<form:options items="${publishers}" itemValue="id" itemLabel="name" />
 	</form:select>
-	<form:errors cssClass="error" path="editorial" />
+	<form:errors cssClass="error" path="publisher" />
 	<br />
 
-	<form:label path="imagen">
-		<spring:message code="comic.imagen" />:
+	<form:label path="image">
+		<spring:message code="comic.image" />:
 	</form:label>
-	<form:input path="imagen" />
-	<form:errors cssClass="error" path="imagen" />
+	<form:input path="image" />
+	<form:errors cssClass="error" path="image" />
 	<br />
 
 	<input type="submit" name="save"

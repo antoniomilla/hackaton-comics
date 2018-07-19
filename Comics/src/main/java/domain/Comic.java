@@ -8,7 +8,6 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
@@ -19,11 +18,13 @@ public class Comic extends DomainEntity {
 
 	private String							name;
 	private Integer							numPages;
-	private Publisher						publishingCompany;
-	private Author							autor;
+	private Publisher						publisher;
+	private Author							author;
 	private String							image;
 	private Collection<ComicComicCharacter>	comicComicCharacter;
 	private Collection<UserComic>			userComics;
+	private String							description;
+	private Collection<String>				tags;
 
 
 	public Comic() {
@@ -35,35 +36,26 @@ public class Comic extends DomainEntity {
 		return this.name;
 	}
 
-	public void setName(final String nombre) {
-		this.name = nombre;
-	}
-
-	@Min(1)
-	public int getNumPages() {
-		return this.numPages;
-	}
-
-	public void setNumPages(final int numPaginas) {
-		this.numPages = numPaginas;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	@ManyToOne(optional = false)
-	public Publisher getPublishingCompany() {
-		return this.publishingCompany;
+	public Publisher getPublisher() {
+		return this.publisher;
 	}
 
-	public void setPublishingCompany(final Publisher editorial) {
-		this.publishingCompany = editorial;
+	public void setPublisher(final Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	@ManyToOne(optional = false)
-	public Author getAutor() {
-		return this.autor;
+	public Author getAuthor() {
+		return this.author;
 	}
 
-	public void setAutor(final Author autor) {
-		this.autor = autor;
+	public void setAutor(final Author author) {
+		this.author = author;
 	}
 
 	@URL
@@ -71,8 +63,27 @@ public class Comic extends DomainEntity {
 		return this.image;
 	}
 
-	public void setImage(final String imagen) {
-		this.image = imagen;
+	public void setImage(final String image) {
+		this.image = image;
+	}
+
+	@NotBlank
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(final String description) {
+		this.description = description;
+	}
+
+	@NotBlank
+	//@Pattern("[^\s]")
+	public Collection<String> getTags() {
+		return this.tags;
+	}
+
+	public void setTags(final Collection<String> tags) {
+		this.tags = tags;
 	}
 	@OneToMany(mappedBy = "comic")
 	public Collection<ComicComicCharacter> getComicComicCharacter() {

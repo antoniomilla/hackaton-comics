@@ -21,59 +21,59 @@ import domain.Publisher;
 public class PersonajeServiceTest {
 
 	@Autowired
-	private PersonajeService	personajeService;
+	private ComicCharacterService	comicCharacterService;
 	@Autowired
-	private PublishingCompanyService	editorialService;
+	private PublisherService		publisherService;
 
 
 	@Test
 	public void testCreate() {
-		final ComicCharacter p = this.personajeService.create();
+		final ComicCharacter p = this.comicCharacterService.create();
 		Assert.notNull(p);
 	}
 
 	@Test
 	public void testFindAll() {
-		final ComicCharacter p = this.personajeService.create();
-		final Publisher e = this.editorialService.create();
+		final ComicCharacter p = this.comicCharacterService.create();
+		final Publisher e = this.publisherService.create();
 		p.setName("nombre");
 		p.setAlias("alias");
 		e.setName("nombre");
 		e.setDescription("descripcion");
-		final Publisher e2 = this.editorialService.save(e);
-		p.setPublishingCompany(e2);
-		Assert.isTrue(!this.personajeService.findAll().contains(p));
-		final ComicCharacter saved = this.personajeService.save(p);
-		Assert.isTrue(this.personajeService.findAll().contains(saved));
+		final Publisher e2 = this.publisherService.save(e);
+		p.setPublisher(e2);
+		Assert.isTrue(!this.comicCharacterService.findAll().contains(p));
+		final ComicCharacter saved = this.comicCharacterService.save(p);
+		Assert.isTrue(this.comicCharacterService.findAll().contains(saved));
 	}
 
 	@Test
 	public void testFindOne() {
-		final ComicCharacter p = this.personajeService.create();
-		final Publisher e = this.editorialService.create();
+		final ComicCharacter p = this.comicCharacterService.create();
+		final Publisher e = this.publisherService.create();
 		p.setName("nombre");
 		p.setAlias("alias");
 		e.setName("nombre");
 		e.setDescription("descripcion");
-		final Publisher e2 = this.editorialService.save(e);
-		p.setPublishingCompany(e2);
-		final ComicCharacter saved = this.personajeService.save(p);
-		Assert.isTrue(this.personajeService.findOne(saved.getId()).equals(saved));
+		final Publisher e2 = this.publisherService.save(e);
+		p.setPublisher(e2);
+		final ComicCharacter saved = this.comicCharacterService.save(p);
+		Assert.isTrue(this.comicCharacterService.findOne(saved.getId()).equals(saved));
 	}
 
 	@Test
 	public void testDelete() {
-		final ComicCharacter p = this.personajeService.create();
-		final Publisher e = this.editorialService.create();
+		final ComicCharacter p = this.comicCharacterService.create();
+		final Publisher e = this.publisherService.create();
 		p.setName("nombre");
 		p.setAlias("alias");
 		e.setName("nombre");
 		e.setDescription("descripcion");
-		final Publisher e2 = this.editorialService.save(e);
-		p.setPublishingCompany(e2);
-		final ComicCharacter saved = this.personajeService.save(p);
-		Assert.isTrue(this.personajeService.findAll().contains(saved));
-		this.personajeService.delete(saved);
-		Assert.isTrue(!this.personajeService.findAll().contains(saved));
+		final Publisher e2 = this.publisherService.save(e);
+		p.setPublisher(e2);
+		final ComicCharacter saved = this.comicCharacterService.save(p);
+		Assert.isTrue(this.comicCharacterService.findAll().contains(saved));
+		this.comicCharacterService.delete(saved);
+		Assert.isTrue(!this.comicCharacterService.findAll().contains(saved));
 	}
 }

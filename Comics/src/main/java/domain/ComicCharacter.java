@@ -19,9 +19,12 @@ public class ComicCharacter extends DomainEntity {
 	private String							name;
 	private String							alias;
 	private String							city;
-	private Publisher						publishingCompany;
+	private Publisher						publisher;
 	private String							image;
+	private String							description;
 	private Collection<ComicComicCharacter>	comicComicCharacter;
+	private Collection<String>				otherAliases;
+	private String							firstAppareance;
 
 
 	public ComicCharacter() {
@@ -33,8 +36,8 @@ public class ComicCharacter extends DomainEntity {
 		return this.name;
 	}
 
-	public void setName(final String nombre) {
-		this.name = nombre;
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	@NotBlank
@@ -46,6 +49,7 @@ public class ComicCharacter extends DomainEntity {
 		this.alias = alias;
 	}
 
+	@NotBlank
 	public String getCity() {
 		return this.city;
 	}
@@ -55,12 +59,12 @@ public class ComicCharacter extends DomainEntity {
 	}
 
 	@ManyToOne(optional = false)
-	public Publisher getPublishingCompany() {
-		return this.publishingCompany;
+	public Publisher getPublisher() {
+		return this.publisher;
 	}
 
-	public void setPublishingCompany(final Publisher editorial) {
-		this.publishingCompany = editorial;
+	public void setPublisher(final Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	@URL
@@ -68,8 +72,35 @@ public class ComicCharacter extends DomainEntity {
 		return this.image;
 	}
 
-	public void setImage(final String imagen) {
-		this.image = imagen;
+	public void setImage(final String image) {
+		this.image = image;
+	}
+
+	@NotBlank
+	public String getFirstAppareance() {
+		return this.firstAppareance;
+	}
+
+	public void setFirstAppareance(final String firstAppareance) {
+		this.firstAppareance = firstAppareance;
+	}
+
+	@NotBlank
+	public Collection<String> getOtherAliases() {
+		return this.otherAliases;
+	}
+
+	public void setOtherAliases(final Collection<String> otherAliases) {
+		this.otherAliases = otherAliases;
+	}
+
+	@NotBlank
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(final String description) {
+		this.description = description;
 	}
 
 	@OneToMany(mappedBy = "comicCharacter")

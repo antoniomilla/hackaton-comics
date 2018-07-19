@@ -20,7 +20,7 @@ import domain.Author;
 public class AutorServiceTest {
 
 	@Autowired
-	private AutorService	autorService;
+	private AuthorService	autorService;
 
 
 	@Test

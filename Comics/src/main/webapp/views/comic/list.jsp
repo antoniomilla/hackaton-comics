@@ -22,40 +22,38 @@
 		</display:column>		
 	</security:authorize>
 	
-	<security:authorize access="hasRole('CLIENTE')">
+	<security:authorize access="hasRole('USER')">
 		<display:column>
 			<jstl:choose>
-				<jstl:when test="${leidos.contains(row)}">
-					<a href="cliente/comic/noLeido.do?comicId=${row.id}" 
-					   onclick="javascript: return confirm('<spring:message code="comic.confirm.marcar.no.leido" />')">
-						<spring:message code="comic.no.leido" />
+				<jstl:when test="${read.contains(row)}">
+					<a href="user/comic/unread.do?comicId=${row.id}" 
+					   onclick="javascript: return confirm('<spring:message code="comic.confirm.set.unread" />')">
+						<spring:message code="comic.unread" />
 					</a>					
 				</jstl:when>
 				<jstl:otherwise>
-					<a href="cliente/comic/leido.do?comicId=${row.id}">
-						<spring:message code="comic.leido" />
+					<a href="user/comic/read.do?comicId=${row.id}">
+						<spring:message code="comic.read" />
 					</a>
 				</jstl:otherwise>
 			</jstl:choose>
 		</display:column>
 	</security:authorize>
 	
-	<spring:message code="comic.nombre" var="nombreHeader" />
-	<display:column property="nombre" title="${nombreHeader}" sortable="true"/>
+	<spring:message code="comic.name" var="nameHeader" />
+	<display:column property="name" title="${nameHeader}" sortable="true"/>
 
-	<spring:message code="comic.editorial" var="editorialHeader" />
-	<display:column property="editorial.nombre" title="${editorialHeader}" sortable="true" />
+	<spring:message code="comic.publisher" var="publisherHeader" />
+	<display:column property="publisher.name" title="${publisherHeader}" sortable="true" />
 
-	<spring:message code="comic.autor" var="autorHeader" />
-	<display:column property="autor.nombre" title="${autorHeader}" sortable="true" />
+	<spring:message code="comic.author" var="authorHeader" />
+	<display:column property="author.name" title="${authorHeader}" sortable="true" />
 	
-	<spring:message code="comic.numPaginas" var="numPaginasHeader" />
-	<display:column property="numPaginas" title="${numPaginasHeader}" sortable="true" />
 	
 	
 	<display:column>
 		<a href="comic/display.do?comicId=${row.id }">
-		<spring:message code="comic.ver"/>
+		<spring:message code="comic.display"/>
 		</a>
 	</display:column>
 

@@ -22,10 +22,10 @@ public class UserService {
 	//Repositorios
 
 	@Autowired
-	private UserRepository	clienteRepository;
+	private UserRepository	userRepository;
 
 	@Autowired
-	private ComicService		comicService;
+	private ComicService	comicService;
 
 
 	public UserService() {
@@ -41,32 +41,32 @@ public class UserService {
 	}
 
 	public Collection<User> findAll() {
-		final Collection<User> res = this.clienteRepository.findAll();
+		final Collection<User> res = this.userRepository.findAll();
 		Assert.notNull(res);
 
 		return res;
 	}
 
 	public User findOne(final int Id) {
-		final User res = this.clienteRepository.findOne(Id);
+		final User res = this.userRepository.findOne(Id);
 		Assert.notNull(res);
 
 		return res;
 	}
 
-	public User save(final User cliente) {
-		Assert.notNull(cliente);
+	public User save(final User user) {
+		Assert.notNull(user);
 
-		final User res = this.clienteRepository.save(cliente);
+		final User res = this.userRepository.save(user);
 
 		return res;
 	}
 
-	public void delete(final User cliente) {
-		Assert.notNull(cliente);
-		Assert.isTrue(cliente.getId() != 0);
+	public void delete(final User user) {
+		Assert.notNull(user);
+		Assert.isTrue(user.getId() != 0);
 
-		this.clienteRepository.delete(cliente);
+		this.userRepository.delete(user);
 	}
 
 	public User findByPrincipal() {
@@ -81,54 +81,33 @@ public class UserService {
 	public User findByUserAccount(final UserAccount userAccount) {
 		Assert.notNull(userAccount);
 
-		final User res = this.clienteRepository.findByUserAccountId(userAccount.getId());
+		final User res = this.userRepository.findByUserAccountId(userAccount.getId());
 
 		return res;
 	}
 
-	public void leerComic(final Comic comic) {
-		final User c = this.findByPrincipal();
-		c.getComicsRead().add(comic);
-	}
-
-	public boolean verSiLeido(final Comic comic) {
-		final User c = this.findByPrincipal();
-		final boolean res = c.getComicsRead().contains(comic);
-		return res;
-	}
-
-	public Collection<Comic> comicsLeidos() {
-		final User c = this.findByPrincipal();
-		final Collection<Comic> comics = this.comicService.findAll();
-		for (final Comic comic : comics)
-			if (this.verSiLeido(comic))
-				c.getComicsRead().add(comic);
-		final Collection<Comic> res = c.getComicsRead();
-		return res;
-	}
-
-	public void marcarLeido(final int comicId) {
+	public void setRead(final int comicId) {
 		Assert.isTrue(comicId != 0);
 
-		final User cliente = this.findByPrincipal();
-		Assert.notNull(cliente);
+		final User user = this.findByPrincipal();
+		Assert.notNull(user);
 		final Comic comic = this.comicService.findOne(comicId);
 		Assert.notNull(comic);
 
-		cliente.getComicsRead().add(comic);
+		user.getComicsRead().add(comic);
 
-		this.clienteRepository.save(cliente);
+		this.userRepository.save(user);
 	}
 
-	public void marcarNoLeido(final int comicId) {
+	public void setUnread(final int comicId) {
 		Assert.isTrue(comicId != 0);
-		final User cliente = this.findByPrincipal();
-		Assert.notNull(cliente);
+		final User user = this.findByPrincipal();
+		Assert.notNull(user);
 		final Comic comic = this.comicService.findOne(comicId);
 		Assert.notNull(comic);
 
-		cliente.getComicsRead().remove(comic);
+		user.getComicsRead().remove(comic);
 
-		this.clienteRepository.save(cliente);
+		this.userRepository.save(user);
 	}
 }

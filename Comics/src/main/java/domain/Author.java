@@ -22,6 +22,7 @@ public class Author extends DomainEntity {
 	private Date				birthDate;
 	private String				birthPlace;
 	private Collection<Comic>	comics;
+	private String				description;
 	private String				image;
 
 
@@ -69,6 +70,15 @@ public class Author extends DomainEntity {
 
 	public void setImage(final String imagen) {
 		this.image = imagen;
+	}
+
+	@NotBlank
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(final String description) {
+		this.description = description;
 	}
 
 }

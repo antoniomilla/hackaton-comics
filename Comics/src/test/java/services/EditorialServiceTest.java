@@ -20,7 +20,7 @@ import domain.Publisher;
 public class EditorialServiceTest {
 
 	@Autowired
-	private PublishingCompanyService	editorialService;
+	private PublisherService	editorialService;
 
 
 	@Test

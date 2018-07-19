@@ -23,11 +23,11 @@
 			<bean class="converters.Class1ToClass2" /> 
 		-->
 		
-		<bean class="converters.AutorToStringConverter" />
-		<bean class="converters.StringToAutorConverter" />
+		<bean class="converters.AuthorToStringConverter" />
+		<bean class="converters.StringToAuthorConverter" />
 		
-		<bean class="converters.PublishingCompanyToStringConverter" />
-		<bean class="converters.StringToPublishingCompanyConverter" />
+		<bean class="converters.PublisherToStringConverter" />
+		<bean class="converters.StringToPublisherConverter" />
 		
 		<bean class="converters.ComicToStringConverter" />
 		<bean class="converters.StringToComicConverter" />

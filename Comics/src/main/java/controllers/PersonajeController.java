@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.PublishingCompanyService;
-import services.PersonajeService;
-import domain.ComicCharacter;
+import services.ComicCharacterService;
+import services.PublisherService;
 import domain.Comic;
+import domain.ComicCharacter;
 import domain.Publisher;
 
 @Controller
@@ -25,9 +25,9 @@ import domain.Publisher;
 public class PersonajeController {
 
 	@Autowired
-	private PersonajeService	personajeService;
+	private ComicCharacterService	personajeService;
 	@Autowired
-	private PublishingCompanyService	editorialService;
+	private PublisherService		editorialService;
 
 
 	public PersonajeController() {
@@ -126,8 +126,8 @@ public class PersonajeController {
 		Publisher editorial = null;
 		final Collection<Publisher> editoriales = this.editorialService.findAll();
 
-		if (personaje.getPublishingCompany() != null)
-			editorial = personaje.getPublishingCompany();
+		if (personaje.getPublisher() != null)
+			editorial = personaje.getPublisher();
 
 		result = new ModelAndView("personaje/edit");
 		result.addObject("personaje", personaje);
