@@ -6,25 +6,25 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.PublishingCompanyRepository;
-import domain.Publisher;
+import repositories.AuthorRepository;
+import domain.Author;
 
 @Component
 @Transactional
-public class StringToPublishingCompanyConverter implements Converter<String, Publisher> {
+public class StringToAuthorConverter implements Converter<String, Author> {
 
 	@Autowired
-	PublishingCompanyRepository	editorialRepository;
+	AuthorRepository	authorRepository;
 
 
 	@Override
-	public Publisher convert(final String text) {
-		Publisher result;
+	public Author convert(final String text) {
+		Author result;
 		int id;
 
 		try {
 			id = Integer.valueOf(text);
-			result = this.editorialRepository.findOne(id);
+			result = this.authorRepository.findOne(id);
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);
 		}

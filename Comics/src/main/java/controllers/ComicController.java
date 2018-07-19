@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AutorService;
+import services.AuthorService;
 import services.ComicService;
-import services.PublishingCompanyService;
+import services.PublisherService;
 import domain.Author;
 import domain.ComicCharacter;
 import domain.Comic;
@@ -29,9 +29,9 @@ public class ComicController {
 	@Autowired
 	private ComicService		comicService;
 	@Autowired
-	private AutorService		autorService;
+	private AuthorService		autorService;
 	@Autowired
-	private PublishingCompanyService	editorialService;
+	private PublisherService	editorialService;
 
 
 	// Constructors -----------------------------------------------------------

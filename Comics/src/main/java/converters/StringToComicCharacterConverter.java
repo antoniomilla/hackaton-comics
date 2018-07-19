@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.PersonajeRepository;
+import repositories.ComicCharacterRepository;
 import domain.ComicCharacter;
 
 @Component
@@ -14,7 +14,7 @@ import domain.ComicCharacter;
 public class StringToComicCharacterConverter implements Converter<String, ComicCharacter> {
 
 	@Autowired
-	PersonajeRepository	personajeRepository;
+	ComicCharacterRepository	comicCharacterRepository;
 
 
 	@Override
@@ -24,7 +24,7 @@ public class StringToComicCharacterConverter implements Converter<String, ComicC
 
 		try {
 			id = Integer.valueOf(text);
-			result = this.personajeRepository.findOne(id);
+			result = this.comicCharacterRepository.findOne(id);
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);
 		}

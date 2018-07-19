@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import domain.ComicCharacter;
 
 @Repository
-public interface PersonajeRepository extends JpaRepository<ComicCharacter, Integer> {
+public interface ComicCharacterRepository extends JpaRepository<ComicCharacter, Integer> {
 
-	@Query("select p from ComicCharacter p where p.id=?1")
+	@Query("select cc from ComicCharacter cc where cc.id=?1")
 	ComicCharacter findById(int id);
 
 }

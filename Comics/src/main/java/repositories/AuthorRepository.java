@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import domain.Author;
 
 @Repository
-public interface AutorRepository extends JpaRepository<Author, Integer> {
+public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
-	@Query("select a from Autor a where a.id=?1")
+	@Query("select a from Author a where a.id=?1")
 	Author findById(int id);
 
 }

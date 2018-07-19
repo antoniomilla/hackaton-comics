@@ -21,9 +21,9 @@ import domain.Publisher;
 public class PersonajeServiceTest {
 
 	@Autowired
-	private PersonajeService	personajeService;
+	private ComicCharacterService	personajeService;
 	@Autowired
-	private PublishingCompanyService	editorialService;
+	private PublisherService	editorialService;
 
 
 	@Test

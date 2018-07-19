@@ -9,16 +9,16 @@ import domain.Author;
 
 @Component
 @Transactional
-public class AutorToStringConverter implements Converter<Author, String> {
+public class AuthorToStringConverter implements Converter<Author, String> {
 
 	@Override
-	public String convert(final Author autor) {
+	public String convert(final Author author) {
 		String result;
 
-		if (autor == null)
+		if (author == null)
 			result = null;
 		else
-			result = String.valueOf(autor.getId());
+			result = String.valueOf(author.getId());
 
 		return result;
 	}

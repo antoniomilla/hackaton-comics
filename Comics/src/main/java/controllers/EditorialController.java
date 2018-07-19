@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.PublishingCompanyService;
+import services.PublisherService;
 import domain.ComicCharacter;
 import domain.Comic;
 import domain.Publisher;
@@ -24,7 +24,7 @@ import domain.Publisher;
 public class EditorialController {
 
 	@Autowired
-	private PublishingCompanyService	editorialService;
+	private PublisherService	editorialService;
 
 
 	public EditorialController() {

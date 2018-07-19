@@ -12,13 +12,13 @@ import domain.ComicCharacter;
 public class ComicCharacterToStringConverter implements Converter<ComicCharacter, String> {
 
 	@Override
-	public String convert(final ComicCharacter personaje) {
+	public String convert(final ComicCharacter comicCharacter) {
 		String result;
 
-		if (personaje == null)
+		if (comicCharacter == null)
 			result = null;
 		else
-			result = String.valueOf(personaje.getId());
+			result = String.valueOf(comicCharacter.getId());
 
 		return result;
 	}

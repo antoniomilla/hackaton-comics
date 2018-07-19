@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AutorService;
+import services.AuthorService;
 import domain.Author;
 import domain.Comic;
 
@@ -24,7 +24,7 @@ public class AutorController {
 
 	//comentario antopnio
 	@Autowired
-	private AutorService	autorService;
+	private AuthorService	autorService;
 
 
 	//COMENTARIO JESUS

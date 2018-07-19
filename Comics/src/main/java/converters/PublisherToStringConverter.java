@@ -9,16 +9,16 @@ import domain.Publisher;
 
 @Component
 @Transactional
-public class PublishingCompanyToStringConverter implements Converter<Publisher, String> {
+public class PublisherToStringConverter implements Converter<Publisher, String> {
 
 	@Override
-	public String convert(final Publisher editorial) {
+	public String convert(final Publisher publisher) {
 		String result;
 
-		if (editorial == null)
+		if (publisher == null)
 			result = null;
 		else
-			result = String.valueOf(editorial.getId());
+			result = String.valueOf(publisher.getId());
 
 		return result;
 	}

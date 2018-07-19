@@ -28,9 +28,9 @@ public class ComicServiceTest {
 	 * private PersonajeService personajeService;
 	 */
 	@Autowired
-	private AutorService				autorService;
+	private AuthorService				autorService;
 	@Autowired
-	private PublishingCompanyService	editorialService;
+	private PublisherService	editorialService;
 
 
 	@Test

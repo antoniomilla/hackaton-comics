@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.AdministradorService;
+import services.AdministratorService;
 import domain.Admin;
 
 @Controller
@@ -17,7 +17,7 @@ import domain.Admin;
 public class AdministradorController {
 
 	@Autowired
-	private AdministradorService	administradorService;
+	private AdministratorService	administradorService;
 
 
 	public AdministradorController() {
