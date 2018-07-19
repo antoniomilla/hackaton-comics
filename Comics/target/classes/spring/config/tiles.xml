@@ -24,11 +24,11 @@
 		<value>/views/welcome/tiles.xml</value>
 		
 		<value>/views/comic/tiles.xml</value>
-		<value>/views/autor/tiles.xml</value>
-		<value>/views/editorial/tiles.xml</value>
-		<value>/views/personaje/tiles.xml</value>
-		<value>/views/cliente/tiles.xml</value>
-		<value>/views/administrador/tiles.xml</value>
+		<value>/views/author/tiles.xml</value>
+		<value>/views/publisher/tiles.xml</value>
+		<value>/views/comicCharacter/tiles.xml</value>
+		<value>/views/user/tiles.xml</value>
+		<value>/views/administrator/tiles.xml</value>
 		
 		
 		

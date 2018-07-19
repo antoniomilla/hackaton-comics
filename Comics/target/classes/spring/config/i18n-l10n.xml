@@ -24,11 +24,11 @@
 		<value>/views/welcome/messages</value>
 		
 		<value>/views/comic/messages</value>
-		<value>/views/autor/messages</value>
-		<value>/views/editorial/messages</value>
-		<value>/views/personaje/messages</value>
-		<value>/views/cliente/messages</value>	
-		<value>/views/administrador/messages</value>	
+		<value>/views/author/messages</value>
+		<value>/views/publisher/messages</value>
+		<value>/views/comicCharacter/messages</value>
+		<value>/views/user/messages</value>	
+		<value>/views/administrator/messages</value>	
 		
 		
 	</util:list>

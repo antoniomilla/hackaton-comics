@@ -10,25 +10,25 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <div>
-	<img src="${personaje.imagen }" width="200" height="200"/>
+	<img src="${comicCharacter.image }" width="200" height="200"/>
 </div>
 
 <div style="position:absolute;top:270px;left:230px;width:150;">
-	<p><spring:message code="personaje.nombre"/>: <jstl:out value="${personaje.nombre }"></jstl:out></p>
-	<p><spring:message code="personaje.alias"/>: <jstl:out value="${personaje.alias }"></jstl:out></p>
-	<p><spring:message code="personaje.ciudad"/>: <jstl:out value="${personaje.ciudad }"></jstl:out></p>
-	<p><spring:message code="personaje.editorial"/>: <jstl:out value="${personaje.editorial.nombre }"></jstl:out></p>
+	<p><spring:message code="comicCharacter.name"/>: <jstl:out value="${comicCharacter.name }"></jstl:out></p>
+	<p><spring:message code="comicCharacter.alias"/>: <jstl:out value="${comicCharacter.alias }"></jstl:out></p>
+	<p><spring:message code="comicCharacter.city"/>: <jstl:out value="${comicCharacter.city }"></jstl:out></p>
+	<p><spring:message code="comicCharacter.publisher"/>: <jstl:out value="${comicCharacter.publisher.name }"></jstl:out></p>
 </div>
 
 
 <div style="position:absolute;top:220px;left:600px;">
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comics" id="row">
 	
-	<display:column property="nombre"/>
+	<display:column property="name"/>
 	
 	<display:column>
 		<a href="comic/display.do?comicId=${row.id }">
-		<spring:message code="personaje.ver"/>
+		<spring:message code="comicCharacter.display"/>
 		</a>
 	</display:column>
 	

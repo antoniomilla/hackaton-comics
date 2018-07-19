@@ -19,49 +19,49 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="editorial/edit.do" modelAttribute="editorial">
+<form:form action="publisher/edit.do" modelAttribute="publisher">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
-	<form:label path="nombre">
-		<spring:message code="editorial.nombre" />:
+	<form:label path="name">
+		<spring:message code="publisher.name" />:
 	</form:label>
-	<form:input path="nombre" />
-	<form:errors cssClass="error" path="nombre" />
+	<form:input path="name" />
+	<form:errors cssClass="error" path="name" />
 	<br />
 
-	<form:label path="fundacion">
-		<spring:message code="editorial.fundacion" />:
+	<form:label path="foundationDate">
+		<spring:message code="publisher.foundationDate" />:
 	</form:label>
-	<form:input path="fundacion" />
-	<form:errors cssClass="error" path="fundacion" />
+	<form:input path="foundationDate" />
+	<form:errors cssClass="error" path="foundationDate" />
 	<br />
 	
-	<form:label path="descripcion">
-		<spring:message code="editorial.descripcion" />:
+	<form:label path="description">
+		<spring:message code="publisher.description" />:
 	</form:label>
-	<form:input path="descripcion" />
-	<form:errors cssClass="error" path="descripcion" />
+	<form:input path="description" />
+	<form:errors cssClass="error" path="description" />
 	<br />
 
-	<form:label path="logo">
-		<spring:message code="editorial.logo" />:
+	<form:label path="image">
+		<spring:message code="publisher.image" />:
 	</form:label>
-	<form:input path="logo" />
-	<form:errors cssClass="error" path="logo" />
+	<form:input path="image" />
+	<form:errors cssClass="error" path="image" />
 	<br />
 	
 	<input type="submit" name="save"
-		value="<spring:message code="editorial.save" />" />&nbsp; 
-	<jstl:if test="${editorial.id != 0}">
+		value="<spring:message code="publisher.save" />" />&nbsp; 
+	<jstl:if test="${publisher.id != 0}">
 		<input type="submit" name="delete"
-			value="<spring:message code="editorial.delete" />"
-			onclick="return confirm('<spring:message code="editorial.confirm.delete" />')" />&nbsp;
+			value="<spring:message code="publisher.delete" />"
+			onclick="return confirm('<spring:message code="publisher.confirm.delete" />')" />&nbsp;
 	</jstl:if>
 	<input type="button" name="cancel"
-		value="<spring:message code="editorial.cancel" />"
-		onclick="javascript: relativeRedir('editorial/list.do');" />
+		value="<spring:message code="publisher.cancel" />"
+		onclick="javascript: relativeRedir('publisher/list.do');" />
 	<br />
 
 

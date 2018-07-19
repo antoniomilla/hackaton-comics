@@ -11,32 +11,32 @@
 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="personajes" requestURI="${requestURI}" id="row">
+	name="comicCharacters" requestURI="${requestURI}" id="row">
 	
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column>
-			<a href="personaje/edit.do?personajeId=${row.id}">
-				<spring:message	code="personaje.edit" />
+			<a href="comicCharacter/edit.do?comicCharacterId=${row.id}">
+				<spring:message	code="comicCharacter.edit" />
 			</a>
 		</display:column>		
 	</security:authorize>
 	
-	<spring:message code="personaje.nombre" var="nombreHeader" />
-	<display:column property="nombre" title="${nombreHeader}" sortable="true" />
+	<spring:message code="comicCharacter.name" var="nameHeader" />
+	<display:column property="name" title="${nameHeader}" sortable="true" />
 
-	<spring:message code="personaje.alias" var="aliasHeader" />
+	<spring:message code="comicCharacter.alias" var="aliasHeader" />
 	<display:column property="alias" title="${aliasHeader}" sortable="true" />
 
-	<spring:message code="personaje.ciudad" var="ciudadHeader" />
-	<display:column property="ciudad" title="${ciudadHeader}" sortable="false" />
+	<spring:message code="comicCharacter.city" var="cityHeader" />
+	<display:column property="city" title="${cityHeader}" sortable="false" />
 	
-	<spring:message code="personaje.editorial" var="editorialHeader" />
-	<display:column property="editorial.nombre" title="${editorialHeader}" sortable="true" />
+	<spring:message code="comicCharacter.publisher" var="publisherHeader" />
+	<display:column property="publisher.name" title="${publisherHeader}" sortable="true" />
 
 	<display:column>
-		<a href="personaje/display.do?personajeId=${row.id }">
-		<spring:message code="personaje.ver"/>
+		<a href="comicCharacter/display.do?comicCharacterId=${row.id }">
+		<spring:message code="comicCharacter.display"/>
 		</a>
 	</display:column>
 
@@ -45,8 +45,8 @@
 
 <security:authorize access="hasRole('ADMIN')">
 	<div>
-		<a href="personaje/create.do"> <spring:message
-				code="personaje.create" />
+		<a href="comicCharacter/create.do"> <spring:message
+				code="comicCharacter.create" />
 		</a>
 	</div>
 </security:authorize>

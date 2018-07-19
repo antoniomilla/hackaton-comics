@@ -45,20 +45,20 @@
 	
 		<security:intercept-url pattern="/comic/list.do" access="permitAll" />
 		<security:intercept-url pattern="/comic/display.do" access="permitAll" />
-		<security:intercept-url pattern="/cliente/comic/**" access="hasRole('CLIENTE')" />
-		<security:intercept-url pattern="/editorial/comic/**" access="permitAll" />
+		<security:intercept-url pattern="/user/comic/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/publisher/comic/**" access="permitAll" />
 		<security:intercept-url pattern="/comic/**" access="hasRole('ADMIN')" /> 
-		<security:intercept-url pattern="/autor/list.do" access="permitAll" />
-		<security:intercept-url pattern="/autor/display.do" access="permitAll" />
-		<security:intercept-url pattern="/autor/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/editorial/list.do" access="permitAll" />
-		<security:intercept-url pattern="/editorial/display.do" access="permitAll" />
-		<security:intercept-url pattern="/editorial/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/personaje/list.do" access="permitAll" />
-		<security:intercept-url pattern="/personaje/display.do" access="permitAll" />
-		<security:intercept-url pattern="/personaje/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/cliente/list.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/administrador/list.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/author/list.do" access="permitAll" />
+		<security:intercept-url pattern="/author/display.do" access="permitAll" />
+		<security:intercept-url pattern="/author/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/publisher/list.do" access="permitAll" />
+		<security:intercept-url pattern="/publisher/display.do" access="permitAll" />
+		<security:intercept-url pattern="/publisher/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/comicCharacter/list.do" access="permitAll" />
+		<security:intercept-url pattern="/comicCharacter/display.do" access="permitAll" />
+		<security:intercept-url pattern="/comicCharacter/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/user/list.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/administrator/list.do" access="hasRole('ADMIN')" />
 		
 	
 	

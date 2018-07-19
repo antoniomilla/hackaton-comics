@@ -19,59 +19,59 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="personaje/edit.do" modelAttribute="personaje">
+<form:form action="comicCharacter/edit.do" modelAttribute="comicCharacter">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 
-	<form:label path="nombre">
-		<spring:message code="personaje.nombre" />:
+	<form:label path="name">
+		<spring:message code="comicCharacter.name" />:
 	</form:label>
-	<form:input path="nombre" />
-	<form:errors cssClass="error" path="nombre" />
+	<form:input path="name" />
+	<form:errors cssClass="error" path="name" />
 	<br />
 
 	<form:label path="alias">
-		<spring:message code="personaje.alias" />:
+		<spring:message code="comicCharacter.alias" />:
 	</form:label>
 	<form:input path="alias" />
 	<form:errors cssClass="error" path="alias" />
 	<br />
 	
-	<form:label path="ciudad">
-		<spring:message code="personaje.ciudad" />:
+	<form:label path="city">
+		<spring:message code="comicCharacter.city" />:
 	</form:label>
-	<form:input path="ciudad" />
-	<form:errors cssClass="error" path="ciudad" />
+	<form:input path="city" />
+	<form:errors cssClass="error" path="city" />
 	<br />
 
-	<form:label path="editorial">
-		<spring:message code="comic.editorial" />:
+	<form:label path="publisher">
+		<spring:message code="comicCharacter.publisher" />:
 	</form:label>
-	<form:select id="editoriales" path="editorial">
+	<form:select id="publishers" path="publisher">
 		<form:option value="0" label="----" />		
-		<form:options items="${editoriales}" itemValue="id" itemLabel="nombre" />
+		<form:options items="${publishers}" itemValue="id" itemLabel="name" />
 	</form:select>
-	<form:errors cssClass="error" path="editorial" />
+	<form:errors cssClass="error" path="publisher" />
 	<br />
 
-	<form:label path="imagen">
-		<spring:message code="personaje.imagen" />:
+	<form:label path="image">
+		<spring:message code="comicCharacter.image" />:
 	</form:label>
-	<form:input path="imagen" />
-	<form:errors cssClass="error" path="imagen" />
+	<form:input path="image" />
+	<form:errors cssClass="error" path="image" />
 	<br />
 
 	<input type="submit" name="save"
-		value="<spring:message code="personaje.save" />" />&nbsp; 
-	<jstl:if test="${personaje.id != 0}">
+		value="<spring:message code="comicCharacter.save" />" />&nbsp; 
+	<jstl:if test="${comicCharacter.id != 0}">
 		<input type="submit" name="delete"
-			value="<spring:message code="personaje.delete" />"
-			onclick="return confirm('<spring:message code="personaje.confirm.delete" />')" />&nbsp;
+			value="<spring:message code="comicCharacter.delete" />"
+			onclick="return confirm('<spring:message code="comicCharacter.confirm.delete" />')" />&nbsp;
 	</jstl:if>
 	<input type="button" name="cancel"
-		value="<spring:message code="personaje.cancel" />"
-		onclick="javascript: relativeRedir('personaje/list.do');" />
+		value="<spring:message code="comicCharacter.cancel" />"
+		onclick="javascript: relativeRedir('comicCharacter/list.do');" />
 	<br />
 
 

@@ -6,19 +6,19 @@
        
 <tiles-definitions>
 
-	<definition name="editorial/list" extends="master.page">	
+	<definition name="publisher/list" extends="master.page">	
 		<put-attribute name="title" value="Lista de editoriales" />
-		<put-attribute name="body" value="/views/editorial/list.jsp" />
+		<put-attribute name="body" value="/views/publisher/list.jsp" />
 	</definition>
 	
-	<definition name="editorial/edit" extends="master.page">
+	<definition name="publisher/edit" extends="master.page">
 		<put-attribute name="title" value="Edición de editoriales" />
-		<put-attribute name="body" value="/views/editorial/edit.jsp" />
+		<put-attribute name="body" value="/views/publisher/edit.jsp" />
 	</definition>
 	
-	<definition name="editorial/display" extends="master.page">
+	<definition name="publisher/display" extends="master.page">
 		<put-attribute name="title" value="Vista de la editorial" />
-		<put-attribute name="body" value="/views/editorial/display.jsp" />
+		<put-attribute name="body" value="/views/publisher/display.jsp" />
 	</definition>
 
 </tiles-definitions>

@@ -6,19 +6,19 @@
 
 <tiles-definitions>
 
-	<definition name="personaje/list" extends="master.page">	
+	<definition name="comicCharacter/list" extends="master.page">	
 		<put-attribute name="title" value="Character list" />
-		<put-attribute name="body" value="/views/personaje/list.jsp" />
+		<put-attribute name="body" value="/views/comicCharacter/list.jsp" />
 	</definition>
 	
-	<definition name="personaje/edit" extends="master.page">
+	<definition name="comicCharacter/edit" extends="master.page">
 		<put-attribute name="title" value="Edit character" />
-		<put-attribute name="body" value="/views/personaje/edit.jsp" />
+		<put-attribute name="body" value="/views/comicCharacter/edit.jsp" />
 	</definition>
 
-	<definition name="personaje/display" extends="master.page">
+	<definition name="comicCharacter/display" extends="master.page">
 		<put-attribute name="title" value="Character display" />
-		<put-attribute name="body" value="/views/personaje/display.jsp" />
+		<put-attribute name="body" value="/views/comicCharacter/display.jsp" />
 	</definition>
 
 </tiles-definitions>

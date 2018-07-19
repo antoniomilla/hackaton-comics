@@ -11,29 +11,29 @@
 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="editoriales" requestURI="${requestURI}" id="row">
+	name="publishers" requestURI="${requestURI}" id="row">
 	
 	
 	<security:authorize access="hasRole('ADMIN')">
 		<display:column>
-			<a href="editorial/edit.do?editorialId=${row.id}">
-				<spring:message	code="editorial.edit" />
+			<a href="publisher/edit.do?publisherId=${row.id}">
+				<spring:message	code="publisher.edit" />
 			</a>
 		</display:column>		
 	</security:authorize>
 	
-	<spring:message code="editorial.nombre" var="editorialHeader" />
-	<display:column property="nombre" title="${editorialHeader}" sortable="true" />
+	<spring:message code="publisher.name" var="nameHeader" />
+	<display:column property="name" title="${nameHeader}" sortable="true" />
 
-	<spring:message code="editorial.fundacion" var="fundacionHeader" />
-	<display:column property="fundacion" title="${fundacionHeader}" sortable="true" />
+	<spring:message code="publisher.fundacion" var="foundationDateHeader" />
+	<display:column property="foundationDate" title="${foundationDateHeader}" sortable="true" />
 
-	<spring:message code="editorial.descripcion" var="descripcionHeader" />
-	<display:column property="descripcion" title="${descripcionHeader}" sortable="false" />
+	<spring:message code="publisher.descripcion" var="descriptionHeader" />
+	<display:column property="description" title="${descriptionHeader}" sortable="true" />
 	
 	<display:column>
-		<a href="editorial/display.do?editorialId=${row.id }">
-		<spring:message code="editorial.ver"/>
+		<a href="publisher/display.do?publisherId=${row.id }">
+		<spring:message code="publisher.display"/>
 		</a>
 	</display:column>
 
@@ -42,8 +42,8 @@
 
 <security:authorize access="hasRole('ADMIN')">
 	<div>
-		<a href="editorial/create.do"> <spring:message
-				code="editorial.create" />
+		<a href="publisher/create.do"> <spring:message
+				code="publisher.create" />
 		</a>
 	</div>
 </security:authorize>

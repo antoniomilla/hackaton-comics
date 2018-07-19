@@ -10,24 +10,24 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <div>
-	<img src="${editorial.logo }" width="200" height="200"/>
+	<img src="${publisher.image }" width="200" height="200"/>
 </div>
 
 <div style="position:absolute;top:270px;left:230px;width:150;">
-	<p><spring:message code="editorial.nombre"/>: <jstl:out value="${editorial.nombre }"></jstl:out></p>
-	<p><spring:message code="editorial.fundacion"/>: <jstl:out value="${editorial.fundacion }"></jstl:out></p>
-	<p><spring:message code="editorial.descripcion"/>: <jstl:out value="${editorial.descripcion }"></jstl:out></p>
+	<p><spring:message code="publisher.name"/>: <jstl:out value="${publisher.name }"></jstl:out></p>
+	<p><spring:message code="publisher.foundationDate"/>: <jstl:out value="${publisher.foundationDate }"></jstl:out></p>
+	<p><spring:message code="publisher.description"/>: <jstl:out value="${publisher.description }"></jstl:out></p>
 </div>
 
 
 <div style="position:absolute;top:220px;left:600px;">
-	<display:table pagesize="5" class="displaytag" keepStatus="true" name="personajes" id="row">
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comicCharacters" id="row">
 	
 	<display:column property="alias"/>
 	
 	<display:column>
-		<a href="personaje/display.do?personajeId=${row.id }">
-		<spring:message code="editorial.ver"/>
+		<a href="comicCharacter/display.do?comicCharacterId=${row.id }">
+		<spring:message code="publisher.display"/>
 		</a>
 	</display:column>
 	
@@ -37,11 +37,11 @@
 <div style="position:absolute;top:220px;left:1100px;">
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comics" id="row">
 	
-	<display:column property="nombre"/>
+	<display:column property="name"/>
 	
 	<display:column>
 		<a href="comic/display.do?comicId=${row.id }">
-		<spring:message code="editorial.ver"/>
+		<spring:message code="publisher.ver"/>
 		</a>
 	</display:column>
 	
