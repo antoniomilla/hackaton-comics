@@ -22,13 +22,13 @@ import domain.Publisher;
 public class ComicServiceTest {
 
 	@Autowired
-	private ComicService		comicService;
+	private ComicService				comicService;
 	/*
 	 * @Autowired
 	 * private PersonajeService personajeService;
 	 */
 	@Autowired
-	private AutorService		autorService;
+	private AutorService				autorService;
 	@Autowired
 	private PublishingCompanyService	editorialService;
 
@@ -53,7 +53,6 @@ public class ComicServiceTest {
 		//final Personaje p2 = this.personajeService.save(p);
 
 		c.setName("nombreComic");
-		c.setNumPages(150);
 		c.setPublishingCompany(e2);
 		c.setAutor(a2);
 		//this.comicService.getPersonajes().add(p2);
@@ -78,7 +77,6 @@ public class ComicServiceTest {
 		//final Personaje p2 = this.personajeService.save(p);
 
 		c.setName("nombreComic");
-		c.setNumPages(150);
 		c.setPublishingCompany(e2);
 		c.setAutor(a2);
 		//this.comicService.getPersonajes().add(p2);
@@ -101,7 +99,6 @@ public class ComicServiceTest {
 		//final Personaje p2 = this.personajeService.save(p);
 
 		c.setName("nombreComic");
-		c.setNumPages(150);
 		c.setPublishingCompany(e2);
 		c.setAutor(a2);
 		//this.comicService.getPersonajes().add(p2);
