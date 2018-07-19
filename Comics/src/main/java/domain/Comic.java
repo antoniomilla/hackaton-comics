@@ -8,7 +8,6 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
@@ -17,12 +16,13 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class Comic extends DomainEntity {
 
-	private String					name;
-	private int						numPages;
-	private Publisher		publishingCompany;
-	private Author					autor;
+	private String						name;
+	private Publisher					publishingCompany;
+	private Author						autor;
 	private Collection<ComicCharacter>	characters;
-	private String					image;
+	private String						image;
+	private String						description;
+	private Collection<String>			tags;
 
 
 	public Comic() {
@@ -36,15 +36,6 @@ public class Comic extends DomainEntity {
 
 	public void setName(final String nombre) {
 		this.name = nombre;
-	}
-
-	@Min(1)
-	public int getNumPages() {
-		return this.numPages;
-	}
-
-	public void setNumPages(final int numPaginas) {
-		this.numPages = numPaginas;
 	}
 
 	@ManyToOne(optional = false)
@@ -82,6 +73,25 @@ public class Comic extends DomainEntity {
 
 	public void setImage(final String imagen) {
 		this.image = imagen;
+	}
+
+	@NotBlank
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(final String description) {
+		this.description = description;
+	}
+
+	@NotBlank
+	//@Pattern("[^\s]")
+	public Collection<String> getTags() {
+		return this.tags;
+	}
+
+	public void setTags(final Collection<String> tags) {
+		this.tags = tags;
 	}
 
 }

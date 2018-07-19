@@ -19,7 +19,10 @@ public class ComicCharacter extends DomainEntity {
 	private String				name;
 	private String				alias;
 	private String				city;
-	private Publisher	publishingCompany;
+	private String				firstAppareance;
+	private Collection<String>	otherAliases;
+	private String				description;
+	private Publisher			publishingCompany;
 	private Collection<Comic>	appearsIn;
 	private String				image;
 
@@ -46,6 +49,7 @@ public class ComicCharacter extends DomainEntity {
 		this.alias = alias;
 	}
 
+	@NotBlank
 	public String getCity() {
 		return this.city;
 	}
@@ -79,6 +83,33 @@ public class ComicCharacter extends DomainEntity {
 
 	public void setImage(final String imagen) {
 		this.image = imagen;
+	}
+
+	@NotBlank
+	public String getFirstAppareance() {
+		return this.firstAppareance;
+	}
+
+	public void setFirstAppareance(final String firstAppareance) {
+		this.firstAppareance = firstAppareance;
+	}
+
+	@NotBlank
+	public Collection<String> getOtherAliases() {
+		return this.otherAliases;
+	}
+
+	public void setOtherAliases(final Collection<String> otherAliases) {
+		this.otherAliases = otherAliases;
+	}
+
+	@NotBlank
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(final String description) {
+		this.description = description;
 	}
 
 }

@@ -8,21 +8,21 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Publisher extends DomainEntity {
 
-	private String					name;
-	private Date					foundation;
-	private String					description;
-	private Collection<Comic>		comics;
+	private String						name;
+	private Date						foundationDate;
+	private String						description;
+	private Collection<Comic>			comics;
 	private Collection<ComicCharacter>	characters;
-	private String					logo;
+	private String						image;
 
 
 	@NotBlank
@@ -32,15 +32,6 @@ public class Publisher extends DomainEntity {
 
 	public void setName(final String nombre) {
 		this.name = nombre;
-	}
-
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	public Date getFoundation() {
-		return this.foundation;
-	}
-
-	public void setFoundation(final Date fundacion) {
-		this.foundation = fundacion;
 	}
 
 	@NotBlank
@@ -70,13 +61,23 @@ public class Publisher extends DomainEntity {
 		this.characters = personajes;
 	}
 
+	@NotBlank
 	@URL
-	public String getLogo() {
-		return this.logo;
+	public String getImage() {
+		return this.image;
 	}
 
-	public void setLogo(final String logo) {
-		this.logo = logo;
+	public void setImage(final String image) {
+		this.image = image;
+	}
+
+	@Past
+	public Date getFoundationDate() {
+		return this.foundationDate;
+	}
+
+	public void setFoundationDate(final Date foundationDate) {
+		this.foundationDate = foundationDate;
 	}
 
 }
