@@ -6,8 +6,8 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -17,12 +17,13 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class Comic extends DomainEntity {
 
-	private String					name;
-	private int						numPages;
-	private Publisher		publishingCompany;
-	private Author					autor;
-	private Collection<ComicCharacter>	characters;
-	private String					image;
+	private String							name;
+	private Integer							numPages;
+	private Publisher						publishingCompany;
+	private Author							autor;
+	private String							image;
+	private Collection<ComicComicCharacter>	comicComicCharacter;
+	private Collection<UserComic>			userComics;
 
 
 	public Comic() {
@@ -56,16 +57,6 @@ public class Comic extends DomainEntity {
 		this.publishingCompany = editorial;
 	}
 
-	@ManyToMany
-	//@NotEmpty
-	public Collection<ComicCharacter> getCharacters() {
-		return this.characters;
-	}
-
-	public void setCharacters(final Collection<ComicCharacter> personajes) {
-		this.characters = personajes;
-	}
-
 	@ManyToOne(optional = false)
 	public Author getAutor() {
 		return this.autor;
@@ -82,6 +73,27 @@ public class Comic extends DomainEntity {
 
 	public void setImage(final String imagen) {
 		this.image = imagen;
+	}
+	@OneToMany(mappedBy = "comic")
+	public Collection<ComicComicCharacter> getComicComicCharacter() {
+		return this.comicComicCharacter;
+	}
+
+	public void setComicComicCharacter(final Collection<ComicComicCharacter> comicComicCharacter) {
+		this.comicComicCharacter = comicComicCharacter;
+	}
+
+	@OneToMany(mappedBy = "comic")
+	public Collection<UserComic> getUserComics() {
+		return this.userComics;
+	}
+
+	public void setUserComics(final Collection<UserComic> userComics) {
+		this.userComics = userComics;
+	}
+
+	public void setNumPages(final Integer numPages) {
+		this.numPages = numPages;
 	}
 
 }

@@ -3,12 +3,11 @@ package domain;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,14 +16,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class User extends Actor {
 
-	private Date				registerDate;
-	private char				level;
-	private Collection<Comic>	comicsRead;
+	private Date					registerDate;
+	private Character				level;
+	private Collection<UserComic>	userComics;
 
 
 	public User() {
 		super();
-		this.comicsRead = new HashSet<Comic>();
 
 	}
 
@@ -46,13 +44,17 @@ public class User extends Actor {
 		this.level = nivel;
 	}
 
-	@ManyToMany
-	public Collection<Comic> getComicsRead() {
-		return this.comicsRead;
+	@OneToMany(mappedBy = "user")
+	public Collection<UserComic> getUserComics() {
+		return this.userComics;
 	}
 
-	public void setComicsRead(final Collection<Comic> comicsLeidos) {
-		this.comicsRead = comicsLeidos;
+	public void setUserComics(final Collection<UserComic> userComics) {
+		this.userComics = userComics;
+	}
+
+	public void setLevel(final Character level) {
+		this.level = level;
 	}
 
 }

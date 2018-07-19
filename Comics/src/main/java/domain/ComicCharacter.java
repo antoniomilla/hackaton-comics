@@ -6,8 +6,8 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
@@ -16,12 +16,12 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class ComicCharacter extends DomainEntity {
 
-	private String				name;
-	private String				alias;
-	private String				city;
-	private Publisher	publishingCompany;
-	private Collection<Comic>	appearsIn;
-	private String				image;
+	private String							name;
+	private String							alias;
+	private String							city;
+	private Publisher						publishingCompany;
+	private String							image;
+	private Collection<ComicComicCharacter>	comicComicCharacter;
 
 
 	public ComicCharacter() {
@@ -63,15 +63,6 @@ public class ComicCharacter extends DomainEntity {
 		this.publishingCompany = editorial;
 	}
 
-	@ManyToMany
-	public Collection<Comic> getAppearsIn() {
-		return this.appearsIn;
-	}
-
-	public void setAppearsIn(final Collection<Comic> apareceEn) {
-		this.appearsIn = apareceEn;
-	}
-
 	@URL
 	public String getImage() {
 		return this.image;
@@ -79,6 +70,15 @@ public class ComicCharacter extends DomainEntity {
 
 	public void setImage(final String imagen) {
 		this.image = imagen;
+	}
+
+	@OneToMany(mappedBy = "comicCharacter")
+	public Collection<ComicComicCharacter> getComicComicCharacter() {
+		return this.comicComicCharacter;
+	}
+
+	public void setComicComicCharacter(final Collection<ComicComicCharacter> comicComicCharacter) {
+		this.comicComicCharacter = comicComicCharacter;
 	}
 
 }
