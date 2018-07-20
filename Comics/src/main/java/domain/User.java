@@ -1,6 +1,7 @@
 
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -108,6 +109,13 @@ public class User extends Actor {
 
 	public void setOnlyFriendsCanSendDms(final boolean onlyFriendsCanSendDms) {
 		this.onlyFriendsCanSendDms = onlyFriendsCanSendDms;
+	}
+
+	public Collection<Comic> getComicsRead() {
+		final Collection<Comic> res = new ArrayList<>();
+		for (final UserComic c : this.userComics)
+			res.add(c.getComic());
+		return res;
 	}
 
 }

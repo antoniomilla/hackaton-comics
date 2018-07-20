@@ -1,6 +1,7 @@
 
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Access;
@@ -102,4 +103,11 @@ public class Comic extends DomainEntity {
 		this.userComics = userComics;
 	}
 
+	public Collection<ComicCharacter> getCharacters() {
+		final Collection<ComicCharacter> res = new ArrayList<>();
+		for (final ComicComicCharacter c : this.comicComicCharacter)
+			res.add(c.getComicCharacter());
+		return res;
+
+	}
 }
