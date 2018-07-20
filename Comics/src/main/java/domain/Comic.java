@@ -1,14 +1,15 @@
 
 package domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
@@ -54,7 +55,7 @@ public class Comic extends DomainEntity {
 		return this.author;
 	}
 
-	public void setAutor(final Author author) {
+	public void setAuthor(final Author author) {
 		this.author = author;
 	}
 
@@ -76,8 +77,9 @@ public class Comic extends DomainEntity {
 		this.description = description;
 	}
 
+	@Pattern(regexp = "[^\\s]+")
 	@NotBlank
-	//@Pattern("[^\s]")
+	@ElementCollection
 	public Collection<String> getTags() {
 		return this.tags;
 	}
@@ -103,11 +105,13 @@ public class Comic extends DomainEntity {
 		this.userComics = userComics;
 	}
 
-	public Collection<ComicCharacter> getCharacters() {
-		final Collection<ComicCharacter> res = new ArrayList<>();
-		for (final ComicComicCharacter c : this.comicComicCharacter)
-			res.add(c.getComicCharacter());
-		return res;
-
-	}
+	/*
+	 * public Collection<ComicCharacter> getComicCharacters() {
+	 * final Collection<ComicCharacter> res = new ArrayList<>();
+	 * for (final ComicComicCharacter c : this.comicComicCharacter)
+	 * res.add(c.getComicCharacter());
+	 * return res;
+	 * 
+	 * }
+	 */
 }

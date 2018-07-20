@@ -55,7 +55,7 @@ public class ComicController {
 	public ModelAndView display(@RequestParam final int comicId) {
 		ModelAndView result;
 		final Comic comic = this.comicService.findOne(comicId);
-		final Collection<ComicCharacter> characters = comic.getCharacters();
+		final Collection<ComicCharacter> characters = comic.getComicCharacters();
 		result = new ModelAndView("comic/display");
 		result.addObject("comic", comic);
 		result.addObject("characters", characters);

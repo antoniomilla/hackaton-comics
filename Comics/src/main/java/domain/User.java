@@ -1,13 +1,13 @@
 
 package domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -18,15 +18,20 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class User extends Actor {
 
-	private Character				level;
-	private Collection<UserComic>	userComics;
-	private boolean					blocked;
-	private String					blockReason;
-	private boolean					trusted;
-	private String					description;
-	private Date					lastLevelUpdateDate;
-	private boolean					onlyFriendsCanSendDms;
-	private Collection<Comic>		comicsRead;
+	private Character					level;
+	private Collection<UserComic>		userComics;
+	private boolean						blocked;
+	private String						blockReason;
+	private boolean						trusted;
+	private String						description;
+	private Date						lastLevelUpdateDate;
+	private boolean						onlyFriendsCanSendDms;
+	private Collection<User>			friends;
+	private Collection<MessageFolder>	messageFolders;
+	private Collection<DirectMessage>	sent;
+	private Collection<DirectMessage>	receipt;
+	private Collection<Comment>			userComments;
+	private Collection<Volume>			userVolumes;
 
 
 	public User() {
@@ -54,10 +59,6 @@ public class User extends Actor {
 
 	public void setLevel(final Character level) {
 		this.level = level;
-	}
-
-	public void setComicsRead(final Collection<Comic> readComics) {
-		this.comicsRead = readComics;
 	}
 
 	public boolean getBlocked() {
@@ -111,11 +112,67 @@ public class User extends Actor {
 		this.onlyFriendsCanSendDms = onlyFriendsCanSendDms;
 	}
 
-	public Collection<Comic> getComicsRead() {
-		final Collection<Comic> res = new ArrayList<>();
-		for (final UserComic c : this.userComics)
-			res.add(c.getComic());
-		return res;
+	/*
+	 * public Collection<Comic> getComicsRead() {
+	 * final Collection<Comic> res = new ArrayList<>();
+	 * for (final UserComic c : this.userComics)
+	 * res.add(c.getComic());
+	 * return res;
+	 * }
+	 */
+
+	@OneToMany(mappedBy = "friends")
+	public Collection<User> getFriends() {
+		return this.friends;
+	}
+
+	public void setFriends(final Collection<User> friends) {
+		this.friends = friends;
+	}
+
+	@OneToMany(mappedBy = "owner")
+	public Collection<MessageFolder> getMessageFolders() {
+		return this.messageFolders;
+	}
+
+	public void setMessageFolders(final Collection<MessageFolder> folders) {
+		this.messageFolders = folders;
+	}
+
+	@OneToMany(mappedBy = "sender")
+	public Collection<DirectMessage> getSent() {
+		return this.sent;
+	}
+
+	public void setSent(final Collection<DirectMessage> sent) {
+		this.sent = sent;
+	}
+
+	@OneToMany(mappedBy = "recibient")
+	public Collection<DirectMessage> getReceipt() {
+		return this.receipt;
+	}
+
+	public void setReceipt(final Collection<DirectMessage> receipt) {
+		this.receipt = receipt;
+	}
+
+	@OneToMany(mappedBy = "user")
+	public Collection<Comment> getUserComments() {
+		return this.userComments;
+	}
+
+	public void setUserComments(final Collection<Comment> comments) {
+		this.userComments = comments;
+	}
+
+	@ManyToMany
+	public Collection<Volume> getUserVolumes() {
+		return this.userVolumes;
+	}
+
+	public void setUserVolumes(final Collection<Volume> userVolumes) {
+		this.userVolumes = userVolumes;
 	}
 
 }

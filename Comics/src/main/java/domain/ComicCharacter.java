@@ -1,11 +1,11 @@
 
 package domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -87,6 +87,7 @@ public class ComicCharacter extends DomainEntity {
 	}
 
 	@NotBlank
+	@ElementCollection
 	public Collection<String> getOtherAliases() {
 		return this.otherAliases;
 	}
@@ -113,11 +114,13 @@ public class ComicCharacter extends DomainEntity {
 		this.comicComicCharacter = comicComicCharacter;
 	}
 
-	public Collection<Comic> getAppearsIn() {
-		final Collection<Comic> res = new ArrayList<>();
-		for (final ComicComicCharacter c : this.comicComicCharacter)
-			res.add(c.getComic());
-		return res;
-
-	}
+	/*
+	 * public Collection<Comic> getAppearsIn() {
+	 * final Collection<Comic> res = new ArrayList<>();
+	 * for (final ComicComicCharacter c : this.comicComicCharacter)
+	 * res.add(c.getComic());
+	 * return res;
+	 * 
+	 * }
+	 */
 }
