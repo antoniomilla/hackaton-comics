@@ -17,7 +17,6 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class User extends Actor {
 
-	private Date					registerDate;
 	private Character				level;
 	private Collection<UserComic>	userComics;
 	private boolean					blocked;

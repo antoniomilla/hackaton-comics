@@ -17,7 +17,6 @@ import org.hibernate.validator.constraints.URL;
 public class Comic extends DomainEntity {
 
 	private String							name;
-	private Integer							numPages;
 	private Publisher						publisher;
 	private Author							author;
 	private String							image;
@@ -101,10 +100,6 @@ public class Comic extends DomainEntity {
 
 	public void setUserComics(final Collection<UserComic> userComics) {
 		this.userComics = userComics;
-	}
-
-	public void setNumPages(final Integer numPages) {
-		this.numPages = numPages;
 	}
 
 }
