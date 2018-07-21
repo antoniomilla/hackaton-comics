@@ -53,6 +53,18 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 
 	
 	<!-- Actors -->	
@@ -78,6 +90,8 @@
 		<property name="userComics">
 			<list>
 				<ref bean="userComic1"/>
+				<ref bean="userComic3"/>
+				<ref bean="userComic5"/>
 			</list>
 		</property>
 		<property name="messageFolders">
@@ -132,6 +146,7 @@
 		<property name="userComics">
 			<list>
 				<ref bean="userComic2"/>
+				<ref bean="userComic4"/>
 			</list>
 		</property>
 		<property name="messageFolders">
@@ -156,6 +171,46 @@
 		<property name="friends">
 			<list>
 				<ref bean="user1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="user3" class="domain.User">
+		<property name="nickname" value="User 3"/>
+		<property name="creationTime" value="2018/07/20"/>
+		<property name="userAccount" ref="userAccount4"/>
+		<property name="blocked" value="True"/>
+		<property name="blockReason" value="Bad behavior."/>
+		<property name="trusted" value="False"/>
+		<property name="description" value="This is user3's description."/>
+		<property name="level" value="C"/>
+		<property name="lastLevelUpdateDate" value="2018/07/20"/>
+		<property name="onlyFriendsCanSendDms" value="False"/>
+		<property name="userComics">
+			<list>
+				
+			</list>
+		</property>
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder1User3"/>
+				<ref bean="messageFolder2User3"/>
+				<ref bean="messageFolder3User3"/>
+			</list>
+		</property>
+		<property name="sent">
+			<list>
+				
+			</list>
+		</property>
+		<property name="receipt">
+			<list>
+				
+			</list>
+		</property>
+		<property name="friends">
+			<list>
+				
 			</list>
 		</property>
 	</bean>
@@ -238,11 +293,47 @@
 		</property>
 	</bean>
 	
+	<bean id="messageFolder1User3" class="domain.MessageFolder">
+		<property name="name" value="FolderUser3Inbox"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
+		<property name="nameForDisplay" value="Inbox"/>
+		<property name="owner" ref="user3"/>
+		<property name="messages">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="messageFolder2User3" class="domain.MessageFolder">
+		<property name="name" value="FolderUser3Sent"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
+		<property name="nameForDisplay" value="Sent"/>
+		<property name="owner" ref="user3"/>
+		<property name="messages">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="messageFolder3User3" class="domain.MessageFolder">
+		<property name="name" value="FolderUser3Trash"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
+		<property name="nameForDisplay" value="Trash"/>
+		<property name="owner" ref="user3"/>
+		<property name="messages">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
 	<!-- DirectMessages -->
 	
 	<bean id="directMessage1User1ToUser2A" class="domain.DirectMessage">
 		<property name="subject" value="Watchmen read."/>
-		<property name="body" value="I have read Watchmen. What a gem."/>
+		<property name="body" value="I have just read Watchmen. What a gem."/>
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder2User1"/>
 		<property name="sender" ref="user1"/>
@@ -251,7 +342,7 @@
 	
 	<bean id="directMessage1User1ToUser2B" class="domain.DirectMessage">
 		<property name="subject" value="Watchmen read."/>
-		<property name="body" value="I have read Watchmen. What a gem."/>
+		<property name="body" value="I have just read Watchmen. What a gem."/>
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder1User2"/>
 		<property name="sender" ref="user1"/>
@@ -388,6 +479,76 @@
 		</property>
 		<property name="comments">
 			<list>
+				<ref bean="comment3User1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="comic3" class="domain.Comic">
+		<property name="name" value="Watchmen"/>
+		<property name="publisher" ref="publisher1"/>
+		<property name="author" ref="author3"/>
+		<property name="image" value="http://localhost:8080/Comics/images/watchmen.png"/>
+		<property name="comicComicCharacter">
+			<list>
+				<ref bean="comicComicCharacter4"/>
+			</list>
+		</property>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic3"/>
+				<ref bean="userComic4"/>
+			</list>
+		</property>
+		<property name="description" value="1984. Superheroes have been banned and
+		now they only can work for the government. One of them is murdered and Rorschach, 
+		a old hero who works against the government rules, starts investigating it."/>
+		<property name="tags">
+			<list>
+				
+			</list>
+		</property>
+		<property name="volumes">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="comic4" class="domain.Comic">
+		<property name="name" value="Daredevil: Born again"/>
+		<property name="publisher" ref="publisher2"/>
+		<property name="author" ref="author4"/>
+		<property name="image" value="http://localhost:8080/Comics/images/bornagain.png"/>
+		<property name="comicComicCharacter">
+			<list>
+				<ref bean="comicComicCharacter5"/>
+			</list>
+		</property>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic5"/>
+			</list>
+		</property>
+		<property name="description" value="Daredevil's secret identity is blown by his
+		 worst enemy, Kingpin. Due to this, his life becomes an absolut hell."/>
+		<property name="tags">
+			<list>
+				
+			</list>
+		</property>
+		<property name="volumes">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
 				
 			</list>
 		</property>
@@ -400,6 +561,41 @@
 		<property name="creationTime" value="2017/07/16"/>
 		<property name="user" ref="user1"/>
 		<property name="comic" ref="comic1"/>
+	</bean>
+	
+	<bean id="comment1User2" class="domain.Comment">
+		<property name="text" value="The greatest ever."/>
+		<property name="creationTime" value="2017/07/16"/>
+		<property name="user" ref="user2"/>
+		<property name="author" ref="author3"/>
+	</bean>
+	
+	<bean id="comment2User1" class="domain.Comment">
+		<property name="text" value="Awsome character."/>
+		<property name="creationTime" value="2017/07/18"/>
+		<property name="user" ref="user1"/>
+		<property name="comicCharacter" ref="comicCharacter1"/>
+	</bean>
+	
+	<bean id="comment2User2" class="domain.Comment">
+		<property name="text" value="A great publisher, but their movies are so bad."/>
+		<property name="creationTime" value="2017/07/20"/>
+		<property name="user" ref="user2"/>
+		<property name="publisher" ref="publisher1"/>
+	</bean>
+	
+	<bean id="comment3User1" class="domain.Comment">
+		<property name="text" value="The first comic i read. I still love it."/>
+		<property name="creationTime" value="2017/07/16"/>
+		<property name="user" ref="user1"/>
+		<property name="comic" ref="comic2"/>
+	</bean>
+	
+	<bean id="comment3User2" class="domain.Comment">
+		<property name="text" value="They have the best movies. Keep it on!."/>
+		<property name="creationTime" value="2017/07/16"/>
+		<property name="user" ref="user2"/>
+		<property name="publisher" ref="publisher2"/>
 	</bean>
 	
 	<!-- ComicComicCharacters -->
@@ -422,6 +618,18 @@
 		<property name="comicCharacter" ref="comicCharacter3"/>
 	</bean>
 	
+	<bean id="comicComicCharacter4" class="domain.ComicComicCharacter">
+		<property name="role" value="Main character"/>
+		<property name="comic" ref="comic3"/>
+		<property name="comicCharacter" ref="comicCharacter4"/>
+	</bean>
+	
+	<bean id="comicComicCharacter5" class="domain.ComicComicCharacter">
+		<property name="role" value="Main character"/>
+		<property name="comic" ref="comic4"/>
+		<property name="comicCharacter" ref="comicCharacter5"/>
+	</bean>
+	
 	<!-- ComicCharacters -->
 	
 	<bean id="comicCharacter1" class="domain.ComicCharacter">
@@ -442,7 +650,7 @@
 		<property name="firstAppareance" value="Detective Comics 27, 1939"/>
 		<property name="comments">
 			<list>
-				
+				<ref bean="comment2User1"/>
 			</list>
 		</property>
 	</bean>
@@ -491,6 +699,49 @@
 		</property>
 	</bean>
 	
+	<bean id="comicCharacter4" class="domain.ComicCharacter">
+		<property name="name" value="Walter Kovacs"/>
+		<property name="alias" value="Rorschach"/>
+		<property name="city" value="New york"/>
+		<property name="image" value="http://localhost:8080/Comics/images/rorschach.png"/>
+		<property name="description" value="An old violent hero who works against the 
+		rules set by the government."/>
+		<property name="comicComicCharacter" ref="comicComicCharacter4"/>
+		<property name="otherAliases">
+			<list>
+				
+			</list>
+		</property>
+		<property name="firstAppareance" value="Watchmen, 1984 "/>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="comicCharacter5" class="domain.ComicCharacter">
+		<property name="name" value="Matt Murdock"/>
+		<property name="alias" value="Daredevil"/>
+		<property name="city" value="Hell's kitchen, New york"/>
+		<property name="image" value="http://localhost:8080/Comics/images/daredevil.png"/>
+		<property name="description" value="Matt Murdock is a blind person who jobs as 
+		a lawyer by day but, when the night comes, he becomes a crime fighter known as
+		Daredevil."/>
+		<property name="comicComicCharacter" ref="comicComicCharacter5"/>
+		<property name="otherAliases">
+			<list>
+				
+			</list>
+		</property>
+		<property name="firstAppareance" value="Daredevil 1, 1964"/>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
 	<!-- Publishers -->
 	
 	<bean id="publisher1" class="domain.Publisher">
@@ -501,11 +752,12 @@
 		<property name="comics">
 			<list>
 				<ref bean="comic1"/>
+				<ref bean="comic3"/>
 			</list>
 		</property>
 		<property name="comments">
 			<list>
-				
+				<ref bean="comment2User2"/>
 			</list>
 		</property>
 	</bean>
@@ -520,11 +772,12 @@
 		<property name="comics">
 			<list>
 				<ref bean="comic2"/>
+				<ref bean="comic4"/>
 			</list>
 		</property>
 		<property name="comments">
 			<list>
-				
+				<ref bean="comment3User2"/>
 			</list>
 		</property>
 	</bean>
@@ -534,7 +787,7 @@
 	<bean id="author1" class="domain.Author">
 		<property name="name" value="Geoff Johns"/>
 		<property name="birthDate" value="1973/01/25"/>
-		<property name="birthPlace" value="Detroit, Michigan, Estados Unidos"/>
+		<property name="birthPlace" value="Detroit, Michigan, EEUU"/>
 		<property name="image" value="http://localhost:8080/Comics/images/geoffjohns.png"/>
 		<property name="comics">
 			<list>
@@ -560,7 +813,7 @@
 	<bean id="author2" class="domain.Author">
 		<property name="name" value="Mark Millar"/>
 		<property name="birthDate" value="1973/01/25"/>
-		<property name="birthPlace" value="Detroit, Michigan, Estados Unidos"/>
+		<property name="birthPlace" value="Glasgow, Scotland"/>
 		<property name="image" value="http://localhost:8080/Comics/images/markmillar.png"/>
 		<property name="comics">
 			<list>
@@ -574,6 +827,57 @@
 				<ref bean="volume4"/>
 				<ref bean="volume5"/>
 				<ref bean="volume6"/>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="author3" class="domain.Author">
+		<property name="name" value="Alan Moore"/>
+		<property name="birthDate" value="1953/11/18"/>
+		<property name="birthPlace" value="Northampton, England"/>
+		<property name="image" value="http://localhost:8080/Comics/images/alanmoore.png"/>
+		<property name="comics">
+			<list>
+				<ref bean="comic3"/>
+			</list>
+		</property>
+		<property name="description" value="Considered as the greatest comic book
+		writer in history, he is known for being the author of some of the best
+		masterpieces of this art like Watchmen, V for Vendetta, From Hell,etc."/>
+		<property name="volumes">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment1User2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="author4" class="domain.Author">
+		<property name="name" value="Frank Miller"/>
+		<property name="birthDate" value="1957/01/27"/>
+		<property name="birthPlace" value="Olney, Maryland, EEUU"/>
+		<property name="image" value="http://localhost:8080/Comics/images/frankmiller.png"/>
+		<property name="comics">
+			<list>
+				<ref bean="comic4"/>
+			</list>
+		</property>
+		<property name="description" value="One of the best comic book authors of 
+		history, he is one of the authors who reinvented the superheroe genre on the
+		80's. Known for being the author of masterpieces like Dark knight returns, 
+		Daredevil:Born again, Sin City, etc."/>
+		<property name="volumes">
+			<list>
+				
 			</list>
 		</property>
 		<property name="comments">
@@ -599,6 +903,29 @@
 		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
 		<property name="user" ref="user2"/>
 		<property name="comic" ref="comic2"/>
+	</bean>
+	
+	<bean id="userComic3" class="domain.UserComic">
+		<property name="started" value="True"/>
+		<property name="score" value="10"/>
+		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
+		<property name="user" ref="user1"/>
+		<property name="comic" ref="comic3"/>
+	</bean>
+	
+	<bean id="userComic4" class="domain.UserComic">
+		<property name="started" value="True"/>
+		<property name="score" value="9"/>
+		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
+		<property name="user" ref="user2"/>
+		<property name="comic" ref="comic3"/>
+	</bean>
+	
+	<bean id="userComic5" class="domain.UserComic">
+		<property name="started" value="False"/>
+		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="user" ref="user1"/>
+		<property name="comic" ref="comic4"/>
 	</bean>
 	
 	<!-- Volumes -->
