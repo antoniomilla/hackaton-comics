@@ -26,6 +26,8 @@ public class Comic extends DomainEntity {
 	private Collection<UserComic>			userComics;
 	private String							description;
 	private Collection<String>				tags;
+	private Collection<Volume>				volumes;
+	private Collection<Comment>				comments;
 
 
 	public Comic() {
@@ -103,6 +105,24 @@ public class Comic extends DomainEntity {
 
 	public void setUserComics(final Collection<UserComic> userComics) {
 		this.userComics = userComics;
+	}
+
+	@OneToMany(mappedBy = "comic")
+	public Collection<Volume> getVolumes() {
+		return this.volumes;
+	}
+
+	public void setVolumes(final Collection<Volume> volumes) {
+		this.volumes = volumes;
+	}
+
+	@OneToMany(mappedBy = "comic")
+	public Collection<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(final Collection<Comment> comments) {
+		this.comments = comments;
 	}
 
 	/*

@@ -20,7 +20,7 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class Volume extends DomainEntity {
 
-	private Integer				order;
+	private Integer				orderNumber;
 	private String				name;
 	private Date				releaseDate;
 	private Integer				chapterCount;
@@ -32,12 +32,12 @@ public class Volume extends DomainEntity {
 	private Collection<Comment>	comments;
 
 
-	public Integer getOrder() {
-		return this.order;
+	public Integer getOrderNumber() {
+		return this.orderNumber;
 	}
 
-	public void setOrder(final Integer order) {
-		this.order = order;
+	public void setOrderNumber(final Integer orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 	@NotBlank
 	public String getName() {

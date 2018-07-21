@@ -29,18 +29,18 @@ public abstract class Actor extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String		name;
-	private Date		creationDate;
+	private String		nickname;
+	private Date		creationTime;
 	private UserAccount	userAccount;
 
 
 	@NotBlank
-	public String getName() {
-		return this.name;
+	public String getNickname() {
+		return this.nickname;
 	}
 
-	public void setName(final String name) {
-		this.name = name;
+	public void setNickname(final String nickname) {
+		this.nickname = nickname;
 	}
 
 	@NotNull
@@ -55,12 +55,12 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@Past
-	public Date getCreationDate() {
-		return this.creationDate;
+	public Date getCreationTime() {
+		return this.creationTime;
 	}
 
-	public void setCreationDate(final Date creationDate) {
-		this.creationDate = creationDate;
+	public void setCreationTime(final Date creationTime) {
+		this.creationTime = creationTime;
 	}
 
 }

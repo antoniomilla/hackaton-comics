@@ -55,25 +55,25 @@
 	</bean>
 
 	
-	<!-- Usuarios -->	
+	<!-- Actors -->	
 	
 	
 	<bean id="administrator1" class="domain.Admin">
 		<property name="nickname" value="Administrator 1"/>
-		<property name="creationTime" value="19/07/2018"/>
+		<property name="creationTime" value="2018/07/15"/>
 		<property name="userAccount" ref="userAccount1"/>
 	</bean>
 	
 	<bean id="user1" class="domain.User">
 		<property name="nickname" value="User 1"/>
-		<property name="creationTime" value="19/07/2018"/>
+		<property name="creationTime" value="2018/07/15"/>
 		<property name="userAccount" ref="userAccount2"/>
 		<property name="blocked" value="False"/>
 		<property name="blockReason" value="The user is not blocked."/>
 		<property name="trusted" value="True"/>
 		<property name="description" value="This is user1's description."/>
 		<property name="level" value="C"/>
-		<property name="lastLevelUpdateDate" value="19/07/2018"/>
+		<property name="lastLevelUpdateDate" value="2018/07/15"/>
 		<property name="onlyFriendsCanSendDms" value="False"/>
 		<property name="userComics">
 			<list>
@@ -116,14 +116,14 @@
 	
 	<bean id="user2" class="domain.User">
 		<property name="nickname" value="User 2"/>
-		<property name="creationTime" value="19/07/2018"/>
+		<property name="creationTime" value="2018/07/15"/>
 		<property name="userAccount" ref="userAccount3"/>
 		<property name="blocked" value="False"/>
 		<property name="blockReason" value="The user is not blocked."/>
 		<property name="trusted" value="True"/>
 		<property name="description" value="This is user2's description."/>
 		<property name="level" value="C"/>
-		<property name="lastLevelUpdateDate" value="19/07/2018"/>
+		<property name="lastLevelUpdateDate" value="2018/07/15"/>
 		<property name="onlyFriendsCanSendDms" value="False"/>
 		<property name="userComics">
 			<list>
@@ -158,7 +158,7 @@
 	
 	<bean id="messageFolder1User1" class="domain.MessageFolder">
 		<property name="name" value="FolderUser1Inbox"/>
-		<property name="type" value="MessageFolderType.SYSTEM_INBOX"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
 		<property name="nameForDisplay" value="Inbox"/>
 		<property name="owner" ref="user1"/>
 		<property name="messages">
@@ -170,7 +170,7 @@
 	
 	<bean id="messageFolder2User1" class="domain.MessageFolder">
 		<property name="name" value="FolderUser1Sent"/>
-		<property name="type" value="MessageFolderType.SYSTEM_SENT"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
 		<property name="nameForDisplay" value="Sent"/>
 		<property name="owner" ref="user1"/>
 		<property name="messages">
@@ -182,7 +182,7 @@
 	
 	<bean id="messageFolder3User1" class="domain.MessageFolder">
 		<property name="name" value="FolderUser1Trash"/>
-		<property name="type" value="MessageFolderType.SYSTEM_TRASH"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
 		<property name="nameForDisplay" value="Trash"/>
 		<property name="owner" ref="user1"/>
 		<property name="messages">
@@ -194,7 +194,7 @@
 	
 	<bean id="messageFolder1User2" class="domain.MessageFolder">
 		<property name="name" value="FolderUser2Inbox"/>
-		<property name="type" value="MessageFolderType.SYSTEM_INBOX"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
 		<property name="nameForDisplay" value="Inbox"/>
 		<property name="owner" ref="user2"/>
 		<property name="messages">
@@ -206,7 +206,7 @@
 	
 	<bean id="messageFolder2User2" class="domain.MessageFolder">
 		<property name="name" value="FolderUser2Sent"/>
-		<property name="type" value="MessageFolderType.SYSTEM_SENT"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
 		<property name="nameForDisplay" value="Sent"/>
 		<property name="owner" ref="user2"/>
 		<property name="messages">
@@ -218,7 +218,7 @@
 	
 	<bean id="messageFolder3User2" class="domain.MessageFolder">
 		<property name="name" value="FolderUser2Trash"/>
-		<property name="type" value="MessageFolderType.SYSTEM_TRASH"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
 		<property name="nameForDisplay" value="Trash"/>
 		<property name="owner" ref="user2"/>
 		<property name="messages">
@@ -239,61 +239,7 @@
 		<property name="recibient" ref="user2"/>
 	</bean>
 	
-	<bean id="publisher1" class="domain.Publisher">
-		<property name="name" value="DC"/>
-		<property name="foundation" value="01/01/1934"/>
-		<property name="description" value="publishingCompany fundada en 1934 por Malcolm Wheeler-Nicholson"/>
-		<property name="image" value="http://localhost:8080/Comics/images/dclogo.png"/>
-		<property name="comics">
-			<list>
-				<ref bean="comic1"/>
-			</list>
-		</property>
-		<property name="comments">
-			<list>
-				<value>This is lit</value>
-				<value>I hate this</value>
-			</list>
-		</property>
-	</bean>
-	<!-- characters -->
 	
-	<bean id="ComicCharacter1" class="domain.ComicCharacter">
-		<property name="name" value="Bruce Wayne"/>
-		<property name="alias" value="Batman"/>
-		<property name="city" value="Gotham"/>
-		<property name="firstAppearance" value="Batman 1"/>
-		<property name="image" value="http://localhost:8080/Comics/images/batman.png"/>
-		<property name="description" value="The Batman"/>
-		<property name="comicComicCharacter">
-			<list>
-				<ref bean="comicComicCharacter1"/>
-			</list>
-		</property>
-	</bean>
-	
-	
-	<!-- Autores -->
-	
-	<bean id="author1" class="domain.Author">
-		<property name="name" value="Geoff Johns"/>
-		<property name="birthDate" value="25/01/1973"/>
-		<property name="birthPlace" value="Detroit, Michigan, Estados Unidos"/>
-		<property name="image" value="http://localhost:8080/Comics/images/geoffjohns.png"/>
-		<property name="description" value="Great Author"/>
-		<property name="comics">
-			<list>
-				<ref bean="comic1"/>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="comicComicCharacter1" class="domain.ComicComicCharacter">
-			<property name="role" value="Geoff Johns"/>
-			<property name="comicCharacter" ref="comicCharacter1"/>
-			<property name="comic" ref="comic1"/>
-	
-	</bean>
 
 	
 	

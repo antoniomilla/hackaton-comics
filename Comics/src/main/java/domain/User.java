@@ -18,7 +18,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class User extends Actor {
 
-	private Character					level;
+	private String						level;
 	private Collection<UserComic>		userComics;
 	private boolean						blocked;
 	private String						blockReason;
@@ -40,11 +40,11 @@ public class User extends Actor {
 	}
 
 	@Size(min = 1, max = 1)
-	public char getLevel() {
+	public String getLevel() {
 		return this.level;
 	}
 
-	public void setLevel(final char level) {
+	public void setLevel(final String level) {
 		this.level = level;
 	}
 
@@ -55,10 +55,6 @@ public class User extends Actor {
 
 	public void setUserComics(final Collection<UserComic> userComics) {
 		this.userComics = userComics;
-	}
-
-	public void setLevel(final Character level) {
-		this.level = level;
 	}
 
 	public boolean getBlocked() {
@@ -121,7 +117,7 @@ public class User extends Actor {
 	 * }
 	 */
 
-	@OneToMany(mappedBy = "friends")
+	@ManyToMany
 	public Collection<User> getFriends() {
 		return this.friends;
 	}
