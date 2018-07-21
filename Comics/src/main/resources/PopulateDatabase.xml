@@ -77,7 +77,7 @@
 		<property name="onlyFriendsCanSendDms" value="False"/>
 		<property name="userComics">
 			<list>
-				
+				<ref bean="userComic1"/>
 			</list>
 		</property>
 		<property name="messageFolders">
@@ -104,7 +104,7 @@
 		</property>
 		<property name="userComments">
 			<list>
-			
+				<ref bean="comment1User1"/>
 			</list>
 		</property>
 		<property name="userVolumes">
@@ -239,8 +239,135 @@
 		<property name="recibient" ref="user2"/>
 	</bean>
 	
-	
+	<!-- Comics -->
 
+	<bean id="comic1" class="domain.Comic">
+		<property name="name" value="Flashpoint"/>
+		<property name="publisher" ref="publisher1"/>
+		<property name="author" ref="author1"/>
+		<property name="image" value="http://localhost:8080/Comics/images/flashpoint.png"/>
+		<property name="comicComicCharacter">
+			<list>
+				<ref bean="comicComicCharacter1"/>
+			</list>
+		</property>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic1"/>
+			</list>
+		</property>
+		<property name="description" value="Realidad alternativa que vive una guerra civil"/>
+		<property name="tags">
+			<list>
+				
+			</list>
+		</property>
+		<property name="volumes">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment1User1"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Comments -->
+	
+	<bean id="comment1User1" class="domain.Comment">
+		<property name="text" value="Great comic."/>
+		<property name="creationTime" value="2017/07/16"/>
+		<property name="user" ref="user1"/>
+		<property name="comic" ref="comic1"/>
+	</bean>
+	
+	<!-- ComicComicCharacters -->
+	
+	<bean id="comicComicCharacter1" class="domain.ComicComicCharacter">
+		<property name="role" value="Main character"/>
+		<property name="comic" ref="comic1"/>
+		<property name="comicCharacter" ref="comicCharacter1"/>
+	</bean>
+	
+	<!-- ComicCharacters -->
+	
+	<bean id="comicCharacter1" class="domain.ComicCharacter">
+		<property name="name" value="Bruce Wayne"/>
+		<property name="alias" value="Batman"/>
+		<property name="city" value="Gotham"/>
+		<property name="image" value="http://localhost:8080/Comics/images/batman.png"/>
+		<property name="description" value="One of the most famous comic characters in all comic books. Created by Bob Kane and 
+		Bill Finger for DC Comics. He is one of the three members of DC Trinity."/>
+		<property name="comicComicCharacter" ref="comicComicCharacter1"/>
+		<property name="otherAliases">
+			<list>
+				<!--  <ref value="The dark knight"/>-->
+			</list>
+		</property>
+		<property name="firstAppareance" value="Detective Comics 27, 1939"/>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Publishers -->
+	
+	<bean id="publisher1" class="domain.Publisher">
+		<property name="name" value="DC"/>
+		<property name="foundationDate" value="1934/01/01"/>
+		<property name="description" value="Publisher founded in 1934 by Malcolm Wheeler-Nicholson."/>
+		<property name="image" value="http://localhost:8080/Comics/images/dclogo.png"/>
+		<property name="comics">
+			<list>
+				<ref bean="comic1"/>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Authors -->
+	
+	<bean id="author1" class="domain.Author">
+		<property name="name" value="Geoff Johns"/>
+		<property name="birthDate" value="1973/01/25"/>
+		<property name="birthPlace" value="Detroit, Michigan, Estados Unidos"/>
+		<property name="image" value="http://localhost:8080/Comics/images/geoffjohns.png"/>
+		<property name="comics">
+			<list>
+				<ref bean="comic1"/>
+			</list>
+		</property>
+		<property name="description" value="One of the best comic book authors of his generation. 
+		He is known for his anti-american stories."/>
+		<property name="volumes">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<!-- UserComics -->
+	
+	<bean id="userComic1" class="domain.UserComic">
+		<property name="started" value="True"/>
+		<property name="score" value="9"/>
+		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
+		<property name="user" ref="user1"/>
+		<property name="comic" ref="comic1"/>
+	</bean>
 	
 	
 </beans>

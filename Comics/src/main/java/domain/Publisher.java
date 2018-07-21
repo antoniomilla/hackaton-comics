@@ -62,15 +62,6 @@ public class Publisher extends DomainEntity {
 		this.image = image;
 	}
 
-	@Past
-	public Date getFoundationDate() {
-		return this.foundationDate;
-	}
-
-	public void setFoundationDate(final Date foundationDate) {
-		this.foundationDate = foundationDate;
-	}
-
 	@OneToMany(mappedBy = "publisher")
 	public Collection<Comment> getComments() {
 		return this.comments;
@@ -78,6 +69,15 @@ public class Publisher extends DomainEntity {
 
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@Past
+	public Date getFoundationDate() {
+		return this.foundationDate;
+	}
+
+	public void setFoundationDate(final Date foundationDate) {
+		this.foundationDate = foundationDate;
 	}
 
 }
