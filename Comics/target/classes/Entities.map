@@ -1,15 +1,22 @@
 #./src/main/resources/Entities.map
-#Sat Jul 21 17:38:14 CEST 2018
-messageFolder2User2=24
-messageFolder2User1=21
-directMessage1User1ToUser2=26
-messageFolder3User2=25
-messageFolder3User1=22
-administrator1=17
-userAccount3=16
-userAccount2=15
-userAccount1=14
-messageFolder1User2=23
-user2=19
-user1=18
-messageFolder1User1=20
+#Sat Jul 21 22:06:46 CEST 2018
+publisher1=83
+messageFolder2User2=78
+comment1User1=81
+messageFolder2User1=75
+messageFolder3User2=79
+userComic1=87
+messageFolder3User1=76
+comicCharacter1=82
+author1=84
+directMessage1User1ToUser2=80
+comicComicCharacter1=86
+comic1=85
+userAccount3=70
+userAccount2=69
+administrator1=71
+userAccount1=68
+user2=73
+user1=72
+messageFolder1User2=77
+messageFolder1User1=74

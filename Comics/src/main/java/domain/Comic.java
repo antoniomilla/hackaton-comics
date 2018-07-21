@@ -9,7 +9,6 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
@@ -79,8 +78,8 @@ public class Comic extends DomainEntity {
 		this.description = description;
 	}
 
-	@Pattern(regexp = "[^\\s]+")
-	@NotBlank
+	//@Pattern(regexp = "[^\\s]+")
+	//@NotBlank
 	@ElementCollection
 	public Collection<String> getTags() {
 		return this.tags;

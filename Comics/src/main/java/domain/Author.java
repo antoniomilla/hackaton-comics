@@ -7,7 +7,6 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 
@@ -84,7 +83,7 @@ public class Author extends DomainEntity {
 		this.description = description;
 	}
 
-	@ManyToMany
+	@OneToMany(mappedBy = "author")
 	public Collection<Volume> getVolumes() {
 		return this.volumes;
 	}

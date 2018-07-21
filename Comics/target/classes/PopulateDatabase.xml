@@ -109,7 +109,9 @@
 		</property>
 		<property name="userVolumes">
 			<list>
-			
+				<ref bean="volume1"/>
+				<ref bean="volume2"/>
+				<ref bean="volume3"/>
 			</list>
 		</property>
 	</bean>
@@ -264,7 +266,9 @@
 		</property>
 		<property name="volumes">
 			<list>
-				
+				<ref bean="volume1"/>
+				<ref bean="volume2"/>
+				<ref bean="volume3"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -349,7 +353,9 @@
 		He is known for his anti-american stories."/>
 		<property name="volumes">
 			<list>
-				
+				<ref bean="volume1"/>
+				<ref bean="volume2"/>
+				<ref bean="volume3"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -369,5 +375,70 @@
 		<property name="comic" ref="comic1"/>
 	</bean>
 	
+	<!-- Volumes -->
+	
+	<bean id="volume1" class="domain.Volume">
+		<property name="orderNumber" value="1"/>
+		<property name="name" value="Beginning"/>
+		<property name="releaseDate" value="2011/01/25"/>
+		<property name="chapterCount" value="3"/>
+		<property name="description" value="Flash has travelled to the past 
+		to save his mother, but his actions have turned the reality into a new one."/>
+		<property name="comic" ref="comic1"/>
+		<property name="author" ref="author1"/>
+		<property name="users">
+			<list>
+				<ref bean="user1"/>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="volume2" class="domain.Volume">
+		<property name="orderNumber" value="2"/>
+		<property name="name" value="The civil war"/>
+		<property name="releaseDate" value="2011/04/25"/>
+		<property name="chapterCount" value="3"/>
+		<property name="description" value="Wonder Woman and Aquaman are enemies in this reality. 
+		This war is destroying the whole world and Flash, 
+		helped by Thomas Wayne, has to fix the reality before it's too late."/>
+		<property name="comic" ref="comic1"/>
+		<property name="author" ref="author1"/>
+		<property name="users">
+			<list>
+				<ref bean="user1"/>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="volume3" class="domain.Volume">
+		<property name="orderNumber" value="3"/>
+		<property name="name" value="Back to our world."/>
+		<property name="releaseDate" value="2011/07/25"/>
+		<property name="chapterCount" value="3"/>
+		<property name="description" value="The reality is about to collapse. Zoom, Flash's main enemy, is here to kill 
+		Flash once and for all. The final battle is set to happen."/>
+		<property name="comic" ref="comic1"/>
+		<property name="author" ref="author1"/>
+		<property name="users">
+			<list>
+				<ref bean="user1"/>
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>
 	
 </beans>
