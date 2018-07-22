@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -23,7 +24,9 @@ public class Comic extends DomainEntity {
 	private Collection<ComicComicCharacter>	comicComicCharacter;
 	private Collection<UserComic>			userComics;
 	private String							description;
-	private String[]						tags;
+	private Collection<String>				tags;
+	private Collection<Volume>				volumes;
+	private Collection<Comment>				comments;
 
 
 	public Comic() {
@@ -53,7 +56,7 @@ public class Comic extends DomainEntity {
 		return this.author;
 	}
 
-	public void setAutor(final Author author) {
+	public void setAuthor(final Author author) {
 		this.author = author;
 	}
 
@@ -75,14 +78,13 @@ public class Comic extends DomainEntity {
 		this.description = description;
 	}
 
-	@NotBlank
-	public String[] getTags() {
+	//@Pattern(regexp = "[^\\s]+")
+	//@NotBlank
+	@ElementCollection
+	public Collection<String> getTags() {
 		return this.tags;
 	}
 
-	public void setTags(final String[] tags) {
-		this.tags = tags;
-	}
 	@OneToMany(mappedBy = "comic")
 	public Collection<ComicComicCharacter> getComicComicCharacter() {
 		return this.comicComicCharacter;
@@ -101,4 +103,31 @@ public class Comic extends DomainEntity {
 		this.userComics = userComics;
 	}
 
+	@OneToMany(mappedBy = "comic")
+	public Collection<Volume> getVolumes() {
+		return this.volumes;
+	}
+
+	public void setVolumes(final Collection<Volume> volumes) {
+		this.volumes = volumes;
+	}
+
+	@OneToMany(mappedBy = "comic")
+	public Collection<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(final Collection<Comment> comments) {
+		this.comments = comments;
+	}
+
+	/*
+	 * public Collection<ComicCharacter> getComicCharacters() {
+	 * final Collection<ComicCharacter> res = new ArrayList<>();
+	 * for (final ComicComicCharacter c : this.comicComicCharacter)
+	 * res.add(c.getComicCharacter());
+	 * return res;
+	 * 
+	 * }
+	 */
 }

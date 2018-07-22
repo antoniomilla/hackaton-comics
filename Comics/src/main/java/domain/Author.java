@@ -24,6 +24,8 @@ public class Author extends DomainEntity {
 	private Collection<Comic>	comics;
 	private String				description;
 	private String				image;
+	private Collection<Volume>	volumes;
+	private Collection<Comment>	comments;
 
 
 	@NotBlank
@@ -79,6 +81,24 @@ public class Author extends DomainEntity {
 
 	public void setDescription(final String description) {
 		this.description = description;
+	}
+
+	@OneToMany(mappedBy = "author")
+	public Collection<Volume> getVolumes() {
+		return this.volumes;
+	}
+
+	public void setVolumes(final Collection<Volume> volumes) {
+		this.volumes = volumes;
+	}
+
+	@OneToMany(mappedBy = "author")
+	public Collection<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(final Collection<Comment> comments) {
+		this.comments = comments;
 	}
 
 }

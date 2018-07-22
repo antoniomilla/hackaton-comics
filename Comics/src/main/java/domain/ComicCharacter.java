@@ -1,13 +1,12 @@
 
 package domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -20,12 +19,12 @@ public class ComicCharacter extends DomainEntity {
 	private String							name;
 	private String							alias;
 	private String							city;
-	private Publisher						publisher;
 	private String							image;
 	private String							description;
 	private Collection<ComicComicCharacter>	comicComicCharacter;
 	private Collection<String>				otherAliases;
 	private String							firstAppareance;
+	private Collection<Comment>				comments;
 
 
 	public ComicCharacter() {
@@ -59,15 +58,6 @@ public class ComicCharacter extends DomainEntity {
 		this.city = city;
 	}
 
-	@ManyToOne(optional = false)
-	public Publisher getPublisher() {
-		return this.publisher;
-	}
-
-	public void setPublisher(final Publisher publisher) {
-		this.publisher = publisher;
-	}
-
 	@URL
 	public String getImage() {
 		return this.image;
@@ -86,7 +76,8 @@ public class ComicCharacter extends DomainEntity {
 		this.firstAppareance = firstAppareance;
 	}
 
-	@NotBlank
+	//@NotBlank
+	@ElementCollection
 	public Collection<String> getOtherAliases() {
 		return this.otherAliases;
 	}
@@ -113,11 +104,22 @@ public class ComicCharacter extends DomainEntity {
 		this.comicComicCharacter = comicComicCharacter;
 	}
 
-	public Collection<Comic> getAppearsIn() {
-		final Collection<Comic> res = new ArrayList<>();
-		for (final ComicComicCharacter c : this.comicComicCharacter)
-			res.add(c.getComic());
-		return res;
-
+	@OneToMany(mappedBy = "comicCharacter")
+	public Collection<Comment> getComments() {
+		return this.comments;
 	}
+
+	public void setComments(final Collection<Comment> comments) {
+		this.comments = comments;
+	}
+
+	/*
+	 * public Collection<Comic> getAppearsIn() {
+	 * final Collection<Comic> res = new ArrayList<>();
+	 * for (final ComicComicCharacter c : this.comicComicCharacter)
+	 * res.add(c.getComic());
+	 * return res;
+	 * 
+	 * }
+	 */
 }

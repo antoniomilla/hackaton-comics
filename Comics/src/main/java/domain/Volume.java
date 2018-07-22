@@ -20,24 +20,24 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class Volume extends DomainEntity {
 
-	private Integer				order;
+	private Integer				orderNumber;
 	private String				name;
 	private Date				releaseDate;
 	private Integer				chapterCount;
 	private String				description;
 	private String				image;
 	private Comic				comic;
-	private Collection<Author>	authors;
+	private Author				author;
 	private Collection<User>	users;
 	private Collection<Comment>	comments;
 
 
-	public Integer getOrder() {
-		return this.order;
+	public Integer getOrderNumber() {
+		return this.orderNumber;
 	}
 
-	public void setOrder(final Integer order) {
-		this.order = order;
+	public void setOrderNumber(final Integer orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 	@NotBlank
 	public String getName() {
@@ -88,13 +88,13 @@ public class Volume extends DomainEntity {
 	public void setComic(final Comic comic) {
 		this.comic = comic;
 	}
-	@ManyToMany
-	public Collection<Author> getAuthors() {
-		return this.authors;
+	@ManyToOne(optional = false)
+	public Author getAuthor() {
+		return this.author;
 	}
 
-	public void setAuthors(final Collection<Author> authors) {
-		this.authors = authors;
+	public void setAuthor(final Author author) {
+		this.author = author;
 	}
 	@ManyToMany
 	public Collection<User> getUsers() {
