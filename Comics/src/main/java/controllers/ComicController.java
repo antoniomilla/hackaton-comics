@@ -22,7 +22,9 @@ import domain.Author;
 import domain.Comic;
 import domain.ComicCharacter;
 import domain.ComicComicCharacter;
+import domain.Comment;
 import domain.Publisher;
+import domain.Volume;
 
 @Controller
 @RequestMapping("/comic")
@@ -58,9 +60,13 @@ public class ComicController {
 		ModelAndView result;
 		final Comic comic = this.comicService.findOne(comicId);
 		final Collection<ComicCharacter> comicCharacters = this.comicComicCharacters(comic);
+		final Collection<Comment> comments = comic.getComments();
+		final Collection<Volume> volumes = comic.getVolumes();
 		result = new ModelAndView("comic/display");
 		result.addObject("comic", comic);
 		result.addObject("comicCharacters", comicCharacters);
+		result.addObject("comments", comments);
+		result.addObject("volumes", volumes);
 
 		return result;
 	}
