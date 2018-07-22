@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.PublisherService;
 import domain.Comic;
-import domain.ComicCharacter;
 import domain.Publisher;
 
 @Controller
@@ -48,11 +47,10 @@ public class PublisherController {
 	public ModelAndView display(@RequestParam final int publisherId) {
 		ModelAndView result;
 		final Publisher publisher = this.publisherService.findOne(publisherId);
-		final Collection<ComicCharacter> characters = publisher.getCharacters();
+
 		final Collection<Comic> comics = publisher.getComics();
 		result = new ModelAndView("publisher/display");
 		result.addObject("publisher", publisher);
-		result.addObject("characters", characters);
 		result.addObject("comics", comics);
 
 		return result;

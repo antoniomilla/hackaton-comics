@@ -75,6 +75,7 @@
 			<li><a class="fNiv" href="publisher/list.do"><spring:message code="master.page.publishers" /></a></li>
 			<li><a class="fNiv" href="author/list.do"><spring:message code="master.page.authors" /></a></li>
 			<li><a class="fNiv" href="comicCharacter/list.do"><spring:message code="master.page.comicCharacters" /></a></li>
+			<li><a class="fNiv" href="volume/list.do"><spring:message code="master.page.volume" /></a></li>
 			<li><a class="fNiv" href="user/create.do"><spring:message code="master.page.sign.up" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>

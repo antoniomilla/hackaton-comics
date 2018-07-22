@@ -13,8 +13,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- User accounts -->
 	
@@ -416,6 +415,7 @@
 		<property name="publisher" ref="publisher1"/>
 		<property name="author" ref="author1"/>
 		<property name="image" value="http://localhost:8080/Comics/images/flashpoint.png"/>
+
 		<property name="comicComicCharacter">
 			<list>
 				<ref bean="comicComicCharacter1"/>
@@ -531,10 +531,12 @@
 			</list>
 		</property>
 		<property name="userComics">
+
 			<list>
 				<ref bean="userComic5"/>
 			</list>
 		</property>
+
 		<property name="description" value="Daredevil's secret identity is blown by his
 		 worst enemy, Kingpin. Due to this, his life becomes an absolut hell."/>
 		<property name="tags">
@@ -636,6 +638,7 @@
 		<property name="name" value="Bruce Wayne"/>
 		<property name="alias" value="Batman"/>
 		<property name="city" value="Gotham"/>
+
 		<property name="image" value="http://localhost:8080/Comics/images/batman.png"/>
 		<property name="description" value="One of the most famous comic characters in 
 		all comic books. Created by Bob Kane and Bill Finger for DC Comics. 
@@ -742,6 +745,7 @@
 		</property>
 	</bean>
 	
+
 	<!-- Publishers -->
 	
 	<bean id="publisher1" class="domain.Publisher">
@@ -810,6 +814,7 @@
 		</property>
 	</bean>
 	
+
 	<bean id="author2" class="domain.Author">
 		<property name="name" value="Mark Millar"/>
 		<property name="birthDate" value="1973/01/25"/>

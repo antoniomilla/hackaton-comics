@@ -18,45 +18,65 @@
 </head>
 <body>
 
-<form:form action="${requestURI}" modelAttribute="Client">	
+<form:form action="${requestURI}" modelAttribute="user">	
 
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
+	<form:hidden path="creationTime"/>
 	
-	<form:label path="name">
-	<spring:message code="cliente.nombre" />:
+	<form:label path="nickname">
+	<spring:message code="user.nickname" />:
 	</form:label> 
-	<form:input path="name"/>
-	<form:errors cssClass="error" path="name"/>
+	<form:input path="nickname"/>
+	<form:errors cssClass="error" path="nickname"/>
 	
-	<form:label path="birthDate">
-	<spring:message code="cliente.fechaNacimiento" />:
+	<br><br>
+	<form:label path="description">
+	<spring:message code="user.description" />:
 	</form:label> 
-	<form:input path="birthDate"/>
-	<form:errors cssClass="error" path="birthDate"/>
+	<form:textarea path="description"/>
+	<form:errors cssClass="error" path="description"/>
 	
-	<form:label path="dni">
-	<spring:message code="cliente.dni" />:
-	</form:label>
-	<form:input path="dni"/>
-	<form:errors cssClass="error" path="dni"/>
 	
-	<form:label path="email">
-	<spring:message code="cliente.email" />:
-	</form:label>
-	<form:input path="email"/>
-	<form:errors cssClass="error" path="email"/>
 	
-	<form:hidden path="userAccount"/>
-	<form:hidden path="registerDate"/>
+	
+	
+	<form:label path="userAccount.username">
+	<spring:message code="user.account" />:
+	</form:label> 
+	<form:input path="userAccount.username"/>
+	<form:errors cssClass="error" path="userAccount.username"/>
+	
+	<br><br>
+	
+	<form:label path="userAccount.password">
+	<spring:message code="user.password" />:
+	</form:label> 
+	<form:password path="userAccount.password"/>
+	<form:errors cssClass="error" path="userAccount.password"/>
+	
+	<form:hidden path="userAccount.authorities"/>
+	
+	
 	<form:hidden path="level"/>
-	<form:hidden path="comicsRead"/>
+	<form:hidden path="userComics"/>
+	<form:hidden path="blocked"/>
+	<form:hidden path="blockReason"/>
+	<form:hidden path="trusted"/>
+	<form:hidden path="lastLevelUpdateDate"/>
+	<form:hidden path="onlyFriendsCanSendDms"/>
+	<form:hidden path="friends"/>
+	<form:hidden path="messageFolders"/>
+	<form:hidden path="sent"/>
+	<form:hidden path="receipt"/>
+	<form:hidden path="userComments"/>
+	<form:hidden path="userVolumes"/>
 	
-	
+	<br><br>
 	<input type="submit" name="save"
-		value="<spring:message code="cliente" />" />&nbsp; 
+		value="<spring:message code="user.create" />" />&nbsp; 
 	<input type="button" name="cancel"
-		value="<spring:message code="cliente.cancel" />"
+		value="<spring:message code="user.cancel" />"
 		onclick="javascript: relativeRedir('cliente/list.do');" />
 	<br />
 	</form:form>

@@ -54,7 +54,7 @@ public class ComicServiceTest {
 
 		c.setName("nombreComic");
 		c.setPublisher(e2);
-		c.setAutor(a2);
+		c.setAuthor(a2);
 		//this.comicService.getPersonajes().add(p2);
 
 		Assert.isTrue(!this.comicService.findAll().contains(c));
@@ -78,7 +78,7 @@ public class ComicServiceTest {
 
 		c.setName("nombreComic");
 		c.setPublisher(e2);
-		c.setAutor(a2);
+		c.setAuthor(a2);
 		//this.comicService.getPersonajes().add(p2);
 
 		final Comic saved = this.comicService.save(c);
@@ -100,7 +100,7 @@ public class ComicServiceTest {
 
 		c.setName("nombreComic");
 		c.setPublisher(e2);
-		c.setAutor(a2);
+		c.setAuthor(a2);
 		//this.comicService.getPersonajes().add(p2);
 
 		final Comic saved = this.comicService.save(c);
