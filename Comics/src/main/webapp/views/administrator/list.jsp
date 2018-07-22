@@ -15,6 +15,6 @@
 	
 	
 	<spring:message code="administrator.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="true" />
+	<display:column property="nickname" title="${nameHeader}" sortable="true" />
 
 </display:table>

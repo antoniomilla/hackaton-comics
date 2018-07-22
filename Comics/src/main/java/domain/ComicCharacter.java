@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -21,6 +22,7 @@ public class ComicCharacter extends DomainEntity {
 	private String							city;
 	private String							image;
 	private String							description;
+	private Publisher						publisher;
 	private Collection<ComicComicCharacter>	comicComicCharacter;
 	private Collection<String>				otherAliases;
 	private String							firstAppareance;
@@ -111,6 +113,15 @@ public class ComicCharacter extends DomainEntity {
 
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@ManyToOne(optional = false)
+	public Publisher getPublisher() {
+		return this.publisher;
+	}
+
+	public void setPublisher(final Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	/*

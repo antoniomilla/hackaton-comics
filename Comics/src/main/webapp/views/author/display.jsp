@@ -13,14 +13,14 @@
 	<img src="${author.image }" width="200" height="200"/>
 </div>
 
-<div style="position:absolute;top:270px;left:230px;width:150;">
+<div>
 	<p><spring:message code="author.name"/>: <jstl:out value="${author.name }"></jstl:out></p>
 	<p><spring:message code="author.birthDate"/>: <jstl:out value="${author.birthDate }"></jstl:out></p>
 	<p><spring:message code="author.birthPlace"/>: <jstl:out value="${author.birthPlace }"></jstl:out></p>
 </div>
 
 
-<div style="position:absolute;top:220px;left:600px;">
+<div>
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comics" id="row">
 	
 	<display:column property="name"/>

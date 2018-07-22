@@ -17,12 +17,13 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class Publisher extends DomainEntity {
 
-	private String				name;
-	private Date				foundationDate;
-	private String				description;
-	private Collection<Comic>	comics;
-	private String				image;
-	private Collection<Comment>	comments;
+	private String						name;
+	private Date						foundationDate;
+	private String						description;
+	private Collection<Comic>			comics;
+	private Collection<ComicCharacter>	comicCharacters;
+	private String						image;
+	private Collection<Comment>			comments;
 
 
 	@NotBlank
@@ -78,6 +79,15 @@ public class Publisher extends DomainEntity {
 
 	public void setComments(final Collection<Comment> comment) {
 		this.comments = comment;
+	}
+
+	@OneToMany(mappedBy = "publisher")
+	public Collection<ComicCharacter> getComicCharacters() {
+		return this.comicCharacters;
+	}
+
+	public void setComicCharacters(final Collection<ComicCharacter> comicCharacters) {
+		this.comicCharacters = comicCharacters;
 	}
 
 }

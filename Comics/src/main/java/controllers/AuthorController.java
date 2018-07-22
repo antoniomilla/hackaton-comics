@@ -22,12 +22,9 @@ import domain.Comic;
 @RequestMapping("/author")
 public class AuthorController {
 
-	//comentario antopnio
 	@Autowired
 	private AuthorService	authorService;
 
-
-	//COMENTARIO JESUS
 
 	public AuthorController() {
 		super();

@@ -36,12 +36,12 @@ public class UserController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<User> clientes;
+		Collection<User> users;
 
-		clientes = this.userService.findAll();
-		result = new ModelAndView("cliente/list");
-		result.addObject("requestURI", "cliente/list.do");
-		result.addObject("clientes", clientes);
+		users = this.userService.findAll();
+		result = new ModelAndView("user/list");
+		result.addObject("requestURI", "user/list.do");
+		result.addObject("users", users);
 
 		return result;
 	}

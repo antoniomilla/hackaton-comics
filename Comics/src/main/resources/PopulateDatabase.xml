@@ -645,6 +645,7 @@
 		He is one of the three members of DC Trinity.Due to his parents' murdered, he 
 		fights crime using amazing items built by him."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter1"/>
+		<property name="publisher" ref="publisher1"/>
 		<property name="otherAliases">
 			<list>
 				<!--  <ref value="The dark knight"/>-->
@@ -667,6 +668,7 @@
 		lives the life the way he wants. But he also is an engineering genius 
 		capable of build amazing war armors. He fights the crime using this armors."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter2"/>
+		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -689,6 +691,7 @@
 		represents the american way. He is a very patriotic hero who fights crime 
 		for his country."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter3"/>
+		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -710,6 +713,7 @@
 		<property name="description" value="An old violent hero who works against the 
 		rules set by the government."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter4"/>
+		<property name="publisher" ref="publisher1"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -732,6 +736,7 @@
 		a lawyer by day but, when the night comes, he becomes a crime fighter known as
 		Daredevil."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter5"/>
+		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -759,6 +764,12 @@
 				<ref bean="comic3"/>
 			</list>
 		</property>
+		<property name="comicCharacters">
+			<list>
+				<ref bean="comicCharacter1"/>
+				<ref bean="comicCharacter4"/>
+			</list>
+		</property>
 		<property name="comments">
 			<list>
 				<ref bean="comment2User2"/>
@@ -777,6 +788,13 @@
 			<list>
 				<ref bean="comic2"/>
 				<ref bean="comic4"/>
+			</list>
+		</property>
+		<property name="comicCharacters">
+			<list>
+				<ref bean="comicCharacter2"/>
+				<ref bean="comicCharacter3"/>
+				<ref bean="comicCharacter5"/>
 			</list>
 		</property>
 		<property name="comments">
