@@ -16,230 +16,79 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
-	<!-- User accounts -->
-	<!-- COMENTARIO AÑADIDO --><!-- asljdfhalisdhalisdh -->
-	<!-- COMENTARIO AÑADIDO -->
-	
-	<bean id="userAccount1" class="security.UserAccount">
-		<property name="username" value="admin" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="CLIENTE" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	
-	<!-- Usuarios -->	
 	
 	
-	<bean id="administrator1" class="domain.Admin">
-		<property name="name" value="Administrator 1"/>
-		<property name="birthDate" value="03/04/1980"/>
-		<property name="dni" value="123456778K"/>
-		<property name="email" value="admin@hotmail.es"/>
-		<property name="userAccount" ref="userAccount1"/>
-		<property name="salary" value="1100"/>
-	</bean>
 	
-	<bean id="customer1" class="domain.Customer">
-		<property name="name" value="Jesus Coello"/>
-		<property name="birthDate" value="21/03/1997"/>
-		<property name="dni" value="87654321H"/>
-		<property name="email" value="customer1@hotmail.es"/>
-		<property name="userAccount" ref="userAccount2"/>
-		<property name="registerDate" value="21/03/2016"/>
-		<property name="level" value="C"/>
-		<property name="comicsRead">
-			<list>
-				<ref bean="comic1"/>
-				<ref bean="comic2"/>
-			</list>
-		</property>
-	</bean>
-	
-	<!-- Comics -->
+	<!-- Comics --><!-- A PARTIR DE AQUI, ATRÁS NI CASO -->
 	
 	<bean id="comic1" class="domain.Comic">
 		<property name="name" value="Flashpoint"/>
-		<property name="numPages" value="150"/>
-		<property name="publishingCompany" ref="publishingCompany1"/>
-		<property name="autor" ref="autor1"/>
+		<property name="publisher" ref="publisher1"/>
+		<property name="author" ref="author1"/>
 		<property name="image" value="http://localhost:8080/Comics/images/flashpoint.png"/>
-		<property name="characters">
+		<property name="description" value="Great Comic"/>
+		<property name="comicComicCharacter">
 			<list>
-				<ref bean="ComicCharacter1"/>
+				<ref bean="comicComicCharacter1"/>
+				<ref bean="comicComicCharacter2"/>
+			</list>
+		</property>
+		<property name="userComic">
+			<list>
+				<ref bean="userComic1"/>
+			</list>
+		</property>
+		<property name="tags">
+			<list>
+				<value>Action</value>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="comic2" class="domain.Comic">
-		<property name="name" value="Civil War"/>
-		<property name="numPages" value="150"/>
-		<property name="publishingCompany" ref="publishingCompany2"/>
-		<property name="autor" ref="autor2"/>
-		<property name="image" value="http://localhost:8080/Comics/images/civilwar.png"/>
-		<property name="characters">
-			<list>
-				<ref bean="ComicCharacter2"/>
-				<ref bean="ComicCharacter3"/>
-			</list>
-		</property>
-	</bean>
+	<!-- publisher -->
 	
-	<bean id="comic3" class="domain.Comic">
-		<property name="name" value="Watchmen"/>
-		<property name="numPages" value="250"/>
-		<property name="publishingCompany" ref="publishingCompany1"/>
-		<property name="autor" ref="autor3"/>
-		<property name="image" value="http://localhost:8080/Comics/images/watchmen.png"/>
-		<property name="characters">
-			<list>
-				<ref bean="ComicCharacter5"/>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="comic4" class="domain.Comic">
-		<property name="name" value="Daredevil: Born Again"/>
-		<property name="numPages" value="130"/>
-		<property name="publishingCompany" ref="publishingCompany2"/>
-		<property name="autor" ref="autor4"/>
-		<property name="image" value="http://localhost:8080/Comics/images/bornagain.png"/>
-		<property name="characters">
-			<list>
-				<ref bean="ComicCharacter4"/>
-			</list>
-		</property>
-	</bean>
-	
-	<!-- publishingCompanyes -->
-	
-	<bean id="publishingCompany1" class="domain.PublishingCompany">
+	<bean id="publisher1" class="domain.Publisher">
 		<property name="name" value="DC"/>
 		<property name="foundation" value="01/01/1934"/>
 		<property name="description" value="publishingCompany fundada en 1934 por Malcolm Wheeler-Nicholson"/>
-		<property name="logo" value="http://localhost:8080/Comics/images/dclogo.png"/>
+		<property name="image" value="http://localhost:8080/Comics/images/dclogo.png"/>
 		<property name="comics">
 			<list>
 				<ref bean="comic1"/>
 			</list>
 		</property>
-		<property name="characters">
+		<property name="comments">
 			<list>
-				<ref bean="ComicCharacter1"/>
+				<value>This is lit</value>
+				<value>I hate this</value>
 			</list>
 		</property>
 	</bean>
-	
-	<bean id="publishingCompany2" class="domain.PublishingCompany">
-		<property name="name" value="Marvel"/>
-		<property name="foundation" value="01/01/1939"/>
-		<property name="description" value="publishingCompany fundada en 1939 como Timely Publications por Martin Goodman. 
-		Relanzada en 1960 como Marvel Comics por Stan Lee y Jack Kirby."/>
-		<property name="logo" value="http://localhost:8080/Comics/images/marvellogo.png"/>
-		<property name="comics">
-			<list>
-				<ref bean="comic2"/>
-			</list>
-		</property>
-		<property name="characters">
-			<list>
-				<ref bean="ComicCharacter2"/>
-				<ref bean="ComicCharacter3"/>
-			</list>
-		</property>
-	</bean>
-	
 	<!-- characters -->
 	
 	<bean id="ComicCharacter1" class="domain.ComicCharacter">
 		<property name="name" value="Bruce Wayne"/>
 		<property name="alias" value="Batman"/>
 		<property name="city" value="Gotham"/>
-		<property name="publishingCompany" ref="publishingCompany1"/>
+		<property name="firstAppearance" value="Batman 1"/>
 		<property name="image" value="http://localhost:8080/Comics/images/batman.png"/>
-		<property name="appearsIn">
+		<property name="description" value="The Batman"/>
+		<property name="comicComicCharacter">
 			<list>
-				<ref bean="comic1"/>
+				<ref bean="comicComicCharacter1"/>
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="ComicCharacter2" class="domain.ComicCharacter">
-		<property name="name" value="Tony Stark"/>
-		<property name="alias" value="Iron Man"/>
-		<property name="city" value="New York"/>
-		<property name="publishingCompany" ref="publishingCompany2"/>
-		<property name="image" value="http://localhost:8080/Comics/images/ironman.png"/>
-		<property name="appearsIn">
-			<list>
-				<ref bean="comic2"/>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="ComicCharacter3" class="domain.ComicCharacter">
-		<property name="name" value="Steve Rogers"/>
-		<property name="alias" value="Capitan America"/>
-		<property name="city" value="Brooklyn, New York"/>
-		<property name="publishingCompany" ref="publishingCompany2"/>
-		<property name="image" value="http://localhost:8080/Comics/images/capitanamerica.png"/>
-		<property name="appearsIn">
-			<list>
-				<ref bean="comic2"/>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="ComicCharacter4" class="domain.ComicCharacter">
-		<property name="name" value="Matt Murdock"/>
-		<property name="alias" value="Daredevil"/>
-		<property name="city" value="Hell's kitchen, New York"/>
-		<property name="publishingCompany" ref="publishingCompany2"/>
-		<property name="image" value="http://localhost:8080/Comics/images/daredevil.png"/>
-		<property name="appearsIn">
-			<list>
-				<ref bean="comic4"/>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="ComicCharacter5" class="domain.ComicCharacter">
-		<property name="name" value="Walter Kovacs"/>
-		<property name="alias" value="Rorschach"/>
-		<property name="city" value="New York"/>
-		<property name="publishingCompany" ref="publishingCompany1"/>
-		<property name="image" value="http://localhost:8080/Comics/images/rorschach.png"/>
-		<property name="appearsIn">
-			<list>
-				<ref bean="comic3"/>
-			</list>
-		</property>
-	</bean>
 	
 	<!-- Autores -->
 	
-	<bean id="autor1" class="domain.Autor">
+	<bean id="author1" class="domain.Author">
 		<property name="name" value="Geoff Johns"/>
 		<property name="birthDate" value="25/01/1973"/>
 		<property name="birthPlace" value="Detroit, Michigan, Estados Unidos"/>
 		<property name="image" value="http://localhost:8080/Comics/images/geoffjohns.png"/>
+		<property name="description" value="Great Author"/>
 		<property name="comics">
 			<list>
 				<ref bean="comic1"/>
@@ -247,40 +96,12 @@
 		</property>
 	</bean>
 	
-	<bean id="autor2" class="domain.Autor">
-		<property name="name" value="Mark Millar"/>
-		<property name="birthDate" value="24/12/1969"/>
-		<property name="birthPlace" value="Escocia, Reino Unido"/>
-		<property name="image" value="http://localhost:8080/Comics/images/markmillar.png"/>
-		<property name="comics">
-			<list>
-				<ref bean="comic2"/>
-			</list>
-		</property>
+	<bean id="comicComicCharacter1" class="domain.ComicComicCharacter">
+			<property name="role" value="Geoff Johns"/>
+			<property name="comicCharacter" ref="comicCharacter1"/>
+			<property name="comic" ref="comic1"/>
+	
 	</bean>
 	
-	<bean id="autor3" class="domain.Autor">
-		<property name="name" value="Alan Moore"/>
-		<property name="birthDate" value="18/11/1953"/>
-		<property name="birthPlace" value="Northampton, Inglaterra, Reino Unido"/>
-		<property name="image" value="http://localhost:8080/Comics/images/alanmoore.png"/>
-		<property name="comics">
-			<list>
-				<ref bean="comic3"/>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="autor4" class="domain.Autor">
-		<property name="name" value="Frank Miller"/>
-		<property name="birthDate" value="27/01/1957"/>
-		<property name="birthPlace" value="Olney, Maryland, Estados Unidos"/>
-		<property name="image" value="http://localhost:8080/Comics/images/frankmiller.png"/>
-		<property name="comics">
-			<list>
-				<ref bean="comic4"/>
-			</list>
-		</property>
-	</bean>
 	
 </beans>

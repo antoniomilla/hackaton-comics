@@ -30,7 +30,6 @@ public class HashPassword {
 
 			encoder = new Md5PasswordEncoder();
 			reader = new ConsoleReader();
-
 			line = reader.readLine();
 			while (!line.equals("quit")) {
 				hash = encoder.encodePassword(line, null);

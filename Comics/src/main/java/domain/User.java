@@ -27,7 +27,6 @@ public class User extends Actor {
 	private String					description;
 	private Date					lastLevelUpdateDate;
 	private boolean					onlyFriendsCanSendDms;
-	private Collection<Comic>		comicsRead;
 
 
 	public User() {
@@ -55,10 +54,6 @@ public class User extends Actor {
 
 	public void setLevel(final Character level) {
 		this.level = level;
-	}
-
-	public void setComicsRead(final Collection<Comic> readComics) {
-		this.comicsRead = readComics;
 	}
 
 	public boolean getBlocked() {

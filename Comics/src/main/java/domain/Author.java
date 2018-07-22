@@ -54,7 +54,7 @@ public class Author extends DomainEntity {
 		this.birthPlace = lugarNacimiento;
 	}
 
-	@OneToMany(mappedBy = "autor")
+	@OneToMany(mappedBy = "author")
 	public Collection<Comic> getComics() {
 		return this.comics;
 	}

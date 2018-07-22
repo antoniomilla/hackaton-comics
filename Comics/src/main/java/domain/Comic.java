@@ -1,7 +1,6 @@
 
 package domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Access;
@@ -18,14 +17,13 @@ import org.hibernate.validator.constraints.URL;
 public class Comic extends DomainEntity {
 
 	private String							name;
-	private Integer							numPages;
 	private Publisher						publisher;
 	private Author							author;
 	private String							image;
 	private Collection<ComicComicCharacter>	comicComicCharacter;
 	private Collection<UserComic>			userComics;
 	private String							description;
-	private Collection<String>				tags;
+	private String[]						tags;
 
 
 	public Comic() {
@@ -78,12 +76,11 @@ public class Comic extends DomainEntity {
 	}
 
 	@NotBlank
-	//@Pattern("[^\s]")
-	public Collection<String> getTags() {
+	public String[] getTags() {
 		return this.tags;
 	}
 
-	public void setTags(final Collection<String> tags) {
+	public void setTags(final String[] tags) {
 		this.tags = tags;
 	}
 	@OneToMany(mappedBy = "comic")
@@ -102,18 +99,6 @@ public class Comic extends DomainEntity {
 
 	public void setUserComics(final Collection<UserComic> userComics) {
 		this.userComics = userComics;
-	}
-
-	public void setNumPages(final Integer numPages) {
-		this.numPages = numPages;
-	}
-
-	public Collection<ComicCharacter> getCharacters() {
-		final Collection<ComicCharacter> res = new ArrayList<>();
-		for (final ComicComicCharacter c : this.comicComicCharacter)
-			res.add(c.getComicCharacter());
-		return res;
-
 	}
 
 }
