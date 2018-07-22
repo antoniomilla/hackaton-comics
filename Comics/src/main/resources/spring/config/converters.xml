@@ -35,6 +35,11 @@
 		<bean class="converters.ComicCharacterToStringConverter" />
 		<bean class="converters.StringToComicCharacterConverter" />
 		
+		<bean class="converters.StringToAuthorityConverter" />
+		<bean class="converters.AuthorityToStringConverter" />
+		
+		
+		
 	</util:list>
 	
 </beans>

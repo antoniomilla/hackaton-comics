@@ -25,10 +25,10 @@
 	<spring:message code="publisher.name" var="nameHeader" />
 	<display:column property="name" title="${nameHeader}" sortable="true" />
 
-	<spring:message code="publisher.fundacion" var="foundationDateHeader" />
+	<spring:message code="publisher.foundationDate" var="foundationDateHeader" />
 	<display:column property="foundationDate" title="${foundationDateHeader}" sortable="true" />
 
-	<spring:message code="publisher.descripcion" var="descriptionHeader" />
+	<spring:message code="publisher.description" var="descriptionHeader" />
 	<display:column property="description" title="${descriptionHeader}" sortable="true" />
 	
 	<display:column>

@@ -62,15 +62,6 @@ public class Publisher extends DomainEntity {
 		this.image = image;
 	}
 
-	@OneToMany(mappedBy = "publisher")
-	public Collection<Comment> getComments() {
-		return this.comments;
-	}
-
-	public void setComments(final Collection<Comment> comments) {
-		this.comments = comments;
-	}
-
 	@Past
 	public Date getFoundationDate() {
 		return this.foundationDate;

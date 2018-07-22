@@ -36,6 +36,9 @@ public class UserService {
 
 	public User create() {
 		final User res = new User();
+		res.setBlocked(false);
+		res.setBlockReason("None");
+		res.setLevel("C");
 
 		return res;
 	}
@@ -93,8 +96,7 @@ public class UserService {
 		Assert.notNull(user);
 		final Comic comic = this.comicService.findOne(comicId);
 		Assert.notNull(comic);
-
-		user.getComicsRead().add(comic);
+		//TODO
 
 		this.userRepository.save(user);
 	}
@@ -106,8 +108,7 @@ public class UserService {
 		final Comic comic = this.comicService.findOne(comicId);
 		Assert.notNull(comic);
 
-		user.getComicsRead().remove(comic);
-
+		//TODO
 		this.userRepository.save(user);
 	}
 }

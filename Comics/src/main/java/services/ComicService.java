@@ -59,4 +59,10 @@ public class ComicService {
 		this.comicRepository.delete(comic);
 	}
 
+	public Collection<Comic> getComicsByPublisher(final String name) {
+		Assert.notNull(name);
+		return this.comicRepository.getComicsByPublisher(name);
+
+	}
+
 }

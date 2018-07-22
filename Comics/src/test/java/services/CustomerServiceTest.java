@@ -33,8 +33,8 @@ public class CustomerServiceTest {
 	public void testFindAll() {
 		final User c = this.clienteService.create();
 
-		c.setName("nombre");
-		c.setLevel('C');
+		c.setNickname("nombre");
+		c.setLevel("C");
 		Assert.isTrue(!this.clienteService.findAll().contains(c));
 		final User saved = this.clienteService.save(c);
 		Assert.isTrue(this.clienteService.findAll().contains(saved));

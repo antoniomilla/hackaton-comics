@@ -85,6 +85,10 @@ public class Comic extends DomainEntity {
 		return this.tags;
 	}
 
+	@ElementCollection
+	public void setTags(final Collection<String> tags) {
+		this.tags = tags;
+	}
 	@OneToMany(mappedBy = "comic")
 	public Collection<ComicComicCharacter> getComicComicCharacter() {
 		return this.comicComicCharacter;

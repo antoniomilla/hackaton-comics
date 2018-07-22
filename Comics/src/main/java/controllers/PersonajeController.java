@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ComicCharacterService;
 import services.PublisherService;
-import domain.Comic;
 import domain.ComicCharacter;
 import domain.Publisher;
 
@@ -51,10 +50,10 @@ public class PersonajeController {
 	public ModelAndView display(@RequestParam final int personajeId) {
 		ModelAndView result;
 		final ComicCharacter personaje = this.personajeService.findOne(personajeId);
-		final Collection<Comic> comics = personaje.getAppearsIn();
+		//	final Collection<Comic> comics = personaje.getAppearsIn();
 		result = new ModelAndView("personaje/display");
 		result.addObject("personaje", personaje);
-		result.addObject("comics", comics);
+		//result.addObject("comics", comics);
 
 		return result;
 	}
@@ -123,11 +122,11 @@ public class PersonajeController {
 
 	protected ModelAndView createEditModelAndView(final ComicCharacter personaje, final String message) {
 		ModelAndView result;
-		Publisher editorial = null;
+		final Publisher editorial = null;
 		final Collection<Publisher> editoriales = this.editorialService.findAll();
 
-		if (personaje.getPublisher() != null)
-			editorial = personaje.getPublisher();
+		//if (personaje.getPublisher() != null)
+		//	editorial = personaje.getPublisher();
 
 		result = new ModelAndView("personaje/edit");
 		result.addObject("personaje", personaje);

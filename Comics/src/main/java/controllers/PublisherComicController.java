@@ -2,7 +2,6 @@
 package controllers;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +27,7 @@ public class PublisherComicController {
 	@RequestMapping(value = "/listDC", method = RequestMethod.GET)
 	public ModelAndView listDC() {
 		ModelAndView result;
-		final Collection<Comic> all = this.comicService.findAll();
-		final Collection<Comic> comics = this.dc(all);
+		final Collection<Comic> comics = this.comicService.getComicsByPublisher("DC Comics");
 		result = new ModelAndView("comic/list");
 		result.addObject("requestURI", "publisher/comic/listDC.do");
 		result.addObject("comics", comics);
@@ -37,32 +35,16 @@ public class PublisherComicController {
 		return result;
 	}
 
-	private Collection<Comic> dc(final Collection<Comic> list) {
-		final Collection<Comic> res = new HashSet<Comic>();
-		for (final Comic c : list)
-			if (c.getPublisher().getName().equals("DC"))
-				res.add(c);
-		return res;
-	}
-
 	@RequestMapping(value = "/listMarvel", method = RequestMethod.GET)
 	public ModelAndView listMarvel() {
 		ModelAndView result;
-		final Collection<Comic> all = this.comicService.findAll();
-		final Collection<Comic> comics = this.marvel(all);
+		final Collection<Comic> comics = this.comicService.getComicsByPublisher("Marvel Comics");
+
 		result = new ModelAndView("comic/list");
 		result.addObject("requestURI", "publisher/comic/listMarvel.do");
 		result.addObject("comics", comics);
 
 		return result;
-	}
-
-	private Collection<Comic> marvel(final Collection<Comic> list) {
-		final Collection<Comic> res = new HashSet<Comic>();
-		for (final Comic c : list)
-			if (c.getPublisher().getName().equals("Marvel"))
-				res.add(c);
-		return res;
 	}
 
 }

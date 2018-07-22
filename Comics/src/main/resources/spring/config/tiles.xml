@@ -29,7 +29,7 @@
 		<value>/views/comicCharacter/tiles.xml</value>
 		<value>/views/user/tiles.xml</value>
 		<value>/views/administrator/tiles.xml</value>
-		
+		<value>/views/volume/tiles.xml</value>
 		
 		
 	</util:list>

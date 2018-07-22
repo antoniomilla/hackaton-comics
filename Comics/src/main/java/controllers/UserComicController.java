@@ -35,11 +35,11 @@ public class UserComicController {
 		ModelAndView result;
 		final Collection<Comic> comics = this.comicService.findAll();
 		final User user = this.userService.findByPrincipal();
-		final Collection<Comic> read = user.getComicsRead();
+		//final Collection<Comic> read = user.getComicsRead();
 		result = new ModelAndView("comic/list");
 		result.addObject("requestURI", "comic/list.do");
 		result.addObject("comics", comics);
-		result.addObject("read", read);
+		//result.addObject("read", read);
 
 		return result;
 	}
@@ -48,10 +48,10 @@ public class UserComicController {
 	public ModelAndView listRead() {
 		ModelAndView result;
 		final User user = this.userService.findByPrincipal();
-		final Collection<Comic> comics = user.getComicsRead();
+		//final Collection<Comic> comics = user.getComicsRead();
 		result = new ModelAndView("comic/list");
 		result.addObject("requestURI", "user/readComics/list.do");
-		result.addObject("comics", comics);
+		//result.addObject("comics", comics);
 
 		return result;
 	}
@@ -71,12 +71,15 @@ public class UserComicController {
 
 	private Collection<Comic> unread(final Collection<Comic> list, final User user) {
 		final Collection<Comic> res = new HashSet<Comic>();
-		final Collection<Comic> read = user.getComicsRead();
-
-		for (final Comic c : list)
-			if (!read.contains(c))
-				res.add(c);
+		/*
+		 * final Collection<Comic> read = user.getComicsRead();
+		 * 
+		 * for (final Comic c : list)
+		 * if (!read.contains(c))
+		 * res.add(c);
+		 */
 		return res;
+
 	}
 
 	@RequestMapping(value = "/read", method = RequestMethod.GET)

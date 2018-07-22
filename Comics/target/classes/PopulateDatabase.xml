@@ -793,7 +793,6 @@
 		<property name="birthDate" value="1973/01/25"/>
 		<property name="birthPlace" value="Detroit, Michigan, EEUU"/>
 		<property name="image" value="http://localhost:8080/Comics/images/geoffjohns.png"/>
-		<property name="description" value="Great Author"/>
 		<property name="comics">
 			<list>
 				<ref bean="comic1"/>

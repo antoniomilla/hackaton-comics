@@ -41,7 +41,7 @@ public class PersonajeServiceTest {
 		e.setName("nombre");
 		e.setDescription("descripcion");
 		final Publisher e2 = this.publisherService.save(e);
-		p.setPublisher(e2);
+		//p.setPublisher(e2);
 		Assert.isTrue(!this.comicCharacterService.findAll().contains(p));
 		final ComicCharacter saved = this.comicCharacterService.save(p);
 		Assert.isTrue(this.comicCharacterService.findAll().contains(saved));
@@ -56,7 +56,7 @@ public class PersonajeServiceTest {
 		e.setName("nombre");
 		e.setDescription("descripcion");
 		final Publisher e2 = this.publisherService.save(e);
-		p.setPublisher(e2);
+		//p.setPublisher(e2);
 		final ComicCharacter saved = this.comicCharacterService.save(p);
 		Assert.isTrue(this.comicCharacterService.findOne(saved.getId()).equals(saved));
 	}
@@ -70,7 +70,7 @@ public class PersonajeServiceTest {
 		e.setName("nombre");
 		e.setDescription("descripcion");
 		final Publisher e2 = this.publisherService.save(e);
-		p.setPublisher(e2);
+		//p.setPublisher(e2);
 		final ComicCharacter saved = this.comicCharacterService.save(p);
 		Assert.isTrue(this.comicCharacterService.findAll().contains(saved));
 		this.comicCharacterService.delete(saved);
