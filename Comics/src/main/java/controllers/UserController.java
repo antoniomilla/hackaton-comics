@@ -2,7 +2,6 @@
 package controllers;
 
 import java.util.Collection;
-import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -60,11 +59,11 @@ public class UserController {
 	public ModelAndView saveCustomer(@Valid final User user, final BindingResult binding) {
 		ModelAndView res;
 		final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
-		if (binding.hasErrors())
+		if (binding.hasErrors()) {
+			System.out.print(binding.getAllErrors());
 			res = this.createModelAndView(user, null);
-		else {
+		} else {
 			user.getUserAccount().setPassword(encoder.encodePassword(user.getUserAccount().getPassword(), null));
-			user.setCreationTime(new Date());
 			final User userSaved = this.userService.save(user);
 			res = new ModelAndView("security/login");
 			res.addObject("credentials", userSaved.getUserAccount());
