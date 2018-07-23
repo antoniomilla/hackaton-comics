@@ -65,3 +65,9 @@
 	
 	</display:table>
 </div>
+
+<security:authorize access="hasRole('USER')">
+	<div>
+		<a href="comment/create.do"><spring:message code="comment.create"/></a>
+	</div>
+</security:authorize>
