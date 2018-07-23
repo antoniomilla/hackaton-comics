@@ -36,6 +36,7 @@ public class CommentService {
 
 	public Comment createComic(final Integer comicId) {
 		final Comment res = new Comment();
+
 		final User user = this.userService.findByPrincipal();
 		res.setUser(user);
 		final Comic comic = this.comicService.findOne(comicId);
@@ -44,8 +45,6 @@ public class CommentService {
 		res.setCreationTime(now);
 		Assert.notNull(res.getUser());
 		Assert.notNull(res.getComic());
-		res.getUser().getUserComments().add(res);
-		res.getComic().getComments().add(res);
 
 		return res;
 	}
@@ -83,7 +82,18 @@ public class CommentService {
 
 		final Comment res = this.commentRepository.save(comment);
 		res.getUser().getUserComments().add(res);
-		res.getVolume().getComments().add(res);
+
+		if (res.getComic() != null)
+			res.getComic().getComments().add(res);
+		if (res.getPublisher() != null)
+			res.getPublisher().getComments().add(res);
+		if (res.getAuthor() != null)
+			res.getAuthor().getComments().add(res);
+		if (res.getComicCharacter() != null)
+			res.getComicCharacter().getComments().add(res);
+		if (res.getVolume() != null)
+			res.getVolume().getComments().add(res);
+
 		Assert.notNull(comment);
 		return res;
 	}

@@ -70,7 +70,7 @@ public class CommentController {
 			try {
 				this.commentService.save(comment);
 				if (comment.getComic() != null)
-					result = new ModelAndView("redirect:comic/display.do?comicId=" + comment.getComic().getId());
+					result = new ModelAndView("redirect:/comic/display.do?comicId=" + comment.getComic().getId());
 				if (comment.getVolume() != null)
 					result = new ModelAndView("redirect:/volume/display.do?volumeId=" + comment.getVolume().getId());
 			} catch (final Throwable oops) {

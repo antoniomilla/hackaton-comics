@@ -28,6 +28,7 @@
 	<form:hidden path="volume" />
 	<form:hidden path="author" />
 	<form:hidden path="creationTime" />
+	<form:hidden path="publisher"/>
 	
 
 	<form:label path="text">
@@ -45,10 +46,36 @@
 			value="<spring:message code="comment.delete" />"
 			onclick="return confirm('<spring:message code="comment.confirm.delete" />')" />&nbsp;
 	</jstl:if>
+	<jstl:if test="${comment.comic.id!=null }">
 	<input type="button" name="cancel"
 		value="<spring:message code="comment.cancel" />"
 		onclick="javascript: relativeRedir('comic/display.do?comicId=${comment.comic.id}');" />
 	<br />
+	</jstl:if>
+	<jstl:if test="${comment.publisher.id!=null }">
+	<input type="button" name="cancel"
+		value="<spring:message code="comment.cancel" />"
+		onclick="javascript: relativeRedir('publisher/display.do?publisherId=${comment.publisher.id}');" />
+	<br />
+	</jstl:if>
+	<jstl:if test="${comment.author.id!=null }">
+	<input type="button" name="cancel"
+		value="<spring:message code="comment.cancel" />"
+		onclick="javascript: relativeRedir('author/display.do?authorId=${comment.author.id}');" />
+	<br />
+	</jstl:if>
+	<jstl:if test="${comment.comicCharacter.id!=null }">
+	<input type="button" name="cancel"
+		value="<spring:message code="comment.cancel" />"
+		onclick="javascript: relativeRedir('comicCharacter/display.do?comicCharacterId=${comment.comicCharacter.id}');" />
+	<br />
+	</jstl:if>
+	<jstl:if test="${comment.volume.id!=null }">
+	<input type="button" name="cancel"
+		value="<spring:message code="comment.cancel" />"
+		onclick="javascript: relativeRedir('volume/display.do?volumeId=${comment.volume.id}');" />
+	<br />
+	</jstl:if>
 
 
 </form:form>
