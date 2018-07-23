@@ -34,3 +34,24 @@
 	
 	</display:table>
 </div>
+
+<div>
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comments" id="row">
+	
+	<spring:message code="comment.text" var="textHeader" />
+	<display:column property="text" title="${textHeader}" sortable="true"/>
+	
+	<spring:message code="comment.creationTime" var="creationTimeHeader" />
+	<display:column property="creationTime" title="${creationTimeHeader}" sortable="true"/>
+	
+	<spring:message code="comment.user" var="userHeader" />
+	<display:column property="user.nickname" title="${userHeader}" sortable="true"/>
+	
+	</display:table>
+</div>
+
+<security:authorize access="hasRole('USER')">
+	<div>
+		<a href="comment/create.do?comicid=${comicCharacter.id }"><spring:message code="comment.create"/></a>
+	</div>
+</security:authorize>

@@ -28,11 +28,11 @@ public class CommentController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(final Integer comicId) {
 		ModelAndView result;
 		Comment comment;
 
-		comment = this.commentService.create();
+		comment = this.commentService.create(comicId);
 		result = this.createEditModelAndView(comment);
 
 		return result;
@@ -59,8 +59,10 @@ public class CommentController {
 			result = this.createEditModelAndView(comment);
 		else
 			try {
-				this.commentService.save(comment);
-				result = new ModelAndView("redirect:comic/list.do");
+				final Comment saved = this.commentService.save(comment);
+				comment.getComic().getComments().add(saved);
+				comment.getUser().getUserComments().add(saved);
+				result = new ModelAndView("redirect:comic/display.do?comicId=" + comment.getComic().getId());
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(comment, "comment.commit.error");
 			}

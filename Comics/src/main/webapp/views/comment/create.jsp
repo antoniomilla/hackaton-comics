@@ -23,6 +23,8 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="comic" />
+	<form:hidden path="user" />
 
 	<form:label path="text">
 		<spring:message code="comment.text" />:

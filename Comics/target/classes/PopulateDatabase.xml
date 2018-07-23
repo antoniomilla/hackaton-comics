@@ -573,7 +573,7 @@
 	</bean>
 	
 	<bean id="comment2User1" class="domain.Comment">
-		<property name="text" value="Awsome character."/>
+		<property name="text" value="Awesome character."/>
 		<property name="creationTime" value="2017/07/18"/>
 		<property name="user" ref="user1"/>
 		<property name="comicCharacter" ref="comicCharacter1"/>

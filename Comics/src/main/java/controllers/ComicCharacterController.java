@@ -20,6 +20,7 @@ import services.PublisherService;
 import domain.Comic;
 import domain.ComicCharacter;
 import domain.ComicComicCharacter;
+import domain.Comment;
 import domain.Publisher;
 
 @Controller
@@ -54,9 +55,11 @@ public class ComicCharacterController {
 		ModelAndView result;
 		final ComicCharacter comicCharacter = this.comicCharacterService.findOne(comicCharacterId);
 		final Collection<Comic> comics = this.comicCharacterComics(comicCharacter);
+		final Collection<Comment> comments = comicCharacter.getComments();
 		result = new ModelAndView("comicCharacter/display");
 		result.addObject("comicCharacter", comicCharacter);
 		result.addObject("comics", comics);
+		result.addObject("comments", comments);
 
 		return result;
 	}

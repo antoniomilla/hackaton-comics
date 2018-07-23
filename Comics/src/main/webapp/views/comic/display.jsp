@@ -68,6 +68,6 @@
 
 <security:authorize access="hasRole('USER')">
 	<div>
-		<a href="comment/create.do"><spring:message code="comment.create"/></a>
+		<a href="comment/create.do?comicid=${comic.id }"><spring:message code="comment.create"/></a>
 	</div>
 </security:authorize>
