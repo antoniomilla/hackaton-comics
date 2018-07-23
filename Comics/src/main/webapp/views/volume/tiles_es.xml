@@ -6,9 +6,19 @@
        
 <tiles-definitions>
 
-		<definition name="volume/list" extends="master.page">	
+	<definition name="volume/list" extends="master.page">	
 		<put-attribute name="title" value="Lista de volúmenes" />
 		<put-attribute name="body" value="/views/volume/list.jsp" />
+	</definition>
+	
+	<definition name="volume/edit" extends="master.page">	
+		<put-attribute name="title" value="Edicion de volúmenes" />
+		<put-attribute name="body" value="/views/volume/edit.jsp" />
+	</definition>
+	
+	<definition name="volume/display" extends="master.page">	
+		<put-attribute name="title" value="Vista del volumen" />
+		<put-attribute name="body" value="/views/volume/display.jsp" />
 	</definition>
 	
 	

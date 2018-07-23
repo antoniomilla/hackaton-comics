@@ -26,7 +26,9 @@
 	<spring:message code="volume.description" var="levelHeader" />
 	<display:column property="description" title="${levelHeader}" sortable="true" />
 	
-	<spring:message code="volume.details" var="levelHeader" />
-	<display:column><a href="volume/display.do?volumeId=${row.id}"><spring:message code="volume.details"/></a></display:column>
-
+	<display:column>
+		<a href="volume/display.do?volumeId=${row.id }">
+		<spring:message code="volume.display"/>
+		</a>
+	</display:column>
 </display:table>

@@ -37,6 +37,12 @@ public class CommentService {
 		res.setUser(user);
 		final Comic comic = this.comicService.findOne(comicId);
 		res.setComic(comic);
+		final Date now = new Date();
+		res.setCreationTime(now);
+		Assert.notNull(res.getUser());
+		Assert.notNull(res.getComic());
+		res.getUser().getUserComments().add(res);
+		res.getComic().getComments().add(res);
 
 		return res;
 	}
@@ -57,8 +63,6 @@ public class CommentService {
 
 	public Comment save(final Comment comment) {
 		Assert.notNull(comment);
-		final Date now = new Date();
-		comment.setCreationTime(now);
 
 		final Comment res = this.commentRepository.save(comment);
 

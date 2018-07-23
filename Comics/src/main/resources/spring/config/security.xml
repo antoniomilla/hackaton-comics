@@ -59,6 +59,8 @@
 		<security:intercept-url pattern="/user/list.do" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/user/create.do" access="permitAll" />
 		<security:intercept-url pattern="/volume/list.do" access="permitAll" />
+		<security:intercept-url pattern="/volume/display.do" access="permitAll" />
+		<security:intercept-url pattern="/volume/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/administrator/list.do" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/comment/**" access="hasRole('USER')" />
 	

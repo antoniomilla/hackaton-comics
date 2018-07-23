@@ -600,6 +600,13 @@
 		<property name="publisher" ref="publisher2"/>
 	</bean>
 	
+	<bean id="comment4User2" class="domain.Comment">
+		<property name="text" value="Ready to read it."/>
+		<property name="creationTime" value="2017/07/16"/>
+		<property name="user" ref="user2"/>
+		<property name="volume" ref="volume1"/>
+	</bean>
+	
 	<!-- ComicComicCharacters -->
 	
 	<bean id="comicComicCharacter1" class="domain.ComicComicCharacter">
@@ -962,6 +969,7 @@
 		to save his mother, but his actions have turned the reality into a new one."/>
 		<property name="comic" ref="comic1"/>
 		<property name="author" ref="author1"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume1.png"/>		
 		<property name="users">
 			<list>
 				<ref bean="user1"/>
@@ -969,7 +977,7 @@
 		</property>
 		<property name="comments">
 			<list>
-			
+				<ref bean="comment4User2"/>
 			</list>
 		</property>
 	</bean>
@@ -984,6 +992,7 @@
 		helped by Thomas Wayne, has to fix the reality before it's too late."/>
 		<property name="comic" ref="comic1"/>
 		<property name="author" ref="author1"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume2.png"/>
 		<property name="users">
 			<list>
 				<ref bean="user1"/>
@@ -1005,6 +1014,7 @@
 		Flash once and for all. The final battle is set to happen."/>
 		<property name="comic" ref="comic1"/>
 		<property name="author" ref="author1"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume3.png"/>
 		<property name="users">
 			<list>
 				<ref bean="user1"/>
