@@ -64,6 +64,18 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="user4" />
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 
 	
 	<!-- Actors -->	
@@ -91,6 +103,7 @@
 				<ref bean="userComic1"/>
 				<ref bean="userComic3"/>
 				<ref bean="userComic5"/>
+				<ref bean="userComic8"/>
 			</list>
 		</property>
 		<property name="messageFolders">
@@ -104,22 +117,28 @@
 			<list>
 				<ref bean="directMessage1User1ToUser2A"/>
 				<ref bean="directMessage2User1ToUser2A"/>
+				<ref bean="directMessage1User1ToUser4A"/>
 			</list>
 		</property>
 		<property name="receipt">
 			<list>
 				<ref bean="directMessage1User2ToUser1B"/>
 				<ref bean="directMessage2User2ToUser1B"/>
+				<ref bean="directMessage1User4ToUser1B"/>
 			</list>
 		</property>
 		<property name="friends">
 			<list>
 				<ref bean="user2"/>
+				<ref bean="user4"/>
 			</list>
 		</property>
 		<property name="userComments">
 			<list>
 				<ref bean="comment1User1"/>
+				<ref bean="comment2User1"/>
+				<ref bean="comment3User1"/>
+				<ref bean="comment4User1"/>
 			</list>
 		</property>
 		<property name="userVolumes">
@@ -214,6 +233,49 @@
 		</property>
 	</bean>
 	
+	<bean id="user4" class="domain.User">
+		<property name="nickname" value="User 4"/>
+		<property name="creationTime" value="2018/07/22"/>
+		<property name="userAccount" ref="userAccount5"/>
+		<property name="blocked" value="False"/>
+		<property name="blockReason" value="This user is not blocked."/>
+		<property name="trusted" value="False"/>
+		<property name="description" value="This is user4's description."/>
+		<property name="level" value="C"/>
+		<property name="lastLevelUpdateDate" value="2018/07/22"/>
+		<property name="onlyFriendsCanSendDms" value="True"/>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic6"/>
+				<ref bean="userComic7"/>
+			</list>
+		</property>
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder1User4"/>
+				<ref bean="messageFolder2User4"/>
+				<ref bean="messageFolder3User4"/>
+			</list>
+		</property>
+		<property name="sent">
+			<list>
+				<ref bean="directMessage1User4ToUser1A"/>
+			</list>
+		</property>
+		<property name="receipt">
+			<list>
+				<ref bean="directMessage1User1ToUser4B"/>
+			</list>
+		</property>
+		<property name="friends">
+			<list>
+				<ref bean="user1"/>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
 	<!-- MessageFolders -->
 	
 	<bean id="messageFolder1User1" class="domain.MessageFolder">
@@ -225,6 +287,7 @@
 			<list>
 				<ref bean="directMessage1User2ToUser1B"/>
 				<ref bean="directMessage2User2ToUser1B"/>
+				<ref bean="directMessage1User4ToUser1B"/>
 			</list>
 		</property>
 	</bean>
@@ -238,6 +301,7 @@
 			<list>
 				<ref bean="directMessage1User1ToUser2A"/>
 				<ref bean="directMessage2User1ToUser2A"/>
+				<ref bean="directMessage1User1ToUser4A"/>
 			</list>
 		</property>
 	</bean>
@@ -328,6 +392,42 @@
 		</property>
 	</bean>
 	
+	<bean id="messageFolder1User4" class="domain.MessageFolder">
+		<property name="name" value="FolderUser4Inbox"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
+		<property name="nameForDisplay" value="Inbox"/>
+		<property name="owner" ref="user4"/>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage1User1ToUser4B"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="messageFolder2User4" class="domain.MessageFolder">
+		<property name="name" value="FolderUser4Sent"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
+		<property name="nameForDisplay" value="Sent"/>
+		<property name="owner" ref="user4"/>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage1User4ToUser1A"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="messageFolder3User4" class="domain.MessageFolder">
+		<property name="name" value="FolderUser4Trash"/>
+		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
+		<property name="nameForDisplay" value="Trash"/>
+		<property name="owner" ref="user4"/>
+		<property name="messages">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
 	<!-- DirectMessages -->
 	
 	<bean id="directMessage1User1ToUser2A" class="domain.DirectMessage">
@@ -408,6 +508,46 @@
 		<property name="recibient" ref="user1"/>
 	</bean>
 	
+	<bean id="directMessage1User4ToUser1A" class="domain.DirectMessage">
+		<property name="subject" value="From hell read."/>
+		<property name="body" value="I've just read From Hell. So so good, 
+		far better than the movie, obviously."/>
+		<property name="administrationNotice" value="False"/>
+		<property name="messageFolder" ref="messageFolder2User4"/>
+		<property name="sender" ref="user4"/>
+		<property name="recibient" ref="user1"/>
+	</bean>
+	
+	<bean id="directMessage1User4ToUser1B" class="domain.DirectMessage">
+		<property name="subject" value="From hell read."/>
+		<property name="body" value="I've just read From Hell. So so good, 
+		far better than the movie, obviously."/>
+		<property name="administrationNotice" value="False"/>
+		<property name="messageFolder" ref="messageFolder1User1"/>
+		<property name="sender" ref="user4"/>
+		<property name="recibient" ref="user1"/>
+	</bean>
+	
+	<bean id="directMessage1User1ToUser4A" class="domain.DirectMessage">
+		<property name="subject" value="Here you have a friend!."/>
+		<property name="body" value="Hi there!. If you are new at reading comic books
+		here you have somebody to tell you some good stuff!."/>
+		<property name="administrationNotice" value="True"/>
+		<property name="messageFolder" ref="messageFolder2User1"/>
+		<property name="sender" ref="user1"/>
+		<property name="recibient" ref="user4"/>
+	</bean>
+	
+	<bean id="directMessage1User1ToUser4B" class="domain.DirectMessage">
+		<property name="subject" value="Here you have a friend!."/>
+		<property name="body" value="Hi there!. If you are new at reading comic books
+		here you have somebody to tell you some good stuff!."/>
+		<property name="administrationNotice" value="True"/>
+		<property name="messageFolder" ref="messageFolder1User4"/>
+		<property name="sender" ref="user1"/>
+		<property name="recibient" ref="user4"/>
+	</bean>
+	
 	<!-- Comics -->
 
 	<bean id="comic1" class="domain.Comic">
@@ -424,6 +564,7 @@
 		<property name="userComics">
 			<list>
 				<ref bean="userComic1"/>
+				<ref bean="userComic7"/>
 			</list>
 		</property>
 		<property name="description" value="Due to Flash's actions, the world turned into 
@@ -534,6 +675,7 @@
 
 			<list>
 				<ref bean="userComic5"/>
+				<ref bean="userComic6"/>
 			</list>
 		</property>
 
@@ -552,6 +694,41 @@
 		<property name="comments">
 			<list>
 				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="comic5" class="domain.Comic">
+		<property name="name" value="The walking dead"/>
+		<property name="publisher" ref="publisher3"/>
+		<property name="author" ref="author5"/>
+		<property name="image" value="http://localhost:8080/Comics/images/thewalkingdead.png"/>
+
+		<property name="comicComicCharacter">
+			<list>
+				
+			</list>
+		</property>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic8"/>
+			</list>
+		</property>
+		<property name="description" value="This comic shows a distopic reality where the zombies have taken over the world and 
+		a group of peope has to survive in it."/>
+		<property name="tags">
+			<list>
+				
+			</list>
+		</property>
+		<property name="volumes">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				<ref bean="comment4User1"/>
 			</list>
 		</property>
 	</bean>
@@ -607,6 +784,13 @@
 		<property name="volume" ref="volume1"/>
 	</bean>
 	
+	<bean id="comment4User1" class="domain.Comment">
+		<property name="text" value="Great comic, awful tv show."/>
+		<property name="creationTime" value="2017/07/23"/>
+		<property name="user" ref="user1"/>
+		<property name="comic" ref="comic5"/>
+	</bean>
+	
 	<!-- ComicComicCharacters -->
 	
 	<bean id="comicComicCharacter1" class="domain.ComicComicCharacter">
@@ -639,6 +823,12 @@
 		<property name="comicCharacter" ref="comicCharacter5"/>
 	</bean>
 	
+	<bean id="comicComicCharacter6" class="domain.ComicComicCharacter">
+		<property name="role" value="Supporting character"/>
+		<property name="comic" ref="comic2"/>
+		<property name="comicCharacter" ref="comicCharacter6"/>
+	</bean>
+	
 	<!-- ComicCharacters -->
 	
 	<bean id="comicCharacter1" class="domain.ComicCharacter">
@@ -651,7 +841,11 @@
 		all comic books. Created by Bob Kane and Bill Finger for DC Comics. 
 		He is one of the three members of DC Trinity.Due to his parents' murdered, he 
 		fights crime using amazing items built by him."/>
-		<property name="comicComicCharacter" ref="comicComicCharacter1"/>
+		<property name="comicComicCharacter">
+			<list>
+				<ref bean="comicComicCharacter1"/>
+			</list>
+		</property>
 		<property name="publisher" ref="publisher1"/>
 		<property name="otherAliases">
 			<list>
@@ -674,7 +868,11 @@
 		<property name="description" value="Tony stark is a billionaire playboy who 
 		lives the life the way he wants. But he also is an engineering genius 
 		capable of build amazing war armors. He fights the crime using this armors."/>
-		<property name="comicComicCharacter" ref="comicComicCharacter2"/>
+		<property name="comicComicCharacter">
+			<list>
+				<ref bean="comicComicCharacter2"/>
+			</list>
+		</property>
 		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
@@ -697,7 +895,11 @@
 		<property name="description" value="Captain America is an american symbol who 
 		represents the american way. He is a very patriotic hero who fights crime 
 		for his country."/>
-		<property name="comicComicCharacter" ref="comicComicCharacter3"/>
+		<property name="comicComicCharacter">
+			<list>
+				<ref bean="comicComicCharacter3"/>
+			</list>
+		</property>
 		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
@@ -719,7 +921,11 @@
 		<property name="image" value="http://localhost:8080/Comics/images/rorschach.png"/>
 		<property name="description" value="An old violent hero who works against the 
 		rules set by the government."/>
-		<property name="comicComicCharacter" ref="comicComicCharacter4"/>
+		<property name="comicComicCharacter">
+			<list>
+				<ref bean="comicComicCharacter4"/>
+			</list>
+		</property>
 		<property name="publisher" ref="publisher1"/>
 		<property name="otherAliases">
 			<list>
@@ -742,7 +948,11 @@
 		<property name="description" value="Matt Murdock is a blind person who jobs as 
 		a lawyer by day but, when the night comes, he becomes a crime fighter known as
 		Daredevil."/>
-		<property name="comicComicCharacter" ref="comicComicCharacter5"/>
+		<property name="comicComicCharacter">
+		<list>
+			<ref bean="comicComicCharacter5"/>
+		</list>
+		</property>
 		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
@@ -750,6 +960,33 @@
 			</list>
 		</property>
 		<property name="firstAppareance" value="Daredevil 1, 1964"/>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="comicCharacter6" class="domain.ComicCharacter">
+		<property name="name" value="Peter Parker"/>
+		<property name="alias" value="Spiderman"/>
+		<property name="city" value="Queens, New york"/>
+		<property name="image" value="http://localhost:8080/Comics/images/spiderman.png"/>
+		<property name="description" value="Peter Parker is a student who was bitten 
+		by a radioactive spider.He got powers related to spiders due to this bite. 
+		Now, as Spiderman, he uses these powers to fight crime."/>
+		<property name="comicComicCharacter">
+		<list>
+			<ref bean="comicComicCharacter6"/>
+		</list>
+		</property>
+		<property name="publisher" ref="publisher2"/>
+		<property name="otherAliases">
+			<list>
+				
+			</list>
+		</property>
+		<property name="firstAppareance" value="Amazing fantasy 15, 1962"/>
 		<property name="comments">
 			<list>
 				
@@ -807,6 +1044,29 @@
 		<property name="comments">
 			<list>
 				<ref bean="comment3User2"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="publisher3" class="domain.Publisher">
+		<property name="name" value="Image Comics"/>
+		<property name="foundationDate" value="1992/01/01"/>
+		<property name="description" value="Publisher founded in 1992 by famous
+		authors who left Marvel Comics like Todd McFarlane, Jim Lee and Rob Liefeld."/>
+		<property name="image" value="http://localhost:8080/Comics/images/imagelogo.png"/>
+		<property name="comics">
+			<list>
+				<ref bean="comic5"/>
+			</list>
+		</property>
+		<property name="comicCharacters">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				
 			</list>
 		</property>
 	</bean>
@@ -917,6 +1177,30 @@
 		</property>
 	</bean>
 	
+	<bean id="author5" class="domain.Author">
+		<property name="name" value="Robert kirkman"/>
+		<property name="birthDate" value="1978/11/30"/>
+		<property name="birthPlace" value="Richmon, Kentucky, EEUU"/>
+		<property name="image" value="http://localhost:8080/Comics/images/robertkirkman.png"/>
+		<property name="comics">
+			<list>
+				<ref bean="comic5"/>
+			</list>
+		</property>
+		<property name="description" value="Robert kirkman is an american comic book author who is most known
+		for being the author of the famous comic book serie named The walkind dead."/>
+		<property name="volumes">
+			<list>
+				
+			</list>
+		</property>
+		<property name="comments">
+			<list>
+				
+			</list>
+		</property>
+	</bean>
+	
 	<!-- UserComics -->
 	
 	<bean id="userComic1" class="domain.UserComic">
@@ -956,6 +1240,27 @@
 		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
 		<property name="user" ref="user1"/>
 		<property name="comic" ref="comic4"/>
+	</bean>
+	
+	<bean id="userComic6" class="domain.UserComic">
+		<property name="started" value="False"/>
+		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="user" ref="user4"/>
+		<property name="comic" ref="comic4"/>
+	</bean>
+	
+	<bean id="userComic7" class="domain.UserComic">
+		<property name="started" value="False"/>
+		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="user" ref="user4"/>
+		<property name="comic" ref="comic1"/>
+	</bean>
+	
+	<bean id="userComic8" class="domain.UserComic">
+		<property name="started" value="False"/>
+		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="user" ref="user1"/>
+		<property name="comic" ref="comic5"/>
 	</bean>
 	
 	<!-- Volumes -->
@@ -1037,6 +1342,7 @@
 		each one."/>
 		<property name="comic" ref="comic2"/>
 		<property name="author" ref="author2"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume4.png"/>
 		<property name="users">
 			<list>
 				<ref bean="user2"/>
@@ -1059,6 +1365,7 @@
 		to catch them."/>
 		<property name="comic" ref="comic2"/>
 		<property name="author" ref="author2"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume5.png"/>
 		<property name="users">
 			<list>
 				<ref bean="user2"/>
@@ -1080,6 +1387,7 @@
 		in the middle of New York."/>
 		<property name="comic" ref="comic2"/>
 		<property name="author" ref="author2"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume6.png"/>
 		<property name="users">
 			<list>
 				<ref bean="user2"/>
