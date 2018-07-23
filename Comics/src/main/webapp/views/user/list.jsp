@@ -15,7 +15,7 @@
 
 	
 	<spring:message code="user.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="true" />
+	<display:column property="nickname" title="${nameHeader}" sortable="true" />
 
 	<spring:message code="user.level" var="levelHeader" />
 	<display:column property="level" title="${levelHeader}" sortable="true" />

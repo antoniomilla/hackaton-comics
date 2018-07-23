@@ -10,26 +10,49 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <div>
-	<img src="${comic.image }" width="200" height="200"/>
+	<img src="${volume.image }" width="200" height="200"/>
 </div>
 
-<div style="position:absolute;top:270px;left:230px;">
-	<p><spring:message code="comic.name"/>: <jstl:out value="${comic.name }"></jstl:out></p>
-	<p><spring:message code="comic.publisher"/>: <jstl:out value="${comic.publisher.name }"></jstl:out></p>
-	<p><spring:message code="comic.author"/>: <jstl:out value="${comic.author.name }"></jstl:out></p>
+<div>
+	<p><spring:message code="volume.name"/>: <jstl:out value="${volume.name }"></jstl:out></p>
+	<p><spring:message code="volume.publisher"/>: <jstl:out value="${volume.publisher.name }"></jstl:out></p>
+	<p><spring:message code="volume.author"/>: <jstl:out value="${volume.author.name }"></jstl:out></p>
+	<p><spring:message code="volume.description"/>: <jstl:out value="${volume.description }"></jstl:out></p>
+	<p><spring:message code="volume.chapterCount"/>: <jstl:out value="${volume.chapterCount }"></jstl:out></p>
 </div>
 
 
-<div style="position:absolute;top:200px;left:400px;">
+<div>
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comicCharacters" id="row">
 	
 	<display:column property="alias"/>
 	
 	<display:column>
 		<a href="comicCharacter/display.do?comicCharacterId=${row.id }">
-		<spring:message code="comic.display"/>
+		<spring:message code="volume.display"/>
 		</a>
 	</display:column>
 	
 	</display:table>
 </div>
+
+<div>
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comments" id="row">
+	
+	<spring:message code="comment.text" var="textHeader" />
+	<display:column property="text" title="${textHeader}" sortable="true"/>
+	
+	<spring:message code="comment.creationTime" var="creationTimeHeader" />
+	<display:column property="creationTime" title="${creationTimeHeader}" sortable="true"/>
+	
+	<spring:message code="comment.user" var="userHeader" />
+	<display:column property="user.nickname" title="${userHeader}" sortable="true"/>
+	
+	</display:table>
+</div>
+
+<security:authorize access="hasRole('USER')">
+	<div>
+		<a href="comment/create.do?comicId=${comic.id }"><spring:message code="comment.create"/></a>
+	</div>
+</security:authorize>

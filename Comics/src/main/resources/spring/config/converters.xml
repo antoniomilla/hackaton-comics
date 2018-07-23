@@ -38,6 +38,12 @@
 		<bean class="converters.StringToAuthorityConverter" />
 		<bean class="converters.AuthorityToStringConverter" />
 		
+		<bean class="converters.StringToCommentConverter" />
+		<bean class="converters.CommentToStringConverter" />
+		
+		<bean class="converters.StringToVolumeConverter" />
+		<bean class="converters.VolumeToStringConverter" />
+		
 		
 		
 	</util:list>

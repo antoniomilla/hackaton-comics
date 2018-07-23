@@ -11,6 +11,14 @@
 		<put-attribute name="body" value="/views/volume/list.jsp" />
 	</definition>
 	
+	<definition name="volume/edit" extends="master.page">	
+		<put-attribute name="title" value="Edit volume" />
+		<put-attribute name="body" value="/views/volume/edit.jsp" />
+	</definition>
 	
+	<definition name="volume/display" extends="master.page">	
+		<put-attribute name="title" value="Volume display" />
+		<put-attribute name="body" value="/views/volume/display.jsp" />
+	</definition>
 
 </tiles-definitions>

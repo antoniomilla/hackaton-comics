@@ -13,14 +13,14 @@
 	<img src="${author.image }" width="200" height="200"/>
 </div>
 
-<div style="position:absolute;top:270px;left:230px;width:150;">
+<div>
 	<p><spring:message code="author.name"/>: <jstl:out value="${author.name }"></jstl:out></p>
 	<p><spring:message code="author.birthDate"/>: <jstl:out value="${author.birthDate }"></jstl:out></p>
 	<p><spring:message code="author.birthPlace"/>: <jstl:out value="${author.birthPlace }"></jstl:out></p>
 </div>
 
 
-<div style="position:absolute;top:220px;left:600px;">
+<div>
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comics" id="row">
 	
 	<display:column property="name"/>
@@ -33,3 +33,40 @@
 	
 	</display:table>
 </div>
+
+<div>
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="volumes" id="row">
+	
+	<display:column property="name"/>
+	
+	<display:column>
+		<a href="volume/display.do?volumeId=${row.id }">
+		<spring:message code="author.display"/>
+		</a>
+	</display:column>
+	
+	</display:table>
+	
+</div>
+
+<div>
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comments" id="row">
+	
+	<spring:message code="comment.text" var="textHeader" />
+	<display:column property="text" title="${textHeader}" sortable="true"/>
+	
+	<spring:message code="comment.creationTime" var="creationTimeHeader" />
+	<display:column property="creationTime" title="${creationTimeHeader}" sortable="true"/>
+	
+	<spring:message code="comment.user" var="userHeader" />
+	<display:column property="user.nickname" title="${userHeader}" sortable="true"/>
+	
+	</display:table>
+</div>
+
+<security:authorize access="hasRole('USER')">
+	<div>
+		<a href="comment/create.do?comicid=${author.id }"><spring:message code="comment.create"/></a>
+	</div>
+</security:authorize>
+

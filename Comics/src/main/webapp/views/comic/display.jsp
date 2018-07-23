@@ -13,14 +13,16 @@
 	<img src="${comic.image }" width="200" height="200"/>
 </div>
 
-<div style="position:absolute;top:270px;left:230px;">
+<div>
 	<p><spring:message code="comic.name"/>: <jstl:out value="${comic.name }"></jstl:out></p>
-	<p><spring:message code="comic.publisher"/>: <jstl:out value="${comic.publisher.name }"></jstl:out></p>
-	<p><spring:message code="comic.author"/>: <jstl:out value="${comic.author.name }"></jstl:out></p>
+	<p><spring:message code="comic.publisher"/>: <a href="publisher/display.do?publisherId=${comic.publisher.id }"><jstl:out value="${comic.publisher.name }"></jstl:out></a></p>
+	<p><spring:message code="comic.author"/>: <a href="author/display.do?authorId=${comic.author.id }"><jstl:out value="${comic.author.name }"></jstl:out></a></p>
+	<p><spring:message code="comic.description"/>: <jstl:out value="${comic.description }"></jstl:out></p>
+
 </div>
 
 
-<div style="position:absolute;top:200px;left:400px;">
+<div>
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comicCharacters" id="row">
 	
 	<display:column property="alias"/>
@@ -33,3 +35,39 @@
 	
 	</display:table>
 </div>
+
+<div>
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="volumes" id="row">
+	
+	<display:column property="name"/>
+	
+	<display:column>
+		<a href="volume/display.do?volumeId=${row.id }">
+		<spring:message code="comic.display"/>
+		</a>
+	</display:column>
+	
+	</display:table>
+	
+</div>
+
+<div>
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comments" id="row">
+	
+	<spring:message code="comment.text" var="textHeader" />
+	<display:column property="text" title="${textHeader}" sortable="true"/>
+	
+	<spring:message code="comment.creationTime" var="creationTimeHeader" />
+	<display:column property="creationTime" title="${creationTimeHeader}" sortable="true"/>
+	
+	<spring:message code="comment.user" var="userHeader" />
+	<display:column property="user.nickname" title="${userHeader}" sortable="true"/>
+	
+	</display:table>
+</div>
+
+<security:authorize access="hasRole('USER')">
+	<div>
+		<a href="comment/create.do?comicId=${comic.id }"><spring:message code="comment.create"/></a>
+	</div>
+</security:authorize>

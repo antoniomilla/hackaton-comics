@@ -29,7 +29,8 @@
 		<value>/views/comicCharacter/messages</value>
 		<value>/views/user/messages</value>	
 		<value>/views/administrator/messages</value>	
-		<value>/views/volume/messages</value>	
+		<value>/views/volume/messages</value>
+		<value>/views/comment/messages</value>	
 
 		
 	</util:list>

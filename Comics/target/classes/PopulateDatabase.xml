@@ -573,7 +573,7 @@
 	</bean>
 	
 	<bean id="comment2User1" class="domain.Comment">
-		<property name="text" value="Awsome character."/>
+		<property name="text" value="Awesome character."/>
 		<property name="creationTime" value="2017/07/18"/>
 		<property name="user" ref="user1"/>
 		<property name="comicCharacter" ref="comicCharacter1"/>
@@ -598,6 +598,13 @@
 		<property name="creationTime" value="2017/07/16"/>
 		<property name="user" ref="user2"/>
 		<property name="publisher" ref="publisher2"/>
+	</bean>
+	
+	<bean id="comment4User2" class="domain.Comment">
+		<property name="text" value="Ready to read it."/>
+		<property name="creationTime" value="2017/07/16"/>
+		<property name="user" ref="user2"/>
+		<property name="volume" ref="volume1"/>
 	</bean>
 	
 	<!-- ComicComicCharacters -->
@@ -645,6 +652,7 @@
 		He is one of the three members of DC Trinity.Due to his parents' murdered, he 
 		fights crime using amazing items built by him."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter1"/>
+		<property name="publisher" ref="publisher1"/>
 		<property name="otherAliases">
 			<list>
 				<!--  <ref value="The dark knight"/>-->
@@ -667,6 +675,7 @@
 		lives the life the way he wants. But he also is an engineering genius 
 		capable of build amazing war armors. He fights the crime using this armors."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter2"/>
+		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -689,6 +698,7 @@
 		represents the american way. He is a very patriotic hero who fights crime 
 		for his country."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter3"/>
+		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -710,6 +720,7 @@
 		<property name="description" value="An old violent hero who works against the 
 		rules set by the government."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter4"/>
+		<property name="publisher" ref="publisher1"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -732,6 +743,7 @@
 		a lawyer by day but, when the night comes, he becomes a crime fighter known as
 		Daredevil."/>
 		<property name="comicComicCharacter" ref="comicComicCharacter5"/>
+		<property name="publisher" ref="publisher2"/>
 		<property name="otherAliases">
 			<list>
 				
@@ -759,6 +771,12 @@
 				<ref bean="comic3"/>
 			</list>
 		</property>
+		<property name="comicCharacters">
+			<list>
+				<ref bean="comicCharacter1"/>
+				<ref bean="comicCharacter4"/>
+			</list>
+		</property>
 		<property name="comments">
 			<list>
 				<ref bean="comment2User2"/>
@@ -777,6 +795,13 @@
 			<list>
 				<ref bean="comic2"/>
 				<ref bean="comic4"/>
+			</list>
+		</property>
+		<property name="comicCharacters">
+			<list>
+				<ref bean="comicCharacter2"/>
+				<ref bean="comicCharacter3"/>
+				<ref bean="comicCharacter5"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -944,6 +969,7 @@
 		to save his mother, but his actions have turned the reality into a new one."/>
 		<property name="comic" ref="comic1"/>
 		<property name="author" ref="author1"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume1.png"/>		
 		<property name="users">
 			<list>
 				<ref bean="user1"/>
@@ -951,7 +977,7 @@
 		</property>
 		<property name="comments">
 			<list>
-			
+				<ref bean="comment4User2"/>
 			</list>
 		</property>
 	</bean>
@@ -966,6 +992,7 @@
 		helped by Thomas Wayne, has to fix the reality before it's too late."/>
 		<property name="comic" ref="comic1"/>
 		<property name="author" ref="author1"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume2.png"/>
 		<property name="users">
 			<list>
 				<ref bean="user1"/>
@@ -987,6 +1014,7 @@
 		Flash once and for all. The final battle is set to happen."/>
 		<property name="comic" ref="comic1"/>
 		<property name="author" ref="author1"/>
+		<property name="image" value="http://localhost:8080/Comics/images/volume3.png"/>
 		<property name="users">
 			<list>
 				<ref bean="user1"/>

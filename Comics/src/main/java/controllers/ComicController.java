@@ -1,6 +1,7 @@
 
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -19,7 +20,11 @@ import services.ComicService;
 import services.PublisherService;
 import domain.Author;
 import domain.Comic;
+import domain.ComicCharacter;
+import domain.ComicComicCharacter;
+import domain.Comment;
 import domain.Publisher;
+import domain.Volume;
 
 @Controller
 @RequestMapping("/comic")
@@ -54,12 +59,25 @@ public class ComicController {
 	public ModelAndView display(@RequestParam final int comicId) {
 		ModelAndView result;
 		final Comic comic = this.comicService.findOne(comicId);
-		//final Collection<ComicCharacter> characters = comic.getComicCharacters();
+		final Collection<ComicCharacter> comicCharacters = this.comicComicCharacters(comic);
+		final Collection<Comment> comments = comic.getComments();
+		final Collection<Volume> volumes = comic.getVolumes();
 		result = new ModelAndView("comic/display");
 		result.addObject("comic", comic);
-		//result.addObject("characters", characters);
+		result.addObject("comicCharacters", comicCharacters);
+		result.addObject("comments", comments);
+		result.addObject("volumes", volumes);
 
 		return result;
+	}
+
+	private Collection<ComicCharacter> comicComicCharacters(final Comic c) {
+		final Collection<ComicCharacter> res = new ArrayList<ComicCharacter>();
+		for (final ComicComicCharacter ccc : c.getComicComicCharacter()) {
+			final ComicCharacter cc = ccc.getComicCharacter();
+			res.add(cc);
+		}
+		return res;
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)

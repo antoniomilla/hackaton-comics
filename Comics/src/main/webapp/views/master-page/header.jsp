@@ -29,13 +29,7 @@
 					<li><a href="user/comic/listUnread.do"><spring:message code="master.page.user.unread" /></a></li>					
 				</ul>
 			</li>
-			<li><a class="fNiv" href="user/comic/list.do"><spring:message code="master.page.comics" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="publisher/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
-					<li><a href="publisher/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
-				</ul>
-			</li>
+			<li><a class="fNiv" href="user/comic/list.do"><spring:message code="master.page.comics" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('ADMIN')">
@@ -56,21 +50,12 @@
 				</ul>
 			</li>
 			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="publisher/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
-					<li><a href="publisher/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
-				</ul>
 			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="publisher/comic/listDC.do"><spring:message code="master.page.DC" /></a></li>
-					<li><a href="publisher/comic/listMarvel.do"><spring:message code="master.page.marvel" /></a></li>					
-				</ul>
+				
 			</li>
 			<li><a class="fNiv" href="publisher/list.do"><spring:message code="master.page.publishers" /></a></li>
 			<li><a class="fNiv" href="author/list.do"><spring:message code="master.page.authors" /></a></li>

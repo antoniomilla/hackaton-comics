@@ -17,17 +17,16 @@ import org.springframework.web.servlet.ModelAndView;
 import services.AuthorService;
 import domain.Author;
 import domain.Comic;
+import domain.Comment;
+import domain.Volume;
 
 @Controller
 @RequestMapping("/author")
 public class AuthorController {
 
-	//comentario antopnio
 	@Autowired
 	private AuthorService	authorService;
 
-
-	//COMENTARIO JESUS
 
 	public AuthorController() {
 		super();
@@ -51,9 +50,13 @@ public class AuthorController {
 		ModelAndView result;
 		final Author author = this.authorService.findOne(authorId);
 		final Collection<Comic> comics = author.getComics();
+		final Collection<Comment> comments = author.getComments();
+		final Collection<Volume> volumes = author.getVolumes();
 		result = new ModelAndView("author/display");
 		result.addObject("author", author);
 		result.addObject("comics", comics);
+		result.addObject("comments", comments);
+		result.addObject("volumes", volumes);
 
 		return result;
 	}
