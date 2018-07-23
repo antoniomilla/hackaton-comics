@@ -64,14 +64,14 @@
 
 
 	<form:label path="image">
-		<spring:message code="comic.image" />:
+		<spring:message code="volume.image" />:
 	</form:label>
 	<form:input path="image" />
 	<form:errors cssClass="error" path="image" />
 	<br />
 
 	<input type="submit" name="save"
-		value="<spring:message code="volume" />" />&nbsp; 
+		value="<spring:message code="volume.save" />" />&nbsp; 
 	<jstl:if test="${volume.id != 0}">
 		<input type="submit" name="delete"
 			value="<spring:message code="volume.delete" />"

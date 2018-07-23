@@ -15,8 +15,8 @@
 
 <div>
 	<p><spring:message code="publisher.name"/>: <jstl:out value="${publisher.name }"></jstl:out></p>
-	<p><spring:message code="publisher.foundationDate"/>: <jstl:out value="${publisher.foundationDate }"></jstl:out></p>
-	<p><spring:message code="publisher.description"/>: <jstl:out value="${publisher.description }"></jstl:out></p>
+	<p><spring:message code="publisher.foundationDate"/>: <jstl:out value="${publisher.foundationDate }"></jstl:out>
+	<p><spring:message code="publisher.description"/>: <jstl:out value="${publisher.description }"></jstl:out>
 </div>
 
 

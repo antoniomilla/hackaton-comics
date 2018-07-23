@@ -32,3 +32,11 @@
 		</a>
 	</display:column>
 </display:table>
+
+<security:authorize access="hasRole('ADMIN')">
+	<div>
+		<a href="volume/create.do"> <spring:message
+				code="volume.create" />
+		</a>
+	</div>
+</security:authorize>

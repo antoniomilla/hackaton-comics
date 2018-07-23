@@ -17,6 +17,8 @@
 	<p><spring:message code="author.name"/>: <jstl:out value="${author.name }"></jstl:out></p>
 	<p><spring:message code="author.birthDate"/>: <jstl:out value="${author.birthDate }"></jstl:out></p>
 	<p><spring:message code="author.birthPlace"/>: <jstl:out value="${author.birthPlace }"></jstl:out></p>
+	<p><spring:message code="author.description"/>: <jstl:out value="${author.description }"></jstl:out></p>
+
 </div>
 
 

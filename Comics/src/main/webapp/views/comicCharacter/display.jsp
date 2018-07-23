@@ -15,9 +15,10 @@
 
 <div>
 	<p><spring:message code="comicCharacter.name"/>: <jstl:out value="${comicCharacter.name }"></jstl:out></p>
-	<p><spring:message code="comicCharacter.alias"/>: <jstl:out value="${comicCharacter.alias }"></jstl:out></p>
-	<p><spring:message code="comicCharacter.city"/>: <jstl:out value="${comicCharacter.city }"></jstl:out></p>
-	<p><spring:message code="comicCharacter.publisher"/>: <a href="publisher/display.do?publisherId=${comicCharacter.publisher.id }"><jstl:out value="${comicCharacter.publisher.name }"></jstl:out></a></p>
+	<p><spring:message code="comicCharacter.alias"/>: <jstl:out value="${comicCharacter.alias }"></jstl:out>
+	<p><spring:message code="comicCharacter.city"/>: <jstl:out value="${comicCharacter.city }"></jstl:out>
+	<p><spring:message code="comicCharacter.publisher"/>: <a href="publisher/display.do?publisherId=${comicCharacter.publisher.id }"><jstl:out value="${comicCharacter.publisher.name }"></jstl:out></a>
+	<p><spring:message code="comicCharacter.description"/>: <jstl:out value="${comicCharacter.description }"></jstl:out>
 </div>
 
 

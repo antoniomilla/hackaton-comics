@@ -15,10 +15,11 @@
 
 <div>
 	<p><spring:message code="volume.name"/>: <jstl:out value="${volume.name }"></jstl:out></p>
-	<p><spring:message code="volume.publisher"/>: <jstl:out value="${volume.comic.publisher.name }"></jstl:out></p>
-	<p><spring:message code="volume.author"/>: <jstl:out value="${volume.author.name }"></jstl:out></p>
-	<p><spring:message code="volume.description"/>: <jstl:out value="${volume.description }"></jstl:out></p>
-	<p><spring:message code="volume.chapterCount"/>: <jstl:out value="${volume.chapterCount }"></jstl:out></p>
+	<p><spring:message code="volume.releaseDate"/>: <jstl:out value="${volume.releaseDate }"></jstl:out>
+	<p><spring:message code="volume.publisher"/>: <jstl:out value="${volume.comic.publisher.name }"></jstl:out>
+	<p><spring:message code="volume.author"/>: <jstl:out value="${volume.author.name }"></jstl:out>
+	<p><spring:message code="volume.description"/>: <jstl:out value="${volume.description }"></jstl:out>
+	<p><spring:message code="volume.chapterCount"/>: <jstl:out value="${volume.chapterCount }"></jstl:out>
 </div>
 
 
