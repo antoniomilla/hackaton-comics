@@ -11,8 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.CommentRepository;
+import domain.Author;
 import domain.Comic;
+import domain.ComicCharacter;
 import domain.Comment;
+import domain.Publisher;
 import domain.User;
 import domain.Volume;
 
@@ -21,13 +24,19 @@ import domain.Volume;
 public class CommentService {
 
 	@Autowired
-	private CommentRepository	commentRepository;
+	private CommentRepository		commentRepository;
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
 	@Autowired
-	private ComicService		comicService;
+	private ComicService			comicService;
 	@Autowired
-	private VolumeService		volumeService;
+	private VolumeService			volumeService;
+	@Autowired
+	private ComicCharacterService	comicCharacterService;
+	@Autowired
+	private AuthorService			authorService;
+	@Autowired
+	private PublisherService		publisherService;
 
 
 	public CommentService() {
@@ -45,6 +54,51 @@ public class CommentService {
 		res.setCreationTime(now);
 		Assert.notNull(res.getUser());
 		Assert.notNull(res.getComic());
+
+		return res;
+	}
+
+	public Comment createComicCharacter(final Integer comicCharacterId) {
+		final Comment res = new Comment();
+
+		final User user = this.userService.findByPrincipal();
+		res.setUser(user);
+		final ComicCharacter comicCharacter = this.comicCharacterService.findOne(comicCharacterId);
+		res.setComicCharacter(comicCharacter);
+		final Date now = new Date();
+		res.setCreationTime(now);
+		Assert.notNull(res.getUser());
+		Assert.notNull(res.getComicCharacter());
+
+		return res;
+	}
+
+	public Comment createAuthor(final Integer authorId) {
+		final Comment res = new Comment();
+
+		final User user = this.userService.findByPrincipal();
+		res.setUser(user);
+		final Author author = this.authorService.findOne(authorId);
+		res.setAuthor(author);
+		final Date now = new Date();
+		res.setCreationTime(now);
+		Assert.notNull(res.getUser());
+		Assert.notNull(res.getAuthor());
+
+		return res;
+	}
+
+	public Comment createPublisher(final Integer publisherId) {
+		final Comment res = new Comment();
+
+		final User user = this.userService.findByPrincipal();
+		res.setUser(user);
+		final Publisher publisher = this.publisherService.findOne(publisherId);
+		res.setPublisher(publisher);
+		final Date now = new Date();
+		res.setCreationTime(now);
+		Assert.notNull(res.getUser());
+		Assert.notNull(res.getPublisher());
 
 		return res;
 	}

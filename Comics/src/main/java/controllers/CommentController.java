@@ -37,6 +37,36 @@ public class CommentController {
 
 	}
 
+	@RequestMapping(value = "/publisher/create", method = RequestMethod.GET)
+	public ModelAndView createPublisher(@RequestParam final Integer publisherId) {
+		ModelAndView result;
+		final Comment comment = this.commentService.createPublisher(publisherId);
+		result = this.createEditModelAndView(comment);
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/author/create", method = RequestMethod.GET)
+	public ModelAndView createAuthor(@RequestParam final Integer authorId) {
+		ModelAndView result;
+		final Comment comment = this.commentService.createAuthor(authorId);
+		result = this.createEditModelAndView(comment);
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/comicCharacter/create", method = RequestMethod.GET)
+	public ModelAndView createComicCharacter(@RequestParam final Integer comicCharacterId) {
+		ModelAndView result;
+		final Comment comment = this.commentService.createComicCharacter(comicCharacterId);
+		result = this.createEditModelAndView(comment);
+
+		return result;
+
+	}
+
 	@RequestMapping(value = "/volume/create", method = RequestMethod.GET)
 	public ModelAndView createVolume(@RequestParam final Integer volumeId) {
 		ModelAndView result;
@@ -73,6 +103,12 @@ public class CommentController {
 					result = new ModelAndView("redirect:/comic/display.do?comicId=" + comment.getComic().getId());
 				if (comment.getVolume() != null)
 					result = new ModelAndView("redirect:/volume/display.do?volumeId=" + comment.getVolume().getId());
+				if (comment.getComicCharacter() != null)
+					result = new ModelAndView("redirect:/comicCharacter/display.do?comicCharacterId=" + comment.getComicCharacter().getId());
+				if (comment.getAuthor() != null)
+					result = new ModelAndView("redirect:/author/display.do?authorId=" + comment.getAuthor().getId());
+				if (comment.getPublisher() != null)
+					result = new ModelAndView("redirect:/publisher/display.do?publisherId=" + comment.getPublisher().getId());
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(comment, "comment.commit.error");
 			}

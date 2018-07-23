@@ -24,6 +24,7 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="comic" />
+	<form:hidden path="comicCharacter"/>
 	<form:hidden path="user" />
 	<form:hidden path="volume" />
 	<form:hidden path="author" />
