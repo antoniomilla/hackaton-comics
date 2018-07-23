@@ -14,6 +14,7 @@ import repositories.CommentRepository;
 import domain.Comic;
 import domain.Comment;
 import domain.User;
+import domain.Volume;
 
 @Service
 @Transactional
@@ -25,13 +26,15 @@ public class CommentService {
 	private UserService			userService;
 	@Autowired
 	private ComicService		comicService;
+	@Autowired
+	private VolumeService		volumeService;
 
 
 	public CommentService() {
 		super();
 	}
 
-	public Comment create(final Integer comicId) {
+	public Comment createComic(final Integer comicId) {
 		final Comment res = new Comment();
 		final User user = this.userService.findByPrincipal();
 		res.setUser(user);
@@ -43,6 +46,21 @@ public class CommentService {
 		Assert.notNull(res.getComic());
 		res.getUser().getUserComments().add(res);
 		res.getComic().getComments().add(res);
+
+		return res;
+	}
+
+	public Comment createVolume(final Integer volumeId) {
+		final Comment res = new Comment();
+
+		final User user = this.userService.findByPrincipal();
+		res.setUser(user);
+		final Volume volume = this.volumeService.findOne(volumeId);
+		res.setVolume(volume);
+		final Date now = new Date();
+		res.setCreationTime(now);
+		Assert.notNull(res.getUser());
+		Assert.notNull(res.getVolume());
 
 		return res;
 	}
@@ -62,10 +80,11 @@ public class CommentService {
 	}
 
 	public Comment save(final Comment comment) {
-		Assert.notNull(comment);
 
 		final Comment res = this.commentRepository.save(comment);
-
+		res.getUser().getUserComments().add(res);
+		res.getVolume().getComments().add(res);
+		Assert.notNull(comment);
 		return res;
 	}
 

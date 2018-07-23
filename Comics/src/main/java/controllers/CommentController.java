@@ -27,10 +27,20 @@ public class CommentController {
 		super();
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(final Integer comicId) {
+	@RequestMapping(value = "/comic/create", method = RequestMethod.GET)
+	public ModelAndView createComic(@RequestParam final Integer comicId) {
 		ModelAndView result;
-		final Comment comment = this.commentService.create(comicId);
+		final Comment comment = this.commentService.createComic(comicId);
+		result = this.createEditModelAndView(comment);
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/volume/create", method = RequestMethod.GET)
+	public ModelAndView createVolume(@RequestParam final Integer volumeId) {
+		ModelAndView result;
+		final Comment comment = this.commentService.createVolume(volumeId);
 		result = this.createEditModelAndView(comment);
 
 		return result;
@@ -51,14 +61,18 @@ public class CommentController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Comment comment, final BindingResult binding) {
-		ModelAndView result;
+		ModelAndView result = null;
 
-		if (binding.hasErrors())
+		if (binding.hasErrors()) {
+			System.out.print(binding.getAllErrors());
 			result = this.createEditModelAndView(comment);
-		else
+		} else
 			try {
 				this.commentService.save(comment);
-				result = new ModelAndView("redirect:comic/display.do?comicId=" + comment.getComic().getId());
+				if (comment.getComic() != null)
+					result = new ModelAndView("redirect:comic/display.do?comicId=" + comment.getComic().getId());
+				if (comment.getVolume() != null)
+					result = new ModelAndView("redirect:/volume/display.do?volumeId=" + comment.getVolume().getId());
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(comment, "comment.commit.error");
 			}

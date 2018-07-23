@@ -25,6 +25,10 @@
 	<form:hidden path="version" />
 	<form:hidden path="comic" />
 	<form:hidden path="user" />
+	<form:hidden path="volume" />
+	<form:hidden path="author" />
+	<form:hidden path="creationTime" />
+	
 
 	<form:label path="text">
 		<spring:message code="comment.text" />:

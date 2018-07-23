@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -39,7 +40,7 @@ public class UserService {
 		res.setBlocked(false);
 		res.setBlockReason("None");
 		res.setLevel("C");
-
+		res.setCreationTime(new Date());
 		return res;
 	}
 

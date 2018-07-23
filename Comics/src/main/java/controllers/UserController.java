@@ -63,6 +63,7 @@ public class UserController {
 			System.out.print(binding.getAllErrors());
 			res = this.createModelAndView(user, null);
 		} else {
+
 			user.getUserAccount().setPassword(encoder.encodePassword(user.getUserAccount().getPassword(), null));
 			final User userSaved = this.userService.save(user);
 			res = new ModelAndView("security/login");

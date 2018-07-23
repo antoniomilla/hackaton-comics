@@ -15,7 +15,7 @@
 
 <div>
 	<p><spring:message code="volume.name"/>: <jstl:out value="${volume.name }"></jstl:out></p>
-	<p><spring:message code="volume.publisher"/>: <jstl:out value="${volume.publisher.name }"></jstl:out></p>
+	<p><spring:message code="volume.publisher"/>: <jstl:out value="${volume.comic.publisher.name }"></jstl:out></p>
 	<p><spring:message code="volume.author"/>: <jstl:out value="${volume.author.name }"></jstl:out></p>
 	<p><spring:message code="volume.description"/>: <jstl:out value="${volume.description }"></jstl:out></p>
 	<p><spring:message code="volume.chapterCount"/>: <jstl:out value="${volume.chapterCount }"></jstl:out></p>
@@ -53,6 +53,6 @@
 
 <security:authorize access="hasRole('USER')">
 	<div>
-		<a href="comment/create.do?comicId=${comic.id }"><spring:message code="comment.create"/></a>
+		<a href="comment/volume/create.do?volumeId=${volume.id }"><spring:message code="comment.create"/></a>
 	</div>
 </security:authorize>

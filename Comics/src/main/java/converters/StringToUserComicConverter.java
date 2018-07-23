@@ -1,35 +1,30 @@
 
 package converters;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.AuthorRepository;
-import domain.Author;
+import repositories.UserComicRepository;
+import domain.UserComic;
 
 @Component
 @Transactional
-public class StringToAuthorConverter implements Converter<String, Author> {
+public class StringToUserComicConverter implements Converter<String, UserComic> {
 
 	@Autowired
-	AuthorRepository	authorRepository;
+	UserComicRepository	userComicRepository;
 
 
 	@Override
-	public Author convert(final String text) {
-		Author result;
+	public UserComic convert(final String text) {
+		UserComic result;
 		int id;
 
 		try {
-			if (StringUtils.isEmpty(text))
-				result = null;
-			else {
-				id = Integer.valueOf(text);
-				result = this.authorRepository.findOne(id);
-			}
+			id = Integer.valueOf(text);
+			result = this.userComicRepository.findOne(id);
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);
 		}

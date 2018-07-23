@@ -1,34 +1,28 @@
 
 package converters;
 
+import java.util.Date;
+
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.ComicRepository;
-import domain.Comic;
-
 @Component
 @Transactional
-public class StringToComicConverter implements Converter<String, Comic> {
-
-	@Autowired
-	ComicRepository	comicRepository;
-
+public class StringToDateConverter implements Converter<String, Date> {
 
 	@Override
-	public Comic convert(final String text) {
-		Comic result;
-		int id;
-
+	public Date convert(final String str) {
+		Date result;
 		try {
-			if (StringUtils.isEmpty(text))
+			if (StringUtils.isEmpty(str))
 				result = null;
 			else {
-				id = Integer.valueOf(text);
-				result = this.comicRepository.findOne(id);
+				final String patterns[] = new String[1];
+				patterns[0] = "dd/mm/yyyy hh:mm:ss";
+				result = DateUtils.parseDate(str, patterns);
 			}
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);
@@ -36,5 +30,4 @@ public class StringToComicConverter implements Converter<String, Comic> {
 
 		return result;
 	}
-
 }
