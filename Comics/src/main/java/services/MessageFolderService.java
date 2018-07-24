@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.MessageFolderRepository;
+import domain.DirectMessage;
 import domain.MessageFolder;
+import domain.User;
 
 @Service
 @Transactional
@@ -18,6 +21,10 @@ public class MessageFolderService {
 
 	@Autowired
 	private MessageFolderRepository	messageFolderRepository;
+	@Autowired
+	private UserService				userService;
+	@Autowired
+	private DirectMessageService	directMessageService;
 
 
 	public MessageFolderService() {
@@ -26,6 +33,10 @@ public class MessageFolderService {
 
 	public MessageFolder create() {
 		final MessageFolder res = new MessageFolder();
+		final User owner = this.userService.findByPrincipal();
+		res.setOwner(owner);
+		final Collection<DirectMessage> dms = new ArrayList<DirectMessage>();
+		res.setMessages(dms);
 
 		return res;
 	}
@@ -55,6 +66,8 @@ public class MessageFolderService {
 	public void delete(final MessageFolder messageFolder) {
 		Assert.notNull(messageFolder);
 		Assert.isTrue(messageFolder.getId() != 0);
+		for (final DirectMessage dm : messageFolder.getMessages())
+			this.directMessageService.delete(dm);
 
 		this.messageFolderRepository.delete(messageFolder);
 	}
