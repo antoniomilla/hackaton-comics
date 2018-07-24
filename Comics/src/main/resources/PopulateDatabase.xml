@@ -280,7 +280,7 @@
 	
 	<bean id="messageFolder1User1" class="domain.MessageFolder">
 		<property name="name" value="FolderUser1Inbox"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
+		<property name="type" value="SYSTEM_INBOX"/>
 		<property name="nameForDisplay" value="Inbox"/>
 		<property name="owner" ref="user1"/>
 		<property name="messages">
@@ -294,7 +294,7 @@
 	
 	<bean id="messageFolder2User1" class="domain.MessageFolder">
 		<property name="name" value="FolderUser1Sent"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
+		<property name="type" value="SYSTEM_SENT"/>
 		<property name="nameForDisplay" value="Sent"/>
 		<property name="owner" ref="user1"/>
 		<property name="messages">
@@ -308,7 +308,7 @@
 	
 	<bean id="messageFolder3User1" class="domain.MessageFolder">
 		<property name="name" value="FolderUser1Trash"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
+		<property name="type" value="SYSTEM_TRASH"/>
 		<property name="nameForDisplay" value="Trash"/>
 		<property name="owner" ref="user1"/>
 		<property name="messages">
@@ -320,7 +320,7 @@
 	
 	<bean id="messageFolder1User2" class="domain.MessageFolder">
 		<property name="name" value="FolderUser2Inbox"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
+		<property name="type" value="SYSTEM_INBOX"/>
 		<property name="nameForDisplay" value="Inbox"/>
 		<property name="owner" ref="user2"/>
 		<property name="messages">
@@ -333,7 +333,7 @@
 	
 	<bean id="messageFolder2User2" class="domain.MessageFolder">
 		<property name="name" value="FolderUser2Sent"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
+		<property name="type" value="SYSTEM_SENT"/>
 		<property name="nameForDisplay" value="Sent"/>
 		<property name="owner" ref="user2"/>
 		<property name="messages">
@@ -346,7 +346,7 @@
 	
 	<bean id="messageFolder3User2" class="domain.MessageFolder">
 		<property name="name" value="FolderUser2Trash"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
+		<property name="type" value="SYSTEM_TRASH"/>
 		<property name="nameForDisplay" value="Trash"/>
 		<property name="owner" ref="user2"/>
 		<property name="messages">
@@ -358,7 +358,7 @@
 	
 	<bean id="messageFolder1User3" class="domain.MessageFolder">
 		<property name="name" value="FolderUser3Inbox"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
+		<property name="type" value="SYSTEM_INBOX"/>
 		<property name="nameForDisplay" value="Inbox"/>
 		<property name="owner" ref="user3"/>
 		<property name="messages">
@@ -370,7 +370,7 @@
 	
 	<bean id="messageFolder2User3" class="domain.MessageFolder">
 		<property name="name" value="FolderUser3Sent"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
+		<property name="type" value="SYSTEM_SENT"/>
 		<property name="nameForDisplay" value="Sent"/>
 		<property name="owner" ref="user3"/>
 		<property name="messages">
@@ -382,7 +382,7 @@
 	
 	<bean id="messageFolder3User3" class="domain.MessageFolder">
 		<property name="name" value="FolderUser3Trash"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
+		<property name="type" value="SYSTEM_TRASH"/>
 		<property name="nameForDisplay" value="Trash"/>
 		<property name="owner" ref="user3"/>
 		<property name="messages">
@@ -394,7 +394,7 @@
 	
 	<bean id="messageFolder1User4" class="domain.MessageFolder">
 		<property name="name" value="FolderUser4Inbox"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_INBOX"/>-->
+		<property name="type" value="SYSTEM_INBOX"/>
 		<property name="nameForDisplay" value="Inbox"/>
 		<property name="owner" ref="user4"/>
 		<property name="messages">
@@ -406,7 +406,7 @@
 	
 	<bean id="messageFolder2User4" class="domain.MessageFolder">
 		<property name="name" value="FolderUser4Sent"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_SENT"/>-->
+		<property name="type" value="SYSTEM_SENT"/>
 		<property name="nameForDisplay" value="Sent"/>
 		<property name="owner" ref="user4"/>
 		<property name="messages">
@@ -418,7 +418,7 @@
 	
 	<bean id="messageFolder3User4" class="domain.MessageFolder">
 		<property name="name" value="FolderUser4Trash"/>
-		<!--  <property name="type" value="MessageFolderType.SYSTEM_TRASH"/>-->
+		<property name="type" value="SYSTEM_TRASH"/>
 		<property name="nameForDisplay" value="Trash"/>
 		<property name="owner" ref="user4"/>
 		<property name="messages">
@@ -436,7 +436,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder2User1"/>
 		<property name="sender" ref="user1"/>
-		<property name="recibient" ref="user2"/>
+		<property name="recipient" ref="user2"/>
 	</bean>
 	
 	<bean id="directMessage1User1ToUser2B" class="domain.DirectMessage">
@@ -445,7 +445,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder1User2"/>
 		<property name="sender" ref="user1"/>
-		<property name="recibient" ref="user2"/>
+		<property name="recipient" ref="user2"/>
 	</bean>
 	
 	<bean id="directMessage1User2ToUser1A" class="domain.DirectMessage">
@@ -455,7 +455,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder2User2"/>
 		<property name="sender" ref="user2"/>
-		<property name="recibient" ref="user1"/>
+		<property name="recipient" ref="user1"/>
 	</bean>
 	
 	<bean id="directMessage1User2ToUser1B" class="domain.DirectMessage">
@@ -465,7 +465,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder1User1"/>
 		<property name="sender" ref="user2"/>
-		<property name="recibient" ref="user1"/>
+		<property name="recipient" ref="user1"/>
 	</bean>
 	
 	<bean id="directMessage2User1ToUser2A" class="domain.DirectMessage">
@@ -475,7 +475,7 @@
 		<property name="administrationNotice" value="False"/>
 		<property name="messageFolder" ref="messageFolder2User1"/>
 		<property name="sender" ref="user1"/>
-		<property name="recibient" ref="user2"/>
+		<property name="recipient" ref="user2"/>
 	</bean>
 	
 	<bean id="directMessage2User1ToUser2B" class="domain.DirectMessage">
@@ -485,7 +485,7 @@
 		<property name="administrationNotice" value="False"/>
 		<property name="messageFolder" ref="messageFolder1User2"/>
 		<property name="sender" ref="user1"/>
-		<property name="recibient" ref="user2"/>
+		<property name="recipient" ref="user2"/>
 	</bean>
 	
 	<bean id="directMessage2User2ToUser1A" class="domain.DirectMessage">
@@ -495,7 +495,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder2User2"/>
 		<property name="sender" ref="user2"/>
-		<property name="recibient" ref="user1"/>
+		<property name="recipient" ref="user1"/>
 	</bean>
 	
 	<bean id="directMessage2User2ToUser1B" class="domain.DirectMessage">
@@ -505,7 +505,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder1User1"/>
 		<property name="sender" ref="user2"/>
-		<property name="recibient" ref="user1"/>
+		<property name="recipient" ref="user1"/>
 	</bean>
 	
 	<bean id="directMessage1User4ToUser1A" class="domain.DirectMessage">
@@ -515,7 +515,7 @@
 		<property name="administrationNotice" value="False"/>
 		<property name="messageFolder" ref="messageFolder2User4"/>
 		<property name="sender" ref="user4"/>
-		<property name="recibient" ref="user1"/>
+		<property name="recipient" ref="user1"/>
 	</bean>
 	
 	<bean id="directMessage1User4ToUser1B" class="domain.DirectMessage">
@@ -525,7 +525,7 @@
 		<property name="administrationNotice" value="False"/>
 		<property name="messageFolder" ref="messageFolder1User1"/>
 		<property name="sender" ref="user4"/>
-		<property name="recibient" ref="user1"/>
+		<property name="recipient" ref="user1"/>
 	</bean>
 	
 	<bean id="directMessage1User1ToUser4A" class="domain.DirectMessage">
@@ -535,7 +535,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder2User1"/>
 		<property name="sender" ref="user1"/>
-		<property name="recibient" ref="user4"/>
+		<property name="recipient" ref="user4"/>
 	</bean>
 	
 	<bean id="directMessage1User1ToUser4B" class="domain.DirectMessage">
@@ -545,7 +545,7 @@
 		<property name="administrationNotice" value="True"/>
 		<property name="messageFolder" ref="messageFolder1User4"/>
 		<property name="sender" ref="user1"/>
-		<property name="recibient" ref="user4"/>
+		<property name="recipient" ref="user4"/>
 	</bean>
 	
 	<!-- Comics -->

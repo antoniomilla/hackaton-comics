@@ -144,7 +144,7 @@ public class User extends Actor {
 		this.sent = sent;
 	}
 
-	@OneToMany(mappedBy = "recibient")
+	@OneToMany(mappedBy = "recipient")
 	public Collection<DirectMessage> getReceipt() {
 		return this.receipt;
 	}

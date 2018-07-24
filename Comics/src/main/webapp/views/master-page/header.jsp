@@ -22,6 +22,7 @@
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		
 		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv" href="messageFolder/list.do"><spring:message code="master.page.user.messageFolders" /></a></li>
 			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
 				<ul>
 					<li class="arrow"></li>

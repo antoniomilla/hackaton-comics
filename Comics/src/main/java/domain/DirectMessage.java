@@ -15,7 +15,7 @@ public class DirectMessage extends DomainEntity {
 	private Boolean			administrationNotice;
 	private MessageFolder	messageFolder;
 	private Actor			sender;
-	private Actor			recibient;
+	private Actor			recipient;
 
 
 	public DirectMessage() {
@@ -54,12 +54,12 @@ public class DirectMessage extends DomainEntity {
 	}
 
 	@ManyToOne(optional = false)
-	public Actor getRecibient() {
-		return this.recibient;
+	public Actor getRecipient() {
+		return this.recipient;
 	}
 
-	public void setRecibient(final Actor recibient) {
-		this.recibient = recibient;
+	public void setRecipient(final Actor recipient) {
+		this.recipient = recipient;
 	}
 
 	@ManyToOne(optional = false)

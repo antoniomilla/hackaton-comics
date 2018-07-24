@@ -31,6 +31,8 @@
 		<value>/views/administrator/messages</value>	
 		<value>/views/volume/messages</value>
 		<value>/views/comment/messages</value>	
+		<value>/views/messageFolder/messages</value>
+		<value>/views/directMessage/messages</value>
 
 		
 	</util:list>

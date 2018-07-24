@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -31,6 +32,7 @@ public class MessageFolder extends DomainEntity {
 		this.name = name;
 	}
 
+	@Enumerated
 	public MessageFolderType getType() {
 		return this.type;
 	}

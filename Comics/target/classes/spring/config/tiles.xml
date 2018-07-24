@@ -31,6 +31,8 @@
 		<value>/views/administrator/tiles.xml</value>
 		<value>/views/volume/tiles.xml</value>
 		<value>/views/comment/tiles.xml</value>
+		<value>/views/messageFolder/tiles.xml</value>
+		<value>/views/directMessage/tiles.xml</value>
 		
 		
 	</util:list>
