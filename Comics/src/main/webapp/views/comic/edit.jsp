@@ -23,12 +23,24 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="comicComicCharacter"/>
+	<form:hidden path="userComics"/>
+	<form:hidden path="tags"/>
+	<form:hidden path="volumes"/>
+	<form:hidden path="comments"/>
 
 	<form:label path="name">
 		<spring:message code="comic.name" />:
 	</form:label>
 	<form:input path="name" />
 	<form:errors cssClass="error" path="name" />
+	<br />
+	
+	<form:label path="description">
+		<spring:message code="comic.description" />:
+	</form:label>
+	<form:input path="description" />
+	<form:errors cssClass="error" path="description" />
 	<br />
 
 	<form:label path="author">

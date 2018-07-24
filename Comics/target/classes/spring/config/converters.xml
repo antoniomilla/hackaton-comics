@@ -56,8 +56,10 @@
 		<bean class="converters.StringToUserComicConverter" />
 		<bean class="converters.UserComicToStringConverter" />
 		
-		<bean class="converters.StringToDateConverter" />
-		<bean class="converters.DateToStringConverter" />
+		<bean class="converters.StringToComicComicCharacterConverter" />
+		<bean class="converters.ComicComicCharacterToStringConverter" />
+		
+		
 		
 		
 		
