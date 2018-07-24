@@ -20,6 +20,7 @@
 	<p><spring:message code="volume.author"/>: <jstl:out value="${volume.author.name }"></jstl:out>
 	<p><spring:message code="volume.description"/>: <jstl:out value="${volume.description }"></jstl:out>
 	<p><spring:message code="volume.chapterCount"/>: <jstl:out value="${volume.chapterCount }"></jstl:out>
+	<p><spring:message code="volume.comic"/>: <a href="comic/display.do?comicId=${volume.comic.id }"><jstl:out value="${volume.comic.name }"></jstl:out></a>
 </div>
 
 

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.AuthorService;
+import services.ComicService;
 import services.VolumeService;
 import domain.Author;
+import domain.Comic;
 import domain.Comment;
 import domain.Volume;
 
@@ -28,6 +30,8 @@ public class VolumeController {
 	private VolumeService	volumeService;
 	@Autowired
 	private AuthorService	authorService;
+	@Autowired
+	private ComicService	comicService;
 
 
 	public VolumeController() {
@@ -125,15 +129,21 @@ public class VolumeController {
 	protected ModelAndView createEditModelAndView(final Volume volume, final String message) {
 		ModelAndView result;
 		Author author = null;
+		Comic comic = null;
 		final Collection<Author> authors = this.authorService.findAll();
+		final Collection<Comic> comics = this.comicService.findAll();
 
 		if (volume.getAuthor() != null)
 			author = volume.getAuthor();
+		if (volume.getComic() != null)
+			comic = volume.getComic();
 
 		result = new ModelAndView("volume/edit");
 		result.addObject("volume", volume);
-		result.addObject("autbor", author);
+		result.addObject("author", author);
+		result.addObject("comic", comic);
 		result.addObject("authors", authors);
+		result.addObject("comics", comics);
 		result.addObject("message", message);
 
 		return result;

@@ -23,6 +23,8 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="users"/>
+	<form:hidden path="comments"/>
 
 	<form:label path="name">
 		<spring:message code="volume.name" />:
@@ -52,6 +54,17 @@
 	<form:errors cssClass="error" path="chapterCount" />
 	<br />
 
+	<form:label path="comic">
+		<spring:message code="volume.comic" />:
+	</form:label>
+	<form:select id="comics" path="comic" >
+		<form:option value="0" label="----" />		
+		<form:options items="${comics}" itemValue="id"
+			itemLabel="name" />
+	</form:select>
+	<form:errors cssClass="error" path="comic" />
+	<br />
+
 	<form:label path="author">
 		<spring:message code="volume.author" />:
 	</form:label>
@@ -61,6 +74,7 @@
 			itemLabel="name" />
 	</form:select>
 	<form:errors cssClass="error" path="author" />
+	<br />
 
 
 	<form:label path="image">
@@ -68,6 +82,7 @@
 	</form:label>
 	<form:input path="image" />
 	<form:errors cssClass="error" path="image" />
+	<br />
 	<br />
 
 	<input type="submit" name="save"

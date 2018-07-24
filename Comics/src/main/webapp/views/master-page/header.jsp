@@ -47,6 +47,7 @@
 					<li><a href="publisher/create.do"><spring:message code="master.page.register.publisher" /></a></li>
 					<li><a href="author/create.do"><spring:message code="master.page.register.author" /></a></li>
 					<li><a href="comicCharacter/create.do"><spring:message code="master.page.register.comicCharacter" /></a></li>
+					<li><a href="volume/create.do"><spring:message code="master.page.register.volume" /></a></li>
 				</ul>
 			</li>
 			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a>
