@@ -848,8 +848,8 @@
 		</property>
 		<property name="publisher" ref="publisher1"/>
 		<property name="otherAliases">
-			<list>
-				<!--  <ref value="The dark knight"/>-->
+			<list value-type="java.lang.String">
+				<value>The dark knight</value>
 			</list>
 		</property>
 		<property name="firstAppareance" value="Detective Comics 27, 1939"/>
@@ -1206,7 +1206,7 @@
 	<bean id="userComic1" class="domain.UserComic">
 		<property name="started" value="True"/>
 		<property name="score" value="9"/>
-		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
+		<property name="status" value="COMPLETED"/>
 		<property name="user" ref="user1"/>
 		<property name="comic" ref="comic1"/>
 	</bean>
@@ -1214,7 +1214,7 @@
 	<bean id="userComic2" class="domain.UserComic">
 		<property name="started" value="True"/>
 		<property name="score" value="9"/>
-		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
+		<property name="status" value="COMPLETED"/>
 		<property name="user" ref="user2"/>
 		<property name="comic" ref="comic2"/>
 	</bean>
@@ -1222,7 +1222,7 @@
 	<bean id="userComic3" class="domain.UserComic">
 		<property name="started" value="True"/>
 		<property name="score" value="10"/>
-		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
+		<property name="status" value="COMPLETED"/>
 		<property name="user" ref="user1"/>
 		<property name="comic" ref="comic3"/>
 	</bean>
@@ -1230,35 +1230,35 @@
 	<bean id="userComic4" class="domain.UserComic">
 		<property name="started" value="True"/>
 		<property name="score" value="9"/>
-		<!-- <property name="status" value="UserComicStatus.COMPLETED"/>-->
+		<property name="status" value="COMPLETED"/>
 		<property name="user" ref="user2"/>
 		<property name="comic" ref="comic3"/>
 	</bean>
 	
 	<bean id="userComic5" class="domain.UserComic">
 		<property name="started" value="False"/>
-		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="status" value="PLANNING_TO_READ"/>
 		<property name="user" ref="user1"/>
 		<property name="comic" ref="comic4"/>
 	</bean>
 	
 	<bean id="userComic6" class="domain.UserComic">
 		<property name="started" value="False"/>
-		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="status" value="PLANNING_TO_READ"/>
 		<property name="user" ref="user4"/>
 		<property name="comic" ref="comic4"/>
 	</bean>
 	
 	<bean id="userComic7" class="domain.UserComic">
 		<property name="started" value="False"/>
-		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="status" value="PLANNING_TO_READ"/>
 		<property name="user" ref="user4"/>
 		<property name="comic" ref="comic1"/>
 	</bean>
 	
 	<bean id="userComic8" class="domain.UserComic">
 		<property name="started" value="False"/>
-		<!-- <property name="status" value="UserComicStatus.PLANNING_TO_READ"/>-->
+		<property name="status" value="PLANNING_TO_READ"/>
 		<property name="user" ref="user1"/>
 		<property name="comic" ref="comic5"/>
 	</bean>

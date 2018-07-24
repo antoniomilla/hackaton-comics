@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.Range;
@@ -34,6 +35,8 @@ public class UserComic extends DomainEntity {
 	public void setScore(final Integer score) {
 		this.score = score;
 	}
+
+	@Enumerated
 	public UserComicStatus getStatus() {
 		return this.status;
 	}

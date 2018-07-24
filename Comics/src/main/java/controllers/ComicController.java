@@ -18,12 +18,15 @@ import org.springframework.web.servlet.ModelAndView;
 import services.AuthorService;
 import services.ComicService;
 import services.PublisherService;
+import services.UserService;
 import domain.Author;
 import domain.Comic;
 import domain.ComicCharacter;
 import domain.ComicComicCharacter;
 import domain.Comment;
 import domain.Publisher;
+import domain.User;
+import domain.UserComic;
 import domain.Volume;
 
 @Controller
@@ -36,6 +39,8 @@ public class ComicController {
 	private AuthorService		authorService;
 	@Autowired
 	private PublisherService	publisherService;
+	@Autowired
+	private UserService			userService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -62,13 +67,31 @@ public class ComicController {
 		final Collection<ComicCharacter> comicCharacters = this.comicComicCharacters(comic);
 		final Collection<Comment> comments = comic.getComments();
 		final Collection<Volume> volumes = comic.getVolumes();
+
+		final User user = this.userService.findByPrincipal();
+		final UserComic userComic = this.userComic(user, comic);
+
 		result = new ModelAndView("comic/display");
 		result.addObject("comic", comic);
 		result.addObject("comicCharacters", comicCharacters);
 		result.addObject("comments", comments);
 		result.addObject("volumes", volumes);
+		result.addObject("userComic", userComic);
 
 		return result;
+	}
+
+	private UserComic userComic(final User u, final Comic c) {
+		UserComic res = null;
+
+		for (final UserComic uc : c.getUserComics())
+			for (final UserComic uc2 : u.getUserComics())
+				if (uc.getId() == uc2.getId()) {
+					res = uc2;
+					break;
+				}
+
+		return res;
 	}
 
 	private Collection<ComicCharacter> comicComicCharacters(final Comic c) {

@@ -18,7 +18,11 @@
 	<p><spring:message code="comic.publisher"/>: <a href="publisher/display.do?publisherId=${comic.publisher.id }"><jstl:out value="${comic.publisher.name }"></jstl:out></a></p>
 	<p><spring:message code="comic.author"/>: <a href="author/display.do?authorId=${comic.author.id }"><jstl:out value="${comic.author.name }"></jstl:out></a></p>
 	<p><spring:message code="comic.description"/>: <jstl:out value="${comic.description }"></jstl:out></p>
-
+	<jstl:if test="${userComic.id!=null }">
+	<p><spring:message code="comic.user.rating"/>: <jstl:out value="${userComic.score }"></jstl:out></p>
+	<p><spring:message code="comic.user.status"/>: <jstl:out value="${userComic.status }"></jstl:out></p>
+	</jstl:if>
+	
 </div>
 
 
