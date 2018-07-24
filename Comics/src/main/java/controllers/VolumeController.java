@@ -91,9 +91,10 @@ public class VolumeController {
 	public ModelAndView save(@Valid final Volume volume, final BindingResult binding) {
 		ModelAndView result;
 
-		if (binding.hasErrors())
+		if (binding.hasErrors()) {
+			System.out.print(binding.getAllErrors());
 			result = this.createEditModelAndView(volume);
-		else
+		} else
 			try {
 				this.volumeService.save(volume);
 				result = new ModelAndView("redirect:list.do");

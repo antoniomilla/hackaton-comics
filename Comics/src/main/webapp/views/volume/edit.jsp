@@ -33,6 +33,13 @@
 	<form:errors cssClass="error" path="name" />
 	<br />
 	
+	<form:label path="description">
+		<spring:message code="volume.description" />:
+	</form:label>
+	<form:input path="description" />
+	<form:errors cssClass="error" path="description" />
+	<br />
+	
 	<form:label path="orderNumber">
 		<spring:message code="volume.orderNumber" />:
 	</form:label>

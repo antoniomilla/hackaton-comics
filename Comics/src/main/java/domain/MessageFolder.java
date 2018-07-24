@@ -23,7 +23,6 @@ public class MessageFolder extends DomainEntity {
 	private Collection<DirectMessage>	messages;
 
 
-	@NotBlank
 	public String getName() {
 		return this.name;
 	}

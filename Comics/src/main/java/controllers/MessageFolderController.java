@@ -73,9 +73,10 @@ public class MessageFolderController {
 	public ModelAndView save(@Valid final MessageFolder messageFolder, final BindingResult binding) {
 		ModelAndView result;
 
-		if (binding.hasErrors())
+		if (binding.hasErrors()) {
+			System.out.print(binding.getAllErrors());
 			result = this.createEditModelAndView(messageFolder);
-		else
+		} else
 			try {
 				this.messageFolderService.save(messageFolder);
 				result = new ModelAndView("redirect:list.do");
