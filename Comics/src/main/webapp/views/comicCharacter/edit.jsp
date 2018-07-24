@@ -23,6 +23,10 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="comicComicCharacter"/>
+	<form:hidden path="otherAliases"/>
+	<form:hidden path="comments"/>
+	
 
 	<form:label path="name">
 		<spring:message code="comicCharacter.name" />:
@@ -38,11 +42,25 @@
 	<form:errors cssClass="error" path="alias" />
 	<br />
 	
+	<form:label path="description">
+		<spring:message code="comicCharacter.description" />:
+	</form:label>
+	<form:input path="description" />
+	<form:errors cssClass="error" path="description" />
+	<br />
+	
 	<form:label path="city">
 		<spring:message code="comicCharacter.city" />:
 	</form:label>
 	<form:input path="city" />
 	<form:errors cssClass="error" path="city" />
+	<br />
+	
+	<form:label path="firstAppareance">
+		<spring:message code="comicCharacter.firstAppareance" />:
+	</form:label>
+	<form:input path="firstAppareance" />
+	<form:errors cssClass="error" path="firstAppareance" />
 	<br />
 
 	<form:label path="publisher">

@@ -19,16 +19,26 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="author/edit.do" modelAttribute="autor">
+<form:form action="author/edit.do" modelAttribute="author">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="comics"/>
+	<form:hidden path="volumes"/>
+	<form:hidden path="comments"/>
 
 	<form:label path="name">
 		<spring:message code="author.name" />:
 	</form:label>
-	<form:input path="nombre" />
+	<form:input path="name" />
 	<form:errors cssClass="error" path="name" />
+	<br />
+	
+	<form:label path="description">
+		<spring:message code="author.description" />:
+	</form:label>
+	<form:input path="description" />
+	<form:errors cssClass="error" path="description" />
 	<br />
 
 	<form:label path="birthDate">

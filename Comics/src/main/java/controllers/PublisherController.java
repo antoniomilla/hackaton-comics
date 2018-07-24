@@ -129,7 +129,7 @@ public class PublisherController {
 		ModelAndView result;
 
 		result = new ModelAndView("publisher/edit");
-		result.addObject("editorial", publisher);
+		result.addObject("publisher", publisher);
 		result.addObject("message", message);
 
 		return result;

@@ -19,6 +19,7 @@
 	<p><spring:message code="comicCharacter.city"/>: <jstl:out value="${comicCharacter.city }"></jstl:out>
 	<p><spring:message code="comicCharacter.publisher"/>: <a href="publisher/display.do?publisherId=${comicCharacter.publisher.id }"><jstl:out value="${comicCharacter.publisher.name }"></jstl:out></a>
 	<p><spring:message code="comicCharacter.description"/>: <jstl:out value="${comicCharacter.description }"></jstl:out>
+	<p><spring:message code="comicCharacter.firstAppareance"/>: <jstl:out value="${comic.firstAppareance }"></jstl:out>
 </div>
 
 
