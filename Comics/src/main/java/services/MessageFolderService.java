@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import repositories.MessageFolderRepository;
+import domain.Actor;
 import domain.DirectMessage;
 import domain.MessageFolder;
-import domain.User;
 
 @Service
 @Transactional
@@ -22,7 +22,7 @@ public class MessageFolderService {
 	@Autowired
 	private MessageFolderRepository	messageFolderRepository;
 	@Autowired
-	private UserService				userService;
+	private ActorService			actorService;
 	@Autowired
 	private DirectMessageService	directMessageService;
 
@@ -33,7 +33,7 @@ public class MessageFolderService {
 
 	public MessageFolder create() {
 		final MessageFolder res = new MessageFolder();
-		final User owner = this.userService.findByPrincipal();
+		final Actor owner = this.actorService.findByPrincipal();
 		res.setOwner(owner);
 		final Collection<DirectMessage> dms = new ArrayList<DirectMessage>();
 		res.setMessages(dms);

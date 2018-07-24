@@ -14,6 +14,7 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="name"/>
+	<form:hidden path="type"/>
 	<form:hidden path="owner"/>
 	<form:hidden path="messages"/>
 	

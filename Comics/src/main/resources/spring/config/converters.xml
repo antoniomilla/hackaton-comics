@@ -23,6 +23,9 @@
 			<bean class="converters.Class1ToClass2" /> 
 		-->
 		
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+		
 		<bean class="converters.AuthorToStringConverter" />
 		<bean class="converters.StringToAuthorConverter" />
 		

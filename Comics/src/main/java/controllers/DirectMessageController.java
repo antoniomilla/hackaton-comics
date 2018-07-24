@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.DirectMessageService;
 import services.MessageFolderService;
-import services.UserService;
+import domain.Actor;
 import domain.DirectMessage;
 import domain.MessageFolder;
 import domain.User;
@@ -28,9 +29,9 @@ public class DirectMessageController {
 	@Autowired
 	private DirectMessageService	directMessageService;
 	@Autowired
-	private UserService				userService;
-	@Autowired
 	private MessageFolderService	messageFolderService;
+	@Autowired
+	private ActorService			actorService;
 
 
 	public DirectMessageController() {
@@ -67,6 +68,18 @@ public class DirectMessageController {
 		return result;
 	}
 
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+		ModelAndView result;
+		DirectMessage directMessage;
+
+		directMessage = this.directMessageService.create();
+		result = this.createEditModelAndView(directMessage);
+
+		return result;
+
+	}
+
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam final int directMessageId) {
 		ModelAndView result;
@@ -83,9 +96,10 @@ public class DirectMessageController {
 	public ModelAndView save(@Valid final DirectMessage directMessage, final BindingResult binding) {
 		ModelAndView result;
 
-		if (binding.hasErrors())
+		if (binding.hasErrors()) {
+			System.out.println(binding.getAllErrors());
 			result = this.createEditModelAndView(directMessage);
-		else
+		} else
 			try {
 				this.directMessageService.save(directMessage);
 				result = new ModelAndView("redirect:list.do");
@@ -120,9 +134,12 @@ public class DirectMessageController {
 
 	protected ModelAndView createEditModelAndView(final DirectMessage directMessage, final String message) {
 		ModelAndView result;
+		final Collection<Actor> recipients = this.actorService.findAll();
+		recipients.remove(this.actorService.findByPrincipal());
 
 		result = new ModelAndView("directMessage/edit");
 		result.addObject("directMessage", directMessage);
+		result.addObject("recipients", recipients);
 		result.addObject("message", message);
 
 		return result;

@@ -13,6 +13,13 @@
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="messageFolders" requestURI="${requestURI}" id="row">
 	
+	<security:authorize access="isAuthenticated()">
+		<display:column>
+			<a href="messageFolder/edit.do?messageFolderId=${row.id}">
+				<spring:message	code="messageFolder.edit" />
+			</a>
+		</display:column>
+	</security:authorize>
 	
 	<spring:message code="messageFolder.name" var="nameForDisplayHeader" />
 	<display:column property="nameForDisplay" title="${nameForDisplayHeader}" sortable="true" />

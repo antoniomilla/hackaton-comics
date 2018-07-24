@@ -18,20 +18,18 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class User extends Actor {
 
-	private String						level;
-	private Collection<UserComic>		userComics;
-	private boolean						blocked;
-	private String						blockReason;
-	private boolean						trusted;
-	private String						description;
-	private Date						lastLevelUpdateDate;
-	private boolean						onlyFriendsCanSendDms;
-	private Collection<User>			friends;
-	private Collection<MessageFolder>	messageFolders;
-	private Collection<DirectMessage>	sent;
-	private Collection<DirectMessage>	receipt;
-	private Collection<Comment>			userComments;
-	private Collection<Volume>			userVolumes;
+	private String					level;
+	private Collection<UserComic>	userComics;
+	private boolean					blocked;
+	private String					blockReason;
+	private boolean					trusted;
+	private String					description;
+	private Date					lastLevelUpdateDate;
+	private boolean					onlyFriendsCanSendDms;
+	private Collection<User>		friends;
+
+	private Collection<Comment>		userComments;
+	private Collection<Volume>		userVolumes;
 
 
 	public User() {
@@ -124,33 +122,6 @@ public class User extends Actor {
 
 	public void setFriends(final Collection<User> friends) {
 		this.friends = friends;
-	}
-
-	@OneToMany(mappedBy = "owner")
-	public Collection<MessageFolder> getMessageFolders() {
-		return this.messageFolders;
-	}
-
-	public void setMessageFolders(final Collection<MessageFolder> folders) {
-		this.messageFolders = folders;
-	}
-
-	@OneToMany(mappedBy = "sender")
-	public Collection<DirectMessage> getSent() {
-		return this.sent;
-	}
-
-	public void setSent(final Collection<DirectMessage> sent) {
-		this.sent = sent;
-	}
-
-	@OneToMany(mappedBy = "recipient")
-	public Collection<DirectMessage> getReceipt() {
-		return this.receipt;
-	}
-
-	public void setReceipt(final Collection<DirectMessage> receipt) {
-		this.receipt = receipt;
 	}
 
 	@OneToMany(mappedBy = "user")

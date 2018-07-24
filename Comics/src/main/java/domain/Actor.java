@@ -1,12 +1,14 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -29,9 +31,12 @@ public abstract class Actor extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String		nickname;
-	private Date		creationTime;
-	private UserAccount	userAccount;
+	private String						nickname;
+	private Date						creationTime;
+	private UserAccount					userAccount;
+	private Collection<MessageFolder>	messageFolders;
+	private Collection<DirectMessage>	sent;
+	private Collection<DirectMessage>	receipt;
 
 
 	@NotBlank
@@ -61,6 +66,33 @@ public abstract class Actor extends DomainEntity {
 
 	public void setCreationTime(final Date creationTime) {
 		this.creationTime = creationTime;
+	}
+
+	@OneToMany(mappedBy = "owner")
+	public Collection<MessageFolder> getMessageFolders() {
+		return this.messageFolders;
+	}
+
+	public void setMessageFolders(final Collection<MessageFolder> folders) {
+		this.messageFolders = folders;
+	}
+
+	@OneToMany(mappedBy = "sender")
+	public Collection<DirectMessage> getSent() {
+		return this.sent;
+	}
+
+	public void setSent(final Collection<DirectMessage> sent) {
+		this.sent = sent;
+	}
+
+	@OneToMany(mappedBy = "recipient")
+	public Collection<DirectMessage> getReceipt() {
+		return this.receipt;
+	}
+
+	public void setReceipt(final Collection<DirectMessage> receipt) {
+		this.receipt = receipt;
 	}
 
 }

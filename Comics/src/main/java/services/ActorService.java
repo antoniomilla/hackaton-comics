@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ActorRepository;
+import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
 import domain.Actor;
@@ -62,6 +63,23 @@ public class ActorService {
 		Assert.notNull(a);
 
 		final UserAccount res = this.userAccountService.findByActor(a);
+
+		return res;
+	}
+
+	public Actor findByUserAccount(final UserAccount userAccount) {
+		Assert.notNull(userAccount);
+
+		final Actor res = this.actorRepository.findByUserAccountId(userAccount.getId());
+
+		return res;
+	}
+
+	public Actor findByPrincipal() {
+		final UserAccount userAccount = LoginService.getPrincipal();
+		Assert.notNull(userAccount);
+		final Actor res = this.findByUserAccount(userAccount);
+		Assert.notNull(res);
 
 		return res;
 	}
