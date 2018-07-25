@@ -70,7 +70,7 @@ public class ComicController {
 
 		final User user = this.userService.findByPrincipal();
 		final UserComic userComic = this.userComic(user, comic);
-		final ComicComicCharacter comicComicCharacter = this.getCCC(comicCharacters, comic);
+		//final ComicComicCharacter comicComicCharacter = this.getCCC(comicCharacters, comic);
 
 		result = new ModelAndView("comic/display");
 		result.addObject("comic", comic);
@@ -78,22 +78,24 @@ public class ComicController {
 		result.addObject("comments", comments);
 		result.addObject("volumes", volumes);
 		result.addObject("userComic", userComic);
-		result.addObject("comicComicCharacter", comicComicCharacter);
+		//result.addObject("comicComicCharacter", comicComicCharacter);
 
 		return result;
 	}
 
-	private ComicComicCharacter getCCC(final Collection<ComicCharacter> comicCharacters, final Comic c) {
-		ComicComicCharacter res = null;
-		for (final ComicCharacter cc : comicCharacters)
-			for (final ComicComicCharacter ccc1 : cc.getComicComicCharacter())
-				for (final ComicComicCharacter ccc2 : c.getComicComicCharacter())
-					if (ccc1.getId() == ccc2.getId()) {
-						res = ccc1;
-						break;
-					}
-		return res;
-	}
+	/*
+	 * private ComicComicCharacter getCCC(final Collection<ComicCharacter> comicCharacters, final Comic c) {
+	 * ComicComicCharacter res = null;
+	 * for (final ComicCharacter cc : comicCharacters)
+	 * for (final ComicComicCharacter ccc1 : cc.getComicComicCharacter())
+	 * for (final ComicComicCharacter ccc2 : c.getComicComicCharacter())
+	 * if (ccc1.getId() == ccc2.getId()) {
+	 * res = ccc1;
+	 * break;
+	 * }
+	 * return res;
+	 * }
+	 */
 
 	private UserComic userComic(final User u, final Comic c) {
 		UserComic res = null;

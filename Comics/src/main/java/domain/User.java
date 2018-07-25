@@ -30,7 +30,6 @@ public class User extends Actor {
 	private Date					lastLevelUpdateDate;
 	private boolean					onlyFriendsCanSendDms;
 	private Collection<User>		friends;
-
 	private Collection<Comment>		userComments;
 	private Collection<Volume>		userVolumes;
 
@@ -93,8 +92,8 @@ public class User extends Actor {
 	}
 
 	@Past
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getLastLevelUpdateDate() {
 		return this.lastLevelUpdateDate;
 	}

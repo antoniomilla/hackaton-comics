@@ -38,7 +38,7 @@
 	<form:label path="body">
 		<spring:message code="directMessage.body" />:
 	</form:label>
-	<form:input path="body" />
+	<form:textarea path="body" />
 	<form:errors cssClass="error" path="body" />
 	<br />
 

@@ -16,6 +16,11 @@
 <div>
 	<p><spring:message code="comicCharacter.name"/>: <jstl:out value="${comicCharacter.name }"></jstl:out></p>
 	<p><spring:message code="comicCharacter.alias"/>: <jstl:out value="${comicCharacter.alias }"></jstl:out>
+	<p><spring:message code="comicCharacter.otherAliases"/>:
+	<jstl:forEach var="otherAlias" items="${comicCharacter.otherAliases }">
+		<jstl:out value="${otherAlias }"/><jstl:out value=", "/>
+	</jstl:forEach>
+	</p>
 	<p><spring:message code="comicCharacter.city"/>: <jstl:out value="${comicCharacter.city }"></jstl:out>
 	<p><spring:message code="comicCharacter.publisher"/>: <a href="publisher/display.do?publisherId=${comicCharacter.publisher.id }"><jstl:out value="${comicCharacter.publisher.name }"></jstl:out></a>
 	<p><spring:message code="comicCharacter.description"/>: <jstl:out value="${comicCharacter.description }"></jstl:out>
@@ -48,6 +53,14 @@
 	
 	<spring:message code="comment.user" var="userHeader" />
 	<display:column property="user.nickname" title="${userHeader}" sortable="true"/>
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<a href="comment/display.do?commentId=${row.id }">
+				<spring:message code="comment.display"/>
+			</a>
+		</display:column>
+	</security:authorize>
 	
 	</display:table>
 </div>

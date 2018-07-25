@@ -27,6 +27,17 @@ public class CommentController {
 		super();
 	}
 
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int commentId) {
+		ModelAndView result;
+		final Comment comment = this.commentService.findOne(commentId);
+
+		result = new ModelAndView("comment/display");
+		result.addObject("comment", comment);
+
+		return result;
+	}
+
 	@RequestMapping(value = "/comic/create", method = RequestMethod.GET)
 	public ModelAndView createComic(@RequestParam final Integer comicId) {
 		ModelAndView result;
@@ -118,11 +129,35 @@ public class CommentController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final Comment comment, final BindingResult binding) {
-		ModelAndView result;
+		ModelAndView result = null;
 
 		try {
-			this.commentService.delete(comment);
-			result = new ModelAndView("redirect:comic/list.do");
+
+			if (comment.getComic() != null) {
+				final int comicId = comment.getComic().getId();
+				this.commentService.delete(comment);
+				result = new ModelAndView("redirect:/comic/display.do?comicId=" + comicId);
+			}
+			if (comment.getVolume() != null) {
+				final int volumeId = comment.getVolume().getId();
+				this.commentService.delete(comment);
+				result = new ModelAndView("redirect:/volume/display.do?volumeId=" + volumeId);
+			}
+			if (comment.getComicCharacter() != null) {
+				final int comicCharacterId = comment.getComicCharacter().getId();
+				this.commentService.delete(comment);
+				result = new ModelAndView("redirect:/comicCharacter/display.do?comicCharacterId=" + comicCharacterId);
+			}
+			if (comment.getAuthor() != null) {
+				final int authorId = comment.getAuthor().getId();
+				this.commentService.delete(comment);
+				result = new ModelAndView("redirect:/author/display.do?authorId=" + authorId);
+			}
+			if (comment.getPublisher() != null) {
+				final int publisherId = comment.getPublisher().getId();
+				this.commentService.delete(comment);
+				result = new ModelAndView("redirect:/publisher/display.do?publisherId=" + publisherId);
+			}
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(comment, "comment.commit.error");
 		}

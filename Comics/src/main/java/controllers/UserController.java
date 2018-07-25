@@ -12,15 +12,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.UserAccount;
 import security.UserAccountService;
+import services.ComicService;
 import services.MessageFolderService;
 import services.UserService;
+import domain.Comic;
+import domain.Comment;
 import domain.MessageFolder;
 import domain.MessageFolderType;
 import domain.User;
+import domain.UserComic;
+import domain.Volume;
 
 @Controller
 @RequestMapping("/user")
@@ -33,6 +39,9 @@ public class UserController {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private ComicService			comicService;
+
 
 	public UserController() {
 		super();
@@ -41,14 +50,66 @@ public class UserController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<User> users;
-
-		users = this.userService.findAll();
+		final Collection<User> users = this.userService.findAll();
+		final User user = this.userService.findByPrincipal();
+		users.remove(user);
+		final Collection<User> friends = user.getFriends();
 		result = new ModelAndView("user/list");
 		result.addObject("requestURI", "user/list.do");
 		result.addObject("users", users);
+		result.addObject("friends", friends);
 
 		return result;
+	}
+
+	@RequestMapping(value = "/displayUser", method = RequestMethod.GET)
+	public ModelAndView displayUser(final int userId) {
+		ModelAndView result;
+
+		final User user = this.userService.findOne(userId);
+		final Collection<Comic> all = this.comicService.findAll();
+		final Collection<Comic> comics = this.comics(user, all);
+		final Collection<Volume> volumes = user.getUserVolumes();
+		final Collection<Comment> comments = user.getUserComments();
+
+		result = new ModelAndView("user/display");
+		result.addObject("user", user);
+		result.addObject("comics", comics);
+		result.addObject("volumes", volumes);
+		result.addObject("comments", comments);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/displayProfile", method = RequestMethod.GET)
+	public ModelAndView displayProfile() {
+		ModelAndView result;
+
+		final User user = this.userService.findByPrincipal();
+		final Collection<Comic> all = this.comicService.findAll();
+		final Collection<Comic> comics = this.comics(user, all);
+		final Collection<Volume> volumes = user.getUserVolumes();
+		final Collection<Comment> comments = user.getUserComments();
+
+		result = new ModelAndView("user/display");
+		result.addObject("user", user);
+		result.addObject("comics", comics);
+		result.addObject("volumes", volumes);
+		result.addObject("comments", comments);
+
+		return result;
+	}
+
+	private Collection<Comic> comics(final User u, final Collection<Comic> all) {
+		final Collection<Comic> res = new ArrayList<Comic>();
+
+		for (final Comic c : all)
+			for (final UserComic uc1 : u.getUserComics())
+				for (final UserComic uc2 : c.getUserComics())
+					if (uc1.getId() == uc2.getId())
+						res.add(uc1.getComic());
+		return res;
+
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -120,4 +181,38 @@ public class UserController {
 		return folders;
 
 	}
+
+	@RequestMapping(value = "/friend", method = RequestMethod.GET)
+	public ModelAndView friend(@RequestParam final int userId) {
+		ModelAndView result;
+
+		try {
+			this.userService.friend(userId);
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.ok");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.error");
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/unfriend", method = RequestMethod.GET)
+	public ModelAndView unfriend(@RequestParam final int userId) {
+		ModelAndView result;
+
+		try {
+			this.userService.unfriend(userId);
+			;
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.ok");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.error");
+		}
+
+		return result;
+	}
+
 }

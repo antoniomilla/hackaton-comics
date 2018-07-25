@@ -850,6 +850,7 @@
 		<property name="otherAliases">
 			<list value-type="java.lang.String">
 				<value>The dark knight</value>
+				<value>Gotham's bat</value>
 			</list>
 		</property>
 		<property name="firstAppareance" value="Detective Comics 27, 1939"/>

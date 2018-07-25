@@ -78,7 +78,6 @@ public class ComicCharacter extends DomainEntity {
 		this.firstAppareance = firstAppareance;
 	}
 
-	//@NotBlank
 	@ElementCollection
 	public Collection<String> getOtherAliases() {
 		return this.otherAliases;

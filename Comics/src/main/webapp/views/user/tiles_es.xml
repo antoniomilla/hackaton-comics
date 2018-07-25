@@ -8,7 +8,7 @@
 
 	<definition name="user/list" extends="master.page">	
 		<put-attribute name="title" value="Lista de usuarios" />
-		<put-attribute name="body" value="/views/cliente/list.jsp" />
+		<put-attribute name="body" value="/views/user/list.jsp" />
 	</definition>
 	
 	<definition name="user/edit" extends="master.page">
@@ -19,6 +19,11 @@
 	<definition name="user/create" extends="master.page">
 		<put-attribute name="title" value="Crear usuario" />
 		<put-attribute name="body" value="/views/user/create.jsp" />
+	</definition>
+	
+	<definition name="user/display" extends="master.page">
+		<put-attribute name="title" value="Perfil" />
+		<put-attribute name="body" value="/views/user/display.jsp" />
 	</definition>
 
 </tiles-definitions>
