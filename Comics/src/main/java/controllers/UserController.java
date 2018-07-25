@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import security.UserAccount;
@@ -43,12 +44,14 @@ public class UserController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-		Collection<User> users;
-
-		users = this.userService.findAll();
+		final Collection<User> users = this.userService.findAll();
+		final User user = this.userService.findByPrincipal();
+		users.remove(user);
+		final Collection<User> friends = user.getFriends();
 		result = new ModelAndView("user/list");
 		result.addObject("requestURI", "user/list.do");
 		result.addObject("users", users);
+		result.addObject("friends", friends);
 
 		return result;
 	}
@@ -138,4 +141,38 @@ public class UserController {
 
 		return result;
 	}
+
+	@RequestMapping(value = "/friend", method = RequestMethod.GET)
+	public ModelAndView friend(@RequestParam final int userId) {
+		ModelAndView result;
+
+		try {
+			this.userService.friend(userId);
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.ok");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.error");
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/unfriend", method = RequestMethod.GET)
+	public ModelAndView unfriend(@RequestParam final int userId) {
+		ModelAndView result;
+
+		try {
+			this.userService.unfriend(userId);
+			;
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.ok");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/user/list.do");
+			result.addObject("message", "user.commit.error");
+		}
+
+		return result;
+	}
+
 }

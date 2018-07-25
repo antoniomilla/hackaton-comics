@@ -112,4 +112,28 @@ public class UserService {
 		//TODO
 		this.userRepository.save(user);
 	}
+
+	public void friend(final int userId) {
+		Assert.isTrue(userId != 0);
+
+		final User user = this.findByPrincipal();
+		Assert.notNull(user);
+		final User friend = this.userRepository.findOne(userId);
+		Assert.notNull(friend);
+		user.getFriends().add(friend);
+
+		this.userRepository.save(user);
+	}
+
+	public void unfriend(final int userId) {
+		Assert.isTrue(userId != 0);
+
+		final User user = this.findByPrincipal();
+		Assert.notNull(user);
+		final User friend = this.userRepository.findOne(userId);
+		Assert.notNull(friend);
+		user.getFriends().remove(friend);
+
+		this.userRepository.save(user);
+	}
 }

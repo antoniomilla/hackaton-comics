@@ -29,7 +29,6 @@
 					<li><a href="messageFolder/list.do"><spring:message code="master.page.user.messageFolders" /></a></li>					
 				</ul>
 			</li>
-			<li><a class="fNiv" href="user/comic/list.do"><spring:message code="master.page.comics" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('ADMIN')">

@@ -68,5 +68,22 @@
 			</jstl:choose>
 		</display:column>
 	</security:authorize>
+	
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<jstl:choose>
+				<jstl:when test="${friends.contains(row}">
+					<a href="user/unfriend.do?userId=${row.id}">
+						<spring:message code="user.isFriend" />
+					</a>					
+				</jstl:when>
+				<jstl:otherwise>
+					<a href="user/friend.do?userId=${row.id}">
+						<spring:message code="user.isNotFriend" />
+					</a>
+				</jstl:otherwise>
+			</jstl:choose>
+		</display:column>
+	</security:authorize>
 
 </display:table>

@@ -37,10 +37,6 @@
 	<form:textarea path="description"/>
 	<form:errors cssClass="error" path="description"/>
 	
-	
-	
-	
-	
 	<form:label path="userAccount.username">
 	<spring:message code="user.account" />:
 	</form:label> 
