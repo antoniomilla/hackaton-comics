@@ -25,7 +25,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="user/display.do"><spring:message code="master.page.profile" /></a></li>
+					<li><a href="user/displayProfile.do"><spring:message code="master.page.profile" /></a></li>
 					<li><a href="messageFolder/list.do"><spring:message code="master.page.user.messageFolders" /></a></li>					
 				</ul>
 			</li>
@@ -55,22 +55,23 @@
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
-			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a>
-				
-			</li>
+			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a></li>
 			<li><a class="fNiv" href="publisher/list.do"><spring:message code="master.page.publishers" /></a></li>
 			<li><a class="fNiv" href="author/list.do"><spring:message code="master.page.authors" /></a></li>
 			<li><a class="fNiv" href="comicCharacter/list.do"><spring:message code="master.page.comicCharacters" /></a></li>
 			<li><a class="fNiv" href="volume/list.do"><spring:message code="master.page.volume" /></a></li>
+			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.users" /></a>
 			<li><a class="fNiv" href="user/create.do"><spring:message code="master.page.sign.up" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
+			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a></li>
 			<li><a class="fNiv" href="publisher/list.do"><spring:message code="master.page.publishers" /></a></li>
 			<li><a class="fNiv" href="author/list.do"><spring:message code="master.page.authors" /></a></li>
 			<li><a class="fNiv" href="comicCharacter/list.do"><spring:message code="master.page.comicCharacters" /></a></li>
 			<li><a class="fNiv" href="volume/list.do"><spring:message code="master.page.volume" /></a></li>
+			<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.users" /></a>
 			<li>
 				<a class="fNiv"> 
 					<spring:message code="master.page.profile" /> 

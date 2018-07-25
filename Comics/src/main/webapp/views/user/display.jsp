@@ -13,6 +13,7 @@
 <p><spring:message code="user.nickname"/>: <jstl:out value="${user.nickname }"/></p>
 <p><spring:message code="user.creationTime"/>: <jstl:out value="${user.creationTime }"/></p>
 <p><spring:message code="user.description"/>: <jstl:out value="${user.description }"/></p>
+<p><spring:message code="user.level"/>: <jstl:out value="${user.level }"/></p>
 
 
 
@@ -28,7 +29,20 @@
 	<spring:message code="comic.author" var="authorHeader" />
 	<display:column property="author.name" title="${authorHeader}" sortable="true" />
 	
-	
+	<jstl:if test="${user.id!=null }">
+		<spring:message code="comic.status" var="statusHeader"/>
+		<display:column title="${statusHeader }" >>
+			
+				<jstl:forEach var="uc1" items="${row.userComics }">
+					<jstl:forEach var="uc2" items="${user.userComics }">
+						<jstl:if test="${uc1.id==uc2.id }">
+							<jstl:out value="${uc1.status }"/>
+						</jstl:if>
+					</jstl:forEach>
+				</jstl:forEach>
+			
+		</display:column>
+	</jstl:if>
 	
 	<display:column>
 		<a href="comic/display.do?comicId=${row.id }">

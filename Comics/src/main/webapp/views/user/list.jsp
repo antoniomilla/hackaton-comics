@@ -14,6 +14,12 @@
 	name="users" requestURI="${requestURI}" id="row">
 
 	
+	<display:column>
+		<a href="user/displayUser.do?userId=${row.id }">
+			<spring:message code="user.display"/>
+		</a>
+	</display:column>
+	
 	<spring:message code="user.nickname" var="nameHeader" />
 	<display:column property="nickname" title="${nameHeader}" sortable="true" />
 
