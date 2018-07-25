@@ -60,6 +60,14 @@
 	<spring:message code="comment.user" var="userHeader" />
 	<display:column property="user.nickname" title="${userHeader}" sortable="true"/>
 	
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<a href="comment/display.do?commentId=${row.id }">
+				<spring:message code="comment.display"/>
+			</a>
+		</display:column>
+	</security:authorize>
+	
 	</display:table>
 </div>
 

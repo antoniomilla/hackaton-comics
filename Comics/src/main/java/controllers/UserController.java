@@ -1,6 +1,7 @@
 
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -15,8 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.UserAccount;
 import security.UserAccountService;
+import services.ComicService;
 import services.UserService;
+import domain.Comic;
+import domain.Comment;
 import domain.User;
+import domain.UserComic;
+import domain.Volume;
 
 @Controller
 @RequestMapping("/user")
@@ -26,6 +32,8 @@ public class UserController {
 	private UserService			userService;
 	@Autowired
 	private UserAccountService	userAccountService;
+	@Autowired
+	private ComicService		comicService;
 
 
 	public UserController() {
@@ -43,6 +51,37 @@ public class UserController {
 		result.addObject("users", users);
 
 		return result;
+	}
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display() {
+		ModelAndView result;
+
+		final User user = this.userService.findByPrincipal();
+		final Collection<Comic> all = this.comicService.findAll();
+		final Collection<Comic> comics = this.comics(user, all);
+		final Collection<Volume> volumes = user.getUserVolumes();
+		final Collection<Comment> comments = user.getUserComments();
+
+		result = new ModelAndView("user/display");
+		result.addObject("user", user);
+		result.addObject("comics", comics);
+		result.addObject("volumes", volumes);
+		result.addObject("comments", comments);
+
+		return result;
+	}
+
+	private Collection<Comic> comics(final User u, final Collection<Comic> all) {
+		final Collection<Comic> res = new ArrayList<Comic>();
+
+		for (final Comic c : all)
+			for (final UserComic uc1 : u.getUserComics())
+				for (final UserComic uc2 : c.getUserComics())
+					if (uc1.getId() == uc2.getId())
+						res.add(uc1.getComic());
+		return res;
+
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)

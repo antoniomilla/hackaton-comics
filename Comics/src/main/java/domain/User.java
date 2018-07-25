@@ -27,7 +27,6 @@ public class User extends Actor {
 	private Date					lastLevelUpdateDate;
 	private boolean					onlyFriendsCanSendDms;
 	private Collection<User>		friends;
-
 	private Collection<Comment>		userComments;
 	private Collection<Volume>		userVolumes;
 

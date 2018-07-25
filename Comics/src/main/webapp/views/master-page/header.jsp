@@ -22,12 +22,11 @@
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
 		
 		<security:authorize access="hasRole('USER')">
-			<li><a class="fNiv" href="messageFolder/list.do"><spring:message code="master.page.user.messageFolders" /></a></li>
 			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="user/comic/listRead.do"><spring:message code="master.page.user.read" /></a></li>
-					<li><a href="user/comic/listUnread.do"><spring:message code="master.page.user.unread" /></a></li>					
+					<li><a href="user/display.do"><spring:message code="master.page.profile" /></a></li>
+					<li><a href="messageFolder/list.do"><spring:message code="master.page.user.messageFolders" /></a></li>					
 				</ul>
 			</li>
 			<li><a class="fNiv" href="user/comic/list.do"><spring:message code="master.page.comics" /></a></li>

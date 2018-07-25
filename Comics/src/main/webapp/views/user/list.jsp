@@ -14,10 +14,53 @@
 	name="users" requestURI="${requestURI}" id="row">
 
 	
-	<spring:message code="user.name" var="nameHeader" />
+	<spring:message code="user.nickname" var="nameHeader" />
 	<display:column property="nickname" title="${nameHeader}" sortable="true" />
 
 	<spring:message code="user.level" var="levelHeader" />
 	<display:column property="level" title="${levelHeader}" sortable="true" />
+	
+	<spring:message code="user.blocked" var="blockedHeader" />
+	<display:column property="blocked" title="${blockedHeader}" sortable="true" />
+	
+	<spring:message code="user.blockReason" var="blockReasonHeader" />
+	<display:column property="blockReason" title="${blockReasonHeader}" sortable="true" />
+
+	<spring:message code="user.trusted" var="trustedHeader" />
+	<display:column property="trusted" title="${trustedHeader}" sortable="true" />
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<jstl:choose>
+				<jstl:when test="${row.trusted==false}">
+					<a href="administrator/trust.do?userId=${row.id}">
+						<spring:message code="user.untrusted" />
+					</a>					
+				</jstl:when>
+				<jstl:otherwise>
+					<a href="administrator/untrust.do?userId=${row.id}">
+						<spring:message code="user.trusted" />
+					</a>
+				</jstl:otherwise>
+			</jstl:choose>
+		</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<jstl:choose>
+				<jstl:when test="${row.blocked==false}">
+					<a href="administrator/block.do?userId=${row.id}">
+						<spring:message code="user.unblocked" />
+					</a>					
+				</jstl:when>
+				<jstl:otherwise>
+					<a href="administrator/unblock.do?userId=${row.id}">
+						<spring:message code="user.blocked" />
+					</a>
+				</jstl:otherwise>
+			</jstl:choose>
+		</display:column>
+	</security:authorize>
 
 </display:table>
