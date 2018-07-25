@@ -29,7 +29,21 @@
 <div>
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comicCharacters" id="row">
 	
-	<display:column property="alias"/>
+	<spring:message code="comicCharacter.alias" var="aliasHeader"/>
+	<display:column property="alias" title="${aliasHeader }" sortable="true"/>
+	
+	<spring:message code="comicCharacter.role" var="roleHeader"/>
+	<display:column title="${roleHeader }" >>
+		
+			<jstl:forEach var="ccc1" items="${row.comicComicCharacter }">
+				<jstl:forEach var="ccc2" items="${comic.comicComicCharacter }">
+					<jstl:if test="${ccc1.id==ccc2.id }">
+						<jstl:out value="${ccc1.role }"/>
+					</jstl:if>
+				</jstl:forEach>
+			</jstl:forEach>
+		
+	</display:column>
 	
 	<display:column>
 		<a href="comicCharacter/display.do?comicCharacterId=${row.id }">
