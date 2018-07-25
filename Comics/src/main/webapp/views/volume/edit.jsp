@@ -36,7 +36,7 @@
 	<form:label path="description">
 		<spring:message code="volume.description" />:
 	</form:label>
-	<form:input path="description" />
+	<form:textarea path="description" />
 	<form:errors cssClass="error" path="description" />
 	<br />
 	
