@@ -101,9 +101,11 @@ public class DirectMessageController {
 			result = this.createEditModelAndView(directMessage);
 		} else
 			try {
+
 				this.directMessageService.save(directMessage);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
+
 				result = this.createEditModelAndView(directMessage, "directMessage.commit.error");
 			}
 

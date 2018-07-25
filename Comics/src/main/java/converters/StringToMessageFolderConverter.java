@@ -24,7 +24,7 @@ public class StringToMessageFolderConverter implements Converter<String, Message
 		int id;
 
 		try {
-			if (StringUtils.isEmpty(text))
+			if (text == null || StringUtils.isEmpty(text))
 				result = null;
 			else {
 				id = Integer.valueOf(text);

@@ -54,12 +54,16 @@ public class DirectMessageService {
 	public DirectMessage save(final DirectMessage directMessage) {
 		Assert.notNull(directMessage);
 
+		final MessageFolder mfi = this.getInbox(directMessage.getRecipient());
+		directMessage.setMessageFolder(mfi);
+		final MessageFolder mfs = this.getSent(directMessage.getSender());
+
 		final DirectMessage res = this.directMessageRepository.save(directMessage);
 
-		final MessageFolder mfi = this.getInbox(res.getRecipient());
-		final MessageFolder mfs = this.getSent(res.getSender());
-		mfi.getMessages().add(directMessage);
-		mfs.getMessages().add(directMessage);
+		System.out.println("---------------------------------" + mfi);
+		System.out.println(mfs);
+
+		//mfs.getMessages().add(res);
 
 		return res;
 	}

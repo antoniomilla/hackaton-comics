@@ -50,7 +50,7 @@
 		<form:options items="${recipients}" itemValue="id"
 			itemLabel="nickname" />
 	</form:select>
-	<form:errors cssClass="error" path="directMessage" />
+	<form:errors cssClass="error" path="recipient" />
 
 	<input type="submit" name="save"
 		value="<spring:message code="directMessage.save" />" />&nbsp; 
