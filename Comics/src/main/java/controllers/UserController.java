@@ -80,12 +80,14 @@ public class UserController {
 		final Collection<Comic> comics = this.comics(user, all);
 		final Collection<Volume> volumes = user.getUserVolumes();
 		final Collection<Comment> comments = user.getUserComments();
+		final Collection<User> friends = user.getFriends();
 
 		result = new ModelAndView("user/display");
 		result.addObject("user", user);
 		result.addObject("comics", comics);
 		result.addObject("volumes", volumes);
 		result.addObject("comments", comments);
+		result.addObject("friends", friends);
 
 		return result;
 	}
@@ -99,12 +101,14 @@ public class UserController {
 		final Collection<Comic> comics = this.comics(user, all);
 		final Collection<Volume> volumes = user.getUserVolumes();
 		final Collection<Comment> comments = user.getUserComments();
+		final Collection<User> friends = user.getFriends();
 
 		result = new ModelAndView("user/display");
 		result.addObject("user", user);
 		result.addObject("comics", comics);
 		result.addObject("volumes", volumes);
 		result.addObject("comments", comments);
+		result.addObject("friends", friends);
 
 		return result;
 	}

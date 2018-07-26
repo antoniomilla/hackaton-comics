@@ -17,6 +17,7 @@
 
 
 
+
 <div>
 	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comics" id="row">
 	
@@ -59,14 +60,14 @@
 	<spring:message code="volume.name" var="nameHeader" />
 	<display:column property="name" title="${nameHeader}" sortable="true" />
 
-	<spring:message code="volume.releaseDate" var="levelHeader" />
-	<display:column property="releaseDate" title="${levelHeader}" sortable="true" />
+	<spring:message code="volume.releaseDate" var="releaseDateHeader" />
+	<display:column property="releaseDate" title="${releaseDateHeader}" sortable="true" />
 	
-	<spring:message code="volume.chapterCount" var="levelHeader" />
-	<display:column property="chapterCount" title="${levelHeader}" sortable="true" />
+	<spring:message code="volume.chapterCount" var="chapterCountHeader" />
+	<display:column property="chapterCount" title="${chapterCountHeader}" sortable="true" />
 	
-	<spring:message code="volume.description" var="levelHeader" />
-	<display:column property="description" title="${levelHeader}" sortable="true" />
+	<spring:message code="volume.description" var="descriptionHeader" />
+	<display:column property="description" title="${descriptionHeader}" sortable="true" />
 	
 	<display:column>
 		<a href="volume/display.do?volumeId=${row.id }">
@@ -120,6 +121,25 @@
 	
 	<spring:message code="comment.creationTime" var="creationTimeHeader" />
 	<display:column property="creationTime" title="${creationTimeHeader}" sortable="true"/>
+	
+	</display:table>
+</div>
+
+<div>
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="friends" id="row">
+	
+	<spring:message code="user.nickname" var="nicknameHeader" />
+	<display:column property="nickname" title="${nicknameHeader}" sortable="true" />
+
+	<spring:message code="user.level" var="levelHeader" />
+	<display:column property="level" title="${levelHeader}" sortable="true" />
+	
+	
+	<display:column>
+		<a href="user/displayUser.do?userId=${row.id }">
+		<spring:message code="comic.display"/>
+		</a>
+	</display:column>
 	
 	</display:table>
 </div>

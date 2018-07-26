@@ -92,8 +92,11 @@ public class MessageFolderController {
 		ModelAndView result;
 
 		try {
-			this.messageFolderService.delete(messageFolder);
-			result = new ModelAndView("redirect:list.do");
+			if (messageFolder.getType() == null) {
+				this.messageFolderService.delete(messageFolder);
+				result = new ModelAndView("redirect:list.do");
+			} else
+				result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(messageFolder, "messageFolder.commit.error");
 		}
