@@ -34,9 +34,6 @@ public class UserService {
 	@Autowired
 	private MessageFolderService	messageFolder;
 
-	@Autowired
-	private ActorService			actorService;
-
 
 	public UserService() {
 		super();
@@ -48,7 +45,7 @@ public class UserService {
 		final User res = new User();
 		res.setBlocked(false);
 		res.setBlockReason("None");
-		res.setLevel("C");
+		//res.setLevel("C");
 		res.setCreationTime(new Date());
 
 		res.setMessageFolders(this.defaultFolders(res));

@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
+import services.ActorService;
 import services.ComicService;
 import services.MessageFolderService;
 import services.UserService;
+import domain.Actor;
 import domain.Comic;
 import domain.Comment;
 import domain.MessageFolder;
@@ -38,9 +41,10 @@ public class UserController {
 	private UserAccountService		userAccountService;
 	@Autowired
 	private MessageFolderService	messageFolderService;
-
 	@Autowired
 	private ComicService			comicService;
+	@Autowired
+	private ActorService			actorService;
 
 
 	public UserController() {
@@ -49,15 +53,20 @@ public class UserController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView result;
+		final ModelAndView result = new ModelAndView("user/list");
 		final Collection<User> users = this.userService.findAll();
-		final User user = this.userService.findByPrincipal();
-		users.remove(user);
-		final Collection<User> friends = user.getFriends();
-		result = new ModelAndView("user/list");
+		if (LoginService.isAuthenticated()) {
+			final Actor actor = this.actorService.findByPrincipal();
+			users.remove(actor);
+			if (actor instanceof User) {
+				final User e = (User) actor;
+				final Collection<User> friends = e.getFriends();
+				result.addObject("friends", friends);
+			}
+		}
+
 		result.addObject("requestURI", "user/list.do");
 		result.addObject("users", users);
-		result.addObject("friends", friends);
 
 		return result;
 	}

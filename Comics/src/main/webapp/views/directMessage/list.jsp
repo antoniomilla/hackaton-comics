@@ -13,6 +13,7 @@
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="directMessages" requestURI="${requestURI}" id="row">
 	
+	
 	<jstl:if test="${name=='Inbox' }">
 		<spring:message code="directMessage.sender" var="senderHeader" />
 		<display:column property="sender.nickname" title="${senderHeader}" sortable="true" />

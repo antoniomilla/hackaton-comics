@@ -101,6 +101,7 @@ public class DirectMessageController {
 		if (binding.hasErrors()) {
 			System.out.println(binding.getAllErrors());
 			result = this.createEditModelAndView(directMessage);
+
 		} else
 			try {
 
@@ -118,17 +119,16 @@ public class DirectMessageController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final DirectMessage directMessage, final BindingResult binding) {
 		ModelAndView result;
-
 		try {
 			this.directMessageService.delete(directMessage);
-			result = new ModelAndView("redirect:list.do");
+			final List<MessageFolder> folders = new ArrayList<MessageFolder>(directMessage.getMessageFolder());
+			result = new ModelAndView("redirect:list.do?messageFolderId=" + folders.get(1).getId());
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(directMessage, "directMessage.commit.error");
 		}
 
 		return result;
 	}
-
 	protected ModelAndView createEditModelAndView(final DirectMessage directMessage) {
 		ModelAndView result;
 

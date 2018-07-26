@@ -72,7 +72,7 @@
 	<security:authorize access="hasRole('USER')">
 		<display:column>
 			<jstl:choose>
-				<jstl:when test="${friends.contains(row}">
+				<jstl:when test="${friends.contains(row)}">
 					<a href="user/unfriend.do?userId=${row.id}">
 						<spring:message code="user.isFriend" />
 					</a>					

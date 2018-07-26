@@ -49,8 +49,6 @@
 					<li><a href="volume/create.do"><spring:message code="master.page.register.volume" /></a></li>
 				</ul>
 			</li>
-			<li><a class="fNiv" href="comic/list.do"><spring:message code="master.page.comics" /></a>
-			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">

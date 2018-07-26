@@ -27,7 +27,7 @@
 	<form:hidden path="messageFolder"/>
 	<form:hidden path="sender"/>
 	
-
+	
 	<form:label path="subject">
 		<spring:message code="directMessage.subject" />:
 	</form:label>
@@ -51,6 +51,7 @@
 			itemLabel="nickname" />
 	</form:select>
 	<form:errors cssClass="error" path="recipient" />
+	
 
 	<input type="submit" name="save"
 		value="<spring:message code="directMessage.save" />" />&nbsp; 

@@ -15,4 +15,13 @@
 	<p><spring:message code="directMessage.subject"/>: <jstl:out value="${directMessage.subject }"></jstl:out></p>
 	<p><spring:message code="directMessage.body"/>: <jstl:out value="${directMessage.body }"></jstl:out></p>
 	
+	
+	<form:form action="directMessage/edit.do" modelAttribute="directMessage">
+	<jstl:if test="${directMessage.id != 0}">
+		<input type="submit" name="delete"
+			value="<spring:message code="directMessage.delete" />"
+			onclick="return confirm('<spring:message code="directMessage.confirm.delete" />')" />&nbsp;
+	</jstl:if>
+	</form:form>
+	
 </div>

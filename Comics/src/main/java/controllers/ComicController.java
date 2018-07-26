@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
+import services.ActorService;
 import services.AuthorService;
 import services.ComicService;
 import services.PublisherService;
-import services.UserService;
+import domain.Actor;
 import domain.Author;
 import domain.Comic;
 import domain.ComicCharacter;
@@ -40,7 +42,7 @@ public class ComicController {
 	@Autowired
 	private PublisherService	publisherService;
 	@Autowired
-	private UserService			userService;
+	private ActorService		actorService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -68,17 +70,16 @@ public class ComicController {
 		final Collection<Comment> comments = comic.getComments();
 		final Collection<Volume> volumes = comic.getVolumes();
 
-		User user;
-		try {
-			user = this.userService.findByPrincipal();
-		} catch (final IllegalArgumentException e) {
-			user = null;
-		}
+		User u = null;
 
+		if (LoginService.isAuthenticated()) {
+			final Actor actor = this.actorService.findByPrincipal();
+			if (actor instanceof User)
+				u = (User) actor;
+		}
 		UserComic userComic = null;
-		if (user != null)
-			userComic = this.userComic(user, comic);
-		//final ComicComicCharacter comicComicCharacter = this.getCCC(comicCharacters, comic);
+		if (u != null)
+			userComic = this.userComic(u, comic);
 
 		result = new ModelAndView("comic/display");
 		result.addObject("comic", comic);
@@ -86,23 +87,9 @@ public class ComicController {
 		result.addObject("comments", comments);
 		result.addObject("volumes", volumes);
 		result.addObject("userComic", userComic);
-		//result.addObject("comicComicCharacter", comicComicCharacter);
 
 		return result;
 	}
-	/*
-	 * private ComicComicCharacter getCCC(final Collection<ComicCharacter> comicCharacters, final Comic c) {
-	 * ComicComicCharacter res = null;
-	 * for (final ComicCharacter cc : comicCharacters)
-	 * for (final ComicComicCharacter ccc1 : cc.getComicComicCharacter())
-	 * for (final ComicComicCharacter ccc2 : c.getComicComicCharacter())
-	 * if (ccc1.getId() == ccc2.getId()) {
-	 * res = ccc1;
-	 * break;
-	 * }
-	 * return res;
-	 * }
-	 */
 
 	private UserComic userComic(final User u, final Comic c) {
 		UserComic res = null;

@@ -95,7 +95,7 @@
 		<property name="blockReason" value="The user is not blocked."/>
 		<property name="trusted" value="True"/>
 		<property name="description" value="This is user1's description."/>
-		<property name="level" value="C"/>
+		<!--  <property name="level" value="C"/>-->
 		<property name="lastLevelUpdateDate" value="2018/07/15"/>
 		<property name="onlyFriendsCanSendDms" value="False"/>
 		<property name="userComics">
@@ -158,7 +158,7 @@
 		<property name="blockReason" value="The user is not blocked."/>
 		<property name="trusted" value="True"/>
 		<property name="description" value="This is user2's description."/>
-		<property name="level" value="C"/>
+		<!--  <property name="level" value="C"/>-->
 		<property name="lastLevelUpdateDate" value="2018/07/15"/>
 		<property name="onlyFriendsCanSendDms" value="False"/>
 		<property name="userComics">
@@ -201,7 +201,7 @@
 		<property name="blockReason" value="Bad behavior."/>
 		<property name="trusted" value="False"/>
 		<property name="description" value="This is user3's description."/>
-		<property name="level" value="C"/>
+		<!--  <property name="level" value="C"/>-->
 		<property name="lastLevelUpdateDate" value="2018/07/20"/>
 		<property name="onlyFriendsCanSendDms" value="False"/>
 		<property name="userComics">
@@ -241,7 +241,7 @@
 		<property name="blockReason" value="This user is not blocked."/>
 		<property name="trusted" value="False"/>
 		<property name="description" value="This is user4's description."/>
-		<property name="level" value="C"/>
+		<!--  <property name="level" value="C"/>-->
 		<property name="lastLevelUpdateDate" value="2018/07/22"/>
 		<property name="onlyFriendsCanSendDms" value="True"/>
 		<property name="userComics">
