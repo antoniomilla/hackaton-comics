@@ -18,9 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import security.UserAccount;
 import security.UserAccountService;
 import services.ComicService;
+import services.MessageFolderService;
 import services.UserService;
 import domain.Comic;
 import domain.Comment;
+import domain.MessageFolder;
+import domain.MessageFolderType;
 import domain.User;
 import domain.UserComic;
 import domain.Volume;
@@ -30,11 +33,14 @@ import domain.Volume;
 public class UserController {
 
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
 	@Autowired
-	private UserAccountService	userAccountService;
+	private UserAccountService		userAccountService;
 	@Autowired
-	private ComicService		comicService;
+	private MessageFolderService	messageFolderService;
+
+	@Autowired
+	private ComicService			comicService;
 
 
 	public UserController() {
@@ -126,7 +132,11 @@ public class UserController {
 		} else {
 
 			user.getUserAccount().setPassword(encoder.encodePassword(user.getUserAccount().getPassword(), null));
+
+			System.out.println(user.getMessageFolders());
 			final User userSaved = this.userService.save(user);
+			userSaved.setMessageFolders(this.defaultFolders(userSaved));
+			System.out.println(userSaved.getMessageFolders());
 			res = new ModelAndView("security/login");
 			res.addObject("credentials", userSaved.getUserAccount());
 		}
@@ -140,6 +150,36 @@ public class UserController {
 		result.addObject("message", message);
 
 		return result;
+	}
+	private Collection<MessageFolder> defaultFolders(final User u) {
+		final MessageFolder inbox = this.messageFolderService.create(u);
+		inbox.setType(MessageFolderType.SYSTEM_INBOX);
+		inbox.setName("inbox");
+		inbox.setNameForDisplay("Inbox");
+		final MessageFolder inboxSaved = this.messageFolderService.save(inbox);
+		inboxSaved.setOwner(u);
+
+		final MessageFolder trash = this.messageFolderService.create(u);
+		trash.setType(MessageFolderType.SYSTEM_TRASH);
+		trash.setName("Trash");
+		trash.setNameForDisplay("Trash");
+		final MessageFolder trashSaved = this.messageFolderService.save(trash);
+		trashSaved.setOwner(u);
+
+		final MessageFolder sent = this.messageFolderService.create(u);
+		sent.setType(MessageFolderType.SYSTEM_SENT);
+		sent.setName("Sent");
+		sent.setNameForDisplay("Sent");
+		final MessageFolder sentSaved = this.messageFolderService.save(sent);
+		sentSaved.setOwner(u);
+
+		Collection<MessageFolder> folders;
+		folders = new ArrayList<MessageFolder>();
+		folders.add(inboxSaved);
+		folders.add(trash);
+		folders.add(sent);
+		return folders;
+
 	}
 
 	@RequestMapping(value = "/friend", method = RequestMethod.GET)

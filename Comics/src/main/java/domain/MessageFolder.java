@@ -7,8 +7,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -55,7 +55,7 @@ public class MessageFolder extends DomainEntity {
 	public void setOwner(final Actor owner) {
 		this.owner = owner;
 	}
-	@OneToMany(mappedBy = "messageFolder")
+	@ManyToMany
 	public Collection<DirectMessage> getMessages() {
 		return this.messages;
 	}

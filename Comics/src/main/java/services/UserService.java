@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -14,6 +15,8 @@ import repositories.UserRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Comic;
+import domain.MessageFolder;
+import domain.MessageFolderType;
 import domain.User;
 
 @Service
@@ -23,10 +26,16 @@ public class UserService {
 	//Repositorios
 
 	@Autowired
-	private UserRepository	userRepository;
+	private UserRepository			userRepository;
 
 	@Autowired
-	private ComicService	comicService;
+	private ComicService			comicService;
+
+	@Autowired
+	private MessageFolderService	messageFolder;
+
+	@Autowired
+	private ActorService			actorService;
 
 
 	public UserService() {
@@ -41,6 +50,9 @@ public class UserService {
 		res.setBlockReason("None");
 		res.setLevel("C");
 		res.setCreationTime(new Date());
+
+		res.setMessageFolders(this.defaultFolders(res));
+		System.out.print(res.getMessageFolders());
 		return res;
 	}
 
@@ -50,7 +62,30 @@ public class UserService {
 
 		return res;
 	}
+	private Collection<MessageFolder> defaultFolders(final User u) {
+		final MessageFolder inbox = this.messageFolder.create(u);
+		inbox.setType(MessageFolderType.SYSTEM_INBOX);
+		inbox.setName("inbox");
+		inbox.setOwner(u);
 
+		final MessageFolder trash = this.messageFolder.create(u);
+		trash.setType(MessageFolderType.SYSTEM_TRASH);
+		trash.setName("Trash");
+		trash.setOwner(u);
+
+		final MessageFolder sent = this.messageFolder.create(u);
+		sent.setType(MessageFolderType.SYSTEM_SENT);
+		sent.setName("Sent");
+		sent.setOwner(u);
+
+		Collection<MessageFolder> folders;
+		folders = new ArrayList<MessageFolder>();
+		folders.add(inbox);
+		folders.add(trash);
+		folders.add(sent);
+		return folders;
+
+	}
 	public User findOne(final int Id) {
 		final User res = this.userRepository.findOne(Id);
 		Assert.notNull(res);
@@ -60,7 +95,6 @@ public class UserService {
 
 	public User save(final User user) {
 		Assert.notNull(user);
-
 		final User res = this.userRepository.save(user);
 
 		return res;
@@ -78,7 +112,6 @@ public class UserService {
 		Assert.notNull(userAccount);
 		final User res = this.findByUserAccount(userAccount);
 		Assert.notNull(res);
-
 		return res;
 	}
 

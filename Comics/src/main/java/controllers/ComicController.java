@@ -68,8 +68,16 @@ public class ComicController {
 		final Collection<Comment> comments = comic.getComments();
 		final Collection<Volume> volumes = comic.getVolumes();
 
-		final User user = this.userService.findByPrincipal();
-		final UserComic userComic = this.userComic(user, comic);
+		User user;
+		try {
+			user = this.userService.findByPrincipal();
+		} catch (final IllegalArgumentException e) {
+			user = null;
+		}
+
+		UserComic userComic = null;
+		if (user != null)
+			userComic = this.userComic(user, comic);
 		//final ComicComicCharacter comicComicCharacter = this.getCCC(comicCharacters, comic);
 
 		result = new ModelAndView("comic/display");
@@ -82,7 +90,6 @@ public class ComicController {
 
 		return result;
 	}
-
 	/*
 	 * private ComicComicCharacter getCCC(final Collection<ComicCharacter> comicCharacters, final Comic c) {
 	 * ComicComicCharacter res = null;

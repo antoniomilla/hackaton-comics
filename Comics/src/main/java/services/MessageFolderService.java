@@ -14,6 +14,7 @@ import repositories.MessageFolderRepository;
 import domain.Actor;
 import domain.DirectMessage;
 import domain.MessageFolder;
+import domain.User;
 
 @Service
 @Transactional
@@ -34,6 +35,16 @@ public class MessageFolderService {
 	public MessageFolder create() {
 		final MessageFolder res = new MessageFolder();
 		final Actor owner = this.actorService.findByPrincipal();
+		res.setOwner(owner);
+		final Collection<DirectMessage> dms = new ArrayList<DirectMessage>();
+		res.setMessages(dms);
+
+		return res;
+	}
+
+	public MessageFolder create(final User u) {
+		final MessageFolder res = new MessageFolder();
+		final Actor owner = u;
 		res.setOwner(owner);
 		final Collection<DirectMessage> dms = new ArrayList<DirectMessage>();
 		res.setMessages(dms);

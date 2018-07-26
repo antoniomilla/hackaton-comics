@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -23,6 +24,8 @@ public class DirectMessageService {
 	private DirectMessageRepository	directMessageRepository;
 	@Autowired
 	private ActorService			actorService;
+	@Autowired
+	private MessageFolderService	messageFolderService;
 
 
 	public DirectMessageService() {
@@ -33,7 +36,6 @@ public class DirectMessageService {
 		final DirectMessage res = new DirectMessage();
 		final Actor sender = this.actorService.findByPrincipal();
 		res.setSender(sender);
-
 		return res;
 	}
 
@@ -54,12 +56,18 @@ public class DirectMessageService {
 	public DirectMessage save(final DirectMessage directMessage) {
 		Assert.notNull(directMessage);
 
+		final MessageFolder mfi = this.getInbox(directMessage.getRecipient());
+		final MessageFolder mfs = this.getSent(directMessage.getSender());
+		final Collection<MessageFolder> folders = new ArrayList<MessageFolder>();
+		folders.add(mfi);
+		folders.add(mfs);
+		directMessage.setMessageFolder(folders);
+
 		final DirectMessage res = this.directMessageRepository.save(directMessage);
 
-		final MessageFolder mfi = this.getInbox(res.getRecipient());
-		final MessageFolder mfs = this.getSent(res.getSender());
-		mfi.getMessages().add(directMessage);
-		mfs.getMessages().add(directMessage);
+		mfs.getMessages().add(res);
+		mfi.getMessages().add(res);
+		this.messageFolderService.save(mfi);
 
 		return res;
 	}

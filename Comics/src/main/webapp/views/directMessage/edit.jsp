@@ -50,7 +50,7 @@
 		<form:options items="${recipients}" itemValue="id"
 			itemLabel="nickname" />
 	</form:select>
-	<form:errors cssClass="error" path="directMessage" />
+	<form:errors cssClass="error" path="recipient" />
 
 	<input type="submit" name="save"
 		value="<spring:message code="directMessage.save" />" />&nbsp; 
@@ -61,7 +61,7 @@
 	</jstl:if>
 	<input type="button" name="cancel"
 		value="<spring:message code="directMessage.cancel" />"
-		onclick="javascript: relativeRedir('directMessage/list.do');" />
+		onclick="javascript: relativeRedir('directMessage/list.do')"/>
 	<br />
 
 

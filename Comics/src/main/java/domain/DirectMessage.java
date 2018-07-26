@@ -1,21 +1,24 @@
 
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class DirectMessage extends DomainEntity {
 
-	private String			subject;
-	private String			body;
-	private Boolean			administrationNotice;
-	private MessageFolder	messageFolder;
-	private Actor			sender;
-	private Actor			recipient;
+	private String						subject;
+	private String						body;
+	private Boolean						administrationNotice;
+	private Collection<MessageFolder>	messageFolder;
+	private Actor						sender;
+	private Actor						recipient;
 
 
 	public DirectMessage() {
@@ -62,12 +65,12 @@ public class DirectMessage extends DomainEntity {
 		this.recipient = recipient;
 	}
 
-	@ManyToOne(optional = false)
-	public MessageFolder getMessageFolder() {
+	@ManyToMany
+	public Collection<MessageFolder> getMessageFolder() {
 		return this.messageFolder;
 	}
 
-	public void setMessageFolder(final MessageFolder messageFolder) {
+	public void setMessageFolder(final Collection<MessageFolder> messageFolder) {
 		this.messageFolder = messageFolder;
 	}
 

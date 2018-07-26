@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -96,7 +97,7 @@ public class ComicCharacter extends DomainEntity {
 		this.description = description;
 	}
 
-	@OneToMany(mappedBy = "comicCharacter")
+	@OneToMany(mappedBy = "comicCharacter", fetch = FetchType.EAGER)
 	public Collection<ComicComicCharacter> getComicComicCharacter() {
 		return this.comicComicCharacter;
 	}
