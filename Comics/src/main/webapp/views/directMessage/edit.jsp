@@ -61,7 +61,7 @@
 	</jstl:if>
 	<input type="button" name="cancel"
 		value="<spring:message code="directMessage.cancel" />"
-		onclick="javascript: relativeRedir('directMessage/list.do');" />
+		onclick="javascript: relativeRedir('directMessage/list.do')"/>
 	<br />
 
 

@@ -1,7 +1,9 @@
 
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -39,7 +41,7 @@ public class DirectMessageController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(final int messageFolderId) {
+	public ModelAndView list(@RequestParam final int messageFolderId) {
 		ModelAndView result;
 		final MessageFolder messageFolder = this.messageFolderService.findOne(messageFolderId);
 		final String name = messageFolder.getNameForDisplay();
@@ -103,7 +105,8 @@ public class DirectMessageController {
 			try {
 
 				this.directMessageService.save(directMessage);
-				result = new ModelAndView("redirect:list.do");
+				final List<MessageFolder> folders = new ArrayList<MessageFolder>(directMessage.getMessageFolder());
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + folders.get(1).getId());
 			} catch (final Throwable oops) {
 
 				result = this.createEditModelAndView(directMessage, "directMessage.commit.error");

@@ -112,7 +112,6 @@ public class UserService {
 		Assert.notNull(userAccount);
 		final User res = this.findByUserAccount(userAccount);
 		Assert.notNull(res);
-
 		return res;
 	}
 
