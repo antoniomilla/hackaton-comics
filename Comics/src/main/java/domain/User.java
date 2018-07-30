@@ -41,11 +41,15 @@ public class User extends Actor {
 
 	@Size(min = 1, max = 1)
 	public String getLevel() {
-		if (this.userComics.size() < 2)
+		Integer size = 0;
+		if (this.userComics != null)
+			size = this.userComics.size();
+
+		if (size < 2)
 			this.level = "C";
-		else if (this.userComics.size() >= 2 && this.userComics.size() < 5)
+		else if (size >= 2 && this.userComics.size() < 5)
 			this.level = "B";
-		else if (this.userComics.size() >= 5 && this.userComics.size() < 10)
+		else if (size >= 5 && this.userComics.size() < 10)
 			this.level = "A";
 		else
 			this.level = "S";

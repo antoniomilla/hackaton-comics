@@ -45,9 +45,8 @@ public class UserService {
 		final User res = new User();
 		res.setBlocked(false);
 		res.setBlockReason("None");
-		//res.setLevel("C");
+		res.setLevel("C");
 		res.setCreationTime(new Date());
-
 		res.setMessageFolders(this.defaultFolders(res));
 		System.out.print(res.getMessageFolders());
 		return res;

@@ -37,7 +37,7 @@
 	<div>
 		<a href="messageFolder/create.do"> <spring:message
 				code="messageFolder.create" />
-		</a>
+		</a><br>
 		<a href="directMessage/create.do">
 			<spring:message code="directMessage.create"/>
 		</a>

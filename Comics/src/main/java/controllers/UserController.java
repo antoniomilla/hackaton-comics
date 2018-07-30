@@ -146,10 +146,8 @@ public class UserController {
 
 			user.getUserAccount().setPassword(encoder.encodePassword(user.getUserAccount().getPassword(), null));
 
-			System.out.println(user.getMessageFolders());
 			final User userSaved = this.userService.save(user);
 			userSaved.setMessageFolders(this.defaultFolders(userSaved));
-			System.out.println(userSaved.getMessageFolders());
 			res = new ModelAndView("security/login");
 			res.addObject("credentials", userSaved.getUserAccount());
 		}
