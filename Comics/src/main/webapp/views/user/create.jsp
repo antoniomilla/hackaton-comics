@@ -46,11 +46,15 @@
 	<br><br>
 	
 	<form:label path="userAccount.password">
-	<spring:message code="user.password" />:
+	
 	</form:label> 
 	<form:password path="userAccount.password"/>
 	<form:errors cssClass="error" path="userAccount.password"/>
-	
+	<spring:message code="user.password" />:<br>
+	<spring:message code="user.onlyFriends" />:
+	<form:radiobutton path="onlyFriendsCanSendDms" value="True"/><spring:message code="user.True"/>
+	<form:radiobutton path="onlyFriendsCanSendDms" value="False"/><spring:message code="user.False"/>
+
 	<form:hidden path="userAccount.authorities"/>
 	
 	
@@ -60,7 +64,7 @@
 	<form:hidden path="blockReason"/>
 	<form:hidden path="trusted"/>
 	<form:hidden path="lastLevelUpdateDate"/>
-	<form:hidden path="onlyFriendsCanSendDms"/>
+	
 	<form:hidden path="friends"/>
 	<form:hidden path="messageFolders"/>
 	<form:hidden path="sent"/>

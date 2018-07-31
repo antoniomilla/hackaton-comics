@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.DirectMessageService;
 import services.MessageFolderService;
+import services.UserService;
 import domain.Actor;
 import domain.DirectMessage;
 import domain.MessageFolder;
@@ -34,6 +35,8 @@ public class DirectMessageController {
 	private MessageFolderService	messageFolderService;
 	@Autowired
 	private ActorService			actorService;
+	@Autowired
+	private UserService				userService;
 
 
 	public DirectMessageController() {
@@ -104,10 +107,21 @@ public class DirectMessageController {
 
 		} else
 			try {
+				final User recipient = (User) directMessage.getRecipient();
 
-				this.directMessageService.save(directMessage);
-				final List<MessageFolder> folders = new ArrayList<MessageFolder>(directMessage.getMessageFolder());
-				result = new ModelAndView("redirect:list.do?messageFolderId=" + folders.get(1).getId());
+				if (!recipient.isOnlyFriendsCanSendDms()) {
+					this.directMessageService.save(directMessage);
+					final List<MessageFolder> folders = new ArrayList<MessageFolder>(directMessage.getMessageFolder());
+					result = new ModelAndView("redirect:list.do?messageFolderId=" + folders.get(1).getId());
+				} else {
+					final User sender = (User) directMessage.getSender();
+					if (recipient.getFriends().contains(sender)) {
+						this.directMessageService.save(directMessage);
+						final List<MessageFolder> folders = new ArrayList<MessageFolder>(directMessage.getMessageFolder());
+						result = new ModelAndView("redirect:list.do?messageFolderId=" + folders.get(1).getId());
+					} else
+						result = this.createEditModelAndView(directMessage, "directMessage.only.friends.error");
+				}
 			} catch (final Throwable oops) {
 
 				result = this.createEditModelAndView(directMessage, "directMessage.commit.error");
