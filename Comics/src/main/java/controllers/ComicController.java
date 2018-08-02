@@ -87,6 +87,7 @@ public class ComicController {
 		result.addObject("comments", comments);
 		result.addObject("volumes", volumes);
 		result.addObject("userComic", userComic);
+		result.addObject("requestURI", "comic/display.do");
 
 		return result;
 	}

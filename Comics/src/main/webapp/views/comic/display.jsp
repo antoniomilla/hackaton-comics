@@ -27,7 +27,7 @@
 
 
 <div>
-	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comicCharacters" id="row">
+	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comicCharacters" id="row" requestURI="${requestURI}">
 	
 	<spring:message code="comicCharacter.alias" var="aliasHeader"/>
 	<display:column property="alias" title="${aliasHeader }" sortable="true"/>
@@ -70,7 +70,7 @@
 </div>
 
 <div>
-	<display:table pagesize="5" class="displaytag" keepStatus="true" name="comments" id="row">
+	<display:table pagesize="15" class="displaytag" keepStatus="true" name="comments" id="row" requestURI="${requestURI}">
 	
 	<spring:message code="comment.text" var="textHeader" />
 	<display:column property="text" title="${textHeader}" sortable="true"/>
