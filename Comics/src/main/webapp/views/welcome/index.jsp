@@ -16,6 +16,15 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<p><spring:message code="welcome.greeting.prefix" /> ${name}<spring:message code="welcome.greeting.suffix" /></p>
+<p><spring:message code="welcome.greeting.prefix" /> ${param.name} <spring:message code="welcome.greeting.suffix" /></p>
 
-<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
+<p><spring:message code="welcome.greeting.current.time" /> ${param.moment}
+ 			
+ </p> 
+
+<jstl:if test="${param.blocked == 'true'}">
+		<div class="error">
+			<spring:message code="welcome.blocked" />
+			<jstl:out value="${param.blockedReason}"/>
+		</div>
+	</jstl:if>

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.UserService;
 import controllers.AbstractController;
 
 @Controller
@@ -30,7 +31,11 @@ public class LoginController extends AbstractController {
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	LoginService	service;
+	LoginService		service;
+	@Autowired
+	UserService			userService;
+	@Autowired
+	UserAccountService	userAccountService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -46,15 +51,12 @@ public class LoginController extends AbstractController {
 		Assert.notNull(credentials);
 		Assert.notNull(bindingResult);
 
-		ModelAndView result;
-
-		result = new ModelAndView("security/login");
+		final ModelAndView result = new ModelAndView("security/login");
 		result.addObject("credentials", credentials);
 		result.addObject("showError", showError);
 
 		return result;
 	}
-
 	// LoginFailure -----------------------------------------------------------
 
 	@RequestMapping("/loginFailure")

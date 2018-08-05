@@ -76,7 +76,7 @@
 			authentication-failure-url="/security/loginFailure.do" />
 
 		<security:logout 
-			logout-success-url="/" 
+			logout-success-url="/welcome/index.do" 
 			invalidate-session="true" />
 	</security:http>
 

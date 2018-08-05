@@ -67,6 +67,10 @@ public class UserAccountService {
 	public void delete(final UserAccount userAccount) {
 		this.userAccountRepository.delete(userAccount);
 	}
+
+	public UserAccount findByUsername(final String username) {
+		return this.userAccountRepository.findByUsername(username);
+	}
 	// Other business methods -------------------------------------------------
 
 }

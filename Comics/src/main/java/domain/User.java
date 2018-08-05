@@ -23,12 +23,12 @@ public class User extends Actor {
 
 	private String					level;
 	private Collection<UserComic>	userComics;
-	private boolean					blocked;
+	private Boolean					blocked;
 	private String					blockReason;
-	private boolean					trusted;
+	private Boolean					trusted;
 	private String					description;
 	private Date					lastLevelUpdateDate;
-	private boolean					onlyFriendsCanSendDms;
+	private Boolean					onlyFriendsCanSendDms;
 	private Collection<User>		friends;
 	private Collection<Comment>		userComments;
 	private Collection<Volume>		userVolumes;
@@ -69,7 +69,7 @@ public class User extends Actor {
 		this.userComics = userComics;
 	}
 
-	public boolean getBlocked() {
+	public Boolean getBlocked() {
 		return this.blocked;
 	}
 
