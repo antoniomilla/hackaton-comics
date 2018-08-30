@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	<definition name="volumes/show" extends="master.page">
+		<put-attribute name="title" value="Ver volumen" />
+		<put-attribute name="body" value="/views/volumes/show.jsp" />
+	</definition>
+
+	<definition name="volumes/new" extends="master.page">
+		<put-attribute name="title" value="Nuevo volumen" />
+		<put-attribute name="body" value="/views/volumes/edit.jsp" />
+	</definition>
+
+	<definition name="volumes/edit" extends="master.page">
+		<put-attribute name="title" value="Editar volumen" />
+		<put-attribute name="body" value="/views/volumes/edit.jsp" />
+	</definition>
+</tiles-definitions>

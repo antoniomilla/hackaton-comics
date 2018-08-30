@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	<definition name="publishers/list" extends="master.page">
+		<put-attribute name="title" value="Lista de editoriales" />
+		<put-attribute name="body" value="/views/publishers/list.jsp" />
+	</definition>
+
+	<definition name="publishers/new" extends="master.page">
+		<put-attribute name="title" value="Nueva editorial" />
+		<put-attribute name="body" value="/views/publishers/edit.jsp" />
+	</definition>
+	
+	<definition name="publishers/edit" extends="master.page">
+		<put-attribute name="title" value="Editar editorial" />
+		<put-attribute name="body" value="/views/publishers/edit.jsp" />
+	</definition>
+	
+	<definition name="publishers/show" extends="master.page">
+		<put-attribute name="title" value="Ver editorial" />
+		<put-attribute name="body" value="/views/publishers/show.jsp" />
+	</definition>
+</tiles-definitions>

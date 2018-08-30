@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+	">
+
+	<util:list id="converters">
+		<bean class="converters.ComicComicCharacterToStringConverter" />
+		<bean class="converters.DateStringConverter" />
+		<bean class="converters.ComicToStringConverter" />
+		<bean class="converters.StringToCommentConverter" />
+		<bean class="converters.StringToComicComicCharacterConverter" />
+		<bean class="converters.StringToAuthorityConverter" />
+		<bean class="converters.VolumeToStringConverter" />
+		<bean class="converters.StringToAuthorConverter" />
+		<bean class="converters.UserToStringConverter" />
+		<bean class="converters.StringToUserComicConverter" />
+		<bean class="converters.StringToPublisherConverter" />
+		<bean class="converters.StringToDirectMessageConverter" />
+		<bean class="converters.AuthorToStringConverter" />
+		<bean class="converters.StringToMessageFolderConverter" />
+		<bean class="converters.CommentToStringConverter" />
+		<bean class="converters.StringToComicCharacterConverter" />
+		<bean class="converters.MessageFolderToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+		<bean class="converters.AuthorityToStringConverter" />
+		<bean class="converters.PublisherToStringConverter" />
+		<bean class="converters.StringToSaleConverter" />
+		<bean class="converters.DirectMessageToStringConverter" />
+		<bean class="converters.StringToVolumeConverter" />
+		<bean class="converters.StringToComicConverter" />
+		<bean class="converters.SaleToStringConverter" />
+		<bean class="converters.ComicCharacterToStringConverter" />
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.StringToUserConverter" />
+		<bean class="converters.UserComicToStringConverter" />
+	</util:list>
+
+</beans>

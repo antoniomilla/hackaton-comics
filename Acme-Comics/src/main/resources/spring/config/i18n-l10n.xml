@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+	">
+
+	<util:list id="messages">
+		<value>/views/actors/messages</value>
+		<value>/views/volumes/messages</value>
+		<value>/views/comic_characters/messages</value>
+		<value>/views/users/messages</value>
+		<value>/views/master-page/messages</value>
+		<value>/views/comics/messages</value>
+		<value>/views/misc/messages</value>
+		<value>/views/security/messages</value>
+		<value>/views/comments/messages</value>
+		<value>/views/publishers/messages</value>
+		<value>/views/sales/messages</value>
+		<value>/views/direct_messages/messages</value>
+		<value>/views/authors/messages</value>
+		<value>/views/message_folders/messages</value>
+		<value>/views/welcome/messages</value>
+		<value>/views/comic_comic_characters/messages</value>
+	</util:list>
+
+</beans>

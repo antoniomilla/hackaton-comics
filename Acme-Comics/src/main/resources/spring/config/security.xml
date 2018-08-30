@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * security.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    ">
+
+	<!-- Security infrastructure -->
+
+	<bean id="loginService" class="security.LoginService" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- Access control -->
+
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/" access="permitAll" /> 
+
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
+		<security:intercept-url pattern="/images/**" access="permitAll" /> 
+		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
+		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+
+		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
+
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
+		<security:intercept-url pattern="/welcome/blocked.do" access="permitAll" />
+
+		<security:intercept-url pattern="/users/show.do" access="permitAll" />
+		<security:intercept-url pattern="/users/block.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/users/unblock.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/users/trust.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/users/untrust.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/users/update_level.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/users/friend.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/users/unfriend.do" access="hasRole('USER')" />
+
+		<security:intercept-url pattern="/comics/list.do" access="permitAll" />
+		<security:intercept-url pattern="/comics/show.do" access="permitAll" />
+		<security:intercept-url pattern="/comics/delete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comics/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comics/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comics/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comics/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comics/star.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/comics/unstar.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/comics/set_status.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/comics/rate.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/comics/unrate.do" access="hasRole('USER')" />
+
+		<security:intercept-url pattern="/volumes/show.do" access="permitAll" />
+		<security:intercept-url pattern="/volumes/read.do" access="permitAll" />
+		<security:intercept-url pattern="/volumes/unread.do" access="permitAll" />
+		<security:intercept-url pattern="/volumes/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/volumes/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/volumes/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/volumes/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/volumes/delete.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/comic_comic_characters/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_comic_characters/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_comic_characters/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_comic_characters/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_comic_characters/delete.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/publishers/list.do" access="permitAll" />
+		<security:intercept-url pattern="/publishers/show.do" access="permitAll" />
+		<security:intercept-url pattern="/publishers/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/publishers/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/publishers/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/publishers/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/publishers/delete.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/authors/list.do" access="permitAll" />
+		<security:intercept-url pattern="/authors/show.do" access="permitAll" />
+		<security:intercept-url pattern="/authors/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/authors/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/authors/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/authors/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/authors/delete.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/comic_characters/list.do" access="permitAll" />
+		<security:intercept-url pattern="/comic_characters/show.do" access="permitAll" />
+		<security:intercept-url pattern="/comic_characters/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_characters/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_characters/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_characters/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/comic_characters/delete.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/actors/list.do" access="permitAll" />
+
+		<security:intercept-url pattern="/comments/create.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/comments/delete.do" access="hasRole('ADMINISTRATOR')" />
+
+		<security:intercept-url pattern="/direct_messages/index.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/show.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/reply.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/send.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/move.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/move_to.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/delete.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/message_folders/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message_folders/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message_folders/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message_folders/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/message_folders/delete.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/sales/show.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/list.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/new.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/create.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/edit.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/update.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/cancel.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/complete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/set_interested.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/conversation.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/sales/conversation_send.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+
+		<security:form-login 
+			login-page="/security/login.do"
+			password-parameter="password" 
+			username-parameter="username"
+			authentication-failure-url="/security/loginFailure.do" />
+
+		<security:logout 
+			logout-success-url="/welcome/index.do" 
+			invalidate-session="true" />
+	</security:http>
+
+</beans>

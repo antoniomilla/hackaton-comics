@@ -1,0 +1,240 @@
+/* common.css
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ * 
+ */
+
+.error {
+	color: red;
+	font-weight: bolder;
+}
+
+.message {
+	color: red;
+	font-weight: bolder;
+}
+
+.iconColumn {
+    width: 16px;
+    white-space: nowrap;
+}
+
+.iconColumnIcon {
+    width: 16px;
+}
+
+.iconButton {
+    border: 1px solid #888888;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.iconButton:hover {
+    border: 1px solid #000000;
+}
+
+.searchTag {
+    border: 1px solid #a08000;
+    border-radius: 5px;
+    padding: 1px 3px;
+    text-transform: capitalize;
+}
+
+.statusButton {
+    border: 1px solid blue;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #0040af;
+}
+
+.currentStatusButton {
+    font-weight:  bold;
+    border-width: 2px;
+}
+
+.statusButton:hover {
+    background-color: aliceblue;
+}
+
+.scoreButton {
+    border: 1px solid darkviolet;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: #4000af;
+}
+.currentScoreButton {
+    font-weight:  bold;
+    border-width: 2px;
+}
+
+.scoreButton:hover {
+    background-color: #ffecef;
+}
+
+.unrateLink {
+    text-transform: lowercase;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.linkButton {
+    text-decoration: none;
+}
+
+/* Alerts */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Direct message UI */
+.row:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.column {
+    float: left;
+}
+
+.messageFolderList {
+    width: 30%;
+}
+
+.messageList {
+    width: 70%;
+}
+
+.message-inner {
+    border: 1px solid black;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+}
+
+.message-header {
+    background: #eee;
+}
+
+.message-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.message-meta {
+    font-size: 0.75em;
+}
+.message-subject {
+    font-size: 1.33em;
+}
+
+.administrationNoticeSubject {
+    font-size: 1.15em;
+}
+
+.unreadMessageSubject {
+    font-weight: bold;
+}
+
+/* sales */
+.sale-images img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: 1px solid black;
+}
+
+/* pagination */
+
+/* Pagination */
+.pagination {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ddd;
+    float: left;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination .page-item.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination .page-item.disabled {
+    background-color: #888;
+}
+
+.pagination .page-item:hover:not(.active):not(.disabled) {background-color: #ddd;}
+
+.pagination .page-item:first-child {
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+
+.pagination .page-item:last-child {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

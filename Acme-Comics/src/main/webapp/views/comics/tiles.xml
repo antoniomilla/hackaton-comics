@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="comics/list" extends="master.page">
+		<put-attribute name="title" value="Comic list" />
+		<put-attribute name="body" value="/views/comics/list.jsp" />
+	</definition>
+
+	<definition name="comics/new" extends="master.page">
+		<put-attribute name="title" value="New comic" />
+		<put-attribute name="body" value="/views/comics/edit.jsp" />
+	</definition>
+	
+	<definition name="comics/edit" extends="master.page">
+		<put-attribute name="title" value="Edit comic" />
+		<put-attribute name="body" value="/views/comics/edit.jsp" />
+	</definition>
+
+	<definition name="comics/show" extends="master.page">
+		<put-attribute name="title" value="View comic" />
+		<put-attribute name="body" value="/views/comics/show.jsp" />
+	</definition>
+
+</tiles-definitions>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+	">
+
+	<util:list id="tiles">
+		<value>/views/actors/tiles.xml</value>
+		<value>/views/volumes/tiles.xml</value>
+		<value>/views/comic_characters/tiles.xml</value>
+		<value>/views/users/tiles.xml</value>
+		<value>/views/master-page/tiles.xml</value>
+		<value>/views/comics/tiles.xml</value>
+		<value>/views/misc/tiles.xml</value>
+		<value>/views/security/tiles.xml</value>
+		<value>/views/publishers/tiles.xml</value>
+		<value>/views/sales/tiles.xml</value>
+		<value>/views/direct_messages/tiles.xml</value>
+		<value>/views/authors/tiles.xml</value>
+		<value>/views/message_folders/tiles.xml</value>
+		<value>/views/welcome/tiles.xml</value>
+		<value>/views/comic_comic_characters/tiles.xml</value>
+	</util:list>
+
+</beans>
