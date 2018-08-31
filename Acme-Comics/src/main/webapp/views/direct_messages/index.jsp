@@ -13,56 +13,65 @@
 
 <div class="row">
     <div class="column messageFolderList">
-        <display:table pagesize="${displayTagPageSize}" name="messageFolders" id="messageFolder" requestURI="${currentRequestUri}">
-            <display:column property="nameForDisplay" titleKey="message_folders.name" href="${appfn:withoutDisplayTagParams(currentRequestUriAndParams, 'directMessage')}" paramId="folder" paramProperty="id" sortable="true" />
-            <display:column titleKey="misc.actions">
-                <c:if test="${messageFolder.type == 'USER'}">
-                    <app:redir-button code="message_folders.rename" action="message_folders/edit.do?id=${messageFolder.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                    <app:delete-button code="misc.actions.delete" action="message_folders/delete.do?id=${messageFolder.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                </c:if>
-            </display:column>
-        </display:table>
+        <div>
+            <display:table pagesize="${displayTagPageSize}" name="messageFolders" id="messageFolder" requestURI="${currentRequestUri}">
+                <display:column property="nameForDisplay" titleKey="message_folders.name" href="${appfn:withoutDisplayTagParams(currentRequestUriAndParams, 'directMessage')}" paramId="folder" paramProperty="id" sortable="true" />
+                <display:column titleKey="misc.actions">
+                    <c:if test="${messageFolder.type == 'USER'}">
+                        <app:redir-button code="message_folders.rename" action="message_folders/edit.do?id=${messageFolder.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                        <app:delete-button code="misc.actions.delete" action="message_folders/delete.do?id=${messageFolder.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                    </c:if>
+                </display:column>
+            </display:table>
+        </div>
 
         <app:redir-button code="misc.actions.new" action="message_folders/new.do?returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
     </div>
     <div class="column messageList">
-        <display:table pagesize="${displayTagPageSize}" name="directMessages" id="directMessage" requestURI="${currentRequestUri}">
-            <display:column sortProperty="subject" titleKey="direct_messages.subject" sortable="true">
-                <c:if test="${directMessage.administrationNotice}">
-                    <img class="iconColumnIcon" src="images/exclamation.png" />
-                </c:if>
-                <a class="${directMessage.administrationNotice ? 'administrationNoticeSubject' : ''} ${directMessage.readByUser ? '' : 'unreadMessageSubject'}" href="direct_messages/show.do?id=${directMessage.id}">
-                    <c:out value="${directMessage.subject}" />
-                </a>
-            </display:column>
-            <display:column titleKey="direct_messages.interlocutor">
-                <c:choose>
-                    <c:when test="${principal == directMessage.sender}">
-                        <app:actor-name actor="${directMessage.recipient}" />
-                    </c:when>
-                    <c:otherwise>
-                        <app:actor-name actor="${directMessage.sender}" />
-                    </c:otherwise>
-                </c:choose>
-            </display:column>
-            <display:column property="creationTime" titleKey="direct_messages.creationTime" sortable="true" format="{0,date,dd/MM/yyyy HH:mm:ss}" />
-            <display:column titleKey="misc.actions">
-                <c:choose>
-                    <c:when test="${principal == directMessage.sender}">
-                        <c:set var="actor" value="${directMessage.recipient}" />
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="actor" value="${directMessage.sender}" />
-                    </c:otherwise>
-                </c:choose>
-                <c:if test="${principal.administrator or not actor.user or not actor.onlyFriendsCanSendDms or actor.friends.contains(principal)}">
-                    <app:redir-button code="direct_messages.reply" action="direct_messages/reply.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                </c:if>
-                <app:redir-button code="direct_messages.move" action="direct_messages/move.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                <c:if test="${directMessage.messageFolder.type != 'SYSTEM_TRASH'}">
-                    <app:delete-button code="misc.actions.delete" action="direct_messages/delete.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                </c:if>
-            </display:column>
-        </display:table>
+        <div>
+            <display:table pagesize="${displayTagPageSize}" name="directMessages" id="directMessage" requestURI="${currentRequestUri}">
+                <display:column sortProperty="subject" titleKey="direct_messages.subject" sortable="true">
+                    <c:if test="${directMessage.administrationNotice}">
+                        <img class="iconColumnIcon" src="images/exclamation.png" />
+                    </c:if>
+                    <a class="${directMessage.administrationNotice ? 'administrationNoticeSubject' : ''} ${directMessage.readByUser ? '' : 'unreadMessageSubject'}" href="direct_messages/show.do?id=${directMessage.id}">
+                        <c:out value="${directMessage.subject}" />
+                    </a>
+                </display:column>
+                <display:column titleKey="direct_messages.interlocutor">
+                    <c:choose>
+                        <c:when test="${principal == directMessage.sender}">
+                            <app:actor-name actor="${directMessage.recipient}" />
+                        </c:when>
+                        <c:otherwise>
+                            <app:actor-name actor="${directMessage.sender}" />
+                        </c:otherwise>
+                    </c:choose>
+                </display:column>
+                <display:column property="creationTime" titleKey="direct_messages.creationTime" sortable="true" format="{0,date,dd/MM/yyyy HH:mm:ss}" />
+                <display:column titleKey="misc.actions">
+                    <c:choose>
+                        <c:when test="${principal == directMessage.sender}">
+                            <c:set var="actor" value="${directMessage.recipient}" />
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="actor" value="${directMessage.sender}" />
+                        </c:otherwise>
+                    </c:choose>
+                    <c:if test="${principal.administrator or not actor.user or not actor.onlyFriendsCanSendDms or actor.friends.contains(principal)}">
+                        <app:redir-button code="direct_messages.reply" action="direct_messages/reply.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                    </c:if>
+                    <app:redir-button code="direct_messages.move" action="direct_messages/move.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                    <c:if test="${directMessage.messageFolder.type != 'SYSTEM_TRASH'}">
+                        <app:delete-button code="misc.actions.delete" action="direct_messages/delete.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                    </c:if>
+                </display:column>
+            </display:table>
+        </div>
+
+        <security:authorize access="hasRole('ADMINISTRATOR')">
+
+            <app:redir-button code="direct_messages.massMail" action="direct_messages/mass_mail.do?returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+        </security:authorize>
     </div>
 </div>

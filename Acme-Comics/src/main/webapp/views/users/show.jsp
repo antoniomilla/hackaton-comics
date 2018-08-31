@@ -16,7 +16,9 @@
     <app:actor-name actor="${user}" />
 </p>
 <p><spring:message code="users.creationTime"/>: <fmt:formatDate value="${user.creationTime }" pattern="dd/MM/yyyy HH:mm"/></p>
-<p><spring:message code="users.description"/>: <c:out value="${user.description }"/></p>
+<c:if test="${user.description != null}">
+    <p><spring:message code="users.description"/>: <c:out value="${user.description }"/></p>
+</c:if>
 <p>
     <spring:message code="users.level"/>:
     <c:out value="${user.level }"/>

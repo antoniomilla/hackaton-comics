@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import domain.Actor;
+import domain.Administrator;
 import domain.DirectMessage;
 import domain.MessageFolder;
 import domain.MessageFolderType;
@@ -23,6 +24,7 @@ import domain.Sale;
 import domain.SaleStatus;
 import domain.User;
 import exceptions.ResourceNotFoundException;
+import forms.MassMailType;
 import repositories.DirectMessageRepository;
 import security.Authority;
 import utilities.CheckUtils;
@@ -95,6 +97,53 @@ public class DirectMessageService {
 
         repository.save(dm1);
         repository.save(dm2);
+
+        return true;
+    }
+
+    public boolean sendMassMail(MassMailType type, DirectMessage directMessage, BindingResult binding)
+    {
+        CheckUtils.checkPrincipalAuthority(Authority.ADMINISTRATOR);
+
+        Administrator principal = (Administrator) actorService.getPrincipal();
+        Date creationTime = new Date();
+        for (Actor actor : actorService.findAll()) {
+            boolean shouldSend = false;
+            if (type == MassMailType.ALL) shouldSend = true;
+            if (actor instanceof User) {
+                if (type == MassMailType.ALL_USERS) shouldSend = true;
+                if (((User) actor).getTrusted()) {
+                    if (type == MassMailType.TRUSTED_USERS) shouldSend = true;
+                    if (type == MassMailType.TRUSTED_USERS_AND_ADMINISTRATORS) shouldSend = true;
+                } else {
+                    if (type == MassMailType.REGULAR_USERS) shouldSend = true;
+                }
+            }
+            if (actor instanceof Administrator) {
+                if (type == MassMailType.TRUSTED_USERS_AND_ADMINISTRATORS) shouldSend = true;
+                if (type == MassMailType.ADMINISTRATORS) shouldSend = true;
+            }
+
+            if (!shouldSend) continue;
+
+            DirectMessage dm = new DirectMessage(directMessage);
+            dm.setSender(principal);
+            dm.setRecipient(actor);
+            dm.setMessageFolder(messageFolderService.getSystemFolderForActor(dm.getRecipient(), MessageFolderType.SYSTEM_INBOX));
+            dm.setCreationTime(creationTime);
+            validator.validate(dm, binding);
+            if (binding.hasErrors()) return false;
+            repository.save(dm);
+        }
+
+        DirectMessage dm = new DirectMessage(directMessage);
+        dm.setSender(principal);
+        dm.setRecipient(principal);
+        dm.setMessageFolder(messageFolderService.getSystemFolderForActor(principal, MessageFolderType.SYSTEM_SENT));
+        dm.setCreationTime(creationTime);
+        validator.validate(dm, binding);
+        if (binding.hasErrors()) return false;
+        repository.save(dm);
 
         return true;
     }

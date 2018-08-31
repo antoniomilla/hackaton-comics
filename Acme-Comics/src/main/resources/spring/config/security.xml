@@ -105,6 +105,13 @@
 
 		<security:intercept-url pattern="/actors/list.do" access="permitAll" />
 
+		<security:intercept-url pattern="/actors/edit_own_password.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/actors/update_own_password.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/users/edit.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/users/update.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/administrators/edit.do" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/administrators/update.do" access="hasRole('ADMINISTRATOR')" />
+
 		<security:intercept-url pattern="/comments/create.do" access="hasRole('USER')" />
 		<security:intercept-url pattern="/comments/delete.do" access="hasRole('ADMINISTRATOR')" />
 
@@ -116,6 +123,8 @@
 		<security:intercept-url pattern="/direct_messages/move.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/direct_messages/move_to.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/direct_messages/delete.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/mass_mail.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/direct_messages/send_mass_mail.do" access="hasRole('ADMINISTRATOR')" />
 
 		<security:intercept-url pattern="/message_folders/new.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/message_folders/create.do" access="isAuthenticated()" />

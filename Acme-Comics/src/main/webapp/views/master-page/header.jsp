@@ -61,7 +61,9 @@
 			        (<security:authentication property="principal.username" />)
 				</a>
 				<ul>
-					<li class="arrow"></li>					
+					<li class="arrow"></li>
+					<li><a href="actors/edit_own_password.do"><spring:message code="master.page.editMyPassword" /> </a></li>
+					<li><a href="users/edit.do"><spring:message code="master.page.editMyProfile" /> </a></li>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
@@ -82,6 +84,8 @@
                 </a>
                 <ul>
                     <li class="arrow"></li>
+                    <li><a href="actors/edit_own_password.do"><spring:message code="master.page.editMyPassword" /> </a></li>
+                    <li><a href="administrators/edit.do"><spring:message code="master.page.editMyProfile" /> </a></li>
                     <li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
                 </ul>
             </li>

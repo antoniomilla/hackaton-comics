@@ -5,10 +5,14 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import domain.User;
@@ -31,6 +35,8 @@ public class UserService {
     @Autowired private MessageFolderService messageFolder;
     @Autowired private UserAccountService userAccountService;
     @Autowired private MessageFolderService messageFolderService;
+    @PersistenceContext private EntityManager entityManager;
+    @Autowired private Validator validator;
 
     public List<User> findAll()
     {
@@ -199,6 +205,35 @@ public class UserService {
     {
         CheckUtils.checkPrincipalAuthority(Authority.ADMINISTRATOR);
         return getById(id);
+    }
+
+    public User bindForUpdate(User user, BindingResult binding)
+    {
+        // Hibernate is in the dirty habit of automatically persisting any managed entities
+        // at the end of the transaction, even if it was never saved. An attacker can force
+        // the system to load a managed entity using a parameter (which gets parsed by the converter which loads the entity),
+        // which can later be modified by the bound model attributes before our code is even called.
+        // We're not going to save this entity, so detach it just in case.
+        entityManager.detach(user);
+
+        User oldUser = getById(user.getId());
+        CheckUtils.checkSameVersion(user, oldUser);
+
+        oldUser.setNickname(user.getNickname());
+        oldUser.setDescription(user.getDescription());
+        oldUser.setOnlyFriendsCanSendDms(user.getOnlyFriendsCanSendDms());
+
+        validator.validate(oldUser, binding);
+        if (binding.hasErrors()) entityManager.detach(oldUser);
+
+        return oldUser;
+    }
+
+    public User update(User user)
+    {
+        CheckUtils.checkPrincipalAuthority(Authority.USER);
+        CheckUtils.checkIsPrincipal(user);
+        return repository.save(user);
     }
 }
 

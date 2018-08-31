@@ -68,28 +68,6 @@
 			</list>
 		</property>
 	</bean>
-	<bean class="security.UserAccount" id="userAccount_user10">
-		<property name="username" value="user10"/>
-		<property name="password" value="990d67a9f94696b1abe2dccf06900322"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="USER"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean class="security.UserAccount" id="userAccount_user20">
-		<property name="username" value="user20"/>
-		<property name="password" value="10880c7f4e4209eeda79711e1ea1723e"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="USER"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
 	<bean class="domain.User" id="user_user1">
 		<property name="level" value="B"/>
 		<property name="userComics">
@@ -245,70 +223,68 @@
 			</list>
 		</property>
 	</bean>
-	<bean class="domain.User" id="user_user10">
-		<property name="level" value="C"/>
-		<property name="userComics">
-			<list/>
-		</property>
-		<property name="blocked" value="false"/>
-		<property name="blockReason">
+
+
+
+
+
+	<bean class="domain.MessageFolder" id="messageFolder_111">
+		<property name="name">
 			<null/>
 		</property>
-		<property name="trusted" value="true"/>
-		<property name="lastLevelUpdateTime" value="2018/08/25 00:00:00"/>
-		<property name="onlyFriendsCanSendDms" value="false"/>
-		<property name="friends">
-			<list/>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="administrator_admin"/>
 		</property>
-		<property name="userComments">
-			<list/>
+		<property name="messages">
+			<list>
+
+			</list>
 		</property>
-		<property name="nickname" value="Usuario 10"/>
-		<property name="description">
+		<property name="nameForDisplay">
 			<null/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-		<property name="userAccount">
-			<ref bean="userAccount_user10"/>
-		</property>
-		<property name="messageFolders">
-			<list/>
 		</property>
 	</bean>
-	<bean class="domain.User" id="user_user20">
-		<property name="level" value="C"/>
-		<property name="userComics">
-			<list/>
-		</property>
-		<property name="blocked" value="false"/>
-		<property name="blockReason">
+	<bean class="domain.MessageFolder" id="messageFolder_112">
+		<property name="name">
 			<null/>
 		</property>
-		<property name="trusted" value="false"/>
-		<property name="lastLevelUpdateTime" value="2018/08/25 00:00:00"/>
-		<property name="onlyFriendsCanSendDms" value="false"/>
-		<property name="friends">
-			<list/>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="administrator_admin"/>
 		</property>
-		<property name="userComments">
-			<list/>
+		<property name="messages">
+			<list>
+			</list>
 		</property>
-		<property name="nickname" value="user20"/>
-		<property name="description">
+		<property name="nameForDisplay">
 			<null/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-		<property name="userAccount">
-			<ref bean="userAccount_user20"/>
-		</property>
-		<property name="messageFolders">
-			<list/>
 		</property>
 	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_113">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="administrator_admin"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+
+
+
+
+
+
+
+
+
 	<bean class="domain.MessageFolder" id="messageFolder_1">
 		<property name="name">
 			<null/>

@@ -1,7 +1,6 @@
 
 package controllers;
 
-import org.displaytag.util.ParamEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -14,14 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Arrays;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import domain.Actor;
 import domain.DirectMessage;
 import domain.MessageFolder;
 import domain.MessageFolderType;
+import forms.MassMailForm;
+import forms.MassMailType;
+import security.Authority;
 import services.ActorService;
 import services.DirectMessageService;
 import services.MessageFolderService;
@@ -29,8 +33,6 @@ import services.UserService;
 import utilities.ApplicationConfig;
 import utilities.CheckUtils;
 import utilities.ControllerUtils;
-import utilities.HttpServletUtils;
-import utilities.JspViewUtils;
 
 @Controller
 @RequestMapping("/direct_messages")
@@ -183,6 +185,54 @@ public class DirectMessageController extends AbstractController {
             redir.addFlashAttribute("globalErrorMessage", "misc.commit.error");
             return ControllerUtils.redirectToReturnAction();
         }
+    }
+
+    @RequestMapping("/mass_mail")
+    public ModelAndView massMail()
+    {
+        CheckUtils.checkPrincipalAuthority(Authority.ADMINISTRATOR);
+
+        return createMassMailModelAndView("direct_messages/mass_mail", "direct_messages/send_mass_mail.do", null, null, new MassMailForm());
+    }
+
+    @RequestMapping(value = "/send_mass_mail", method = RequestMethod.POST)
+    public ModelAndView sendMassMail(@Valid @ModelAttribute("form") MassMailForm form, BindingResult binding, RedirectAttributes redir)
+    {
+        CheckUtils.checkPrincipalAuthority(Authority.ADMINISTRATOR);
+
+        String globalErrorMessage = null;
+
+        if (!binding.hasErrors()) {
+            DirectMessage directMessage = new DirectMessage();
+            directMessage.setSubject(form.getSubject());
+            directMessage.setBody(form.getBody());
+            directMessage.setAdministrationNotice(form.getAdministrationNotice());
+
+            try {
+                if (directMessageService.sendMassMail(form.getType(), directMessage, binding)) {
+                    redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
+                    return ControllerUtils.redirectToReturnAction();
+                }
+            } catch (Throwable oops) {
+                if (ApplicationConfig.DEBUG) oops.printStackTrace();
+                globalErrorMessage = "misc.commit.error";
+            }
+        }
+
+        return createMassMailModelAndView("direct_messages/mass_mail", "direct_messages/send_mass_mail.do", globalErrorMessage, binding, form);
+    }
+
+    private ModelAndView createMassMailModelAndView(String viewName, String formAction, String globalErrorMessage, BindingResult binding, MassMailForm form)
+    {
+        ModelAndView result = ControllerUtils.createViewWithBinding(
+                viewName, "form", form,
+                binding, globalErrorMessage
+        );
+
+        result.addObject("formAction", formAction);
+        result.addObject("types", Arrays.asList(MassMailType.values()));
+
+        return result;
     }
 
     private ModelAndView createEditModelAndView(String viewName, String formAction, String globalErrorMessage, BindingResult binding, DirectMessage directMessage)

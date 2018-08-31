@@ -38,7 +38,7 @@ public class MessageFolderService {
     {
         Assert.isTrue(type != MessageFolderType.USER);
         MessageFolder result = repository.findSystemFolderForActor(actor, type);
-        Assert.notNull(result);
+        Assert.notNull(result, "Missing system folder for " + actor.getUserAccount().getUsername());
         return result;
     }
 

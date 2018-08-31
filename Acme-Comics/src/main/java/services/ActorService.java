@@ -17,10 +17,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import domain.Actor;
+import exceptions.OldPasswordDoesntMatchException;
 import exceptions.ResourceNotFoundException;
 import repositories.ActorRepository;
 import security.LoginService;
 import security.UserAccount;
+import security.UserAccountService;
 import utilities.CheckUtils;
 
 @Service
@@ -28,6 +30,7 @@ import utilities.CheckUtils;
 public class ActorService {
     @Autowired private ActorRepository repository;
     @PersistenceContext private EntityManager entityManager;
+    @Autowired private UserAccountService userAccountService;
 
     public Actor findPrincipal()
     {
@@ -93,5 +96,21 @@ public class ActorService {
     private Actor findById(int id)
     {
         return repository.findOne(id);
+    }
+
+
+    public Actor updateOwnPassword(final Actor actor, final String oldPassword, final String newPassword) throws OldPasswordDoesntMatchException
+    {
+        CheckUtils.checkAuthenticated();
+        Actor currentActor = getPrincipal();
+        CheckUtils.checkEquals(currentActor, actor);
+        CheckUtils.checkSameVersion(actor, currentActor);
+
+        if (!userAccountService.passwordMatchesAccount(actor.getUserAccount(), oldPassword)) {
+            throw new OldPasswordDoesntMatchException();
+        }
+
+        currentActor.setUserAccount(this.userAccountService.updatePassword(currentActor.getUserAccount(), newPassword));
+        return repository.save(currentActor);
     }
 }
