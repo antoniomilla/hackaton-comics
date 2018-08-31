@@ -33,7 +33,7 @@
     </c:if>
 </div>
 
-<c:if test="${sale.user != principal}">
+<c:if test="${principal.user and sale.user != principal}">
     <br/>
     <div>
         <c:choose>
