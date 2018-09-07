@@ -89,6 +89,9 @@ public class ComicService {
                 // It's okay, just fall through.
             }
         }
+
+        // Unlike in other search methods, we return nothing here.
+        // This is because if there's no search a different logic is used in the controller.
         return null;
     }
 

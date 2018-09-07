@@ -50,7 +50,7 @@ public class ComicController extends AbstractController {
     @Autowired private CommentService commentService;
     @Autowired private VolumeService volumeService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping("/list")
     public ModelAndView list(@Valid SearchForm searchForm)
     {
         ModelAndView result;
@@ -159,7 +159,7 @@ public class ComicController extends AbstractController {
         }
     }
 
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    @RequestMapping("/show")
     public ModelAndView show(@RequestParam("id") int id, Model model)
     {
         Comic comic = comicService.getById(id);
@@ -195,7 +195,7 @@ public class ComicController extends AbstractController {
         return result;
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    @RequestMapping("/new")
     public ModelAndView create()
     {
         PolicyCheckUtils.checkCanEditContent(findPrincipal());
@@ -226,7 +226,7 @@ public class ComicController extends AbstractController {
         return createEditModelAndView("comics/new", "comics/create.do", globalErrorMessage, binding, comic);
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    @RequestMapping("/edit")
     public ModelAndView edit(@RequestParam("id") int id)
     {
         PolicyCheckUtils.checkCanEditContent(findPrincipal());

@@ -33,12 +33,14 @@
 <script type="text/javascript" src="scripts/stringlist.js"></script>
 <script type="text/javascript" src="scripts/selectize.js"></script>
 <script type="text/javascript" src="scripts/datepicker-${pageContext.response.locale}.js"></script>
+<script type="text/javascript" src="scripts/cookies.js"></script>
 
 <link rel="stylesheet" href="styles/common.css" type="text/css">
 <link rel="stylesheet" href="styles/jmenu.css" media="screen" type="text/css" />
 <link rel="stylesheet" href="styles/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" href="styles/displaytag.css" type="text/css">
 <link rel="stylesheet" href="styles/selectize.css" type="text/css">
+<link rel="stylesheet" href="styles/cookies.css" type="text/css">
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 

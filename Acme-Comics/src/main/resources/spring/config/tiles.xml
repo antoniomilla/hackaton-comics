@@ -13,6 +13,7 @@
 		<value>/views/volumes/tiles.xml</value>
 		<value>/views/comic_characters/tiles.xml</value>
 		<value>/views/users/tiles.xml</value>
+		<value>/views/legal/tiles.xml</value>
 		<value>/views/master-page/tiles.xml</value>
 		<value>/views/comics/tiles.xml</value>
 		<value>/views/misc/tiles.xml</value>

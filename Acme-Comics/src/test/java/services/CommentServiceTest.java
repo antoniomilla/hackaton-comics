@@ -13,6 +13,6 @@ import utilities.AbstractTest;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class ComicServiceTest extends AbstractTest {
+public class CommentServiceTest extends AbstractTest {
     
 }

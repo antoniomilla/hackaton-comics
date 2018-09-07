@@ -13,6 +13,7 @@
 		<value>/views/volumes/messages</value>
 		<value>/views/comic_characters/messages</value>
 		<value>/views/users/messages</value>
+		<value>/views/legal/messages</value>
 		<value>/views/master-page/messages</value>
 		<value>/views/comics/messages</value>
 		<value>/views/misc/messages</value>

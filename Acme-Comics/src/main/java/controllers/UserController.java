@@ -22,6 +22,7 @@ import domain.User;
 import domain.UserComic;
 import domain.UserComicStatus;
 import exceptions.ResourceNotUniqueException;
+import exceptions.TermsNotAgreedToException;
 import forms.BlockUserForm;
 import forms.NewUserForm;
 import security.Authority;

@@ -42,6 +42,8 @@
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		<security:intercept-url pattern="/welcome/blocked.do" access="permitAll" />
 
+		<security:intercept-url pattern="/users/new.do" access="isAnonymous()" />
+		<security:intercept-url pattern="/users/create.do" access="isAnonymous()" />
 		<security:intercept-url pattern="/users/show.do" access="permitAll" />
 		<security:intercept-url pattern="/users/block.do" access="hasRole('ADMINISTRATOR')" />
 		<security:intercept-url pattern="/users/unblock.do" access="hasRole('ADMINISTRATOR')" />
@@ -143,6 +145,12 @@
 		<security:intercept-url pattern="/sales/set_interested.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/sales/conversation.do" access="isAuthenticated()" />
 		<security:intercept-url pattern="/sales/conversation_send.do" access="isAuthenticated()" />
+
+		<security:intercept-url pattern="/legal/about_us.do" access="permitAll" />
+		<security:intercept-url pattern="/legal/terms.do" access="permitAll" />
+		<security:intercept-url pattern="/legal/cookies.do" access="permitAll" />
+		<security:intercept-url pattern="/legal/privacy.do" access="permitAll" />
+
 
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

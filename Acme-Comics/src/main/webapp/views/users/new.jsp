@@ -20,6 +20,8 @@
 
     <app:textbox path="nickname" code="users.nickname" />
 
+    <app:checkbox path="agreesToTerms" code="users.iAgreeToTerms" />
+
     <div>
         <app:submit name="submit" code="misc.actions.create" />
         <app:cancel-button code="misc.actions.cancel" />

@@ -13,9 +13,33 @@
 			<list/>
 		</property>
 	</bean>
+	<bean class="domain.Administrator" id="administrator_admin2">
+		<property name="nickname" value="Administrador 2"/>
+		<property name="description">
+			<null/>
+		</property>
+		<property name="creationTime" value="2018/07/15 00:00:00"/>
+		<property name="userAccount">
+			<ref bean="userAccount_admin2"/>
+		</property>
+		<property name="messageFolders">
+			<list/>
+		</property>
+	</bean>
 	<bean class="security.UserAccount" id="userAccount_admin">
 		<property name="username" value="admin"/>
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3"/>
+		<property name="authorities">
+			<list value-type="security.Authority">
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="security.UserAccount" id="userAccount_admin2">
+		<property name="username" value="admin2"/>
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909"/>
 		<property name="authorities">
 			<list value-type="security.Authority">
 				<bean class="security.Authority">
@@ -78,11 +102,11 @@
 				<ref bean="userComic_8"/>
 			</list>
 		</property>
-		<property name="blocked" value="true"/>
+		<property name="blocked" value="false"/>
 		<property name="blockReason">
 			<null/>
 		</property>
-		<property name="trusted" value="false"/>
+		<property name="trusted" value="true"/>
 		<property name="lastLevelUpdateTime" value="2018/07/15 00:00:00"/>
 		<property name="onlyFriendsCanSendDms" value="false"/>
 		<property name="friends">
@@ -126,7 +150,7 @@
 		<property name="blockReason">
 			<null/>
 		</property>
-		<property name="trusted" value="true"/>
+		<property name="trusted" value="false"/>
 		<property name="lastLevelUpdateTime" value="2018/07/15 00:00:00"/>
 		<property name="onlyFriendsCanSendDms" value="false"/>
 		<property name="friends">
@@ -279,7 +303,54 @@
 
 
 
+	<bean class="domain.MessageFolder" id="messageFolder_211">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="administrator_admin2"/>
+		</property>
+		<property name="messages">
+			<list>
 
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_212">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="administrator_admin2"/>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_213">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="administrator_admin2"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
 
 
 

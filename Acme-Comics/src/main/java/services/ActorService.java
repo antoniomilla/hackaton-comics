@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.Validator;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
 import utilities.CheckUtils;
+import utilities.ValidationUtils;
 
 @Service
 @Transactional
@@ -31,6 +33,7 @@ public class ActorService {
     @Autowired private ActorRepository repository;
     @PersistenceContext private EntityManager entityManager;
     @Autowired private UserAccountService userAccountService;
+    @Autowired private Validator validator;
 
     public Actor findPrincipal()
     {
@@ -99,18 +102,22 @@ public class ActorService {
     }
 
 
-    public Actor updateOwnPassword(final Actor actor, final String oldPassword, final String newPassword) throws OldPasswordDoesntMatchException
+    public Actor updateOwnPassword(final String oldPassword, final String newPassword) throws OldPasswordDoesntMatchException
     {
         CheckUtils.checkAuthenticated();
         Actor currentActor = getPrincipal();
-        CheckUtils.checkEquals(currentActor, actor);
-        CheckUtils.checkSameVersion(actor, currentActor);
 
-        if (!userAccountService.passwordMatchesAccount(actor.getUserAccount(), oldPassword)) {
+        if (!userAccountService.passwordMatchesAccount(currentActor.getUserAccount(), oldPassword)) {
             throw new OldPasswordDoesntMatchException();
         }
 
-        currentActor.setUserAccount(this.userAccountService.updatePassword(currentActor.getUserAccount(), newPassword));
+        UserAccount userAccount = currentActor.getUserAccount();
+        userAccount.setPassword(newPassword);
+
+        // Validate and throw if bad entity.
+        ValidationUtils.validateBean(userAccount);
+
+        currentActor.setUserAccount(this.userAccountService.updatePassword(userAccount, newPassword));
         return repository.save(currentActor);
     }
 }

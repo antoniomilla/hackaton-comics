@@ -4,6 +4,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
 import domain.Actor;
@@ -21,6 +22,8 @@ public class NewUserForm {
     private String password;
     private String repeatPassword;
     private String nickname;
+
+    private boolean agreesToTerms;
 
     public NewUserForm()
     {
@@ -75,5 +78,16 @@ public class NewUserForm {
     public void setNickname(String nickname)
     {
         this.nickname = nickname;
+    }
+
+    @AssertTrue(message = "{users.mustAgreeToTerms}")
+    public boolean getAgreesToTerms()
+    {
+        return agreesToTerms;
+    }
+
+    public void setAgreesToTerms(boolean agreesToTerms)
+    {
+        this.agreesToTerms = agreesToTerms;
     }
 }

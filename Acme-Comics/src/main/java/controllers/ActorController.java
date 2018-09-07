@@ -57,7 +57,7 @@ public class ActorController extends AbstractController {
 
         if (!binding.hasErrors())
             try {
-                actorService.updateOwnPassword(getPrincipal(), form.getOldPassword(), form.getNewPassword());
+                actorService.updateOwnPassword(form.getOldPassword(), form.getNewPassword());
                 redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
                 return ControllerUtils.redirectToReturnAction();
             } catch (OldPasswordDoesntMatchException oops) {
