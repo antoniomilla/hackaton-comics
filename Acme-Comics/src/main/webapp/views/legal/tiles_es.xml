@@ -18,7 +18,7 @@
 
 	<definition name="legal/about_us" extends="master.page">
 		<put-attribute name="title" value="Sobre nosotros" />
-		<put-attribute name="body" value="/views/legal/about.jsp" />
+		<put-attribute name="body" value="/views/legal/about_us.jsp" />
 	</definition>
 	
 	<definition name="legal/terms" extends="master.page">
