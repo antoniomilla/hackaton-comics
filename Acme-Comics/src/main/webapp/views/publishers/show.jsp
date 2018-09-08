@@ -35,14 +35,14 @@
 </c:if>
 <h3><spring:message code="publishers.characters" /></h3>
 <div>
-	<display:table pagesize="${displayTagPageSize}" name="comicCharacters" id="comicCharacter" requestURI="${currentRequestUri}">
+	<display:table pagesize="${displayTagPageSize}" name="comicCharacters" id="comicCharacter" requestURI="${currentRequestUri}" sort="list">
         <display:column property="alias" titleKey="comic_characters.alias" href="comic_characters/show.do" paramId="id" paramProperty="id" />
 	</display:table>
 </div>
 
 <h3><spring:message code="publishers.comics" /></h3>
 <div>
-	<display:table pagesize="${displayTagPageSize}" name="comicPairs" id="pair" requestURI="${currentRequestUri}">
+	<display:table pagesize="${displayTagPageSize}" name="comicPairs" id="pair" requestURI="${currentRequestUri}" sort="list">
 	    <c:if test="${pair.right != null}">
             <display:column class="iconColumn" title="&#8203;" sortProperty="right.starred" sortable="true">
                 <c:if test="${pair.right.starred}">
@@ -68,7 +68,7 @@
         <c:if test="${principal != null and principal.administrator or principal.trusted}">
             <display:column titleKey="misc.actions">
                 <app:redir-button code="misc.actions.edit" action="comics/edit.do?id=${pair.left.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                <app:delete-button action="comics/delete.do?id=${pair.left.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                <app:delete-button action="comics/delete.do?id=${pair.left.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'pair'))}" />
             </display:column>
         </c:if>
 	</display:table>
@@ -76,14 +76,14 @@
 
 <h3><spring:message code="publishers.comments" /></h3>
 <div>
-	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}">
+	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}" sort="list">
         <display:column property="text" titleKey="comments.text" sortable="true"/>
         <display:column property="user.nickname" titleKey="comments.user" sortable="true"/>
         <display:column property="creationTime" titleKey="comments.creationTime" sortable="true" format="{0,date,dd/MM/yyyy HH:mm:ss}"  />
 
         <security:authorize access="hasRole('ADMINISTRATOR')">
             <display:column titleKey="misc.actions">
-                <app:delete-button action="comments/delete.do?id=${comment.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                <app:delete-button action="comments/delete.do?id=${comment.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'comment'))}" />
             </display:column>
         </security:authorize>
 	</display:table>
@@ -92,7 +92,7 @@
 <security:authorize access="hasRole('USER')">
     <h3><spring:message code="comments.writeAComment" /></h3>
 	<div>
-		<form:form modelAttribute="comment" action="comments/create.do?returnAction=${appfn:escapeUrlParam(returnActionForHere)}">
+		<form:form modelAttribute="comment" action="comments/create.do?returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'comment'))}">
 		    <form:hidden path="creationTime" />
 		    <form:hidden path="user" />
 		    <form:hidden path="publisher" />

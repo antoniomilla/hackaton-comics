@@ -172,6 +172,10 @@
     font-weight: bold;
 }
 
+.currentMessageFolderLink {
+    font-weight: bold;
+}
+
 /* sales */
 .sale-images img {
     width: 200px;

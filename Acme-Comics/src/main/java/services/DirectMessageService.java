@@ -152,6 +152,7 @@ public class DirectMessageService {
     {
         CheckUtils.checkAuthenticated();
         CheckUtils.checkIsPrincipal(directMessage.getMessageFolder().getActor());
+        CheckUtils.checkIsPrincipal(messageFolder.getActor());
         directMessage.setMessageFolder(messageFolder);
         return repository.save(directMessage);
     }

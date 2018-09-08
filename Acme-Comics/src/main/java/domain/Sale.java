@@ -13,6 +13,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -78,6 +79,7 @@ public class Sale extends DomainEntity {
     }
 
     @NotBlank
+    @Lob
     public String getDescription()
     {
         return description;

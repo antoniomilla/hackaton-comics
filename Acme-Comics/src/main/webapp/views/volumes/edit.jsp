@@ -15,6 +15,7 @@
     <app:preserve-return-action />
     <app:entity-editor />
 
+    <form:hidden path="comic" />
 	<app:textbox path="orderNumber" code="volume.orderNumber" />
 	<app:textbox path="name" code="volume.name" />
 	<app:select path="author" code="volume.author" items="${authors}" itemLabel="name" />

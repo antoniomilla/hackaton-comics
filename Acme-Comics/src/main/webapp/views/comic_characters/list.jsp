@@ -11,7 +11,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="appfn" uri="/WEB-INF/appfn.tld" %>
 
-<display:table pagesize="${displayTagPageSize}" name="comicCharacters" requestURI="${currentRequestUri}" id="comicCharacter">
+<display:table pagesize="${displayTagPageSize}" name="comicCharacters" requestURI="${currentRequestUri}" id="comicCharacter" sort="list">
 	<display:column property="alias" titleKey="comic_characters.alias" sortable="true" href="comic_characters/show.do" paramId="id" paramProperty="id" />
 	<display:column property="name" titleKey="comic_characters.name" sortable="true" />
 	<display:column property="city" titleKey="comic_characters.city" sortable="true" />
@@ -20,7 +20,7 @@
 	<c:if test="${principal != null and principal.administrator or principal.trusted}">
         <display:column titleKey="misc.actions">
             <app:redir-button code="misc.actions.edit" action="comic_characters/edit.do?id=${comicCharacter.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-            <app:delete-button code="misc.actions.delete" action="comic_characters/delete.do?id=${comicCharacter.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+            <app:delete-button code="misc.actions.delete" action="comic_characters/delete.do?id=${comicCharacter.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'comicCharacter'))}" />
         </display:column>
     </c:if>
 </display:table>

@@ -20,7 +20,7 @@
 
 
 <div>
-    <display:table pagesize="${displayTagPageSize}" name="comicPairs" requestURI="${currentRequestUri}" id="pair">
+    <display:table pagesize="${displayTagPageSize}" name="comicPairs" requestURI="${currentRequestUri}" id="pair" sort="list">
         <security:authorize access="hasRole('USER')">
             <display:column class="iconColumn" title="&#8203;" sortProperty="right.starred" sortable="${empty searchForm.terms}">
                 <c:if test="${pair.right.starred}">
@@ -47,7 +47,7 @@
         <c:if test="${principal != null and principal.administrator or principal.trusted}">
             <display:column titleKey="misc.actions">
                 <app:redir-button code="misc.actions.edit" action="comics/edit.do?id=${pair.left.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                <app:delete-button action="comics/delete.do?id=${pair.left.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                <app:delete-button action="comics/delete.do?id=${pair.left.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'pair'))}" />
             </display:column>
         </c:if>
     </display:table>

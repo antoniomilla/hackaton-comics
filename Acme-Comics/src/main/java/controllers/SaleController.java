@@ -210,7 +210,7 @@ public class SaleController extends AbstractController {
 			globalErrorMessage = "misc.commit.error";
 		}
 
-		return createEditModelAndView("sale/new", "sale/create.do", globalErrorMessage, binding, sale);
+		return createEditModelAndView("sales/new", "sales/create.do", globalErrorMessage, binding, sale);
 	}
 
 	@RequestMapping("/edit")

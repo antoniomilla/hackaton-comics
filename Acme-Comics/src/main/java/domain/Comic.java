@@ -10,6 +10,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -114,6 +115,7 @@ public class Comic extends DomainEntity {
 
 	@NullOrNotBlank
 	@Field
+	@Lob
 	public String getDescription() {
 		return this.description;
 	}
@@ -144,6 +146,7 @@ public class Comic extends DomainEntity {
 		// Sets don't have indexes).
 		Set<String> tagsWithoutDuplicates = new HashSet<>();
 		for (String s : getTags()) {
+			if (s == null) return true; // Tags cannot be null, ignore this validator then.
 			tagsWithoutDuplicates.add(s.toUpperCase());
 		}
 		return tagsWithoutDuplicates.size() == tags.size();

@@ -11,15 +11,15 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="appfn" uri="/WEB-INF/appfn.tld" %>
 
-<display:table pagesize="${displayTagPageSize}" name="authors" requestURI="${currentRequestUri}" id="author">
+<display:table pagesize="${displayTagPageSize}" name="authors" requestURI="${currentRequestUri}" id="author" sort="list">
 	<display:column property="name" titleKey="authors.name" sortable="true" href="authors/show.do" paramId="id" paramProperty="id" />
 	<display:column property="birthDate" titleKey="authors.birthDate" sortable="true" format="{0,date,dd/MM/yyyy}"/>
 	<display:column property="birthPlace" titleKey="authors.birthPlace" sortable="true" />
 
 	<c:if test="${principal != null and principal.administrator or principal.trusted}">
         <display:column titleKey="misc.actions">
-            <app:redir-button code="misc.actions.edit" action="publishers/edit.do?id=${publisher.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-            <app:delete-button code="misc.actions.delete" action="publishers/delete.do?id=${publisher.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" warnCascade="true" />
+            <app:redir-button code="misc.actions.edit" action="authors/edit.do?id=${author.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+            <app:delete-button code="misc.actions.delete" action="authors/delete.do?id=${author.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'author'))}" warnCascade="true" />
         </display:column>
     </c:if>
 </display:table>

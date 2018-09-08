@@ -33,7 +33,7 @@ public class NewUserForm {
     @CustomValidator(message = "{misc.error.passwordDoesNotMatch}", applyOn = "repeatPassword")
     public boolean isValidPasswordsMatch()
     {
-        if (getPassword() == null || getRepeatPassword() == null) return false;
+        if (getRepeatPassword() == null) return getPassword() == null;
         return getRepeatPassword().equals(getPassword());
     }
 

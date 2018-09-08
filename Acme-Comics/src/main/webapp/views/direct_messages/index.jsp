@@ -14,12 +14,18 @@
 <div class="row">
     <div class="column messageFolderList">
         <div>
-            <display:table pagesize="${displayTagPageSize}" name="messageFolders" id="messageFolder" requestURI="${currentRequestUri}">
-                <display:column property="nameForDisplay" titleKey="message_folders.name" href="${appfn:withoutDisplayTagParams(currentRequestUriAndParams, 'directMessage')}" paramId="folder" paramProperty="id" sortable="true" />
+            <display:table pagesize="${displayTagPageSize}" name="messageFolders" id="messageFolder" requestURI="${currentRequestUri}" sort="list">
+                <display:column titleKey="message_folders.name" sortable="true">
+                    <a href="${appfn:withUrlParam(appfn:withoutDisplayTagParams(currentRequestUriAndParams, 'directMessage'), 'folder', messageFolder.id)}">
+                        <span class="${messageFolder == currentMessageFolder ? 'currentMessageFolderLink' : ''}">
+                            <c:out value="${messageFolder.nameForDisplay}" />
+                        </span>
+                    </a>
+                </display:column>
                 <display:column titleKey="misc.actions">
                     <c:if test="${messageFolder.type == 'USER'}">
                         <app:redir-button code="message_folders.rename" action="message_folders/edit.do?id=${messageFolder.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                        <app:delete-button code="misc.actions.delete" action="message_folders/delete.do?id=${messageFolder.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                        <app:delete-button code="misc.actions.delete" action="message_folders/delete.do?id=${messageFolder.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'messageFolder'))}" />
                     </c:if>
                 </display:column>
             </display:table>
@@ -29,7 +35,7 @@
     </div>
     <div class="column messageList">
         <div>
-            <display:table pagesize="${displayTagPageSize}" name="directMessages" id="directMessage" requestURI="${currentRequestUri}">
+            <display:table pagesize="${displayTagPageSize}" name="directMessages" id="directMessage" requestURI="${currentRequestUri}" sort="list">
                 <display:column sortProperty="subject" titleKey="direct_messages.subject" sortable="true">
                     <c:if test="${directMessage.administrationNotice}">
                         <img class="iconColumnIcon" src="images/exclamation.png" />
@@ -63,7 +69,7 @@
                     </c:if>
                     <app:redir-button code="direct_messages.move" action="direct_messages/move.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
                     <c:if test="${directMessage.messageFolder.type != 'SYSTEM_TRASH'}">
-                        <app:delete-button code="misc.actions.delete" action="direct_messages/delete.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                        <app:delete-button code="misc.actions.delete" action="direct_messages/delete.do?id=${directMessage.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'directMessage'))}" />
                     </c:if>
                 </display:column>
             </display:table>

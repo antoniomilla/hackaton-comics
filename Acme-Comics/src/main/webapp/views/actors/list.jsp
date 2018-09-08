@@ -19,7 +19,7 @@
 </div>
 
 <div>
-    <display:table pagesize="${displayTagPageSize}" name="actors" requestURI="${currentRequestUri}" id="actor">
+    <display:table pagesize="${displayTagPageSize}" name="actors" requestURI="${currentRequestUri}" id="actor" sort="list">
         <display:column titleKey="users.nickname" sortProperty="nickname" sortable="true">
             <app:actor-name actor="${actor}" />
         </display:column>
@@ -40,8 +40,10 @@
 
         <security:authorize access="isAuthenticated()">
             <display:column titleKey="misc.actions">
-                <c:if test="${principal.administrator or not actor.user or not actor.onlyFriendsCanSendDms or actor.friends.contains(principal)}">
-                    <app:redir-button code="users.sendMessage" action="direct_messages/new.do?recipient=${actor.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                <c:if test="${actor != principal}">
+                    <c:if test="${principal.administrator or not actor.user or not actor.onlyFriendsCanSendDms or actor.friends.contains(principal)}">
+                        <app:redir-button code="users.sendMessage" action="direct_messages/new.do?recipient=${actor.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+                    </c:if>
                 </c:if>
 
                 <security:authorize access="hasRole('ADMINISTRATOR')">

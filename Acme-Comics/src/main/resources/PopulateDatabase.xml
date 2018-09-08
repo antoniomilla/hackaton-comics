@@ -1,917 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" ns0:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean class="domain.Administrator" id="administrator_admin">
-		<property name="nickname" value="Administrator 1"/>
-		<property name="description">
-			<null/>
-		</property>
-		<property name="creationTime" value="2018/07/15 00:00:00"/>
-		<property name="userAccount">
-			<ref bean="userAccount_admin"/>
-		</property>
-		<property name="messageFolders">
-			<list/>
-		</property>
-	</bean>
-	<bean class="domain.Administrator" id="administrator_admin2">
-		<property name="nickname" value="Administrador 2"/>
-		<property name="description">
-			<null/>
-		</property>
-		<property name="creationTime" value="2018/07/15 00:00:00"/>
-		<property name="userAccount">
-			<ref bean="userAccount_admin2"/>
-		</property>
-		<property name="messageFolders">
-			<list/>
-		</property>
-	</bean>
-	<bean class="security.UserAccount" id="userAccount_admin">
-		<property name="username" value="admin"/>
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="ADMINISTRATOR"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean class="security.UserAccount" id="userAccount_admin2">
-		<property name="username" value="admin2"/>
-		<property name="password" value="c84258e9c39059a89ab77d846ddab909"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="ADMINISTRATOR"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean class="security.UserAccount" id="userAccount_user1">
-		<property name="username" value="user1"/>
-		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="USER"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean class="security.UserAccount" id="userAccount_user2">
-		<property name="username" value="user2"/>
-		<property name="password" value="7e58d63b60197ceb55a1c487989a3720"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="USER"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean class="security.UserAccount" id="userAccount_user3">
-		<property name="username" value="user3"/>
-		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="USER"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean class="security.UserAccount" id="userAccount_user4">
-		<property name="username" value="user4"/>
-		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6"/>
-		<property name="authorities">
-			<list value-type="security.Authority">
-				<bean class="security.Authority">
-					<property name="authority" value="USER"/>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<bean class="domain.User" id="user_user1">
-		<property name="level" value="B"/>
-		<property name="userComics">
-			<list>
-				<ref bean="userComic_1"/>
-				<ref bean="userComic_3"/>
-				<ref bean="userComic_5"/>
-				<ref bean="userComic_8"/>
-			</list>
-		</property>
-		<property name="blocked" value="false"/>
-		<property name="blockReason">
-			<null/>
-		</property>
-		<property name="trusted" value="true"/>
-		<property name="lastLevelUpdateTime" value="2018/07/15 00:00:00"/>
-		<property name="onlyFriendsCanSendDms" value="false"/>
-		<property name="friends">
-			<list>
-				<ref bean="user_user4"/>
-				<ref bean="user_user1"/>
-				<ref bean="user_user2"/>
-			</list>
-		</property>
-		<property name="userComments">
-			<list>
-				<ref bean="comment_1"/>
-				<ref bean="comment_2"/>
-				<ref bean="comment_4"/>
-				<ref bean="comment_7"/>
-			</list>
-		</property>
-		<property name="nickname" value="User 1"/>
-		<property name="description" value="This is user1's description."/>
-		<property name="creationTime" value="2018/07/15 00:00:00"/>
-		<property name="userAccount">
-			<ref bean="userAccount_user1"/>
-		</property>
-		<property name="messageFolders">
-			<list>
-				<ref bean="messageFolder_1"/>
-				<ref bean="messageFolder_2"/>
-				<ref bean="messageFolder_3"/>
-			</list>
-		</property>
-	</bean>
-	<bean class="domain.User" id="user_user2">
-		<property name="level" value="B"/>
-		<property name="userComics">
-			<list>
-				<ref bean="userComic_4"/>
-				<ref bean="userComic_2"/>
-			</list>
-		</property>
-		<property name="blocked" value="false"/>
-		<property name="blockReason">
-			<null/>
-		</property>
-		<property name="trusted" value="false"/>
-		<property name="lastLevelUpdateTime" value="2018/07/15 00:00:00"/>
-		<property name="onlyFriendsCanSendDms" value="false"/>
-		<property name="friends">
-			<list>
-				<ref bean="user_user1"/>
-			</list>
-		</property>
-		<property name="userComments">
-			<list>
-				<ref bean="comment_3"/>
-				<ref bean="comment_5"/>
-				<ref bean="comment_6"/>
-				<ref bean="comment_8"/>
-			</list>
-		</property>
-		<property name="nickname" value="User 2"/>
-		<property name="description" value="This is user2's description."/>
-		<property name="creationTime" value="2018/07/15 00:00:00"/>
-		<property name="userAccount">
-			<ref bean="userAccount_user2"/>
-		</property>
-		<property name="messageFolders">
-			<list>
-				<ref bean="messageFolder_4"/>
-				<ref bean="messageFolder_5"/>
-				<ref bean="messageFolder_6"/>
-			</list>
-		</property>
-	</bean>
-	<bean class="domain.User" id="user_user3">
-		<property name="level" value="C"/>
-		<property name="userComics">
-			<list/>
-		</property>
-		<property name="blocked" value="true"/>
-		<property name="blockReason" value="Bad behavior."/>
-		<property name="trusted" value="false"/>
-		<property name="lastLevelUpdateTime" value="2018/07/20 00:00:00"/>
-		<property name="onlyFriendsCanSendDms" value="false"/>
-		<property name="friends">
-			<list/>
-		</property>
-		<property name="userComments">
-			<list/>
-		</property>
-		<property name="nickname" value="User 3"/>
-		<property name="description" value="This is user3's description."/>
-		<property name="creationTime" value="2018/07/20 00:00:00"/>
-		<property name="userAccount">
-			<ref bean="userAccount_user3"/>
-		</property>
-		<property name="messageFolders">
-			<list>
-				<ref bean="messageFolder_7"/>
-				<ref bean="messageFolder_8"/>
-				<ref bean="messageFolder_9"/>
-			</list>
-		</property>
-	</bean>
-	<bean class="domain.User" id="user_user4">
-		<property name="level" value="B"/>
-		<property name="userComics">
-			<list>
-				<ref bean="userComic_7"/>
-				<ref bean="userComic_6"/>
-			</list>
-		</property>
-		<property name="blocked" value="false"/>
-		<property name="blockReason">
-			<null/>
-		</property>
-		<property name="trusted" value="false"/>
-		<property name="lastLevelUpdateTime" value="2018/07/22 00:00:00"/>
-		<property name="onlyFriendsCanSendDms" value="true"/>
-		<property name="friends">
-			<list>
-				<ref bean="user_user1"/>
-			</list>
-		</property>
-		<property name="userComments">
-			<list/>
-		</property>
-		<property name="nickname" value="User 4"/>
-		<property name="description" value="This is user4's description."/>
-		<property name="creationTime" value="2018/07/22 00:00:00"/>
-		<property name="userAccount">
-			<ref bean="userAccount_user4"/>
-		</property>
-		<property name="messageFolders">
-			<list>
-				<ref bean="messageFolder_10"/>
-				<ref bean="messageFolder_11"/>
-				<ref bean="messageFolder_12"/>
-			</list>
-		</property>
-	</bean>
-
-
-
-
-
-	<bean class="domain.MessageFolder" id="messageFolder_111">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
-		<property name="actor">
-			<ref bean="administrator_admin"/>
-		</property>
-		<property name="messages">
-			<list>
-
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_112">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_SENT"/>
-		<property name="actor">
-			<ref bean="administrator_admin"/>
-		</property>
-		<property name="messages">
-			<list>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_113">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
-		<property name="actor">
-			<ref bean="administrator_admin"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-
-
-
-	<bean class="domain.MessageFolder" id="messageFolder_211">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
-		<property name="actor">
-			<ref bean="administrator_admin2"/>
-		</property>
-		<property name="messages">
-			<list>
-
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_212">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_SENT"/>
-		<property name="actor">
-			<ref bean="administrator_admin2"/>
-		</property>
-		<property name="messages">
-			<list>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_213">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
-		<property name="actor">
-			<ref bean="administrator_admin2"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-
-
-
-
-
-	<bean class="domain.MessageFolder" id="messageFolder_1">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
-		<property name="actor">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="messages">
-			<list>
-				<ref bean="directMessage_4"/>
-				<ref bean="directMessage_8"/>
-				<ref bean="directMessage_10"/>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_2">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_SENT"/>
-		<property name="actor">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="messages">
-			<list>
-				<ref bean="directMessage_1"/>
-				<ref bean="directMessage_5"/>
-				<ref bean="directMessage_11"/>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_3">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
-		<property name="actor">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_4">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
-		<property name="actor">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="messages">
-			<list>
-				<ref bean="directMessage_2"/>
-				<ref bean="directMessage_6"/>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_5">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_SENT"/>
-		<property name="actor">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="messages">
-			<list>
-				<ref bean="directMessage_3"/>
-				<ref bean="directMessage_7"/>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_6">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
-		<property name="actor">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_7">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
-		<property name="actor">
-			<ref bean="user_user3"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_8">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_SENT"/>
-		<property name="actor">
-			<ref bean="user_user3"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_9">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
-		<property name="actor">
-			<ref bean="user_user3"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_10">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
-		<property name="actor">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="messages">
-			<list>
-				<ref bean="directMessage_12"/>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_11">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_SENT"/>
-		<property name="actor">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="messages">
-			<list>
-				<ref bean="directMessage_9"/>
-			</list>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.MessageFolder" id="messageFolder_12">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
-		<property name="actor">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="messages">
-			<list/>
-		</property>
-		<property name="nameForDisplay">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_1">
-		<property name="subject" value="Watchmen read."/>
-		<property name="body" value="I have just read Watchmen. What a gem."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_2"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_2">
-		<property name="subject" value="Watchmen read."/>
-		<property name="body" value="I have just read Watchmen. What a gem."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_4"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_3">
-		<property name="subject" value="Flashpoint started."/>
-		<property name="body" value="I have just started reading Flashpoint.    So much fun so far!."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_5"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_4">
-		<property name="subject" value="Flashpoint started."/>
-		<property name="body" value="I have just started reading Flashpoint.    So much fun so far!."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_1"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_5">
-		<property name="subject" value="Any recommendations?."/>
-		<property name="body" value="Hi there! I don't have any comics to    read now. Any recommendations?."/>
-		<property name="administrationNotice" value="false"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_2"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_6">
-		<property name="subject" value="Any recommendations?."/>
-		<property name="body" value="Hi there! I don't have any comics to    read now. Any recommendations?."/>
-		<property name="administrationNotice" value="false"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_4"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_7">
-		<property name="subject" value="Help here."/>
-		<property name="body" value="Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can't make a decision. Which one do you think i should take?."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_5"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_8">
-		<property name="subject" value="Help here."/>
-		<property name="body" value="Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can't make a decision. Which one do you think i should take?."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_1"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_9">
-		<property name="subject" value="From hell read."/>
-		<property name="body" value="I've just read From Hell. So so good,    far better than the movie, obviously."/>
-		<property name="administrationNotice" value="false"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_11"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_10">
-		<property name="subject" value="From hell read."/>
-		<property name="body" value="I've just read From Hell. So so good,    far better than the movie, obviously."/>
-		<property name="administrationNotice" value="false"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_1"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_11">
-		<property name="subject" value="Here you have a friend!."/>
-		<property name="body" value="Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_2"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_12">
-		<property name="subject" value="Here you have a friend!."/>
-		<property name="body" value="Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!."/>
-		<property name="administrationNotice" value="true"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_10"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.Comment" id="comment_1">
-		<property name="text" value="Great comic."/>
-		<property name="creationTime" value="2017/07/16 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="publisher">
-			<null/>
-		</property>
-		<property name="author">
-			<null/>
-		</property>
-		<property name="comic">
-			<ref bean="comic_1"/>
-		</property>
-		<property name="volume">
-			<null/>
-		</property>
-		<property name="comicCharacter">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.Comment" id="comment_2">
-		<property name="text" value="Awesome character."/>
-		<property name="creationTime" value="2017/07/18 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="publisher">
-			<null/>
-		</property>
-		<property name="author">
-			<null/>
-		</property>
-		<property name="comic">
-			<null/>
-		</property>
-		<property name="volume">
-			<null/>
-		</property>
-		<property name="comicCharacter">
-			<ref bean="comicCharacter_1"/>
-		</property>
-	</bean>
-	<bean class="domain.Comment" id="comment_3">
-		<property name="text" value="A great publisher, but their movies are so bad."/>
-		<property name="creationTime" value="2017/07/20 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="publisher">
-			<ref bean="publisher_1"/>
-		</property>
-		<property name="author">
-			<null/>
-		</property>
-		<property name="comic">
-			<null/>
-		</property>
-		<property name="volume">
-			<null/>
-		</property>
-		<property name="comicCharacter">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.Comment" id="comment_4">
-		<property name="text" value="The first comic i read. I still love it."/>
-		<property name="creationTime" value="2017/07/16 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="publisher">
-			<null/>
-		</property>
-		<property name="author">
-			<null/>
-		</property>
-		<property name="comic">
-			<ref bean="comic_2"/>
-		</property>
-		<property name="volume">
-			<null/>
-		</property>
-		<property name="comicCharacter">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.Comment" id="comment_5">
-		<property name="text" value="They have the best movies. Keep it on!."/>
-		<property name="creationTime" value="2017/07/16 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="publisher">
-			<ref bean="publisher_2"/>
-		</property>
-		<property name="author">
-			<null/>
-		</property>
-		<property name="comic">
-			<null/>
-		</property>
-		<property name="volume">
-			<null/>
-		</property>
-		<property name="comicCharacter">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.Comment" id="comment_6">
-		<property name="text" value="Ready to read it."/>
-		<property name="creationTime" value="2017/07/16 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="publisher">
-			<null/>
-		</property>
-		<property name="author">
-			<null/>
-		</property>
-		<property name="comic">
-			<null/>
-		</property>
-		<property name="volume">
-			<ref bean="volume_1"/>
-		</property>
-		<property name="comicCharacter">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.Comment" id="comment_7">
-		<property name="text" value="Great comic, awful tv show."/>
-		<property name="creationTime" value="2017/07/23 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="publisher">
-			<null/>
-		</property>
-		<property name="author">
-			<null/>
-		</property>
-		<property name="comic">
-			<ref bean="comic_5"/>
-		</property>
-		<property name="volume">
-			<null/>
-		</property>
-		<property name="comicCharacter">
-			<null/>
-		</property>
-	</bean>
 	<bean class="domain.Publisher" id="publisher_1">
 		<property name="name" value="DC Comics"/>
 		<property name="foundationDate" value="1939/01/01"/>
@@ -919,6 +7,7 @@
 		<property name="comics">
 			<list>
 				<ref bean="comic_1"/>
+				<ref bean="comic_6"/>
 				<ref bean="comic_3"/>
 			</list>
 		</property>
@@ -984,6 +73,7 @@
 		<property name="comics">
 			<list>
 				<ref bean="comic_1"/>
+				<ref bean="comic_6"/>
 			</list>
 		</property>
 		<property name="description" value="One of the best comic book authors of his generation.    Known for his absolut knowledge of the superheroe world."/>
@@ -993,6 +83,9 @@
 				<ref bean="volume_1"/>
 				<ref bean="volume_2"/>
 				<ref bean="volume_3"/>
+				<ref bean="volume_7"/>
+				<ref bean="volume_8"/>
+				<ref bean="volume_9"/>
 			</list>
 		</property>
 		<property name="comments">
@@ -1077,26 +170,194 @@
 			<list/>
 		</property>
 	</bean>
-	<bean class="domain.Comment" id="comment_8">
-		<property name="text" value="The greatest ever."/>
-		<property name="creationTime" value="2017/07/16 00:00:00"/>
-		<property name="user">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="publisher">
+	<bean class="domain.Administrator" id="administrator_admin">
+		<property name="nickname" value="Administrator 1"/>
+		<property name="description">
 			<null/>
 		</property>
-		<property name="author">
-			<ref bean="author_3"/>
+		<property name="creationTime" value="2018/07/15 00:00:00"/>
+		<property name="userAccount">
+			<ref bean="userAccount_admin"/>
 		</property>
-		<property name="comic">
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder_1"/>
+				<ref bean="messageFolder_2"/>
+				<ref bean="messageFolder_3"/>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.Administrator" id="administrator_admin2">
+		<property name="nickname" value="Administrador 2"/>
+		<property name="description">
 			<null/>
 		</property>
-		<property name="volume">
+		<property name="creationTime" value="2018/07/15 00:00:00"/>
+		<property name="userAccount">
+			<ref bean="userAccount_admin2"/>
+		</property>
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder_4"/>
+				<ref bean="messageFolder_5"/>
+				<ref bean="messageFolder_6"/>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.User" id="user_user1">
+		<property name="level" value="B"/>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic_1"/>
+				<ref bean="userComic_3"/>
+				<ref bean="userComic_9"/>
+				<ref bean="userComic_5"/>
+				<ref bean="userComic_8"/>
+			</list>
+		</property>
+		<property name="blocked" value="false"/>
+		<property name="blockReason">
 			<null/>
 		</property>
-		<property name="comicCharacter">
+		<property name="trusted" value="true"/>
+		<property name="lastLevelUpdateTime" value="2018/09/08 12:30:39"/>
+		<property name="onlyFriendsCanSendDms" value="false"/>
+		<property name="friends">
+			<list>
+				<ref bean="user_user1"/>
+				<ref bean="user_user2"/>
+				<ref bean="user_user4"/>
+			</list>
+		</property>
+		<property name="userComments">
+			<list>
+				<ref bean="comment_1"/>
+				<ref bean="comment_2"/>
+				<ref bean="comment_4"/>
+				<ref bean="comment_7"/>
+			</list>
+		</property>
+		<property name="nickname" value="User 1"/>
+		<property name="description" value="This is user1's description."/>
+		<property name="creationTime" value="2018/07/15 00:00:00"/>
+		<property name="userAccount">
+			<ref bean="userAccount_user1"/>
+		</property>
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder_7"/>
+				<ref bean="messageFolder_8"/>
+				<ref bean="messageFolder_9"/>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.User" id="user_user2">
+		<property name="level" value="B"/>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic_4"/>
+				<ref bean="userComic_2"/>
+			</list>
+		</property>
+		<property name="blocked" value="false"/>
+		<property name="blockReason">
 			<null/>
+		</property>
+		<property name="trusted" value="false"/>
+		<property name="lastLevelUpdateTime" value="2018/07/15 00:00:00"/>
+		<property name="onlyFriendsCanSendDms" value="false"/>
+		<property name="friends">
+			<list>
+				<ref bean="user_user1"/>
+			</list>
+		</property>
+		<property name="userComments">
+			<list>
+				<ref bean="comment_3"/>
+				<ref bean="comment_5"/>
+				<ref bean="comment_6"/>
+				<ref bean="comment_8"/>
+			</list>
+		</property>
+		<property name="nickname" value="User 2"/>
+		<property name="description" value="This is user2's description."/>
+		<property name="creationTime" value="2018/07/15 00:00:00"/>
+		<property name="userAccount">
+			<ref bean="userAccount_user2"/>
+		</property>
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder_10"/>
+				<ref bean="messageFolder_11"/>
+				<ref bean="messageFolder_12"/>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.User" id="user_user3">
+		<property name="level" value="C"/>
+		<property name="userComics">
+			<list/>
+		</property>
+		<property name="blocked" value="true"/>
+		<property name="blockReason" value="Bad behavior."/>
+		<property name="trusted" value="false"/>
+		<property name="lastLevelUpdateTime" value="2018/07/20 00:00:00"/>
+		<property name="onlyFriendsCanSendDms" value="false"/>
+		<property name="friends">
+			<list/>
+		</property>
+		<property name="userComments">
+			<list/>
+		</property>
+		<property name="nickname" value="User 3"/>
+		<property name="description" value="This is user3's description."/>
+		<property name="creationTime" value="2018/07/20 00:00:00"/>
+		<property name="userAccount">
+			<ref bean="userAccount_user3"/>
+		</property>
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder_13"/>
+				<ref bean="messageFolder_14"/>
+				<ref bean="messageFolder_15"/>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.User" id="user_user4">
+		<property name="level" value="B"/>
+		<property name="userComics">
+			<list>
+				<ref bean="userComic_7"/>
+				<ref bean="userComic_6"/>
+			</list>
+		</property>
+		<property name="blocked" value="false"/>
+		<property name="blockReason">
+			<null/>
+		</property>
+		<property name="trusted" value="false"/>
+		<property name="lastLevelUpdateTime" value="2018/07/22 00:00:00"/>
+		<property name="onlyFriendsCanSendDms" value="true"/>
+		<property name="friends">
+			<list>
+				<ref bean="user_user1"/>
+			</list>
+		</property>
+		<property name="userComments">
+			<list/>
+		</property>
+		<property name="nickname" value="User 4"/>
+		<property name="description" value="This is user4's description."/>
+		<property name="creationTime" value="2018/07/22 00:00:00"/>
+		<property name="userAccount">
+			<ref bean="userAccount_user4"/>
+		</property>
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder_16"/>
+				<ref bean="messageFolder_17"/>
+				<ref bean="messageFolder_18"/>
+			</list>
 		</property>
 	</bean>
 	<bean class="domain.Comic" id="comic_1">
@@ -1128,9 +389,12 @@
 				<ref bean="volume_1"/>
 				<ref bean="volume_2"/>
 				<ref bean="volume_3"/>
+				<ref bean="volume_7"/>
+				<ref bean="volume_8"/>
+				<ref bean="volume_9"/>
 			</list>
 		</property>
-		<property name="volumeCount" value="3"/>
+		<property name="volumeCount" value="6"/>
 		<property name="comments">
 			<list>
 				<ref bean="comment_1"/>
@@ -1271,195 +535,843 @@
 			</list>
 		</property>
 	</bean>
-	<bean class="domain.ComicCharacter" id="comicCharacter_1">
-		<property name="name" value="Bruce Wayne"/>
-		<property name="alias" value="Batman"/>
-		<property name="city" value="Gotham"/>
-		<property name="image" value="https://i.imgur.com/P5cAGr3.jpg"/>
-		<property name="description" value="One of the most famous comic characters in    all comic books. Created by Bob Kane and Bill Finger for DC Comics.    He is one of the three members of DC Trinity.Due to his parents' murdered, he    fights crime using amazing items built by him."/>
+	<bean class="domain.Comic" id="comic_6">
+		<property name="name" value="Superman"/>
 		<property name="publisher">
 			<ref bean="publisher_1"/>
 		</property>
+		<property name="author">
+			<ref bean="author_1"/>
+		</property>
+		<property name="image" value="https://i.imgur.com/ECacSct.png"/>
 		<property name="comicComicCharacters">
+			<list/>
+		</property>
+		<property name="userComics">
 			<list>
-				<ref bean="comicComicCharacter_1"/>
+				<ref bean="userComic_9"/>
 			</list>
 		</property>
-		<property name="otherAliases">
+		<property name="description" value="Superman was born on the planet Krypton, and as a baby was sent to Earth in a small spaceship by his scientist father Jor-El, moments before Krypton was destroyed in a natural cataclysm. His ship landed in the American countryside, where he was discovered and adopted by a farming couple. They named him Clark Kent and imbued him with a strong moral compass. He developed various superhuman abilities, which he resolved to use for the benefit of humanity. Clark Kent resides in the fictional American city of Metropolis, where he works as a journalist for the Daily Planet, a newspaper. To protect his privacy, he changes into a colorful costume and uses the alias &quot;Superman&quot; when fighting crime. Superman's love interest is his fellow journalist Lois Lane, and his classic archenemy is the genius inventor Lex Luthor. He is a friend of many other superheroes in the DC Universe, such as Batman and Wonder Woman."/>
+		<property name="tags">
 			<list value-type="java.lang.String">
-				<value>The dark knight</value>
-				<value>Gotham's bat</value>
+				<value>strong</value>
+				<value>fast</value>
+				<value>american</value>
 			</list>
 		</property>
-		<property name="firstAppearance" value="Detective Comics 27, 1939"/>
+		<property name="volumes">
+			<list/>
+		</property>
+		<property name="volumeCount" value="0"/>
 		<property name="comments">
-			<list>
-				<ref bean="comment_2"/>
+			<list/>
+		</property>
+	</bean>
+	<bean class="security.UserAccount" id="userAccount_admin">
+		<property name="username" value="admin"/>
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3"/>
+		<property name="authorities">
+			<list value-type="security.Authority">
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR"/>
+				</bean>
 			</list>
 		</property>
 	</bean>
-	<bean class="domain.ComicCharacter" id="comicCharacter_2">
-		<property name="name" value="Tony Stark"/>
-		<property name="alias" value="Ironman"/>
-		<property name="city" value="New york"/>
-		<property name="image" value="https://i.imgur.com/MPjwaEP.jpg"/>
-		<property name="description" value="Tony stark is a billionaire playboy who    lives the life the way he wants. But he also is an engineering genius    capable of build amazing war armors. He fights the crime using this armors."/>
+	<bean class="security.UserAccount" id="userAccount_admin2">
+		<property name="username" value="admin2"/>
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909"/>
+		<property name="authorities">
+			<list value-type="security.Authority">
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="security.UserAccount" id="userAccount_user1">
+		<property name="username" value="user1"/>
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d"/>
+		<property name="authorities">
+			<list value-type="security.Authority">
+				<bean class="security.Authority">
+					<property name="authority" value="USER"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="security.UserAccount" id="userAccount_user2">
+		<property name="username" value="user2"/>
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720"/>
+		<property name="authorities">
+			<list value-type="security.Authority">
+				<bean class="security.Authority">
+					<property name="authority" value="USER"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="security.UserAccount" id="userAccount_user3">
+		<property name="username" value="user3"/>
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78"/>
+		<property name="authorities">
+			<list value-type="security.Authority">
+				<bean class="security.Authority">
+					<property name="authority" value="USER"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="security.UserAccount" id="userAccount_user4">
+		<property name="username" value="user4"/>
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6"/>
+		<property name="authorities">
+			<list value-type="security.Authority">
+				<bean class="security.Authority">
+					<property name="authority" value="USER"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_1">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="administrator_admin"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_2">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="administrator_admin"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_3">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="administrator_admin"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_4">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="administrator_admin2"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_5">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="administrator_admin2"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_6">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="administrator_admin2"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_7">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage_4"/>
+				<ref bean="directMessage_8"/>
+				<ref bean="directMessage_10"/>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_8">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage_1"/>
+				<ref bean="directMessage_5"/>
+				<ref bean="directMessage_11"/>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_9">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_10">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage_2"/>
+				<ref bean="directMessage_6"/>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_11">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage_3"/>
+				<ref bean="directMessage_7"/>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_12">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_13">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="user_user3"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_14">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="user_user3"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_15">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="user_user3"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_16">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="actor">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage_12"/>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_17">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage_9"/>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_18">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="actor">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="messages">
+			<list/>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_1">
+		<property name="subject" value="Watchmen read."/>
+		<property name="body" value="I have just read Watchmen. What a gem."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_8"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_2">
+		<property name="subject" value="Watchmen read."/>
+		<property name="body" value="I have just read Watchmen. What a gem."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_10"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_3">
+		<property name="subject" value="Flashpoint started."/>
+		<property name="body" value="I have just started reading Flashpoint.    So much fun so far!."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_11"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_4">
+		<property name="subject" value="Flashpoint started."/>
+		<property name="body" value="I have just started reading Flashpoint.    So much fun so far!."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_7"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_5">
+		<property name="subject" value="Any recommendations?."/>
+		<property name="body" value="Hi there! I don't have any comics to    read now. Any recommendations?."/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_8"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_6">
+		<property name="subject" value="Any recommendations?."/>
+		<property name="body" value="Hi there! I don't have any comics to    read now. Any recommendations?."/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_10"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_7">
+		<property name="subject" value="Help here."/>
+		<property name="body" value="Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can't make a decision. Which one do you think i should take?."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_11"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_8">
+		<property name="subject" value="Help here."/>
+		<property name="body" value="Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can't make a decision. Which one do you think i should take?."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_7"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_9">
+		<property name="subject" value="From hell read."/>
+		<property name="body" value="I've just read From Hell. So so good,    far better than the movie, obviously."/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_17"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_10">
+		<property name="subject" value="From hell read."/>
+		<property name="body" value="I've just read From Hell. So so good,    far better than the movie, obviously."/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_7"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_11">
+		<property name="subject" value="Here you have a friend!."/>
+		<property name="body" value="Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_8"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_12">
+		<property name="subject" value="Here you have a friend!."/>
+		<property name="body" value="Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_16"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="creationTime">
+			<null/>
+		</property>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.Comment" id="comment_1">
+		<property name="text" value="Great comic."/>
+		<property name="creationTime" value="2017/07/16 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user1"/>
+		</property>
 		<property name="publisher">
-			<ref bean="publisher_2"/>
+			<null/>
 		</property>
-		<property name="comicComicCharacters">
-			<list>
-				<ref bean="comicComicCharacter_2"/>
-			</list>
+		<property name="author">
+			<null/>
 		</property>
-		<property name="otherAliases">
-			<list/>
-		</property>
-		<property name="firstAppearance" value="Tales of Suspense 39, 1963"/>
-		<property name="comments">
-			<list/>
-		</property>
-	</bean>
-	<bean class="domain.ComicCharacter" id="comicCharacter_3">
-		<property name="name" value="Steve Rogers"/>
-		<property name="alias" value="Captain America"/>
-		<property name="city" value="Brooklyn, New york"/>
-		<property name="image" value="https://i.imgur.com/ewUYnCq.jpg"/>
-		<property name="description" value="Captain America is an american symbol who    represents the american way. He is a very patriotic hero who fights crime    for his country."/>
-		<property name="publisher">
-			<ref bean="publisher_2"/>
-		</property>
-		<property name="comicComicCharacters">
-			<list>
-				<ref bean="comicComicCharacter_3"/>
-			</list>
-		</property>
-		<property name="otherAliases">
-			<list/>
-		</property>
-		<property name="firstAppearance" value="Captain America Comics 1, 1941 "/>
-		<property name="comments">
-			<list/>
-		</property>
-	</bean>
-	<bean class="domain.ComicCharacter" id="comicCharacter_4">
-		<property name="name" value="Walter Kovacs"/>
-		<property name="alias" value="Rorschach"/>
-		<property name="city" value="New york"/>
-		<property name="image" value="https://i.imgur.com/Uk0om3X.jpg"/>
-		<property name="description" value="An old violent hero who works against the    rules set by the government."/>
-		<property name="publisher">
-			<ref bean="publisher_1"/>
-		</property>
-		<property name="comicComicCharacters">
-			<list>
-				<ref bean="comicComicCharacter_4"/>
-			</list>
-		</property>
-		<property name="otherAliases">
-			<list/>
-		</property>
-		<property name="firstAppearance" value="Watchmen, 1984 "/>
-		<property name="comments">
-			<list/>
-		</property>
-	</bean>
-	<bean class="domain.ComicCharacter" id="comicCharacter_5">
-		<property name="name" value="Matt Murdock"/>
-		<property name="alias" value="Daredevil"/>
-		<property name="city" value="Hell's kitchen, New york"/>
-		<property name="image" value="https://i.imgur.com/qQxuHsd.jpg"/>
-		<property name="description" value="Matt Murdock is a blind person who jobs as    a lawyer by day but, when the night comes, he becomes a crime fighter known as   Daredevil."/>
-		<property name="publisher">
-			<ref bean="publisher_2"/>
-		</property>
-		<property name="comicComicCharacters">
-			<list>
-				<ref bean="comicComicCharacter_5"/>
-			</list>
-		</property>
-		<property name="otherAliases">
-			<list/>
-		</property>
-		<property name="firstAppearance" value="Daredevil 1, 1964"/>
-		<property name="comments">
-			<list/>
-		</property>
-	</bean>
-	<bean class="domain.ComicCharacter" id="comicCharacter_6">
-		<property name="name" value="Peter Parker"/>
-		<property name="alias" value="Spiderman"/>
-		<property name="city" value="Queens, New york"/>
-		<property name="image" value="https://i.imgur.com/gZZsssV.jpg"/>
-		<property name="description" value="Peter Parker is a student who was bitten    by a radioactive spider.He got powers related to spiders due to this bite.    Now, as Spiderman, he uses these powers to fight crime."/>
-		<property name="publisher">
-			<ref bean="publisher_2"/>
-		</property>
-		<property name="comicComicCharacters">
-			<list>
-				<ref bean="comicComicCharacter_6"/>
-			</list>
-		</property>
-		<property name="otherAliases">
-			<list/>
-		</property>
-		<property name="firstAppearance" value="Amazing fantasy 15, 1962"/>
-		<property name="comments">
-			<list/>
-		</property>
-	</bean>
-	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_1">
-		<property name="role" value="Main character"/>
 		<property name="comic">
 			<ref bean="comic_1"/>
+		</property>
+		<property name="volume">
+			<null/>
+		</property>
+		<property name="comicCharacter">
+			<null/>
+		</property>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.Comment" id="comment_2">
+		<property name="text" value="Awesome character."/>
+		<property name="creationTime" value="2017/07/18 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="publisher">
+			<null/>
+		</property>
+		<property name="author">
+			<null/>
+		</property>
+		<property name="comic">
+			<null/>
+		</property>
+		<property name="volume">
+			<null/>
 		</property>
 		<property name="comicCharacter">
 			<ref bean="comicCharacter_1"/>
 		</property>
+		<property name="sale">
+			<null/>
+		</property>
 	</bean>
-	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_2">
-		<property name="role" value="Main character"/>
+	<bean class="domain.Comment" id="comment_3">
+		<property name="text" value="A great publisher, but their movies are so bad."/>
+		<property name="creationTime" value="2017/07/20 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="publisher">
+			<ref bean="publisher_1"/>
+		</property>
+		<property name="author">
+			<null/>
+		</property>
+		<property name="comic">
+			<null/>
+		</property>
+		<property name="volume">
+			<null/>
+		</property>
+		<property name="comicCharacter">
+			<null/>
+		</property>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.Comment" id="comment_4">
+		<property name="text" value="The first comic i read. I still love it."/>
+		<property name="creationTime" value="2017/07/16 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="publisher">
+			<null/>
+		</property>
+		<property name="author">
+			<null/>
+		</property>
 		<property name="comic">
 			<ref bean="comic_2"/>
 		</property>
+		<property name="volume">
+			<null/>
+		</property>
 		<property name="comicCharacter">
-			<ref bean="comicCharacter_2"/>
+			<null/>
+		</property>
+		<property name="sale">
+			<null/>
 		</property>
 	</bean>
-	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_3">
-		<property name="role" value="Main character"/>
+	<bean class="domain.Comment" id="comment_5">
+		<property name="text" value="They have the best movies. Keep it on!."/>
+		<property name="creationTime" value="2017/07/16 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="publisher">
+			<ref bean="publisher_2"/>
+		</property>
+		<property name="author">
+			<null/>
+		</property>
 		<property name="comic">
-			<ref bean="comic_2"/>
+			<null/>
+		</property>
+		<property name="volume">
+			<null/>
 		</property>
 		<property name="comicCharacter">
-			<ref bean="comicCharacter_3"/>
+			<null/>
+		</property>
+		<property name="sale">
+			<null/>
 		</property>
 	</bean>
-	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_4">
-		<property name="role" value="Main character"/>
+	<bean class="domain.Comment" id="comment_6">
+		<property name="text" value="Ready to read it."/>
+		<property name="creationTime" value="2017/07/16 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="publisher">
+			<null/>
+		</property>
+		<property name="author">
+			<null/>
+		</property>
 		<property name="comic">
-			<ref bean="comic_3"/>
+			<null/>
+		</property>
+		<property name="volume">
+			<ref bean="volume_1"/>
 		</property>
 		<property name="comicCharacter">
-			<ref bean="comicCharacter_4"/>
+			<null/>
+		</property>
+		<property name="sale">
+			<null/>
 		</property>
 	</bean>
-	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_5">
-		<property name="role" value="Main character"/>
+	<bean class="domain.Comment" id="comment_7">
+		<property name="text" value="Great comic, awful tv show."/>
+		<property name="creationTime" value="2017/07/23 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="publisher">
+			<null/>
+		</property>
+		<property name="author">
+			<null/>
+		</property>
 		<property name="comic">
-			<ref bean="comic_4"/>
+			<ref bean="comic_5"/>
+		</property>
+		<property name="volume">
+			<null/>
 		</property>
 		<property name="comicCharacter">
-			<ref bean="comicCharacter_5"/>
+			<null/>
+		</property>
+		<property name="sale">
+			<null/>
 		</property>
 	</bean>
-	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_6">
-		<property name="role" value="Supporting character"/>
+	<bean class="domain.Comment" id="comment_8">
+		<property name="text" value="The greatest ever."/>
+		<property name="creationTime" value="2017/07/16 00:00:00"/>
+		<property name="user">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="publisher">
+			<null/>
+		</property>
+		<property name="author">
+			<ref bean="author_3"/>
+		</property>
 		<property name="comic">
-			<ref bean="comic_2"/>
+			<null/>
+		</property>
+		<property name="volume">
+			<null/>
 		</property>
 		<property name="comicCharacter">
-			<ref bean="comicCharacter_6"/>
+			<null/>
+		</property>
+		<property name="sale">
+			<null/>
 		</property>
 	</bean>
 	<bean class="domain.UserComic" id="userComic_1">
@@ -1696,6 +1608,283 @@
 		</property>
 		<property name="comments">
 			<list/>
+		</property>
+	</bean>
+	<bean class="domain.UserComic" id="userComic_9">
+		<property name="starred" value="true"/>
+		<property name="score">
+			<null/>
+		</property>
+		<property name="status" value="NONE"/>
+		<property name="user">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="comic">
+			<ref bean="comic_6"/>
+		</property>
+		<property name="readVolumes">
+			<list/>
+		</property>
+		<property name="readVolumeCount" value="0"/>
+	</bean>
+	<bean class="domain.Volume" id="volume_7">
+		<property name="orderNumber" value="5"/>
+		<property name="name" value="The World of Flashpoint Featuring The Flash"/>
+		<property name="releaseDate" value="2012/03/01"/>
+		<property name="chapterCount">
+			<null/>
+		</property>
+		<property name="description">
+			<null/>
+		</property>
+		<property name="image">
+			<null/>
+		</property>
+		<property name="comic">
+			<ref bean="comic_1"/>
+		</property>
+		<property name="author">
+			<ref bean="author_1"/>
+		</property>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.Volume" id="volume_8">
+		<property name="orderNumber" value="6"/>
+		<property name="name" value="The World of Flashpoint Featuring Wonder Woman"/>
+		<property name="releaseDate" value="2012/03/01"/>
+		<property name="chapterCount">
+			<null/>
+		</property>
+		<property name="description">
+			<null/>
+		</property>
+		<property name="image">
+			<null/>
+		</property>
+		<property name="comic">
+			<ref bean="comic_1"/>
+		</property>
+		<property name="author">
+			<ref bean="author_1"/>
+		</property>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.Volume" id="volume_9">
+		<property name="orderNumber" value="7"/>
+		<property name="name" value="The World of Flashpoint Featuring Superman"/>
+		<property name="releaseDate" value="2012/03/01"/>
+		<property name="chapterCount">
+			<null/>
+		</property>
+		<property name="description">
+			<null/>
+		</property>
+		<property name="image">
+			<null/>
+		</property>
+		<property name="comic">
+			<ref bean="comic_1"/>
+		</property>
+		<property name="author">
+			<ref bean="author_1"/>
+		</property>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.ComicCharacter" id="comicCharacter_1">
+		<property name="name" value="Bruce Wayne"/>
+		<property name="alias" value="Batman"/>
+		<property name="city" value="Gotham"/>
+		<property name="image" value="https://i.imgur.com/P5cAGr3.jpg"/>
+		<property name="description" value="One of the most famous comic characters in    all comic books. Created by Bob Kane and Bill Finger for DC Comics.    He is one of the three members of DC Trinity.Due to his parents' murdered, he    fights crime using amazing items built by him."/>
+		<property name="publisher">
+			<ref bean="publisher_1"/>
+		</property>
+		<property name="comicComicCharacters">
+			<list>
+				<ref bean="comicComicCharacter_1"/>
+			</list>
+		</property>
+		<property name="otherAliases">
+			<list value-type="java.lang.String">
+				<value>The dark knight</value>
+				<value>Gotham's bat</value>
+			</list>
+		</property>
+		<property name="firstAppearance" value="Detective Comics 27, 1939"/>
+		<property name="comments">
+			<list>
+				<ref bean="comment_2"/>
+			</list>
+		</property>
+	</bean>
+	<bean class="domain.ComicCharacter" id="comicCharacter_2">
+		<property name="name" value="Tony Stark"/>
+		<property name="alias" value="Ironman"/>
+		<property name="city" value="New york"/>
+		<property name="image" value="https://i.imgur.com/MPjwaEP.jpg"/>
+		<property name="description" value="Tony stark is a billionaire playboy who    lives the life the way he wants. But he also is an engineering genius    capable of build amazing war armors. He fights the crime using this armors."/>
+		<property name="publisher">
+			<ref bean="publisher_2"/>
+		</property>
+		<property name="comicComicCharacters">
+			<list>
+				<ref bean="comicComicCharacter_2"/>
+			</list>
+		</property>
+		<property name="otherAliases">
+			<list/>
+		</property>
+		<property name="firstAppearance" value="Tales of Suspense 39, 1963"/>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.ComicCharacter" id="comicCharacter_3">
+		<property name="name" value="Steve Rogers"/>
+		<property name="alias" value="Captain America"/>
+		<property name="city" value="Brooklyn, New york"/>
+		<property name="image" value="https://i.imgur.com/ewUYnCq.jpg"/>
+		<property name="description" value="Captain America is an american symbol who    represents the american way. He is a very patriotic hero who fights crime    for his country."/>
+		<property name="publisher">
+			<ref bean="publisher_2"/>
+		</property>
+		<property name="comicComicCharacters">
+			<list>
+				<ref bean="comicComicCharacter_3"/>
+			</list>
+		</property>
+		<property name="otherAliases">
+			<list/>
+		</property>
+		<property name="firstAppearance" value="Captain America Comics 1, 1941 "/>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.ComicCharacter" id="comicCharacter_4">
+		<property name="name" value="Walter Kovacs"/>
+		<property name="alias" value="Rorschach"/>
+		<property name="city" value="New york"/>
+		<property name="image" value="https://i.imgur.com/Uk0om3X.jpg"/>
+		<property name="description" value="An old violent hero who works against the    rules set by the government."/>
+		<property name="publisher">
+			<ref bean="publisher_1"/>
+		</property>
+		<property name="comicComicCharacters">
+			<list>
+				<ref bean="comicComicCharacter_4"/>
+			</list>
+		</property>
+		<property name="otherAliases">
+			<list/>
+		</property>
+		<property name="firstAppearance" value="Watchmen, 1984 "/>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.ComicCharacter" id="comicCharacter_5">
+		<property name="name" value="Matt Murdock"/>
+		<property name="alias" value="Daredevil"/>
+		<property name="city" value="Hell's kitchen, New york"/>
+		<property name="image" value="https://i.imgur.com/qQxuHsd.jpg"/>
+		<property name="description" value="Matt Murdock is a blind person who jobs as    a lawyer by day but, when the night comes, he becomes a crime fighter known as   Daredevil."/>
+		<property name="publisher">
+			<ref bean="publisher_2"/>
+		</property>
+		<property name="comicComicCharacters">
+			<list>
+				<ref bean="comicComicCharacter_5"/>
+			</list>
+		</property>
+		<property name="otherAliases">
+			<list/>
+		</property>
+		<property name="firstAppearance" value="Daredevil 1, 1964"/>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.ComicCharacter" id="comicCharacter_6">
+		<property name="name" value="Peter Parker"/>
+		<property name="alias" value="Spiderman"/>
+		<property name="city" value="Queens, New york"/>
+		<property name="image" value="https://i.imgur.com/gZZsssV.jpg"/>
+		<property name="description" value="Peter Parker is a student who was bitten    by a radioactive spider.He got powers related to spiders due to this bite.    Now, as Spiderman, he uses these powers to fight crime."/>
+		<property name="publisher">
+			<ref bean="publisher_2"/>
+		</property>
+		<property name="comicComicCharacters">
+			<list>
+				<ref bean="comicComicCharacter_6"/>
+			</list>
+		</property>
+		<property name="otherAliases">
+			<list/>
+		</property>
+		<property name="firstAppearance" value="Amazing fantasy 15, 1962"/>
+		<property name="comments">
+			<list/>
+		</property>
+	</bean>
+	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_1">
+		<property name="role" value="Main character"/>
+		<property name="comic">
+			<ref bean="comic_1"/>
+		</property>
+		<property name="comicCharacter">
+			<ref bean="comicCharacter_1"/>
+		</property>
+	</bean>
+	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_2">
+		<property name="role" value="Main character"/>
+		<property name="comic">
+			<ref bean="comic_2"/>
+		</property>
+		<property name="comicCharacter">
+			<ref bean="comicCharacter_2"/>
+		</property>
+	</bean>
+	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_3">
+		<property name="role" value="Main character"/>
+		<property name="comic">
+			<ref bean="comic_2"/>
+		</property>
+		<property name="comicCharacter">
+			<ref bean="comicCharacter_3"/>
+		</property>
+	</bean>
+	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_4">
+		<property name="role" value="Main character"/>
+		<property name="comic">
+			<ref bean="comic_3"/>
+		</property>
+		<property name="comicCharacter">
+			<ref bean="comicCharacter_4"/>
+		</property>
+	</bean>
+	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_5">
+		<property name="role" value="Main character"/>
+		<property name="comic">
+			<ref bean="comic_4"/>
+		</property>
+		<property name="comicCharacter">
+			<ref bean="comicCharacter_5"/>
+		</property>
+	</bean>
+	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_6">
+		<property name="role" value="Supporting character"/>
+		<property name="comic">
+			<ref bean="comic_2"/>
+		</property>
+		<property name="comicCharacter">
+			<ref bean="comicCharacter_6"/>
 		</property>
 	</bean>
 </beans>

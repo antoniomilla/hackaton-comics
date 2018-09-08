@@ -25,6 +25,7 @@ import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import validators.NullOrNotBlank;
+import validators.PastOrPresent;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -62,7 +63,7 @@ public class Volume extends DomainEntity {
 		this.name = name;
 	}
 
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@NotNull

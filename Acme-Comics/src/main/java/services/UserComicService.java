@@ -133,6 +133,10 @@ public class UserComicService {
     {
         CheckUtils.checkPrincipalAuthority(Authority.USER);
         UserComic userComic = getByUserAndComic(userService.getPrincipal(), volume.getComic());
+        if (userComic.getStatus() == UserComicStatus.COMPLETED) {
+            userComic.setStatus(UserComicStatus.PLANNING_TO_READ);
+            repository.save(userComic);
+        }
         userComic.getReadVolumes().remove(volume);
         userComic.setReadVolumeCount(userComic.getReadVolumes().size());
         repository.save(userComic);

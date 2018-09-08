@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,6 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import validators.CustomValidator;
 import validators.HasCustomValidators;
+import validators.PastOrPresent;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -51,6 +53,7 @@ public class Comment extends DomainEntity {
 	}
 
 	@NotBlank
+	@Lob
 	public String getText() {
 		return this.text;
 	}
@@ -58,7 +61,7 @@ public class Comment extends DomainEntity {
 	public void setText(final String text) {
 		this.text = text;
 	}
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	public Date getCreationTime() {

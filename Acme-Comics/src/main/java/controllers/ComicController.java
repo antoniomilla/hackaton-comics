@@ -120,7 +120,7 @@ public class ComicController extends AbstractController {
             redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
             return ControllerUtils.redirectToReturnAction();
         } catch(VolumesNotReadException oops) {
-            redir.addFlashAttribute("globalErrorMessage", "comics.user.");
+            redir.addFlashAttribute("globalErrorMessage", "comics.user.error.volumesNotRead");
             return ControllerUtils.redirectToReturnAction();
         } catch (Throwable oops) {
             if (ApplicationConfig.DEBUG) oops.printStackTrace();

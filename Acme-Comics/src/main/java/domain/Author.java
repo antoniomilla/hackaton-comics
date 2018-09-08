@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 
 import validators.NullOrNotBlank;
+import validators.PastOrPresent;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -45,7 +46,7 @@ public class Author extends DomainEntity {
         this.name = name;
     }
 
-    @Past
+    @PastOrPresent
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     public Date getBirthDate()

@@ -24,6 +24,7 @@ import javax.validation.constraints.Past;
 
 import security.UserAccount;
 import validators.NullOrNotBlank;
+import validators.PastOrPresent;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -58,7 +59,7 @@ public abstract class Actor extends DomainEntity {
         this.userAccount = userAccount;
     }
 
-    @Past
+    @PastOrPresent
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     public Date getCreationTime()

@@ -86,7 +86,7 @@ public class MessageFolder extends DomainEntity {
         this.nameForDisplay = nameForDisplay;
     }
 
-    @CustomValidator
+    @CustomValidator(applyOn = "name", message = "{org.hibernate.validator.constraints.NotBlank.message}")
     @Transient
     public boolean isValid()
     {

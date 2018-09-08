@@ -21,6 +21,7 @@ import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import validators.NullOrNotBlank;
+import validators.PastOrPresent;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -71,7 +72,7 @@ public class Publisher extends DomainEntity {
 		this.image = image;
 	}
 
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getFoundationDate() {

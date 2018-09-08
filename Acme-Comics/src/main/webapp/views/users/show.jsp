@@ -33,8 +33,10 @@
 </security:authorize>
 
 <security:authorize access="isAuthenticated()">
-    <c:if test="${principal.administrator or not actor.user or not actor.onlyFriendsCanSendDms or actor.friends.contains(principal)}">
-        <app:redir-button code="users.sendMessage" action="direct_messages/new.do?recipient=${user.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+    <c:if test="${user != principal}">
+        <c:if test="${principal.administrator or not user.onlyFriendsCanSendDms or user.friends.contains(principal)}">
+            <app:redir-button code="users.sendMessage" action="direct_messages/new.do?recipient=${user.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+        </c:if>
     </c:if>
 </security:authorize>
 
@@ -110,7 +112,7 @@
 <h3><spring:message code="users.recentComments" /></h3>
 
 <div>
-	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}">
+	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}" sort="list">
 	
         <display:column titleKey="comments.type">
             <c:if test="${comment.comic != null}">
@@ -162,7 +164,7 @@
 
 	    <security:authorize access="hasRole('ADMINISTRATOR')">
 	        <display:column titleKey="misc.actions">
-	            <app:delete-button action="comments/delete.do?id=${comment.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
+	            <app:delete-button action="comments/delete.do?id=${comment.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'comment'))}" />
 	        </display:column>
 	    </security:authorize>
 	</display:table>
@@ -171,7 +173,7 @@
 <h3><spring:message code="users.friends" /></h3>
 
 <div>
-	<display:table pagesize="${displayTagPageSize}" name="friends" id="friend" requestURI="${currentRequestUri}">
+	<display:table pagesize="${displayTagPageSize}" name="friends" id="friend" requestURI="${currentRequestUri}" sort="list">
         <display:column sortProperty="nickname" titleKey="users.nickname" sortable="true">
             <c:if test="${friend.trusted}">
                 <img class="iconColumnIcon" src="images/trusted.png" title="<spring:message code="users.trusted" />" />

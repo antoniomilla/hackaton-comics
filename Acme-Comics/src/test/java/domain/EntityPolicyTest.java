@@ -21,6 +21,7 @@ import javax.persistence.Transient;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import cz.jirutka.validator.collection.constraints.EachNotBlank;
 import cz.jirutka.validator.collection.constraints.EachNotNull;
@@ -75,6 +76,11 @@ public class EntityPolicyTest extends AbstractTest {
         if (method.getReturnType().equals(String.class) && !method.isAnnotationPresent(NotBlank.class) && !method.isAnnotationPresent(NullOrNotBlank.class)) {
             result = false;
             System.err.println("Method " + entity.getSimpleName() + "." + method.getName() + " returns String but it's not using NotBlank or NullOrNotBlank.");
+        }
+
+        if (method.getReturnType().equals(Date.class) && method.isAnnotationPresent(Past.class)) {
+            result = false;
+            System.err.println("Method " + entity.getSimpleName() + "." + method.getName() + " returns Date but it's using Past, use PastOrPresent to avoid spurious errors.");
         }
 
         if (method.getReturnType().equals(Date.class) && !method.isAnnotationPresent(Temporal.class)) {
