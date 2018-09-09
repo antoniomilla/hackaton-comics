@@ -45,6 +45,7 @@ public class JspViewUtils {
 
         boolean first = true;
         for (String param : params) {
+            if (param.isEmpty()) continue;
             if (!param.startsWith(paramName + "=")) {
                 if (first) {
                     first = false;
@@ -56,7 +57,7 @@ public class JspViewUtils {
             }
         }
 
-        if (paramValue != null) {
+        if (paramValue != null && !paramValue.isEmpty()) {
             if (first) {
                 first = false;
                 result.append("?");

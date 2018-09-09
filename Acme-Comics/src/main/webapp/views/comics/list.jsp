@@ -35,9 +35,9 @@
                 </c:if>
             </display:column>
         </security:authorize>
-        <display:column property="left.name" titleKey="comics.name" sortable="${empty searchForm.terms}" href="comics/show.do" paramId="id" paramProperty="left.id" />
-        <display:column property="left.publisher.name" titleKey="comics.publisher" sortable="${empty searchForm.terms}" />
-        <display:column property="left.author.name" titleKey="comics.author" sortable="${empty searchForm.terms}" />
+        <display:column property="left.name" titleKey="comics.name" sortable="${empty searchForm.terms}" href="comics/show.do" paramId="id" paramProperty="left.id" escapeXml="true" />
+        <display:column property="left.publisher.name" titleKey="comics.publisher" sortable="${empty searchForm.terms}" escapeXml="true" />
+        <display:column property="left.author.name" titleKey="comics.author" sortable="${empty searchForm.terms}" escapeXml="true" />
         <display:column titleKey="comics.tags">
             <c:forEach var="tag" items="${pair.left.tags}">
                 <span class="searchTag"><c:out value="${tag}"/></span>

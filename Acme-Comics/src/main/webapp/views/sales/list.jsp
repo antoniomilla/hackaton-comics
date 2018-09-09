@@ -13,8 +13,8 @@
 
 <div>
     <display:table pagesize="${displayTagPageSize}" name="sales" id="sale" requestURI="${currentRequestUri}" sort="list">
-        <display:column property="name" titleKey="sales.name" href="sales/show.do" paramId="id" paramProperty="id" sortable="true" />
-        <display:column property="price" titleKey="sales.price" sortable="true" />
+        <display:column property="name" titleKey="sales.name" href="sales/show.do" paramId="id" paramProperty="id" sortable="true" escapeXml="true" />
+        <display:column property="price" titleKey="sales.price" sortable="true" escapeXml="true" />
         <display:column titleKey="sales.user" sortable="true">
             <app:actor-name actor="${sale.user}" />
         </display:column>

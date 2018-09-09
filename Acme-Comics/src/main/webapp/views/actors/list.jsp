@@ -28,7 +28,7 @@
                 <c:out value="${actor.level}" />
             </c:if>
         </display:column>
-        <display:column property="description" titleKey="users.description" sortable="true" />
+        <display:column property="description" titleKey="users.description" sortable="true" escapeXml="true" />
 
         <security:authorize access="hasRole('ADMINISTRATOR')">
             <display:column titleKey="users.blockReason">

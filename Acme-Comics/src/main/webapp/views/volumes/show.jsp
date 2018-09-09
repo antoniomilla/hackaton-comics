@@ -59,8 +59,8 @@
 <h3><spring:message code="volume.comments" /></h3>
 <div>
 	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}" sort="list">
-        <display:column property="text" titleKey="comments.text" sortable="true"/>
-        <display:column property="user.nickname" titleKey="comments.user" sortable="true"/>
+        <display:column property="text" titleKey="comments.text" sortable="true" escapeXml="true" />
+        <display:column property="user.nickname" titleKey="comments.user" sortable="true" escapeXml="true" />
         <display:column property="creationTime" titleKey="comments.creationTime" sortable="true" format="{0,date,dd/MM/yyyy HH:mm:ss}"  />
 
         <security:authorize access="hasRole('ADMINISTRATOR')">

@@ -70,10 +70,10 @@
                 </c:if>
             </display:column>
         </c:if>
-	    <display:column property="left.comic.name" titleKey="comics.name" sortable="true" href="comics/show.do" paramId="id" paramProperty="left.comic.id"/>
-	    <display:column property="left.role" titleKey="comics.name" sortable="true" />
-	    <display:column property="left.comic.author.name" titleKey="comics.author" href="authors/show.do" paramId="id" paramProperty="left.comic.author.id" />
-	    <display:column property="left.comic.publisher.name" titleKey="comics.publisher" href="publishers/show.do" paramId="id" paramProperty="left.comic.publisher.id" />
+	    <display:column property="left.comic.name" titleKey="comics.name" sortable="true" href="comics/show.do" paramId="id" paramProperty="left.comic.id" escapeXml="true" />
+	    <display:column property="left.role" titleKey="comics.name" sortable="true" escapeXml="true" />
+	    <display:column property="left.comic.author.name" titleKey="comics.author" href="authors/show.do" paramId="id" paramProperty="left.comic.author.id" escapeXml="true" />
+	    <display:column property="left.comic.publisher.name" titleKey="comics.publisher" href="publishers/show.do" paramId="id" paramProperty="left.comic.publisher.id" escapeXml="true" />
         <display:column titleKey="comics.tags">
             <c:forEach var="tag" items="${pair.left.comic.tags}">
                 <span class="searchTag"><c:out value="${tag}"/></span>
@@ -92,8 +92,8 @@
 <h3><spring:message code="comic_characters.comments" /></h3>
 <div>
 	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}" sort="list">
-        <display:column property="text" titleKey="comments.text" sortable="true"/>
-        <display:column property="user.nickname" titleKey="comments.user" sortable="true"/>
+        <display:column property="text" titleKey="comments.text" sortable="true" escapeXml="true" />
+        <display:column property="user.nickname" titleKey="comments.user" sortable="true" escapeXml="true" />
         <display:column property="creationTime" titleKey="comments.creationTime" sortable="true" format="{0,date,dd/MM/yyyy HH:mm:ss}"  />
 
         <security:authorize access="hasRole('ADMINISTRATOR')">

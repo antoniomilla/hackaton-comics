@@ -12,9 +12,9 @@
 <%@ taglib prefix="appfn" uri="/WEB-INF/appfn.tld" %>
 
 <display:table pagesize="${displayTagPageSize}" name="publishers" requestURI="${currentRequestUri}" id="publisher" sort="list">
-	<display:column property="name" titleKey="publishers.name" sortable="true" href="publishers/show.do" paramId="id" paramProperty="id" />
+	<display:column property="name" titleKey="publishers.name" sortable="true" href="publishers/show.do" paramId="id" paramProperty="id" escapeXml="true" />
 	<display:column property="foundationDate" titleKey="publishers.foundationDate" sortable="true" format="{0,date,dd/MM/yyyy}"/>
-	<display:column property="description" titleKey="publishers.description" sortable="true" />
+	<display:column property="description" titleKey="publishers.description" sortable="true" escapeXml="true" />
 
 	<c:if test="${principal != null and principal.administrator or principal.trusted}">
 	    <display:column titleKey="misc.actions">

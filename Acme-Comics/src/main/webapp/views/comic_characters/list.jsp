@@ -12,10 +12,10 @@
 <%@ taglib prefix="appfn" uri="/WEB-INF/appfn.tld" %>
 
 <display:table pagesize="${displayTagPageSize}" name="comicCharacters" requestURI="${currentRequestUri}" id="comicCharacter" sort="list">
-	<display:column property="alias" titleKey="comic_characters.alias" sortable="true" href="comic_characters/show.do" paramId="id" paramProperty="id" />
-	<display:column property="name" titleKey="comic_characters.name" sortable="true" />
-	<display:column property="city" titleKey="comic_characters.city" sortable="true" />
-	<display:column property="publisher.name" titleKey="comic_characters.publisher" sortable="true" />
+	<display:column property="alias" titleKey="comic_characters.alias" sortable="true" href="comic_characters/show.do" paramId="id" paramProperty="id" escapeXml="true" />
+	<display:column property="name" titleKey="comic_characters.name" sortable="true" escapeXml="true" />
+	<display:column property="city" titleKey="comic_characters.city" sortable="true" escapeXml="true" />
+	<display:column property="publisher.name" titleKey="comic_characters.publisher" sortable="true" escapeXml="true" />
 
 	<c:if test="${principal != null and principal.administrator or principal.trusted}">
         <display:column titleKey="misc.actions">

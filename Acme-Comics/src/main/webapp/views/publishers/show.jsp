@@ -36,7 +36,7 @@
 <h3><spring:message code="publishers.characters" /></h3>
 <div>
 	<display:table pagesize="${displayTagPageSize}" name="comicCharacters" id="comicCharacter" requestURI="${currentRequestUri}" sort="list">
-        <display:column property="alias" titleKey="comic_characters.alias" href="comic_characters/show.do" paramId="id" paramProperty="id" />
+        <display:column property="alias" titleKey="comic_characters.alias" href="comic_characters/show.do" paramId="id" paramProperty="id" escapeXml="true" />
 	</display:table>
 </div>
 
@@ -57,8 +57,8 @@
                 </c:if>
             </display:column>
         </c:if>
-	    <display:column property="left.name" titleKey="comics.name" sortable="true" href="comics/show.do" paramId="id" paramProperty="left.id"/>
-	    <display:column property="left.author.name" titleKey="comics.author" href="authors/show.do" paramId="id" paramProperty="left.author.id" />
+	    <display:column property="left.name" titleKey="comics.name" sortable="true" href="comics/show.do" paramId="id" paramProperty="left.id" escapeXml="true" />
+	    <display:column property="left.author.name" titleKey="comics.author" href="authors/show.do" paramId="id" paramProperty="left.author.id" escapeXml="true" />
         <display:column titleKey="comics.tags">
             <c:forEach var="tag" items="${pair.left.tags}">
                 <span class="searchTag"><c:out value="${tag}"/></span>
@@ -77,8 +77,8 @@
 <h3><spring:message code="publishers.comments" /></h3>
 <div>
 	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}" sort="list">
-        <display:column property="text" titleKey="comments.text" sortable="true"/>
-        <display:column property="user.nickname" titleKey="comments.user" sortable="true"/>
+        <display:column property="text" titleKey="comments.text" sortable="true" escapeXml="true" />
+        <display:column property="user.nickname" titleKey="comments.user" sortable="true" escapeXml="true" />
         <display:column property="creationTime" titleKey="comments.creationTime" sortable="true" format="{0,date,dd/MM/yyyy HH:mm:ss}"  />
 
         <security:authorize access="hasRole('ADMINISTRATOR')">

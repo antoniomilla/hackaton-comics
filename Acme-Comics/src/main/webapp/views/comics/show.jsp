@@ -96,8 +96,8 @@
 <h3><spring:message code="comics.characters" /></h3>
 <div>
 	<display:table pagesize="${displayTagPageSize}" name="comic.comicComicCharacters" id="comicComicCharacter" requestURI="${currentRequestUri}" sort="list">
-        <display:column property="comicCharacter.alias" titleKey="comic_comic_characters.comicCharacter" sortable="true"  href="comic_characters/show.do" paramProperty="comicCharacter.id" paramId="id"/>
-        <display:column property="role" titleKey="comic_comic_characters.role" />
+        <display:column property="comicCharacter.alias" titleKey="comic_comic_characters.comicCharacter" sortable="true"  href="comic_characters/show.do" paramProperty="comicCharacter.id" paramId="id" escapeXml="true" />
+        <display:column property="role" titleKey="comic_comic_characters.role" escapeXml="true" />
 
         <c:if test="${principal != null and principal.administrator or principal.trusted}">
             <display:column titleKey="misc.actions">
@@ -126,10 +126,10 @@
 	            <c:out value="${volume.name}" />
 	        </a>
 	    </display:column>
-	    <display:column property="author.name" titleKey="volume.author" href="authors/show.do" paramId="id" paramProperty="author.id" sortable="true" />
+	    <display:column property="author.name" titleKey="volume.author" href="authors/show.do" paramId="id" paramProperty="author.id" sortable="true" escapeXml="true" />
 	    <display:column property="releaseDate" titleKey="volume.releaseDate" format="{0,date,dd/MM/yyyy}" sortable="true" />
 	    <c:if test="${principal != null and principal.administrator or principal.trusted}">
-	        <display:column property="orderNumber" titleKey="volume.orderNumber" sortable="true" />
+	        <display:column property="orderNumber" titleKey="volume.orderNumber" sortable="true" escapeXml="true" />
 	    </c:if>
 
         <security:authorize access="isAuthenticated()">
@@ -162,8 +162,8 @@
 <h3><spring:message code="comics.comments" /></h3>
 <div>
 	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}" sort="list">
-        <display:column property="text" titleKey="comments.text" sortable="true"/>
-        <display:column property="user.nickname" titleKey="comments.user" sortable="true"/>
+        <display:column property="text" titleKey="comments.text" sortable="true" escapeXml="true" />
+        <display:column property="user.nickname" titleKey="comments.user" sortable="true" escapeXml="true" />
         <display:column property="creationTime" titleKey="comments.creationTime" sortable="true" format="{0,date,dd/MM/yyyy HH:mm:ss}"  />
 
         <security:authorize access="hasRole('ADMINISTRATOR')">

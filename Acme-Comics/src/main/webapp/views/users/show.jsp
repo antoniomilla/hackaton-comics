@@ -94,9 +94,9 @@
                 <img class="iconColumnIcon" src="images/star_no.png" />
             </c:if>
 	    </display:column>
-        <display:column property="comic.name" titleKey="comics.name" sortable="true" href="comics/show.do" paramProperty="comic.id" paramId="id" />
-        <display:column property="comic.publisher.name" titleKey="comics.publisher" sortable="true"/>
-        <display:column property="comic.author.name" titleKey="comics.author" sortable="true"/>
+        <display:column property="comic.name" titleKey="comics.name" sortable="true" href="comics/show.do" paramProperty="comic.id" paramId="id" escapeXml="true" />
+        <display:column property="comic.publisher.name" titleKey="comics.publisher" sortable="true" escapeXml="true" />
+        <display:column property="comic.author.name" titleKey="comics.author" sortable="true" escapeXml="true" />
         <display:column titleKey="comics.user.status" sortable="true">
             <spring:message code="comics.user.status.${userComic.status}" />
         </display:column>
@@ -158,7 +158,7 @@
             </c:if>
         </display:column>
 
-        <display:column property="text" titleKey="comments.text" />
+        <display:column property="text" titleKey="comments.text" escapeXml="true" />
 
         <display:column property="creationTime" titleKey="comments.creationTime" format="{0,date,dd/MM/yyyy HH:mm:ss}" sortable="true"/>
 
@@ -193,6 +193,6 @@
                 <c:out value="${friend.nickname }"/>
             </c:if>
         </display:column>
-        <display:column property="level" titleKey="users.level" sortable="true" />
+        <display:column property="level" titleKey="users.level" sortable="true" escapeXml="true" />
 	</display:table>
 </div>
