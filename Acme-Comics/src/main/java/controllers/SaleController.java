@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import domain.Actor;
@@ -114,12 +115,13 @@ public class SaleController extends AbstractController {
 		String globalErrorMessage = null;
 
 		try {
-			if (directMessageService.send(directMessage, binding)) {
-				redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-				redir.addAttribute("id", sale.getId());
-				redir.addAttribute("user", buyer.getId());
-				return ControllerUtils.redirect("/sales/conversation.do");
-			}
+			directMessageService.send(directMessage, binding);
+			redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
+			redir.addAttribute("id", sale.getId());
+			redir.addAttribute("user", buyer.getId());
+			return ControllerUtils.redirect("/sales/conversation.do");
+		} catch (ConstraintViolationException oops) {
+			// Errors are in binding.
 		} catch (Throwable oops) {
 			if (ApplicationConfig.DEBUG) oops.printStackTrace();
 			globalErrorMessage = "misc.commit.error";

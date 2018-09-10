@@ -19,6 +19,10 @@ import domain.Author;
 import sun.security.util.AuthResources;
 import utilities.AbstractTest;
 
+/**
+ * Tests the following use cases from the requirements document:
+ * - Create, edit and delete an author.
+ */
 @ContextConfiguration(locations = {
         "classpath:spring/junit.xml"
 })
@@ -27,6 +31,7 @@ import utilities.AbstractTest;
 public class AuthorServiceTest extends AbstractTest {
     @Autowired private AuthorService authorService;
 
+    // Test to create an author.
     @Test
     public void testCreate() throws Exception
     {
@@ -56,10 +61,11 @@ public class AuthorServiceTest extends AbstractTest {
         }
     }
 
+    // Test that only trusted users can create authors.
     @Test(expected = AccessDeniedException.class)
     public void testCreateFailsIfNotTrusted() throws Exception
     {
-        authenticate("user2"); // user1 is not trusted.
+        authenticate("user2"); // user2 is not trusted.
 
         Author author = new Author();
         author.setName("TEST NAME");
@@ -74,6 +80,7 @@ public class AuthorServiceTest extends AbstractTest {
         // Shouldn't reach this point.
     }
 
+    // Test that unauthenticated users cannot create authors.
     @Test(expected = AccessDeniedException.class)
     public void testCreateFailsIfUnauthenticated() throws Exception
     {
@@ -94,6 +101,7 @@ public class AuthorServiceTest extends AbstractTest {
         // Shouldn't reach this point.
     }
 
+    // Test to update an author.
     @Test
     public void testUpdate() throws Exception
     {
@@ -126,6 +134,7 @@ public class AuthorServiceTest extends AbstractTest {
         }
     }
 
+    // Test that an untrusted user cannot open the edit form on an author.
     @Test(expected = AccessDeniedException.class)
     public void testEditFailsIfNotTrusted()
     {
@@ -137,6 +146,7 @@ public class AuthorServiceTest extends AbstractTest {
         // Shouldn't reach this point.
     }
 
+    // Test that untrusted users cannot commit edits on an author.
     @Test(expected = AccessDeniedException.class)
     public void testUpdateFailsIfNotTrusted() throws Exception
     {
@@ -159,6 +169,7 @@ public class AuthorServiceTest extends AbstractTest {
         // Shouldn't reach this point.
     }
 
+    // Test that updating authors fails if the data is bad
     @Test(expected = ConstraintViolationException.class)
     public void testUpdateFailsIfBadData() throws Exception
     {
@@ -178,6 +189,7 @@ public class AuthorServiceTest extends AbstractTest {
         // Shouldn't reach this point.
     }
 
+    // Test that deleting an author works.
     @Test
     public void testDelete()
     {
@@ -196,6 +208,7 @@ public class AuthorServiceTest extends AbstractTest {
         Assert.assertTrue(authorService.findById(id) == null);
     }
 
+    // Test that only trusted users can delete authors.
     @Test(expected = AccessDeniedException.class)
     public void testDeleteFailsIfNotTrusted()
     {
@@ -211,6 +224,7 @@ public class AuthorServiceTest extends AbstractTest {
         // Shouldn't reach this point
     }
 
+    // Test that deleting authors fails if not authenticated.
     @Test(expected = AccessDeniedException.class)
     public void testDeleteFailsIfNotAuthenticated()
     {

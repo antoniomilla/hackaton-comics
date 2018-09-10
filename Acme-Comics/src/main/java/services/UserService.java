@@ -111,6 +111,7 @@ public class UserService {
         user.setNickname(nickname);
         user.setUserAccount(this.userAccountService.create(username, password, Authority.USER));
         internalUpdateUserLevel(user);
+        user.setCreationTime(new Date());
 
         User result = repository.save(user);
         messageFolderService.createSystemFoldersForNewActor(result);

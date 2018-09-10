@@ -1,6 +1,7 @@
 
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
 import org.hibernate.annotations.Cascade;
@@ -33,10 +36,10 @@ public class ComicCharacter extends DomainEntity {
 	private String							image;
 	private String							description;
 	private Publisher						publisher;
-	private List<ComicComicCharacter> comicComicCharacters;
-	private List<String>				otherAliases;
+	private List<ComicComicCharacter> comicComicCharacters = new ArrayList<>();
+	private List<String>				otherAliases = new ArrayList<>();
 	private String							firstAppearance;
-	private List<Comment>				comments;
+	private List<Comment>				comments = new ArrayList<>();
 
 	@NotBlank
 	public String getName() {
@@ -79,6 +82,7 @@ public class ComicCharacter extends DomainEntity {
 		this.firstAppearance = firstAppearance;
 	}
 
+	@Valid
 	@ElementCollection
 	@EachNotNull
 	@EachNotBlank
@@ -98,6 +102,7 @@ public class ComicCharacter extends DomainEntity {
 		this.description = description;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "comicCharacter")
 	@Cascade(CascadeType.DELETE)
 	public List<ComicComicCharacter> getComicComicCharacters() {
@@ -107,6 +112,7 @@ public class ComicCharacter extends DomainEntity {
 		this.comicComicCharacters = comicComicCharacters;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "comicCharacter")
 	@Cascade(CascadeType.DELETE)
 	public List<Comment> getComments() {
@@ -116,6 +122,7 @@ public class ComicCharacter extends DomainEntity {
 		this.comments = comments;
 	}
 
+	@NotNull
 	@ManyToOne(optional = false)
 	public Publisher getPublisher() {
 		return this.publisher;

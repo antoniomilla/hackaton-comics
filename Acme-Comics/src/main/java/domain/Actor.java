@@ -5,6 +5,7 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public abstract class Actor extends DomainEntity {
     private String description;
     private Date creationTime;
     private UserAccount userAccount;
-    private List<MessageFolder> messageFolders;
+    private List<MessageFolder> messageFolders = new ArrayList<>();
 
     @NotBlank
     @Field
@@ -48,7 +49,6 @@ public abstract class Actor extends DomainEntity {
     }
 
     @NotNull
-    @Valid
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     public UserAccount getUserAccount()
     {
@@ -59,6 +59,7 @@ public abstract class Actor extends DomainEntity {
         this.userAccount = userAccount;
     }
 
+    @NotNull
     @PastOrPresent
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -71,6 +72,7 @@ public abstract class Actor extends DomainEntity {
         this.creationTime = creationTime;
     }
 
+    @NotNull
     @OneToMany(mappedBy = "actor")
     public List<MessageFolder> getMessageFolders()
     {

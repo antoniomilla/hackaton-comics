@@ -159,6 +159,23 @@
     </div>
 </c:if>
 
+<security:authorize access="isAuthenticated()">
+    <h3><spring:message code="comics.sales" /></h3>
+    <div>
+        <display:table pagesize="${displayTagPageSize}" name="sales" id="sale" requestURI="${currentRequestUri}" sort="list">
+            <display:column property="name" titleKey="sales.name" href="sales/show.do" paramId="id" paramProperty="id" sortable="true" escapeXml="true" />
+            <display:column property="price" titleKey="sales.price" sortable="true" escapeXml="true" />
+            <display:column titleKey="sales.user" sortable="true">
+                <app:actor-name actor="${sale.user}" />
+            </display:column>
+            <display:column titleKey="sales.status" sortProperty="status" sortable="true">
+                <spring:message code="sales.status.${sale.status}" />
+            </display:column>
+            <display:column property="creationTime" titleKey="sales.creationTime" format="{0,date,dd/MM/yyyy HH:mm:ss}" sortable="true" />
+        </display:table>
+    </div>
+</security:authorize>
+
 <h3><spring:message code="comics.comments" /></h3>
 <div>
 	<display:table pagesize="${displayTagPageSize}" name="comments" id="comment" requestURI="${currentRequestUri}" sort="list">

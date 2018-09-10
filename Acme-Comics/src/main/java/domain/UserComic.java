@@ -5,7 +5,9 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -17,6 +19,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import validators.CustomValidator;
 import validators.HasCustomValidators;
@@ -76,6 +80,7 @@ public class UserComic extends DomainEntity {
         this.status = status;
     }
 
+    @NotNull
     @ManyToOne(optional = false)
     public User getUser()
     {
@@ -86,6 +91,7 @@ public class UserComic extends DomainEntity {
         this.user = user;
     }
 
+    @NotNull
     @ManyToOne(optional = false)
     public Comic getComic()
     {
@@ -96,6 +102,7 @@ public class UserComic extends DomainEntity {
         this.comic = comic;
     }
 
+    @NotNull
     @ManyToMany
     public List<Volume> getReadVolumes()
     {

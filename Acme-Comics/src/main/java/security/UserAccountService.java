@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 
 import exceptions.ResourceNotUniqueException;
 import utilities.CheckUtils;
+import utilities.ValidationUtils;
 
 @Service
 @Transactional
@@ -41,13 +42,18 @@ public class UserAccountService {
 
 		UserAccount account = new UserAccount();
 		account.setUsername(username);
-		account.setPassword(new Md5PasswordEncoder().encodePassword(password, null));
+		account.setPassword(password);
 
 		final Collection<Authority> authorities = new ArrayList<Authority>();
 		final Authority auth = new Authority();
 		auth.setAuthority(authority);
 		authorities.add(auth);
 		account.setAuthorities(authorities);
+
+		ValidationUtils.validateBean(account);
+
+		account.setPassword(new Md5PasswordEncoder().encodePassword(password, null));
+
 		account = this.repository.save(account);
 
 		Assert.notNull(account);

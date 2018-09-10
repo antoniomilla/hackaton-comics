@@ -13,7 +13,10 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -48,6 +51,7 @@ public class Comic extends DomainEntity {
 	private List<Volume>				volumes = new ArrayList<>();
 	private int volumeCount;
 	private List<Comment>				comments = new ArrayList<>();
+	private List<Sale> sales = new ArrayList<>();
 
 	@NotBlank
 	@Field
@@ -59,6 +63,7 @@ public class Comic extends DomainEntity {
 		this.name = name;
 	}
 
+	@NotNull
 	@ManyToOne(optional = false)
 	public Publisher getPublisher() {
 		return this.publisher;
@@ -75,7 +80,7 @@ public class Comic extends DomainEntity {
 	}
 
 
-
+	@NotNull
 	@ManyToOne(optional = false)
 	public Author getAuthor() {
 		return this.author;
@@ -124,6 +129,7 @@ public class Comic extends DomainEntity {
 		this.description = description;
 	}
 
+	@Valid
 	@EachPattern(regexp = "[^\\s]+")
 	@EachNotNull
 	@ElementCollection
@@ -152,6 +158,7 @@ public class Comic extends DomainEntity {
 		return tagsWithoutDuplicates.size() == tags.size();
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "comic")
 	@Cascade(CascadeType.DELETE)
 	public List<ComicComicCharacter> getComicComicCharacters() {
@@ -162,6 +169,7 @@ public class Comic extends DomainEntity {
 		this.comicComicCharacters = comicComicCharacters;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "comic")
 	@Cascade(CascadeType.DELETE)
 	public List<UserComic> getUserComics() {
@@ -172,6 +180,7 @@ public class Comic extends DomainEntity {
 		this.userComics = userComics;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "comic")
 	@Cascade(CascadeType.DELETE)
 	public List<Volume> getVolumes() {
@@ -181,6 +190,7 @@ public class Comic extends DomainEntity {
 		this.volumes = volumes;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "comic")
 	@Cascade(CascadeType.DELETE)
 	public List<Comment> getComments() {
@@ -188,6 +198,26 @@ public class Comic extends DomainEntity {
 	}
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@NotNull
+	@OneToMany(mappedBy = "comic")
+	public List<Sale> getSales() {
+		return this.sales;
+	}
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+
+	@PreRemove
+	public void onRemoval()
+	{
+		// Dissociate sales, as the only other option is cascading the delete and we don't want trusted users deleting sale records by deleting comics/authors/etc.
+		for (Sale sale : getSales()) {
+			sale.setComic(null);
+		}
+
+		// Automatically saved by Hibernate on transaction flush.
 	}
 
 	/** Cached volume count, for performance reasons. (to avoid pulling in the entire list when we need the count only) */

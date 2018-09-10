@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import domain.Actor;
+import domain.Comic;
 import domain.Sale;
 import domain.SaleStatus;
 import domain.User;
@@ -36,7 +37,7 @@ public class SaleService {
 
     public List<Sale> findByStatus(SaleStatus selling)
     {
-        return repository.findByStatus(selling);
+        return repository.findByStatusOrderByCreationTimeDesc(selling);
     }
 
     public List<Sale> findByUserOrInterestedUser(User user)
@@ -131,6 +132,7 @@ public class SaleService {
         CheckUtils.checkEquals(sale.getStatus(), SaleStatus.SELLING);
         CheckUtils.checkNotExists(sale);
         CheckUtils.checkTrue(sale.getInterestedUsers().isEmpty());
+        CheckUtils.checkTrue(sale.getComic() != null);
 
         sale.setPrice(Math.round(sale.getPrice() * 100.0) / 100.0);
 
@@ -151,5 +153,12 @@ public class SaleService {
             sale.getInterestedUsers().remove((User) principal);
         }
         repository.save(sale);
+    }
+
+    public List<Sale> findForListInComic(Comic comic)
+    {
+        CheckUtils.checkAuthenticated();
+
+        return repository.findByComicOrderByCreationTimeDesc(comic);
     }
 }

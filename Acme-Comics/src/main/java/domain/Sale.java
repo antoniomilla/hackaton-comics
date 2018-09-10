@@ -1,5 +1,7 @@
 package domain;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,6 +18,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -27,10 +30,12 @@ import cz.jirutka.validator.collection.constraints.EachNotBlank;
 import cz.jirutka.validator.collection.constraints.EachNotNull;
 import cz.jirutka.validator.collection.constraints.EachURL;
 import validators.CustomValidator;
+import validators.HasCustomValidators;
 import validators.PastOrPresent;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@HasCustomValidators
 public class Sale extends DomainEntity {
     private Comic comic;
     private User user;
@@ -42,21 +47,20 @@ public class Sale extends DomainEntity {
     private List<String> images = new ArrayList<>();
     private Date creationTime;
     private User userSoldTo;
+    private List<Comment>				comments = new ArrayList<>();
 
-    @ManyToOne(optional = false)
-    @Valid
+    @ManyToOne
     public Comic getComic()
     {
         return comic;
     }
-
     public void setComic(Comic comic)
     {
         this.comic = comic;
     }
 
+    @NotNull
     @ManyToOne(optional = false)
-    @Valid
     public User getUser()
     {
         return user;
@@ -112,8 +116,8 @@ public class Sale extends DomainEntity {
         this.status = status;
     }
 
+    @NotNull
     @ManyToMany
-    @Valid
     public List<User> getInterestedUsers()
     {
         return interestedUsers;
@@ -124,6 +128,7 @@ public class Sale extends DomainEntity {
         this.interestedUsers = interestedUsers;
     }
 
+    @Valid
     @ElementCollection
     @EachNotBlank
     @EachNotNull
@@ -152,7 +157,6 @@ public class Sale extends DomainEntity {
     }
 
     @ManyToOne
-    @Valid
     public User getUserSoldTo()
     {
         return userSoldTo;
@@ -161,6 +165,17 @@ public class Sale extends DomainEntity {
     public void setUserSoldTo(User userSoldTo)
     {
         this.userSoldTo = userSoldTo;
+    }
+
+
+    @NotNull
+    @OneToMany(mappedBy = "sale")
+    @Cascade(CascadeType.DELETE)
+    public List<Comment> getComments() {
+        return this.comments;
+    }
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @CustomValidator

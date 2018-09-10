@@ -9,11 +9,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 import domain.Actor;
 import domain.Administrator;
@@ -50,7 +53,7 @@ public class DirectMessageService {
         return repository.findOne(id);
     }
 
-    public boolean send(DirectMessage directMessage, BindingResult binding)
+    public void send(DirectMessage directMessage, BindingResult binding)
     {
         // Hibernate is in the dirty habit of automatically persisting any managed entities
         // at the end of the transaction, even if it was never saved. An attacker can force
@@ -91,17 +94,15 @@ public class DirectMessageService {
         dm2.setCreationTime(dm1.getCreationTime());
 
         validator.validate(dm1, binding);
-        if (binding.hasErrors()) return false;
+        if (binding.hasErrors()) throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>>());
         validator.validate(dm2, binding);
-        if (binding.hasErrors()) return false;
+        if (binding.hasErrors()) throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>>());
 
         repository.save(dm1);
         repository.save(dm2);
-
-        return true;
     }
 
-    public boolean sendMassMail(MassMailType type, DirectMessage directMessage, BindingResult binding)
+    public void sendMassMail(MassMailType type, DirectMessage directMessage, BindingResult binding)
     {
         CheckUtils.checkPrincipalAuthority(Authority.ADMINISTRATOR);
 
@@ -132,7 +133,7 @@ public class DirectMessageService {
             dm.setMessageFolder(messageFolderService.getSystemFolderForActor(dm.getRecipient(), MessageFolderType.SYSTEM_INBOX));
             dm.setCreationTime(creationTime);
             validator.validate(dm, binding);
-            if (binding.hasErrors()) return false;
+            if (binding.hasErrors()) throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>>());
             repository.save(dm);
         }
 
@@ -142,10 +143,8 @@ public class DirectMessageService {
         dm.setMessageFolder(messageFolderService.getSystemFolderForActor(principal, MessageFolderType.SYSTEM_SENT));
         dm.setCreationTime(creationTime);
         validator.validate(dm, binding);
-        if (binding.hasErrors()) return false;
+        if (binding.hasErrors()) throw new ConstraintViolationException(new HashSet<ConstraintViolation<?>>());
         repository.save(dm);
-
-        return true;
     }
 
     public DirectMessage move(DirectMessage directMessage, MessageFolder messageFolder)

@@ -66,7 +66,6 @@
         <c:if test="${principal != null and principal.administrator or principal.trusted}">
             <display:column titleKey="misc.actions">
                 <app:redir-button code="misc.actions.edit" action="comics/edit.do?id=${comicPair.left.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-                <app:delete-button action="comics/delete.do?id=${comicPair.left.id}&returnAction=${appfn:escapeUrlParam(appfn:withoutDisplayTagParams(returnActionForHere, 'comicPair'))}" />
             </display:column>
         </c:if>
 	</display:table>

@@ -17,6 +17,7 @@ import java.util.Arrays;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import domain.Actor;
@@ -127,10 +128,11 @@ public class DirectMessageController extends AbstractController {
         String globalErrorMessage = null;
 
         try {
-            if (directMessageService.send(directMessage, binding)) {
-                redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-                return ControllerUtils.redirectToReturnAction();
-            }
+            directMessageService.send(directMessage, binding);
+            redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
+            return ControllerUtils.redirectToReturnAction();
+        } catch (ConstraintViolationException oops) {
+            // Errors are in binding.
         } catch (Throwable oops) {
             if (ApplicationConfig.DEBUG) oops.printStackTrace();
             globalErrorMessage = "misc.commit.error";
@@ -209,10 +211,11 @@ public class DirectMessageController extends AbstractController {
             directMessage.setAdministrationNotice(form.getAdministrationNotice());
 
             try {
-                if (directMessageService.sendMassMail(form.getType(), directMessage, binding)) {
-                    redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-                    return ControllerUtils.redirectToReturnAction();
-                }
+                directMessageService.sendMassMail(form.getType(), directMessage, binding);
+                redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
+                return ControllerUtils.redirectToReturnAction();
+            } catch (ConstraintViolationException oops) {
+                // Errors are in binding.
             } catch (Throwable oops) {
                 if (ApplicationConfig.DEBUG) oops.printStackTrace();
                 globalErrorMessage = "misc.commit.error";

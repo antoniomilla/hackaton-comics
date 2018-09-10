@@ -23,4 +23,7 @@ public interface ComicRepository extends JpaRepository<Comic, Integer> {
 
 	@Query("select c, uc from Comic c left join c.userComics uc with uc.user.id = ?2 where c.publisher = ?1 order by c.name asc")
 	List<Object[]> findComicsAndUserComicsForPublisherAndUserOrderByNameAsc(Publisher publisher, Integer userId);
+
+	// For test use.
+    Comic findByName(String name);
 }

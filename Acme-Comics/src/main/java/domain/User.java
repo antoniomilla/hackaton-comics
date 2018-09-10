@@ -2,6 +2,7 @@
 package domain;
 
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class User extends Actor {
     private boolean onlyFriendsCanSendDms;
     private List<User> friends = new ArrayList<>();
     private List<Comment> userComments = new ArrayList<>();
+    private List<Sale> sales = new ArrayList<>();
 
     @CustomValidator
     @Transient
@@ -50,7 +52,7 @@ public class User extends Actor {
         return true;
     }
 
-    @NotNull
+    @NotBlank
     @Size(min = 1, max = 1)
     public String getLevel()
     {
@@ -62,7 +64,7 @@ public class User extends Actor {
         this.level = level;
     }
 
-    @Valid
+    @NotNull
     @OneToMany(mappedBy = "user")
     public List<UserComic> getUserComics()
     {
@@ -105,6 +107,7 @@ public class User extends Actor {
         this.trusted = trusted;
     }
 
+    @NotNull
     @PastOrPresent
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -128,6 +131,7 @@ public class User extends Actor {
         this.onlyFriendsCanSendDms = onlyFriendsCanSendDms;
     }
 
+    @NotNull
     @ManyToMany
     public List<User> getFriends()
     {
@@ -139,12 +143,12 @@ public class User extends Actor {
         this.friends = friends;
     }
 
+    @NotNull
     @OneToMany(mappedBy = "user")
     public List<Comment> getUserComments()
     {
         return this.userComments;
     }
-
     public void setUserComments(final List<Comment> comments)
     {
         this.userComments = comments;
@@ -155,5 +159,16 @@ public class User extends Actor {
     public boolean isUser()
     {
         return true;
+    }
+
+    @NotNull
+    @OneToMany(mappedBy = "user")
+    public List<Sale> getSales()
+    {
+        return this.sales;
+    }
+    public void setSales(final List<Sale> sales)
+    {
+        this.sales = sales;
     }
 }

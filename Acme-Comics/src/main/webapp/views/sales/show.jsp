@@ -14,6 +14,16 @@
 <div>
 	<p><spring:message code="sales.name"/>: <c:out value="${sale.name}"/></p>
 	<p><spring:message code="sales.user"/>: <app:actor-name actor="${sale.user}" /></p>
+	<p><spring:message code="sales.comic"/>:
+	    <c:choose>
+            <c:when test="${sale.comic != null}">
+                <a href="comics/show.do?id=${sale.comic.id}"><c:out value="${sale.comic.name}" /></a>
+            </c:when>
+            <c:otherwise>
+                <spring:message code="sales.deletedComic" />
+            </c:otherwise>
+        </c:choose>
+	</p>
 	<p><spring:message code="sales.status"/>: <spring:message code="sales.status.${sale.status}"/></p>
 	<c:if test="${sale.userSoldTo != null}">
 	    <p><spring:message code="sales.userSoldTo"/>: <app:actor-name actor="${sale.userSoldTo}" /></p>

@@ -35,7 +35,6 @@
 			<li><a class="fNiv" href="authors/list.do"><spring:message code="master.page.authors" /></a></li>
 			<li><a class="fNiv" href="comic_characters/list.do"><spring:message code="master.page.comicCharacters" /></a></li>
 			<li><a class="fNiv" href="actors/list.do"><spring:message code="master.page.users" /></a>
-			<li><a class="fNiv" href="sales/list.do"><spring:message code="master.page.sales" /></a></li>
 			<li><a class="fNiv" href="users/new.do?returnAction=${appfn:escapeUrlParam(returnActionForHere)}"><spring:message code="master.page.sign.up" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>

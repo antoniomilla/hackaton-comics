@@ -22,6 +22,7 @@ import javax.validation.Valid;
 import domain.Actor;
 import domain.Comic;
 import domain.Comment;
+import domain.Sale;
 import domain.User;
 import domain.UserComic;
 import domain.UserComicStatus;
@@ -33,6 +34,7 @@ import services.AuthorService;
 import services.ComicService;
 import services.CommentService;
 import services.PublisherService;
+import services.SaleService;
 import services.UserComicService;
 import services.VolumeService;
 import utilities.ApplicationConfig;
@@ -49,6 +51,7 @@ public class ComicController extends AbstractController {
     @Autowired private PublisherService publisherService;
     @Autowired private CommentService commentService;
     @Autowired private VolumeService volumeService;
+    @Autowired private SaleService saleService;
 
     @RequestMapping("/list")
     public ModelAndView list(@Valid SearchForm searchForm)
@@ -165,6 +168,7 @@ public class ComicController extends AbstractController {
         Comic comic = comicService.getById(id);
         List<Comment> comments = commentService.findForListInComic(comic);
         List<Volume> volumes = volumeService.findForListInComic(comic);
+        List<Sale> sales = saleService.findForListInComic(comic);
 
         UserComic userComic = null;
 
@@ -188,6 +192,7 @@ public class ComicController extends AbstractController {
         result.addObject("comic", comic);
         result.addObject("volumes", volumes);
         result.addObject("comments", comments);
+        result.addObject("sales", sales);
         result.addObject("userComic", userComic);
         result.addObject("comment", comment);
         result.addObject("statuses", UserComicStatus.values());

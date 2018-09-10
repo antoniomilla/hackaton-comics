@@ -220,7 +220,7 @@
 			<null/>
 		</property>
 		<property name="trusted" value="true"/>
-		<property name="lastLevelUpdateTime" value="2018/09/08 12:30:39"/>
+		<property name="lastLevelUpdateTime" value="2018/09/10 18:10:08"/>
 		<property name="onlyFriendsCanSendDms" value="false"/>
 		<property name="friends">
 			<list>
@@ -237,6 +237,12 @@
 				<ref bean="comment_7"/>
 			</list>
 		</property>
+		<property name="sales">
+			<list>
+				<ref bean="sale_1"/>
+				<ref bean="sale_2"/>
+			</list>
+		</property>
 		<property name="nickname" value="User 1"/>
 		<property name="description" value="This is user1's description."/>
 		<property name="creationTime" value="2018/07/15 00:00:00"/>
@@ -248,11 +254,12 @@
 				<ref bean="messageFolder_7"/>
 				<ref bean="messageFolder_8"/>
 				<ref bean="messageFolder_9"/>
+				<ref bean="messageFolder_10"/>
 			</list>
 		</property>
 	</bean>
 	<bean class="domain.User" id="user_user2">
-		<property name="level" value="B"/>
+		<property name="level" value="C"/>
 		<property name="userComics">
 			<list>
 				<ref bean="userComic_4"/>
@@ -264,7 +271,7 @@
 			<null/>
 		</property>
 		<property name="trusted" value="false"/>
-		<property name="lastLevelUpdateTime" value="2018/07/15 00:00:00"/>
+		<property name="lastLevelUpdateTime" value="2018/09/10 18:13:38"/>
 		<property name="onlyFriendsCanSendDms" value="false"/>
 		<property name="friends">
 			<list>
@@ -279,6 +286,9 @@
 				<ref bean="comment_8"/>
 			</list>
 		</property>
+		<property name="sales">
+			<list/>
+		</property>
 		<property name="nickname" value="User 2"/>
 		<property name="description" value="This is user2's description."/>
 		<property name="creationTime" value="2018/07/15 00:00:00"/>
@@ -287,9 +297,9 @@
 		</property>
 		<property name="messageFolders">
 			<list>
-				<ref bean="messageFolder_10"/>
 				<ref bean="messageFolder_11"/>
 				<ref bean="messageFolder_12"/>
+				<ref bean="messageFolder_13"/>
 			</list>
 		</property>
 	</bean>
@@ -309,6 +319,9 @@
 		<property name="userComments">
 			<list/>
 		</property>
+		<property name="sales">
+			<list/>
+		</property>
 		<property name="nickname" value="User 3"/>
 		<property name="description" value="This is user3's description."/>
 		<property name="creationTime" value="2018/07/20 00:00:00"/>
@@ -317,9 +330,9 @@
 		</property>
 		<property name="messageFolders">
 			<list>
-				<ref bean="messageFolder_13"/>
 				<ref bean="messageFolder_14"/>
 				<ref bean="messageFolder_15"/>
+				<ref bean="messageFolder_16"/>
 			</list>
 		</property>
 	</bean>
@@ -346,6 +359,9 @@
 		<property name="userComments">
 			<list/>
 		</property>
+		<property name="sales">
+			<list/>
+		</property>
 		<property name="nickname" value="User 4"/>
 		<property name="description" value="This is user4's description."/>
 		<property name="creationTime" value="2018/07/22 00:00:00"/>
@@ -354,9 +370,9 @@
 		</property>
 		<property name="messageFolders">
 			<list>
-				<ref bean="messageFolder_16"/>
 				<ref bean="messageFolder_17"/>
 				<ref bean="messageFolder_18"/>
+				<ref bean="messageFolder_19"/>
 			</list>
 		</property>
 	</bean>
@@ -734,9 +750,11 @@
 		</property>
 		<property name="messages">
 			<list>
-				<ref bean="directMessage_4"/>
-				<ref bean="directMessage_8"/>
-				<ref bean="directMessage_10"/>
+				<ref bean="directMessage_5"/>
+				<ref bean="directMessage_9"/>
+				<ref bean="directMessage_11"/>
+				<ref bean="directMessage_15"/>
+				<ref bean="directMessage_17"/>
 			</list>
 		</property>
 		<property name="nameForDisplay">
@@ -753,9 +771,9 @@
 		</property>
 		<property name="messages">
 			<list>
-				<ref bean="directMessage_1"/>
-				<ref bean="directMessage_5"/>
-				<ref bean="directMessage_11"/>
+				<ref bean="directMessage_2"/>
+				<ref bean="directMessage_6"/>
+				<ref bean="directMessage_12"/>
 			</list>
 		</property>
 		<property name="nameForDisplay">
@@ -778,17 +796,14 @@
 		</property>
 	</bean>
 	<bean class="domain.MessageFolder" id="messageFolder_10">
-		<property name="name">
-			<null/>
-		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="name" value="My custom folder"/>
+		<property name="type" value="USER"/>
 		<property name="actor">
-			<ref bean="user_user2"/>
+			<ref bean="user_user1"/>
 		</property>
 		<property name="messages">
 			<list>
-				<ref bean="directMessage_2"/>
-				<ref bean="directMessage_6"/>
+				<ref bean="directMessage_1"/>
 			</list>
 		</property>
 		<property name="nameForDisplay">
@@ -799,7 +814,7 @@
 		<property name="name">
 			<null/>
 		</property>
-		<property name="type" value="SYSTEM_SENT"/>
+		<property name="type" value="SYSTEM_INBOX"/>
 		<property name="actor">
 			<ref bean="user_user2"/>
 		</property>
@@ -817,12 +832,17 @@
 		<property name="name">
 			<null/>
 		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="type" value="SYSTEM_SENT"/>
 		<property name="actor">
 			<ref bean="user_user2"/>
 		</property>
 		<property name="messages">
-			<list/>
+			<list>
+				<ref bean="directMessage_4"/>
+				<ref bean="directMessage_8"/>
+				<ref bean="directMessage_14"/>
+				<ref bean="directMessage_16"/>
+			</list>
 		</property>
 		<property name="nameForDisplay">
 			<null/>
@@ -832,9 +852,9 @@
 		<property name="name">
 			<null/>
 		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="type" value="SYSTEM_TRASH"/>
 		<property name="actor">
-			<ref bean="user_user3"/>
+			<ref bean="user_user2"/>
 		</property>
 		<property name="messages">
 			<list/>
@@ -847,7 +867,7 @@
 		<property name="name">
 			<null/>
 		</property>
-		<property name="type" value="SYSTEM_SENT"/>
+		<property name="type" value="SYSTEM_INBOX"/>
 		<property name="actor">
 			<ref bean="user_user3"/>
 		</property>
@@ -862,7 +882,7 @@
 		<property name="name">
 			<null/>
 		</property>
-		<property name="type" value="SYSTEM_TRASH"/>
+		<property name="type" value="SYSTEM_SENT"/>
 		<property name="actor">
 			<ref bean="user_user3"/>
 		</property>
@@ -877,14 +897,12 @@
 		<property name="name">
 			<null/>
 		</property>
-		<property name="type" value="SYSTEM_INBOX"/>
+		<property name="type" value="SYSTEM_TRASH"/>
 		<property name="actor">
-			<ref bean="user_user4"/>
+			<ref bean="user_user3"/>
 		</property>
 		<property name="messages">
-			<list>
-				<ref bean="directMessage_12"/>
-			</list>
+			<list/>
 		</property>
 		<property name="nameForDisplay">
 			<null/>
@@ -894,13 +912,13 @@
 		<property name="name">
 			<null/>
 		</property>
-		<property name="type" value="SYSTEM_SENT"/>
+		<property name="type" value="SYSTEM_INBOX"/>
 		<property name="actor">
 			<ref bean="user_user4"/>
 		</property>
 		<property name="messages">
 			<list>
-				<ref bean="directMessage_9"/>
+				<ref bean="directMessage_13"/>
 			</list>
 		</property>
 		<property name="nameForDisplay">
@@ -908,6 +926,23 @@
 		</property>
 	</bean>
 	<bean class="domain.MessageFolder" id="messageFolder_18">
+		<property name="name">
+			<null/>
+		</property>
+		<property name="type" value="SYSTEM_SENT"/>
+		<property name="actor">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="messages">
+			<list>
+				<ref bean="directMessage_10"/>
+			</list>
+		</property>
+		<property name="nameForDisplay">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.MessageFolder" id="messageFolder_19">
 		<property name="name">
 			<null/>
 		</property>
@@ -927,7 +962,7 @@
 		<property name="body" value="I have just read Watchmen. What a gem."/>
 		<property name="administrationNotice" value="true"/>
 		<property name="messageFolder">
-			<ref bean="messageFolder_8"/>
+			<ref bean="messageFolder_10"/>
 		</property>
 		<property name="sender">
 			<ref bean="user_user1"/>
@@ -935,9 +970,7 @@
 		<property name="recipient">
 			<ref bean="user_user2"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
@@ -948,7 +981,7 @@
 		<property name="body" value="I have just read Watchmen. What a gem."/>
 		<property name="administrationNotice" value="true"/>
 		<property name="messageFolder">
-			<ref bean="messageFolder_10"/>
+			<ref bean="messageFolder_8"/>
 		</property>
 		<property name="sender">
 			<ref bean="user_user1"/>
@@ -956,30 +989,26 @@
 		<property name="recipient">
 			<ref bean="user_user2"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
 		</property>
 	</bean>
 	<bean class="domain.DirectMessage" id="directMessage_3">
-		<property name="subject" value="Flashpoint started."/>
-		<property name="body" value="I have just started reading Flashpoint.    So much fun so far!."/>
+		<property name="subject" value="Watchmen read."/>
+		<property name="body" value="I have just read Watchmen. What a gem."/>
 		<property name="administrationNotice" value="true"/>
 		<property name="messageFolder">
 			<ref bean="messageFolder_11"/>
 		</property>
 		<property name="sender">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="recipient">
 			<ref bean="user_user1"/>
 		</property>
-		<property name="creationTime">
-			<null/>
+		<property name="recipient">
+			<ref bean="user_user2"/>
 		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
@@ -990,6 +1019,25 @@
 		<property name="body" value="I have just started reading Flashpoint.    So much fun so far!."/>
 		<property name="administrationNotice" value="true"/>
 		<property name="messageFolder">
+			<ref bean="messageFolder_12"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_5">
+		<property name="subject" value="Flashpoint started."/>
+		<property name="body" value="I have just started reading Flashpoint.    So much fun so far!."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
 			<ref bean="messageFolder_7"/>
 		</property>
 		<property name="sender">
@@ -998,30 +1046,7 @@
 		<property name="recipient">
 			<ref bean="user_user1"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-		<property name="readByUser" value="false"/>
-		<property name="sale">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_5">
-		<property name="subject" value="Any recommendations?."/>
-		<property name="body" value="Hi there! I don't have any comics to    read now. Any recommendations?."/>
-		<property name="administrationNotice" value="false"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_8"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
@@ -1032,7 +1057,7 @@
 		<property name="body" value="Hi there! I don't have any comics to    read now. Any recommendations?."/>
 		<property name="administrationNotice" value="false"/>
 		<property name="messageFolder">
-			<ref bean="messageFolder_10"/>
+			<ref bean="messageFolder_8"/>
 		</property>
 		<property name="sender">
 			<ref bean="user_user1"/>
@@ -1040,30 +1065,26 @@
 		<property name="recipient">
 			<ref bean="user_user2"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
 		</property>
 	</bean>
 	<bean class="domain.DirectMessage" id="directMessage_7">
-		<property name="subject" value="Help here."/>
-		<property name="body" value="Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can't make a decision. Which one do you think i should take?."/>
-		<property name="administrationNotice" value="true"/>
+		<property name="subject" value="Any recommendations?."/>
+		<property name="body" value="Hi there! I don't have any comics to    read now. Any recommendations?."/>
+		<property name="administrationNotice" value="false"/>
 		<property name="messageFolder">
 			<ref bean="messageFolder_11"/>
 		</property>
 		<property name="sender">
-			<ref bean="user_user2"/>
-		</property>
-		<property name="recipient">
 			<ref bean="user_user1"/>
 		</property>
-		<property name="creationTime">
-			<null/>
+		<property name="recipient">
+			<ref bean="user_user2"/>
 		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
@@ -1074,6 +1095,25 @@
 		<property name="body" value="Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can't make a decision. Which one do you think i should take?."/>
 		<property name="administrationNotice" value="true"/>
 		<property name="messageFolder">
+			<ref bean="messageFolder_12"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_9">
+		<property name="subject" value="Help here."/>
+		<property name="body" value="Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can't make a decision. Which one do you think i should take?."/>
+		<property name="administrationNotice" value="true"/>
+		<property name="messageFolder">
 			<ref bean="messageFolder_7"/>
 		</property>
 		<property name="sender">
@@ -1082,30 +1122,7 @@
 		<property name="recipient">
 			<ref bean="user_user1"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
-		<property name="readByUser" value="false"/>
-		<property name="sale">
-			<null/>
-		</property>
-	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_9">
-		<property name="subject" value="From hell read."/>
-		<property name="body" value="I've just read From Hell. So so good,    far better than the movie, obviously."/>
-		<property name="administrationNotice" value="false"/>
-		<property name="messageFolder">
-			<ref bean="messageFolder_17"/>
-		</property>
-		<property name="sender">
-			<ref bean="user_user4"/>
-		</property>
-		<property name="recipient">
-			<ref bean="user_user1"/>
-		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
@@ -1116,6 +1133,25 @@
 		<property name="body" value="I've just read From Hell. So so good,    far better than the movie, obviously."/>
 		<property name="administrationNotice" value="false"/>
 		<property name="messageFolder">
+			<ref bean="messageFolder_18"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user4"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
+		<property name="readByUser" value="false"/>
+		<property name="sale">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_11">
+		<property name="subject" value="From hell read."/>
+		<property name="body" value="I've just read From Hell. So so good,    far better than the movie, obviously."/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
 			<ref bean="messageFolder_7"/>
 		</property>
 		<property name="sender">
@@ -1124,15 +1160,13 @@
 		<property name="recipient">
 			<ref bean="user_user1"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
 		</property>
 	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_11">
+	<bean class="domain.DirectMessage" id="directMessage_12">
 		<property name="subject" value="Here you have a friend!."/>
 		<property name="body" value="Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!."/>
 		<property name="administrationNotice" value="true"/>
@@ -1145,20 +1179,18 @@
 		<property name="recipient">
 			<ref bean="user_user4"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
 		</property>
 	</bean>
-	<bean class="domain.DirectMessage" id="directMessage_12">
+	<bean class="domain.DirectMessage" id="directMessage_13">
 		<property name="subject" value="Here you have a friend!."/>
 		<property name="body" value="Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!."/>
 		<property name="administrationNotice" value="true"/>
 		<property name="messageFolder">
-			<ref bean="messageFolder_16"/>
+			<ref bean="messageFolder_17"/>
 		</property>
 		<property name="sender">
 			<ref bean="user_user1"/>
@@ -1166,9 +1198,7 @@
 		<property name="recipient">
 			<ref bean="user_user4"/>
 		</property>
-		<property name="creationTime">
-			<null/>
-		</property>
+		<property name="creationTime" value="1990/01/01 00:00:00"/>
 		<property name="readByUser" value="false"/>
 		<property name="sale">
 			<null/>
@@ -1696,6 +1726,82 @@
 			<list/>
 		</property>
 	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_14">
+		<property name="subject" value="About Watchmen keychain"/>
+		<property name="body" value="Nice keychain"/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_12"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime" value="2018/09/10 18:14:01"/>
+		<property name="readByUser" value="true"/>
+		<property name="sale">
+			<ref bean="sale_2"/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_15">
+		<property name="subject" value="About Watchmen keychain"/>
+		<property name="body" value="Nice keychain"/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_7"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime" value="2018/09/10 18:14:01"/>
+		<property name="readByUser" value="true"/>
+		<property name="sale">
+			<ref bean="sale_2"/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_16">
+		<property name="subject" value="About Watchmen keychain"/>
+		<property name="body" value="Let's meet at the coffee shop and I'll buy it"/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_12"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime" value="2018/09/10 18:14:32"/>
+		<property name="readByUser" value="true"/>
+		<property name="sale">
+			<ref bean="sale_2"/>
+		</property>
+	</bean>
+	<bean class="domain.DirectMessage" id="directMessage_17">
+		<property name="subject" value="About Watchmen keychain"/>
+		<property name="body" value="Let's meet at the coffee shop and I'll buy it"/>
+		<property name="administrationNotice" value="false"/>
+		<property name="messageFolder">
+			<ref bean="messageFolder_7"/>
+		</property>
+		<property name="sender">
+			<ref bean="user_user2"/>
+		</property>
+		<property name="recipient">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="creationTime" value="2018/09/10 18:14:32"/>
+		<property name="readByUser" value="true"/>
+		<property name="sale">
+			<ref bean="sale_2"/>
+		</property>
+	</bean>
 	<bean class="domain.ComicCharacter" id="comicCharacter_1">
 		<property name="name" value="Bruce Wayne"/>
 		<property name="alias" value="Batman"/>
@@ -1831,6 +1937,54 @@
 		<property name="firstAppearance" value="Amazing fantasy 15, 1962"/>
 		<property name="comments">
 			<list/>
+		</property>
+	</bean>
+	<bean class="domain.Sale" id="sale_1">
+		<property name="comic">
+			<ref bean="comic_1"/>
+		</property>
+		<property name="user">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="name" value="Flashpoint comic volume 1"/>
+		<property name="description" value="The Flashpoint comic volume 1. Good condition."/>
+		<property name="price" value="100.0"/>
+		<property name="status" value="SELLING"/>
+		<property name="interestedUsers">
+			<list>
+				<ref bean="user_user2"/>
+			</list>
+		</property>
+		<property name="images">
+			<list/>
+		</property>
+		<property name="creationTime" value="2018/09/10 18:10:12"/>
+		<property name="userSoldTo">
+			<null/>
+		</property>
+	</bean>
+	<bean class="domain.Sale" id="sale_2">
+		<property name="comic">
+			<ref bean="comic_3"/>
+		</property>
+		<property name="user">
+			<ref bean="user_user1"/>
+		</property>
+		<property name="name" value="Watchmen keychain"/>
+		<property name="description" value="Limited edition"/>
+		<property name="price" value="20.0"/>
+		<property name="status" value="COMPLETED"/>
+		<property name="interestedUsers">
+			<list>
+				<ref bean="user_user2"/>
+			</list>
+		</property>
+		<property name="images">
+			<list/>
+		</property>
+		<property name="creationTime" value="2018/09/10 18:13:14"/>
+		<property name="userSoldTo">
+			<ref bean="user_user2"/>
 		</property>
 	</bean>
 	<bean class="domain.ComicComicCharacter" id="comicComicCharacter_1">

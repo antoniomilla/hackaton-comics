@@ -14,6 +14,7 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.stereotype.Controller;
@@ -109,7 +110,7 @@ public class AbstractController {
         if (oops instanceof AccessDeniedException) {
             return handleAccessDeniedException(request);
         }
-        if (oops instanceof ResourceNotFoundException) {
+        if (oops instanceof ResourceNotFoundException || oops instanceof EmptyResultDataAccessException) {
             return handle404(request);
         }
 

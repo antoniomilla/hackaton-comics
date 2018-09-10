@@ -8,6 +8,8 @@ import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.validator.constraints.NotBlank;
@@ -36,6 +38,7 @@ public class ComicComicCharacter extends DomainEntity {
 	public void setRole(final String role) {
 		this.role = role;
 	}
+	@NotNull
 	@ManyToOne(optional = false)
 	public Comic getComic() {
 		return this.comic;
@@ -44,6 +47,7 @@ public class ComicComicCharacter extends DomainEntity {
 	public void setComic(final Comic comic) {
 		this.comic = comic;
 	}
+	@NotNull
 	@ManyToOne(optional = false)
 	public ComicCharacter getComicCharacter() {
 		return this.comicCharacter;

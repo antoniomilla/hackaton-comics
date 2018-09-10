@@ -12,4 +12,6 @@ import domain.Author;
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
+    // For test use.
+    Author findByName(String name);
 }

@@ -58,11 +58,6 @@ public class ComicCharacterService {
 
 	public ComicCharacter bindForUpdate(ComicCharacter comicCharacter, BindingResult binding)
 	{
-		// Hibernate is in the dirty habit of automatically persisting any managed entities
-		// at the end of the transaction, even if it was never saved. An attacker can force
-		// the system to load a managed entity using a parameter (which gets parsed by the converter which loads the entity),
-		// which can later be modified by the bound model attributes before our code is even called.
-		// We're not going to save this entity, so detach it just in case.
 		entityManager.detach(comicCharacter);
 
 		ComicCharacter oldComicCharacter = getById(comicCharacter.getId());

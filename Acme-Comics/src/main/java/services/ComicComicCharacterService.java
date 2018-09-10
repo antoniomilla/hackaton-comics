@@ -34,7 +34,7 @@ public class ComicComicCharacterService {
 	@PersistenceContext private EntityManager entityManager;
 	@Autowired private Validator validator;
 
-	public void create(ComicComicCharacter comicComicCharacter) throws ResourceNotUniqueException
+	public ComicComicCharacter create(ComicComicCharacter comicComicCharacter) throws ResourceNotUniqueException
 	{
 		PolicyCheckUtils.checkCanEditContent(actorService.findPrincipal());
 		CheckUtils.checkNotExists(comicComicCharacter);
@@ -43,7 +43,7 @@ public class ComicComicCharacterService {
 			throw new ResourceNotUniqueException();
 		}
 
-		repository.save(comicComicCharacter);
+		return repository.save(comicComicCharacter);
 	}
 
 	public ComicComicCharacter bindForUpdate(ComicComicCharacter comicComicCharacter, BindingResult binding)

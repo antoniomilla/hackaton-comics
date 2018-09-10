@@ -1,6 +1,7 @@
 
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,8 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.annotations.Cascade;
@@ -30,10 +33,10 @@ public class Publisher extends DomainEntity {
 	private String						name;
 	private Date						foundationDate;
 	private String						description;
-	private List<Comic>			comics;
-	private List<ComicCharacter>	comicCharacters;
+	private List<Comic>			comics = new ArrayList<>();
+	private List<ComicCharacter>	comicCharacters = new ArrayList<>();
 	private String						image;
-	private List<Comment>			comments;
+	private List<Comment>			comments = new ArrayList<>();
 
 
 	@NotBlank
@@ -53,6 +56,7 @@ public class Publisher extends DomainEntity {
 		this.description = description;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "publisher")
 	@Cascade(CascadeType.DELETE)
 	public List<Comic> getComics() {
@@ -82,6 +86,7 @@ public class Publisher extends DomainEntity {
 		this.foundationDate = foundationDate;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "publisher")
 	@Cascade(CascadeType.DELETE)
 	public List<Comment> getComments() {
@@ -92,6 +97,7 @@ public class Publisher extends DomainEntity {
 		this.comments = comment;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "publisher")
 	@Cascade(CascadeType.DELETE)
 	public List<ComicCharacter> getComicCharacters() {

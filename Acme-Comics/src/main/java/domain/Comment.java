@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -57,10 +59,11 @@ public class Comment extends DomainEntity {
 	public String getText() {
 		return this.text;
 	}
-
 	public void setText(final String text) {
 		this.text = text;
 	}
+
+	@NotNull
 	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -71,6 +74,8 @@ public class Comment extends DomainEntity {
 	public void setCreationTime(final Date creationTime) {
 		this.creationTime = creationTime;
 	}
+
+	@NotNull
 	@ManyToOne(optional = false)
 	public User getUser() {
 		return this.user;

@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import validators.NullOrNotBlank;
@@ -29,11 +32,11 @@ public class Author extends DomainEntity {
     private String name;
     private Date birthDate;
     private String birthPlace;
-    private List<Comic> comics;
+    private List<Comic> comics = new ArrayList<>();
     private String description;
     private String image;
-    private List<Volume> volumes;
-    private List<Comment> comments;
+    private List<Volume> volumes = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
 
     @NotBlank
@@ -58,6 +61,7 @@ public class Author extends DomainEntity {
         this.birthDate = birthDate;
     }
 
+    @NullOrNotBlank
     public String getBirthPlace()
     {
         return this.birthPlace;
@@ -67,6 +71,7 @@ public class Author extends DomainEntity {
         this.birthPlace = birthPlace;
     }
 
+    @NotNull
     @OneToMany(mappedBy = "author")
     @Cascade(CascadeType.DELETE)
     public List<Comic> getComics()
@@ -100,6 +105,7 @@ public class Author extends DomainEntity {
         this.description = description;
     }
 
+    @NotNull
     @OneToMany(mappedBy = "author")
     @Cascade(CascadeType.DELETE)
     public List<Volume> getVolumes()
@@ -111,6 +117,7 @@ public class Author extends DomainEntity {
         this.volumes = volumes;
     }
 
+    @NotNull
     @OneToMany(mappedBy = "author")
     @Cascade(CascadeType.DELETE)
     public List<Comment> getComments()

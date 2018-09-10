@@ -1,6 +1,7 @@
 
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Access;
@@ -11,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import validators.CustomValidator;
@@ -24,7 +26,7 @@ public class MessageFolder extends DomainEntity {
     private String name;
     private MessageFolderType type;
     private Actor actor;
-    private List<DirectMessage> messages;
+    private List<DirectMessage> messages = new ArrayList<>();
 
     private String nameForDisplay;
 
@@ -56,6 +58,7 @@ public class MessageFolder extends DomainEntity {
         this.type = type;
     }
 
+    @NotNull
     @ManyToOne(optional = false)
     public Actor getActor()
     {
@@ -66,6 +69,7 @@ public class MessageFolder extends DomainEntity {
         this.actor = actor;
     }
 
+    @NotNull
     @OneToMany(mappedBy = "messageFolder")
     public List<DirectMessage> getMessages()
     {

@@ -13,6 +13,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import validators.PastOrPresent;
 
@@ -73,6 +75,7 @@ public class DirectMessage extends DomainEntity {
         this.administrationNotice = administrationNotice;
     }
 
+    @NotNull
     @PastOrPresent
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -86,6 +89,7 @@ public class DirectMessage extends DomainEntity {
         this.creationTime = creationTime;
     }
 
+    @NotNull
     @ManyToOne(optional = false)
     public Actor getSender()
     {
@@ -96,6 +100,7 @@ public class DirectMessage extends DomainEntity {
         this.sender = sender;
     }
 
+    @NotNull
     @ManyToOne(optional = false)
     public Actor getRecipient()
     {
@@ -106,6 +111,7 @@ public class DirectMessage extends DomainEntity {
         this.recipient = recipient;
     }
 
+    @NotNull
     @ManyToOne(optional = false)
     public MessageFolder getMessageFolder()
     {
@@ -125,7 +131,7 @@ public class DirectMessage extends DomainEntity {
         this.readByUser = readByUser;
     }
 
-    @ManyToOne(optional = true)
+    @ManyToOne
     public Sale getSale()
     {
         return sale;

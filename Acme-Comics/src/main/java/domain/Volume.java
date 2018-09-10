@@ -1,9 +1,12 @@
 
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -12,8 +15,10 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -39,7 +44,8 @@ public class Volume extends DomainEntity {
 	private String				image;
 	private Comic				comic;
 	private Author				author;
-	private List<Comment>	comments;
+	private List<Comment>	comments = new ArrayList<>();
+	private List<UserComic> userComics = new ArrayList<>();
 
 	public Volume() {}
 	public Volume(Comic comic)
@@ -100,6 +106,7 @@ public class Volume extends DomainEntity {
 		this.image = image;
 	}
 
+	@NotNull
 	@ManyToOne(optional = false)
 	public Comic getComic() {
 		return this.comic;
@@ -108,6 +115,7 @@ public class Volume extends DomainEntity {
 		this.comic = comic;
 	}
 
+	@NotNull
 	@ManyToOne(optional = false)
 	public Author getAuthor() {
 		return this.author;
@@ -116,6 +124,7 @@ public class Volume extends DomainEntity {
 		this.author = author;
 	}
 
+	@NotNull
 	@OneToMany(mappedBy = "volume")
 	@Cascade(CascadeType.DELETE)
 	public List<Comment> getComments() {
@@ -123,6 +132,25 @@ public class Volume extends DomainEntity {
 	}
 	public void setComments(final List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@NotNull
+	@ManyToMany(mappedBy = "readVolumes")
+	public List<UserComic> getUserComics() {
+		return this.userComics;
+	}
+	public void setUserComics(final List<UserComic> userComics) {
+		this.userComics = userComics;
+	}
+
+	@PreRemove
+	public void onRemoval()
+	{
+		// Dissociate with volume with UserComics.
+		for (UserComic userComic : getUserComics()) {
+			userComic.getReadVolumes().remove(this);
+			userComic.setReadVolumeCount(userComic.getReadVolumes().size());
+		}
 	}
 
 }
