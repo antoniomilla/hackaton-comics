@@ -13,11 +13,14 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
+import domain.Actor;
 import domain.User;
 import exceptions.ResourceNotFoundException;
 import repositories.AdministratorRepository;
 import domain.Administrator;
 import security.Authority;
+import security.LoginService;
+import security.UserAccount;
 import utilities.CheckUtils;
 
 @Service
@@ -66,5 +69,23 @@ public class AdministratorService {
 		CheckUtils.checkPrincipalAuthority(Authority.ADMINISTRATOR);
 		CheckUtils.checkIsPrincipal(administrator);
 		return repository.save(administrator);
+	}
+
+	public Administrator findPrincipal()
+	{
+		if (!LoginService.isAuthenticated()) return null;
+
+		final UserAccount userAccount = LoginService.getPrincipal();
+		if (userAccount == null) return null;
+
+		return repository.findByUserAccount(userAccount);
+	}
+
+	public Administrator getPrincipal()
+	{
+		CheckUtils.checkPrincipalAuthority(Authority.ADMINISTRATOR);
+		Administrator user = findPrincipal();
+		Assert.notNull(user);
+		return user;
 	}
 }

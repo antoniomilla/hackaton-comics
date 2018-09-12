@@ -21,6 +21,7 @@ import domain.Actor;
 import exceptions.OldPasswordDoesntMatchException;
 import exceptions.ResourceNotFoundException;
 import repositories.ActorRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import security.UserAccountService;
@@ -34,13 +35,30 @@ public class ActorService {
     @PersistenceContext private EntityManager entityManager;
     @Autowired private UserAccountService userAccountService;
     @Autowired private Validator validator;
+    @Autowired private AdministratorService administratorService;
+    @Autowired private UserService userService;
 
     public Actor findPrincipal()
     {
-        if (!LoginService.isAuthenticated()) return null;
+        if (!LoginService.isAuthenticated()) {
+            return null;
+        }
 
         final UserAccount userAccount = LoginService.getPrincipal();
-        if (userAccount == null) return null;
+        if (userAccount == null) {
+            return null;
+        }
+
+        // This is faster than using ActorRepository because the SQL Hibernate creates to query
+        // classes with subclasses is not very optimized.
+
+        // Doing this this way drops the response time from 2000 to 20 at 200 simultaneous users.
+        String authority = userAccount.getAuthorities().iterator().next().getAuthority();
+        if (authority.equals(Authority.ADMINISTRATOR)) {
+            return administratorService.findPrincipal();
+        } else if (authority.equals(Authority.USER)) {
+            return userService.findPrincipal();
+        }
 
         return repository.findByUserAccount(userAccount);
     }

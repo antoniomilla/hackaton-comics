@@ -165,10 +165,15 @@ public class ComicController extends AbstractController {
     @RequestMapping("/show")
     public ModelAndView show(@RequestParam("id") int id, Model model)
     {
+        Actor principal = findPrincipal();
+
         Comic comic = comicService.getById(id);
         List<Comment> comments = commentService.findForListInComic(comic);
         List<Volume> volumes = volumeService.findForListInComic(comic);
-        List<Sale> sales = saleService.findForListInComic(comic);
+        List<Sale> sales = null;
+        if (principal != null) {
+            sales = saleService.findForListInComic(comic);
+        }
 
         UserComic userComic = null;
 
@@ -179,7 +184,7 @@ public class ComicController extends AbstractController {
         Comment comment = (Comment) model.asMap().get("comment");
         if (comment == null) comment = new Comment();
 
-        Actor principal = findPrincipal();
+
         if (principal instanceof User) {
             userComic = userComicService.getByUserAndComic((User) principal, comic);
 
@@ -192,7 +197,7 @@ public class ComicController extends AbstractController {
         result.addObject("comic", comic);
         result.addObject("volumes", volumes);
         result.addObject("comments", comments);
-        result.addObject("sales", sales);
+        if (principal != null) result.addObject("sales", sales);
         result.addObject("userComic", userComic);
         result.addObject("comment", comment);
         result.addObject("statuses", UserComicStatus.values());
