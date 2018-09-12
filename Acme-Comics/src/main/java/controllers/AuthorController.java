@@ -107,9 +107,10 @@ public class AuthorController extends AbstractController {
 
 		try {
 			if (!binding.hasErrors()) {
-				authorService.create(author);
+				author = authorService.create(author);
 				redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-				return ControllerUtils.redirectToReturnAction();
+				redir.addAttribute("id", author.getId());
+				return ControllerUtils.redirect("/authors/show.do");
 			}
 		} catch (Throwable oops) {
 			if (ApplicationConfig.DEBUG) oops.printStackTrace();

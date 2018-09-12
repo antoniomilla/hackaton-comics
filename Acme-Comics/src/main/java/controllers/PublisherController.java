@@ -98,9 +98,10 @@ public class PublisherController extends AbstractController {
 
 		try {
 			if (!binding.hasErrors()) {
-				publisherService.create(publisher);
+				publisher = publisherService.create(publisher);
 				redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-				return ControllerUtils.redirectToReturnAction();
+				redir.addAttribute("id", publisher.getId());
+				return ControllerUtils.redirect("/publishers/show.do");
 			}
 		} catch (Throwable oops) {
 			if (ApplicationConfig.DEBUG) oops.printStackTrace();

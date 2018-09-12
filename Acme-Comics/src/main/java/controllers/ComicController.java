@@ -226,7 +226,8 @@ public class ComicController extends AbstractController {
             try {
                 comic = comicService.create(comic);
                 redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-                return ControllerUtils.redirectToReturnAction();
+                redir.addAttribute("id", comic.getId());
+                return ControllerUtils.redirect("/comics/show.do");
             } catch (Throwable oops) {
                 if (ApplicationConfig.DEBUG) oops.printStackTrace();
                 globalErrorMessage = "misc.commit.error";

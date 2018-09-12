@@ -122,9 +122,10 @@ public class VolumeController extends AbstractController {
 
 		try {
 			if (!binding.hasErrors()) {
-				volumeService.create(volume);
+				volume = volumeService.create(volume);
 				redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-				return ControllerUtils.redirectToReturnAction();
+				redir.addAttribute("id", volume.getId());
+				return ControllerUtils.redirect("/volumes/show.do");
 			}
 		} catch (Throwable oops) {
 			if (ApplicationConfig.DEBUG) oops.printStackTrace();

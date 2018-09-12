@@ -203,9 +203,10 @@ public class SaleController extends AbstractController {
 
 		try {
 			if (!binding.hasErrors()) {
-				saleService.create(sale);
+				sale = saleService.create(sale);
 				redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-				return ControllerUtils.redirectToReturnAction();
+				redir.addAttribute("id", sale.getId());
+				return ControllerUtils.redirect("/sales/show.do");
 			}
 		} catch (Throwable oops) {
 			if (ApplicationConfig.DEBUG) oops.printStackTrace();
