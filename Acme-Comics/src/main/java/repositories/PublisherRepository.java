@@ -10,7 +10,4 @@ import domain.Publisher;
 @Repository
 public interface PublisherRepository extends JpaRepository<Publisher, Integer> {
 
-	@Query("select p from Publisher p where p.id=?1")
-	Publisher findById(int id);
-
 }

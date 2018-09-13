@@ -6,8 +6,10 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -25,8 +27,16 @@ import validators.PastOrPresent;
 @Entity
 @Access(AccessType.PROPERTY)
 @HasCustomValidators
+@Table(indexes = {
+		@Index(columnList = "user_id, creationTime"), // CommentRepository.findByUserOrderByCreationTimeDesc
+		@Index(columnList = "publisher_id, creationTime"), // CommentRepository.findByPublisherOrderByCreationTimeDesc
+		@Index(columnList = "author_id, creationTime"), // CommentRepository.findByAuthorOrderByCreationTimeDesc
+		@Index(columnList = "comic_id, creationTime"), // CommentRepository.findByComicOrderByCreationTimeDesc
+		@Index(columnList = "volume_id, creationTime"), // CommentRepository.findByVolumeOrderByCreationTimeDesc
+		@Index(columnList = "comicCharacter_id, creationTime"), // CommentRepository.findByComicCharacterOrderByCreationTimeDesc
+		@Index(columnList = "sale_id, creationTime"), // CommentRepository.findBySaleOrderByCreationTimeDesc
+})
 public class Comment extends DomainEntity {
-
 	private String			text;
 	private Date			creationTime;
 	private User			user;

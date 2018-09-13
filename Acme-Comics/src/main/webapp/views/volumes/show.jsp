@@ -53,7 +53,7 @@
 
 <c:if test="${principal != null and principal.administrator or principal.trusted}">
     <app:redir-button code="misc.actions.edit" action="volumes/edit.do?id=${volume.id}&returnAction=${appfn:escapeUrlParam(returnActionForHere)}" />
-    <app:delete-button action="volumes/delete.do?id=${volume.id}&returnAction=volumes/list.do" />
+    <app:delete-button action="volumes/delete.do?id=${volume.id}&returnAction=${appfn:escapeUrlParam('comics/show.do?id=')}${volume.comic.id}" />
 </c:if>
 
 <h3><spring:message code="volume.comments" /></h3>

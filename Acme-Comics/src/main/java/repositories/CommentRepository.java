@@ -23,8 +23,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
     List<Comment> findByPublisherOrderByCreationTimeDesc(Publisher publisher);
     List<Comment> findByAuthorOrderByCreationTimeDesc(Author author);
     List<Comment> findByComicCharacterOrderByCreationTimeDesc(ComicCharacter comicCharacter);
-
     List<Comment> findByUserOrderByCreationTimeDesc(User user);
-
     List<Comment> findBySaleOrderByCreationTimeDesc(Sale sale);
 }

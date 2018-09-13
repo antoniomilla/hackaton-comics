@@ -12,9 +12,11 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="appfn" uri="/WEB-INF/appfn.tld" %>
 
-<div>
-	<img src="${comic.image}" width="200" height="200"/>
-</div>
+<c:if test="${comic.image != null}">
+    <div>
+        <img src="${comic.image}" width="200" height="200"/>
+    </div>
+</c:if>
 
 <div>
 	<p>

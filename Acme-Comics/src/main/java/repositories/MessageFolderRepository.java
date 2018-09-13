@@ -11,6 +11,6 @@ import domain.MessageFolderType;
 
 @Repository
 public interface MessageFolderRepository extends JpaRepository<MessageFolder, Integer> {
-	@Query("select mf from Actor a join a.messageFolders mf where a = ?1 and mf.type = ?2")
+	@Query("select mf from MessageFolder mf where mf.actor = ?1 and mf.type = ?2")
     MessageFolder findSystemFolderForActor(Actor actor, MessageFolderType type);
 }

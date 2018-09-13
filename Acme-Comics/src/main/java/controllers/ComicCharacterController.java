@@ -109,7 +109,7 @@ public class ComicCharacterController extends AbstractController {
 
 		try {
 			if (!binding.hasErrors()) {
-				comicCharacterService.create(comicCharacter);
+				comicCharacter = comicCharacterService.create(comicCharacter);
 				redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
 				redir.addAttribute("id", comicCharacter.getId());
 				return ControllerUtils.redirect("/comic_characters/show.do");

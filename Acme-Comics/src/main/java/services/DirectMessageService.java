@@ -74,8 +74,6 @@ public class DirectMessageService {
         }
 
         if (directMessage.getSale() != null) {
-            CheckUtils.checkTrue(directMessage.getSale().getStatus() == SaleStatus.SELLING);
-
             CheckUtils.checkTrue(directMessage.getSender() instanceof User && directMessage.getRecipient() instanceof User);
 
             boolean senderSaleOwner = directMessage.getSale().getUser().equals(directMessage.getSender());

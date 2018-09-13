@@ -9,8 +9,10 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -22,6 +24,9 @@ import validators.NullOrNotBlank;
 @Entity
 @Access(AccessType.PROPERTY)
 @HasCustomValidators
+@Table(indexes = {
+        @Index(columnList = "actor_id, type") // MessageFolderRepository.findSystemFolderForActor
+})
 public class MessageFolder extends DomainEntity {
     private String name;
     private MessageFolderType type;

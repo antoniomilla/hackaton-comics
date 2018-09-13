@@ -29,7 +29,8 @@ import validators.HasCustomValidators;
 @Access(AccessType.PROPERTY)
 @HasCustomValidators
 @Table(indexes = {
-        @Index(columnList = "user_id, comic_id", unique = true)
+        @Index(columnList = "user_id, comic_id", unique = true),
+        @Index(columnList = "user_id, status") // findByUserAndStatus
 })
 public class UserComic extends DomainEntity {
     private boolean starred;

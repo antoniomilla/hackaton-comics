@@ -47,9 +47,10 @@ public class MessageFolderController extends AbstractController {
 
 		try {
 			if (!binding.hasErrors()) {
-				messageFolderService.create(messageFolder);
+				messageFolder = messageFolderService.create(messageFolder);
 				redir.addFlashAttribute("globalSuccessMessage", "misc.operationCompletedSuccessfully");
-				return ControllerUtils.redirectToReturnAction();
+				redir.addAttribute("folder", messageFolder.getId());
+				return ControllerUtils.redirect("/direct_messages/index.do");
 			}
 		} catch (Throwable oops) {
 			if (ApplicationConfig.DEBUG) oops.printStackTrace();
