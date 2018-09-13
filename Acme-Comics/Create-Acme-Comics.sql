@@ -22,7 +22,9 @@ GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, REFERENCES, INDEX, ALTER,
         CREATE TEMPORARY TABLES, LOCK TABLES, CREATE VIEW, CREATE ROUTINE,
         ALTER ROUTINE, EXECUTE, TRIGGER, SHOW VIEW
     ON `Acme-Comics`.* TO 'acme-manager'@'%';
+
 USE `Acme-Comics`;
+
 -- MySQL dump 10.15  Distrib 10.0.36-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: Acme-Comics
@@ -95,7 +97,6 @@ CREATE TABLE `Author` (
 
 LOCK TABLES `Author` WRITE;
 /*!40000 ALTER TABLE `Author` DISABLE KEYS */;
-INSERT INTO `Author` VALUES (106,0,'1973-01-25','Detroit, Michigan, EEUU','One of the best comic book authors of his generation.    Known for his absolut knowledge of the superheroe world.','https://i.imgur.com/ZK7gYgU.jpg','Geoff Johns'),(107,0,'1973-01-25','Glasgow, Scotland','One of the best comic book authors of his generation.    He is known for his anti-american stories.','https://i.imgur.com/SompCDe.jpg','Mark Millar'),(108,0,'1953-11-18','Northampton, England','Considered as the greatest comic book   writer in history, he is known for being the author of some of the best   masterpieces of this art like Watchmen, V for Vendetta, From Hell,etc.','https://i.imgur.com/b0oONUB.jpg','Alan Moore'),(109,0,'1957-01-27','Olney, Maryland, EEUU','One of the best comic book authors of    history, he is one of the authors who reinvented the superheroe genre on the   80\'s. Known for being the author of masterpieces like Dark knight returns,    Daredevil:Born again, Sin City, etc.','https://i.imgur.com/2jwQhPF.jpg','Frank Miller'),(110,0,'1978-11-30','Richmon, Kentucky, EEUU','Robert kirkman is an american comic book author who is most known   for being the author of the famous comic book serie named The walkind dead.','https://i.imgur.com/QBIjdsS.jpg','Robert kirkman');
 /*!40000 ALTER TABLE `Author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +130,6 @@ CREATE TABLE `Comic` (
 
 LOCK TABLES `Comic` WRITE;
 /*!40000 ALTER TABLE `Comic` DISABLE KEYS */;
-INSERT INTO `Comic` VALUES (123,0,'Due to Flash\'s actions, the world turned into    an alternate reality set in a civil war.','https://i.imgur.com/CBHopfy.jpg','Flashpoint',6,106,103),(124,0,'Due to government issues, the superheroes of the world split in two groups,    one led by Captain America and the other one led by Ironman. Both groups fight in a war to achieve their own goals.','https://i.imgur.com/awsZKCj.png','Civil War',3,107,104),(125,0,'1984. Superheroes have been banned and   now they only can work for the government. One of them is murdered and Rorschach,    a old hero who works against the government rules, starts investigating it.','https://i.imgur.com/ZGY4lBj.png','Watchmen',0,108,103),(126,0,'Daredevil\'s secret identity is blown by his    worst enemy, Kingpin. Due to this, his life becomes an absolut hell.','https://i.imgur.com/jIjyRIb.jpg','Daredevil: Born again',0,109,104),(127,0,'This comic shows a distopic reality where the zombies have taken over the world and    a group of peope has to survive in it.','https://i.imgur.com/O3sYUfT.jpg','The walking dead',0,110,105),(128,0,'Superman was born on the planet Krypton, and as a baby was sent to Earth in a small spaceship by his scientist father Jor-El, moments before Krypton was destroyed in a natural cataclysm. His ship landed in the American countryside, where he was discovered and adopted by a farming couple. They named him Clark Kent and imbued him with a strong moral compass. He developed various superhuman abilities, which he resolved to use for the benefit of humanity. Clark Kent resides in the fictional American city of Metropolis, where he works as a journalist for the Daily Planet, a newspaper. To protect his privacy, he changes into a colorful costume and uses the alias \"Superman\" when fighting crime. Superman\'s love interest is his fellow journalist Lois Lane, and his classic archenemy is the genius inventor Lex Luthor. He is a friend of many other superheroes in the DC Universe, such as Batman and Wonder Woman.','https://i.imgur.com/ECacSct.png','Superman',0,106,103);
 /*!40000 ALTER TABLE `Comic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +162,6 @@ CREATE TABLE `ComicCharacter` (
 
 LOCK TABLES `ComicCharacter` WRITE;
 /*!40000 ALTER TABLE `ComicCharacter` DISABLE KEYS */;
-INSERT INTO `ComicCharacter` VALUES (191,0,'Batman','Gotham','One of the most famous comic characters in    all comic books. Created by Bob Kane and Bill Finger for DC Comics.    He is one of the three members of DC Trinity.Due to his parents\' murdered, he    fights crime using amazing items built by him.','Detective Comics 27, 1939','https://i.imgur.com/P5cAGr3.jpg','Bruce Wayne',103),(192,0,'Ironman','New york','Tony stark is a billionaire playboy who    lives the life the way he wants. But he also is an engineering genius    capable of build amazing war armors. He fights the crime using this armors.','Tales of Suspense 39, 1963','https://i.imgur.com/MPjwaEP.jpg','Tony Stark',104),(193,0,'Captain America','Brooklyn, New york','Captain America is an american symbol who    represents the american way. He is a very patriotic hero who fights crime    for his country.','Captain America Comics 1, 1941 ','https://i.imgur.com/ewUYnCq.jpg','Steve Rogers',104),(194,0,'Rorschach','New york','An old violent hero who works against the    rules set by the government.','Watchmen, 1984 ','https://i.imgur.com/Uk0om3X.jpg','Walter Kovacs',103),(195,0,'Daredevil','Hell\'s kitchen, New york','Matt Murdock is a blind person who jobs as    a lawyer by day but, when the night comes, he becomes a crime fighter known as   Daredevil.','Daredevil 1, 1964','https://i.imgur.com/qQxuHsd.jpg','Matt Murdock',104),(196,0,'Spiderman','Queens, New york','Peter Parker is a student who was bitten    by a radioactive spider.He got powers related to spiders due to this bite.    Now, as Spiderman, he uses these powers to fight crime.','Amazing fantasy 15, 1962','https://i.imgur.com/gZZsssV.jpg','Peter Parker',104);
 /*!40000 ALTER TABLE `ComicCharacter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +186,6 @@ CREATE TABLE `ComicCharacter_otherAliases` (
 
 LOCK TABLES `ComicCharacter_otherAliases` WRITE;
 /*!40000 ALTER TABLE `ComicCharacter_otherAliases` DISABLE KEYS */;
-INSERT INTO `ComicCharacter_otherAliases` VALUES (191,'The dark knight'),(191,'Gotham\'s bat');
 /*!40000 ALTER TABLE `ComicCharacter_otherAliases` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +216,6 @@ CREATE TABLE `ComicComicCharacter` (
 
 LOCK TABLES `ComicComicCharacter` WRITE;
 /*!40000 ALTER TABLE `ComicComicCharacter` DISABLE KEYS */;
-INSERT INTO `ComicComicCharacter` VALUES (199,0,'Main character',123,191),(200,0,'Main character',124,192),(201,0,'Main character',124,193),(202,0,'Main character',125,194),(203,0,'Main character',126,195),(204,0,'Supporting character',124,196);
 /*!40000 ALTER TABLE `ComicComicCharacter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +240,6 @@ CREATE TABLE `Comic_tags` (
 
 LOCK TABLES `Comic_tags` WRITE;
 /*!40000 ALTER TABLE `Comic_tags` DISABLE KEYS */;
-INSERT INTO `Comic_tags` VALUES (128,'strong'),(128,'fast'),(128,'american');
 /*!40000 ALTER TABLE `Comic_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,7 +286,6 @@ CREATE TABLE `Comment` (
 
 LOCK TABLES `Comment` WRITE;
 /*!40000 ALTER TABLE `Comment` DISABLE KEYS */;
-INSERT INTO `Comment` VALUES (161,0,'2017-07-16 00:00:00','Great comic.',NULL,123,NULL,NULL,NULL,115,NULL),(162,1,'2017-07-18 00:00:00','Awesome character.',NULL,NULL,191,NULL,NULL,115,NULL),(163,0,'2017-07-20 00:00:00','A great publisher, but their movies are so bad.',NULL,NULL,NULL,103,NULL,117,NULL),(164,0,'2017-07-16 00:00:00','The first comic i read. I still love it.',NULL,124,NULL,NULL,NULL,115,NULL),(165,0,'2017-07-16 00:00:00','They have the best movies. Keep it on!.',NULL,NULL,NULL,104,NULL,117,NULL),(166,1,'2017-07-16 00:00:00','Ready to read it.',NULL,NULL,NULL,NULL,NULL,117,177),(167,0,'2017-07-23 00:00:00','Great comic, awful tv show.',NULL,127,NULL,NULL,NULL,115,NULL),(168,0,'2017-07-16 00:00:00','The greatest ever.',108,NULL,NULL,NULL,NULL,117,NULL);
 /*!40000 ALTER TABLE `Comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +322,6 @@ CREATE TABLE `DirectMessage` (
 
 LOCK TABLES `DirectMessage` WRITE;
 /*!40000 ALTER TABLE `DirectMessage` DISABLE KEYS */;
-INSERT INTO `DirectMessage` VALUES (148,0,'','I have just read Watchmen. What a gem.','1990-01-01 00:00:00','\0','Watchmen read.',138,117,NULL,115),(149,0,'','I have just read Watchmen. What a gem.','1990-01-01 00:00:00','\0','Watchmen read.',136,117,NULL,115),(150,0,'','I have just read Watchmen. What a gem.','1990-01-01 00:00:00','\0','Watchmen read.',139,117,NULL,115),(151,0,'','I have just started reading Flashpoint.    So much fun so far!.','1990-01-01 00:00:00','\0','Flashpoint started.',140,115,NULL,117),(152,0,'','I have just started reading Flashpoint.    So much fun so far!.','1990-01-01 00:00:00','\0','Flashpoint started.',135,115,NULL,117),(153,0,'\0','Hi there! I don\'t have any comics to    read now. Any recommendations?.','1990-01-01 00:00:00','\0','Any recommendations?.',136,117,NULL,115),(154,0,'\0','Hi there! I don\'t have any comics to    read now. Any recommendations?.','1990-01-01 00:00:00','\0','Any recommendations?.',139,117,NULL,115),(155,0,'','Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can\'t make a decision. Which one do you think i should take?.','1990-01-01 00:00:00','\0','Help here.',140,115,NULL,117),(156,0,'','Hey you, i am thinking about buying V for Vendetta or From Hell,    but i can\'t make a decision. Which one do you think i should take?.','1990-01-01 00:00:00','\0','Help here.',135,115,NULL,117),(157,0,'\0','I\'ve just read From Hell. So so good,    far better than the movie, obviously.','1990-01-01 00:00:00','\0','From hell read.',146,115,NULL,121),(158,0,'\0','I\'ve just read From Hell. So so good,    far better than the movie, obviously.','1990-01-01 00:00:00','\0','From hell read.',135,115,NULL,121),(159,0,'','Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!.','1990-01-01 00:00:00','\0','Here you have a friend!.',136,121,NULL,115),(160,0,'','Hi there!. If you are new at reading comic books   here you have somebody to tell you some good stuff!.','1990-01-01 00:00:00','\0','Here you have a friend!.',145,121,NULL,115),(187,1,'\0','Nice keychain','2018-09-10 18:14:01','','About Watchmen keychain',140,115,198,117),(188,1,'\0','Nice keychain','2018-09-10 18:14:01','','About Watchmen keychain',135,115,198,117),(189,1,'\0','Let\'s meet at the coffee shop and I\'ll buy it','2018-09-10 18:14:32','','About Watchmen keychain',140,115,198,117),(190,1,'\0','Let\'s meet at the coffee shop and I\'ll buy it','2018-09-10 18:14:32','','About Watchmen keychain',135,115,198,117);
 /*!40000 ALTER TABLE `DirectMessage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,7 +349,7 @@ CREATE TABLE `MessageFolder` (
 
 LOCK TABLES `MessageFolder` WRITE;
 /*!40000 ALTER TABLE `MessageFolder` DISABLE KEYS */;
-INSERT INTO `MessageFolder` VALUES (129,0,NULL,'SYSTEM_INBOX',111),(130,0,NULL,'SYSTEM_SENT',111),(131,0,NULL,'SYSTEM_TRASH',111),(132,0,NULL,'SYSTEM_INBOX',113),(133,0,NULL,'SYSTEM_SENT',113),(134,0,NULL,'SYSTEM_TRASH',113),(135,0,NULL,'SYSTEM_INBOX',115),(136,0,NULL,'SYSTEM_SENT',115),(137,0,NULL,'SYSTEM_TRASH',115),(138,0,'My custom folder','USER',115),(139,0,NULL,'SYSTEM_INBOX',117),(140,0,NULL,'SYSTEM_SENT',117),(141,0,NULL,'SYSTEM_TRASH',117),(142,0,NULL,'SYSTEM_INBOX',119),(143,0,NULL,'SYSTEM_SENT',119),(144,0,NULL,'SYSTEM_TRASH',119),(145,0,NULL,'SYSTEM_INBOX',121),(146,0,NULL,'SYSTEM_SENT',121),(147,0,NULL,'SYSTEM_TRASH',121);
+INSERT INTO `MessageFolder` VALUES (129,0,NULL,'SYSTEM_INBOX',111),(130,0,NULL,'SYSTEM_SENT',111),(131,0,NULL,'SYSTEM_TRASH',111);
 /*!40000 ALTER TABLE `MessageFolder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,7 +377,6 @@ CREATE TABLE `Publisher` (
 
 LOCK TABLES `Publisher` WRITE;
 /*!40000 ALTER TABLE `Publisher` DISABLE KEYS */;
-INSERT INTO `Publisher` VALUES (103,0,'Publisher founded in 1934 by Malcolm Wheeler-Nicholson.','1939-01-01','https://i.imgur.com/vbUEyd1.png','DC Comics'),(104,0,'Publisher founded in 1939 as Timely    Publications by Martin Goodman. Refounded in 1960 as Marvel Comics by    Stan Lee and Jack Kirby.','1934-01-01','https://i.imgur.com/LB4uf8o.jpg','Marvel Comics'),(105,0,'Publisher founded in 1992 by famous   authors who left Marvel Comics like Todd McFarlane, Jim Lee and Rob Liefeld.','1992-01-01','https://i.imgur.com/97GOBxa.png','Image Comics');
 /*!40000 ALTER TABLE `Publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +415,6 @@ CREATE TABLE `Sale` (
 
 LOCK TABLES `Sale` WRITE;
 /*!40000 ALTER TABLE `Sale` DISABLE KEYS */;
-INSERT INTO `Sale` VALUES (197,0,'2018-09-10 18:10:12','The Flashpoint comic volume 1. Good condition.','Flashpoint comic volume 1',100,'SELLING',123,115,NULL),(198,0,'2018-09-10 18:13:14','Limited edition','Watchmen keychain',20,'COMPLETED',125,115,117);
 /*!40000 ALTER TABLE `Sale` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -449,7 +441,6 @@ CREATE TABLE `Sale_User` (
 
 LOCK TABLES `Sale_User` WRITE;
 /*!40000 ALTER TABLE `Sale_User` DISABLE KEYS */;
-INSERT INTO `Sale_User` VALUES (197,117),(198,117);
 /*!40000 ALTER TABLE `Sale_User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -509,7 +500,6 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (115,0,'2018-07-15 00:00:00','This is user1\'s description.','User 1',116,NULL,'\0','2018-09-10 18:10:08','B','\0',''),(117,0,'2018-07-15 00:00:00','This is user2\'s description.','User 2',118,NULL,'\0','2018-09-10 18:13:38','C','\0','\0'),(119,0,'2018-07-20 00:00:00','This is user3\'s description.','User 3',120,'Bad behavior.','','2018-07-20 00:00:00','C','\0','\0'),(121,0,'2018-07-22 00:00:00','This is user4\'s description.','User 4',122,NULL,'\0','2018-07-22 00:00:00','B','','\0');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -536,7 +526,7 @@ CREATE TABLE `UserAccount` (
 
 LOCK TABLES `UserAccount` WRITE;
 /*!40000 ALTER TABLE `UserAccount` DISABLE KEYS */;
-INSERT INTO `UserAccount` VALUES (112,0,'21232f297a57a5a743894a0e4a801fc3','admin'),(114,0,'c84258e9c39059a89ab77d846ddab909','admin2'),(116,0,'24c9e15e52afc47c225b757e7bee1f9d','user1'),(118,0,'7e58d63b60197ceb55a1c487989a3720','user2'),(120,0,'92877af70a45fd6a2ed7fe81e1236b78','user3'),(122,0,'3f02ebe3d7929b091e3d8ccfde2f3bc6','user4');
+INSERT INTO `UserAccount` VALUES (112,0,'21232f297a57a5a743894a0e4a801fc3','admin');
 /*!40000 ALTER TABLE `UserAccount` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -561,7 +551,7 @@ CREATE TABLE `UserAccount_authorities` (
 
 LOCK TABLES `UserAccount_authorities` WRITE;
 /*!40000 ALTER TABLE `UserAccount_authorities` DISABLE KEYS */;
-INSERT INTO `UserAccount_authorities` VALUES (112,'ADMINISTRATOR'),(114,'ADMINISTRATOR'),(116,'USER'),(118,'USER'),(120,'USER'),(122,'USER');
+INSERT INTO `UserAccount_authorities` VALUES (112,'ADMINISTRATOR');
 /*!40000 ALTER TABLE `UserAccount_authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -596,7 +586,6 @@ CREATE TABLE `UserComic` (
 
 LOCK TABLES `UserComic` WRITE;
 /*!40000 ALTER TABLE `UserComic` DISABLE KEYS */;
-INSERT INTO `UserComic` VALUES (169,0,3,9,'','COMPLETED',123,115),(170,0,0,9,'','COMPLETED',124,117),(171,0,0,10,'','COMPLETED',125,115),(172,0,0,9,'','COMPLETED',125,117),(173,0,0,NULL,'\0','PLANNING_TO_READ',126,115),(174,0,0,NULL,'\0','PLANNING_TO_READ',126,121),(175,0,0,NULL,'\0','PLANNING_TO_READ',123,121),(176,0,0,NULL,'\0','PLANNING_TO_READ',127,115),(183,0,0,NULL,'','NONE',128,115);
 /*!40000 ALTER TABLE `UserComic` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -623,7 +612,6 @@ CREATE TABLE `UserComic_Volume` (
 
 LOCK TABLES `UserComic_Volume` WRITE;
 /*!40000 ALTER TABLE `UserComic_Volume` DISABLE KEYS */;
-INSERT INTO `UserComic_Volume` VALUES (169,177),(169,178),(169,179);
 /*!40000 ALTER TABLE `UserComic_Volume` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -650,7 +638,6 @@ CREATE TABLE `User_User` (
 
 LOCK TABLES `User_User` WRITE;
 /*!40000 ALTER TABLE `User_User` DISABLE KEYS */;
-INSERT INTO `User_User` VALUES (115,115),(115,117),(115,121),(117,115),(121,115);
 /*!40000 ALTER TABLE `User_User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -686,7 +673,6 @@ CREATE TABLE `Volume` (
 
 LOCK TABLES `Volume` WRITE;
 /*!40000 ALTER TABLE `Volume` DISABLE KEYS */;
-INSERT INTO `Volume` VALUES (177,0,3,'Flash has travelled to the past    to save his mother, but his actions have turned the reality into a new one.','https://i.imgur.com/qHJkDHm.jpg','Beginning',1,'2011-01-25',106,123),(178,0,3,'Wonder Woman and Aquaman are enemies in this reality.    This war is destroying the whole world and Flash,    helped by Thomas Wayne, has to fix the reality before it\'s too late.','https://i.imgur.com/gQ3OPWn.jpg','The civil war',2,'2011-04-25',106,123),(179,0,3,'The reality is about to collapse. Zoom, Flash\'s main enemy, is here to kill    Flash once and for all. The final battle is set to happen.','https://i.imgur.com/1UJjGvd.jpg','Back to our world.',3,'2011-07-25',106,123),(180,0,2,'Two groups of superheroes are formed    due to government issues. Captain America and Ironman are the leaders of   each one.','https://i.imgur.com/RmMBKuo.jpg','The split',1,'2007-04-01',107,124),(181,0,4,'Captain America\'s group is against the    government, so they need to hide. Ironman\'s group is looking after them   to catch them.','https://i.imgur.com/iKMf8Mj.jpg','The chasing',2,'2007-08-01',107,124),(182,0,2,'The two groups collide in a epic battle   in the middle of New York.','https://i.imgur.com/BsYJ3IL.jpg','The final battle',1,'2007-12-01',107,124),(184,0,NULL,NULL,NULL,'The World of Flashpoint Featuring The Flash',5,'2012-03-01',106,123),(185,0,NULL,NULL,NULL,'The World of Flashpoint Featuring Wonder Woman',6,'2012-03-01',106,123),(186,0,NULL,NULL,NULL,'The World of Flashpoint Featuring Superman',7,'2012-03-01',106,123);
 /*!40000 ALTER TABLE `Volume` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -709,7 +695,7 @@ CREATE TABLE `hibernate_sequences` (
 
 LOCK TABLES `hibernate_sequences` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequences` DISABLE KEYS */;
-INSERT INTO `hibernate_sequences` VALUES ('DomainEntity',2);
+INSERT INTO `hibernate_sequences` VALUES ('DomainEntity',1);
 /*!40000 ALTER TABLE `hibernate_sequences` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -722,4 +708,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-13  1:45:43
+-- Dump completed on 2018-09-13 11:06:06
